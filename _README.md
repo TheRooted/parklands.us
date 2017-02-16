@@ -4,7 +4,7 @@
 
 ## Team
 
-  - __Product Owner__: Jackie
+  - __Product Owner__: Jackie Ho
   - __Scrum Master__: Kay Christensen
   - __Development Team Members__: Tenzin Sonam, Brian Schultz
 
