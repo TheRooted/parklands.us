@@ -1,12 +1,12 @@
 # Project Name
 
-> Pithy project description
+> National Parks
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Jackie
+  - __Scrum Master__: Kay Christensen
+  - __Development Team Members__: Tenzin Sonam, Brian Schultz
 
 ## Table of Contents
 
@@ -20,7 +20,7 @@
 
 ## Usage
 
-> Some usage instructions
+> Look at parks to visit
 
 ## Requirements
 
@@ -44,9 +44,9 @@ bower install
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+View the project roadmap [here](https://github.com/HRSF53-Persistent-Zippers/hrsf53-thesis/issues)
 
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+See [CONTRIBUTING.md](_CONTRIBUTING.md) for contribution guidelines.
