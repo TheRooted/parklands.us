@@ -1,0 +1,28 @@
+{
+  "name": "parkstory",
+  "version": "1.0.0",
+  "description": "A site for national park lovers",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HRSF53-Persistent-Zippers/hrsf53-thesis.git"
+  },
+  "keywords": [
+    "park",
+    "parks",
+    "national",
+    "forest",
+    "nps",
+    "parkstory",
+    "story"
+  ],
+  "author": "Kay Christensen, Tenzin Sonam, Jackie Ho, Brian Schultz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HRSF53-Persistent-Zippers/hrsf53-thesis/issues"
+  },
+  "homepage": "https://github.com/HRSF53-Persistent-Zippers/hrsf53-thesis#readme"
+}
