@@ -72,3 +72,16 @@ gulp.task('watch', function() {
   // Watch any files in dist/, reload on change
   gulp.watch(['dist/**']).on('change', livereload.changed);
 });
+
+
+/***************************************/
+/*               DEPLOY                */ 
+/***************************************/
+
+// Add build and test tasks
+
+// Add staging
+
+// Add production
+
+
