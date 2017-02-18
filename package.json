@@ -28,12 +28,13 @@
   },
   "homepage": "https://github.com/HRSF53-Persistent-Zippers/hrsf53-thesis#readme",
   "dependencies": {
-    "express": "latest",
-    "request": "latest",
     "body-parser": "latest",
     "cheerio": "latest",
-    "sequelize": "latest",
-    "pg": "latest"
+    "express": "latest",
+    "path": "^0.12.7",
+    "pg": "latest",
+    "request": "latest",
+    "sequelize": "latest"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
