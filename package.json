@@ -33,6 +33,7 @@
     "cheerio": "latest",
     "express": "latest",
     "path": "^0.12.7",
+    "passport": "^0.3.2",
     "pg": "latest",
     "request": "latest",
     "sequelize": "latest"
@@ -54,6 +55,7 @@
     "gulp-notify": "^3.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^2.0.1",
+    "jshint": "^2.9.4",
     "nodemon": "^1.11.0",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
