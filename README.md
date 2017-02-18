@@ -17,7 +17,8 @@
     1. [Tasks](#tasks)
 1. [Team](#team)
 1. [Contributing](#contributing)
-1. [Schema Design](#schemaDesign.png)
+1. [Schema Design](SchemaDesign.png)
+1. [App Architecture Map](appArchitecture.png)
 
 ## Usage
 
