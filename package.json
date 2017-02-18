@@ -20,6 +20,11 @@
     "story"
   ],
   "author": "Kay Christensen, Tenzin Sonam, Jackie Ho, Brian Schultz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HRSF53-Persistent-Zippers/hrsf53-thesis/issues"
+  },
+  "homepage": "https://github.com/HRSF53-Persistent-Zippers/hrsf53-thesis#readme",
   "dependencies": {
     "express": "latest",
     "request": "latest",
@@ -28,16 +33,9 @@
     "sequelize": "latest",
     "pg": "latest"
   },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/HRSF53-Persistent-Zippers/hrsf53-thesis/issues"
-  },
-  "homepage": "https://github.com/HRSF53-Persistent-Zippers/hrsf53-thesis#readme",
-  "dependencies": {
-    "gulp": "^3.9.1"
-  },
   "devDependencies": {
     "del": "^2.2.2",
+    "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-cache": "^0.4.5",
     "gulp-concat": "^2.6.1",
