@@ -15,13 +15,13 @@ app.get('/seedthedatabasewithscrapeddata', function(req, res) {
   var url = 'https://twitter.com/YosemiteNPS/media';
   var numPicsToPull = 10;
   request(url, function (error, response, html) {
-  	if (!error) {
-  		var $ = cheerio.load(html);
-  		for (var i = 0; i < numPicsToPull; i++){
-	  		console.log($('#stream-items-id').children()[i].children[1].children[3].children[5].children[1].children[1].children[1].children[1].attribs['data-image-url']);
-  			
-  		}
-  	}
+    if (!error) {
+      var $ = cheerio.load(html);
+      for (var i = 0; i < numPicsToPull; i++){
+        console.log($('#stream-items-id').children()[i].children[1].children[3].children[5].children[1].children[1].children[1].children[1].attribs['data-image-url']);
+        
+      }
+    }
   })
 });
 
