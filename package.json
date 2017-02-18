@@ -20,6 +20,14 @@
     "story"
   ],
   "author": "Kay Christensen, Tenzin Sonam, Jackie Ho, Brian Schultz",
+  "dependencies": {
+    "express": "latest",
+    "request": "latest",
+    "body-parser": "latest",
+    "cheerio": "latest",
+    "sequelize": "latest",
+    "pg": "latest"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/HRSF53-Persistent-Zippers/hrsf53-thesis/issues"
