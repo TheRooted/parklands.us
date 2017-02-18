@@ -1,7 +1,7 @@
 module.exports = {
   entry: './public/components/index.js',
   output: {
-    path: './public',
+    path: './',
     filename: 'bundle.js'
   },
   module: {
@@ -15,3 +15,4 @@ module.exports = {
     ]
   }
 }
+//
