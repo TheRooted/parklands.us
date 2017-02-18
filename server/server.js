@@ -14,7 +14,10 @@ app.get('/seedthedatabasewithscrapeddata', function(req, res) {
   request(url, function (error, response, html) {
   	if (!error) {
   		var $ = cheerio.load(html);
-  		//unfinished
+  		for (var i = 0; i < 1; i++){
+	  		console.log($('#stream-items-id').children()[i].children[1].children[3].children[5]);
+  			
+  		}
   	}
   })
 });
