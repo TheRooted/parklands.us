@@ -6,8 +6,18 @@ var sequelize = require('sequelize');
 var pg = require('pg');
 
 var app = express();
-app.use(parser.json());
+app.use(parser.json()); //middleware
 app.use(express.static('./../public'));
+
+app.get('/seedthedatabasewithscrapeddata', function(req, res) {
+  var url = 'https://twitter.com/YosemiteNPS/media';
+  request(url, function (error, response, html) {
+  	if (!error) {
+  		var $ = cheerio.load(html);
+  		//unfinished
+  	}
+  })
+});
 
 var port = 3000;
 
