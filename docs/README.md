@@ -11,15 +11,15 @@
 ## Table of Contents
 
 1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-    1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
-1. [Team](#team)
-1. [Contributing](#contributing)
-1. [Schema Design](schemaDesign.png)
-1. [App Architecture Map](appArchitecture.png)
-1. [Schema Design](schemaDesign.png)
+2. [Requirements](#requirements)
+3. [Development](#development)
+    a. [Installing Dependencies](#installing-dependencies)
+    b. [Tasks](#tasks)
+4. [Team](#team)
+5. [Contributing](#contributing)
+6. [Schema Design](schemaDesign.png)
+7. [App Architecture Map](appArchitecture.png)
+8. [Schema Design](schemaDesign.png)
 
 
 ## Usage
