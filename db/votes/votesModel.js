@@ -1,7 +1,7 @@
 let Sequelize = require('sequelize');
 let db = require('../schema.js');
 
-let Votes = db.define('Vote', {
+let Votes = db.define('vote', {
 
 });
 

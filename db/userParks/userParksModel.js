@@ -1,7 +1,7 @@
 let Sequelize = require('sequelize');
 let db = require('../schema.js');
 
-let UserParks = db.define('UserPark', {
+let UserParks = db.define('userPark', {
 
 });
 
