@@ -6,7 +6,7 @@ let Posts = db.define('post', {
     type: Sequelize.STRING
   },
   voteCount: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.INTEGER
   },
   filePath: {
     type: Sequelize.STRING

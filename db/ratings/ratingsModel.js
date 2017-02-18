@@ -1,16 +1,16 @@
-let Sequalize = require('sequalize');
+let Sequelize = require('sequelize');
 let db = require('../schema.js');
 
 let Ratings = db.define('rating', {
   ratingVal: {
-    type: sequalize.STRING
+    type: Sequelize.STRING
   }
 });
 
 
 Ratings.belongsTo(Users);
 
-Parks.hasMany(ratings);
+Parks.hasMany(Ratings);
 Ratings.belongsTo(Parks);
 
 db.sync();

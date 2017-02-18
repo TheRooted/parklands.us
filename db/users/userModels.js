@@ -4,10 +4,10 @@ let db = require('../schema.js');
 
 let Users = db.define('user', {
   firstName: {
-    type: sequelize.STRING
+    type: Sequelize.STRING
   },
   lastName: {
-    type: sequelize.STRING
+    type: Sequelize.STRING
   },
   email: {
     type: Sequelize.STRING,
@@ -26,4 +26,4 @@ User.validatePW = (enteredPW, storedPW) => {
   return bcrypt.compareSync(enteredPW, storedPW);
 };
 
-module.exports = User;
+module.exports = Users;
