@@ -1,6 +1,6 @@
 var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
-    cssnano = require('gulp-cssnano'),
+    cleanCSS = require('gulp-clean-css');
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
@@ -19,13 +19,9 @@ var gulp = require('gulp'),
 
 // Styles task
 gulp.task('styles', function() {
-  return sass('public/styles.css', { style: 'expanded' })
-    .pipe(autoprefixer('last 2 version'))
-    .pipe(gulp.dest('dist/assets/css'))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(cssnano())
-    .pipe(gulp.dest('dist/assets/css'))
-    .pipe(notify({ message: 'Styles task complete' }));
+  return gulp.src('public/*.css')
+    .pipe(cleanCSS({compatibility: 'ie8'}))
+    .pipe(gulp.dest('dist'));
 });
 
 // Scripts task
