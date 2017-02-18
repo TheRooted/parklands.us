@@ -49,12 +49,12 @@ gulp.task('images', function() {
     .pipe(notify({ message: 'Images task complete' }));
 });
 
-// Clean up destination folders and rebuild files
+// Clean task - clean up destination folders and rebuild files
 gulp.task('clean', function() {
     return del(['dist/assets/css', 'dist/assets/js', 'dist/assets/img']);
 });
 
-// Clean task - runs styles, scripts, images
+// Default task - runs styles, scripts, images - runs with $ gulp
 gulp.task('default', ['clean'], function() {
     gulp.start('styles', 'scripts', 'images');
 });
