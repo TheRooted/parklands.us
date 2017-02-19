@@ -6,6 +6,7 @@ var pg = require('pg');
 var request = require('request');
 var sequelize = require('sequelize');
 var router = require('./routes');
+var db = require('../db/schema')
 
 
 var app = express();
@@ -30,7 +31,11 @@ app.get('/seedthedatabasewithscrapeddata', function(req, res) {
     } else {
       var $ = cheerio.load(html);
       for (var i = 0; i < numPicsToPull; i++){
-        console.log($('#stream-items-id').children()[i].children[1].children[3].children[5].children[1].children[1].children[1].children[1].attribs['data-image-url']);
+        db.models.parkPhoto.create({
+          ParkUrl: $('#stream-items-id').children()[i].children[1].children[3].children[5].children[1].children[1].children[1].children[1].attribs['data-image-url'],
+          ParkId: 1
+        })
+        // console.log($('#stream-items-id').children()[i].children[1].children[3].children[5].children[1].children[1].children[1].children[1].attribs['data-image-url']);
       }
     }
   })
