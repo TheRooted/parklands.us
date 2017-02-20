@@ -1,10 +1,6 @@
 var express = require('express');
 var parser = require('body-parser');
-var passport = require('passport');
-var pg = require('pg');
-var sequelize = require('sequelize');
 var router = require('./routes');
-var db = require('../db/schema')
 
 
 var app = express();
