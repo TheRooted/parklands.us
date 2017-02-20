@@ -21,8 +21,15 @@ sequelize
     console.log('Unable to connect to the database', err);
   });
 
+
   /*** Define Models **/
-  var ParkPhotos = sequelize.define('parkPhoto', {
+  var ParkComments = sequelize.define('parkcomment', {
+    text: {
+      type: Sequelize.STRING
+    }
+  });
+
+  var ParkPhotos = sequelize.define('parkphoto', {
     photoUrl: {
       type: Sequelize.STRING,
       unique: true
@@ -39,12 +46,11 @@ sequelize
     }
   });
 
-  var PostComments = sequelize.define('postComment', {
+  var PostComments = sequelize.define('postcomment', {
     text: {
       type: Sequelize.STRING
     }
   });
-
 
   var Posts = sequelize.define('post', {
     type: {
@@ -58,16 +64,13 @@ sequelize
     }
   });
 
-
   var Ratings = sequelize.define('rating', {
     ratingVal: {
       type: Sequelize.STRING
     }
   });
 
-
-  var UserParks = sequelize.define('userPark', {});
-
+  var UserParks = sequelize.define('userpark', {});
 
   var Users = sequelize.define('user', {
     firstName: {
@@ -85,17 +88,15 @@ sequelize
     }
   });
 
-
   var Votes = sequelize.define('vote', {});
-  console.log('finished Votes');
 
 
+  // Sync database with defined schema
   sequelize.sync()
   .then(function() {
     console.log('adding associations')
     /** Define Model Associations **/
     sequelize.Promise.all([
-      Parks.hasMany(ParkPhotos),
       ParkPhotos.belongsTo(Parks),
       Users.hasMany(PostComments),
       PostComments.belongsTo(Users),
@@ -113,8 +114,8 @@ sequelize
       Parks.hasMany(Ratings),
       Ratings.belongsTo(Parks),
 
-      UserParks.hasMany(Users),
-      UserParks.hasMany(Parks),
+      // UserParks.hasMany(Users),
+      // UserParks.hasMany(Parks),
 
       UserParks.belongsTo(Users),
       UserParks.belongsTo(Parks),
