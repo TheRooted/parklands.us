@@ -24,7 +24,11 @@
 
 ## Usage
 
-> Look at parks to visit
+> Download the repo
+> Install dependencies
+> In the terminal, run npm start, then exit.
+> In the terminal, run node db/seed.
+> In the terminal, run npm start again.
 
 ## Requirements
 
