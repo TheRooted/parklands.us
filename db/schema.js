@@ -26,6 +26,12 @@ sequelize
   var ParkComments = sequelize.define('parkcomment', {
     text: {
       type: Sequelize.STRING
+    },
+    userId: {
+      type: Sequelize.INTEGER
+    },
+    parkId: {
+      type: Sequelize.INTEGER
     }
   });
 
@@ -33,6 +39,9 @@ sequelize
     photoUrl: {
       type: Sequelize.STRING,
       unique: true
+    },
+    parkId: {
+      type: Sequelize.INTEGER
     }
   });
 
@@ -49,6 +58,12 @@ sequelize
   var PostComments = sequelize.define('postcomment', {
     text: {
       type: Sequelize.STRING
+    },
+    userId: {
+      type: Sequelize.INTEGER
+    },
+    postId: {
+      type: Sequelize.INTEGER
     }
   });
 
@@ -61,16 +76,35 @@ sequelize
     },
     filePath: {
       type: Sequelize.STRING
+    },
+    userId: {
+      type: Sequelize.INTEGER
+    },
+    parkId: {
+      type: Sequelize.INTEGER
     }
   });
 
   var Ratings = sequelize.define('rating', {
     ratingVal: {
       type: Sequelize.STRING
+    },
+    userId: {
+      type: Sequelize.INTEGER
+    },
+    parkId: {
+      type: Sequelize.INTEGER
     }
   });
 
-  var UserParks = sequelize.define('userpark', {});
+  var UserParks = sequelize.define('userpark', {
+    userId: {
+      type: Sequelize.INTEGER
+    },
+    parkId: {
+      type: Sequelize.INTEGER
+    }
+  });
 
   var Users = sequelize.define('user', {
     firstName: {
@@ -88,7 +122,14 @@ sequelize
     }
   });
 
-  var Votes = sequelize.define('vote', {});
+  var Votes = sequelize.define('vote', {
+    userId: {
+      type: Sequelize.INTEGER
+    },
+    postId: {
+      type: Sequelize.INTEGER
+    }
+  });
 
 
   // Sync database with defined schema
@@ -97,34 +138,21 @@ sequelize
     console.log('adding associations')
     /** Define Model Associations **/
     sequelize.Promise.all([
-      ParkPhotos.belongsTo(Parks),
-      Users.hasMany(PostComments),
-      PostComments.belongsTo(Users),
-
-      Posts.hasMany(PostComments),
-      PostComments.belongsTo(Posts),
-      Parks.hasMany(Posts),
-      Posts.belongsTo(Parks),
-
-      Users.hasMany(Posts),
-      Posts.belongsTo(Users),
-
-      Ratings.belongsTo(Users),
-
-      Parks.hasMany(Ratings),
-      Ratings.belongsTo(Parks),
-
-      // UserParks.hasMany(Users),
-      // UserParks.hasMany(Parks),
-
-      UserParks.belongsTo(Users),
-      UserParks.belongsTo(Parks),
-
       Users.hasMany(Votes),
-      Posts.hasMany(Votes),
+      Users.hasMany(Ratings),
+      Users.hasMany(ParkComments),
+      Users.hasMany(UserParks),
+      Users.hasMany(PostComments),
+      Users.hasMany(Posts),
 
-      Votes.belongsTo(Users),
-      Votes.belongsTo(Posts)
+      Posts.hasMany(Votes),
+      Posts.hasMany(PostComments),
+
+      Parks.hasMany(UserParks),
+      Parks.hasMany(ParkPhotos),
+      Parks.hasMany(Posts),
+      Parks.hasMany(Ratings),
+      Parks.hasMany(ParkComments)
     ])
     .then(function(results) {
       console.log('final results', results)
