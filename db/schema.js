@@ -1,6 +1,5 @@
 var Sequelize = require('sequelize');
 var cfg = require('./dbConfig.js');
-var Promise = require('bluebird');
 
 var sequelize = new Sequelize(cfg.myLocalDB, cfg.myLocalDBRole, cfg.myLocalDBPW, {
   host: 'localhost',
@@ -35,7 +34,8 @@ sequelize
       type: Sequelize.STRING
     },
     rating: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
+      defaultValue: 0
     }
   });
 
@@ -92,56 +92,42 @@ sequelize
 
   sequelize.sync()
   .then(function() {
-    console.log('creating all')
-    // Create all models
+    console.log('adding associations')
+    /** Define Model Associations **/
     sequelize.Promise.all([
-      ParkPhotos.create({}),
-      Parks.create({}),
-      PostComments.create({}),
-      Posts.create({}),
-      Ratings.create({}),
-      UserParks.create({}),
-      Users.create({}),
+      Parks.hasMany(ParkPhotos),
+      ParkPhotos.belongsTo(Parks),
+      Users.hasMany(PostComments),
+      PostComments.belongsTo(Users),
+
+      Posts.hasMany(PostComments),
+      PostComments.belongsTo(Posts),
+      Parks.hasMany(Posts),
+      Posts.belongsTo(Parks),
+
+      Users.hasMany(Posts),
+      Posts.belongsTo(Users),
+
+      Ratings.belongsTo(Users),
+
+      Parks.hasMany(Ratings),
+      Ratings.belongsTo(Parks),
+
+      UserParks.hasMany(Users),
+      UserParks.hasMany(Parks),
+
+      UserParks.belongsTo(Users),
+      UserParks.belongsTo(Parks),
+
+      Users.hasMany(Votes),
+      Posts.hasMany(Votes),
+
+      Votes.belongsTo(Users),
+      Votes.belongsTo(Posts)
     ])
-    .then(function() {
-      console.log('adding associations')
-      /** Define Model Associations **/
-      sequelize.Promise.all([
-        Parks.hasMany(ParkPhotos),
-        ParkPhotos.belongsTo(Parks),
-        Users.hasMany(PostComments),
-        PostComments.belongsTo(Users),
-
-        Posts.hasMany(PostComments),
-        PostComments.belongsTo(Posts),
-        Parks.hasMany(Posts),
-        Posts.belongsTo(Parks),
-
-
-        Users.hasMany(Posts),
-        Posts.belongsTo(Users),
-
-        Ratings.belongsTo(Users),
-
-        Parks.hasMany(Ratings),
-        Ratings.belongsTo(Parks),
-
-        UserParks.hasMany(Users),
-        UserParks.hasMany(Parks),
-
-        UserParks.belongsTo(Users),
-        UserParks.belongsTo(Parks),
-
-        Users.hasMany(Votes),
-        Posts.hasMany(Votes),
-
-        Votes.belongsTo(Users),
-        Votes.belongsTo(Posts)
-      ])
-      .then(function(results) {
-        console.log('final results', results)
-      });
-    })
+    .then(function(results) {
+      console.log('final results', results)
+    });
   });
 
 module.exports = sequelize;
