@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/HRSF53-Persistent-Zippers/hrsf53-thesis.git"
+    "url": "https://github.com/TheRooted/parklands.git"
   },
   "keywords": [
     "park",
@@ -24,9 +24,9 @@
   "author": "Kay Christensen, Tenzin Sonam, Jackie Ho, Brian Schultz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/HRSF53-Persistent-Zippers/hrsf53-thesis/issues"
+    "url": "https://github.com/TheRooted/parklands/issues"
   },
-  "homepage": "https://github.com/HRSF53-Persistent-Zippers/hrsf53-thesis#readme",
+  "homepage": "https://github.com/TheRooted/parklands#readme",
   "dependencies": {
     "axios": "latest",
     "bcrypt": "latest",
