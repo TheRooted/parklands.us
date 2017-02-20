@@ -33,6 +33,7 @@
     "body-parser": "latest",
     "cheerio": "latest",
     "express": "latest",
+    "passport": "^0.3.2",
     "path": "^0.12.7",
     "passport": "^0.3.2",
     "pg": "latest",
