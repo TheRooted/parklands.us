@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/HRSF53-Persistent-Zippers/hrsf53-thesis#readme",
   "dependencies": {
+    "axios": "latest",
     "bcrypt": "latest",
     "body-parser": "latest",
     "cheerio": "latest",

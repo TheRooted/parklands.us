@@ -9,14 +9,12 @@ export default class Signin extends React.Component {
 	}
 	handleSubmit() {
 		var user = {
-			firstName: this.refs.firstNameSI.value,
-			lastName: this.refs.lastNameSI.value,
 			email: this.refs.emailSI.value,
-			password: this.refs.passwordSI
+			password: this.refs.passwordSI.value
 		}
 		axios.post('/api/signin', user).then(function(res) {
 			if (res.data) {
-				console.log('successful signin')
+				console.log('successful signin');
 			}
 		})
 	}
@@ -25,10 +23,6 @@ export default class Signin extends React.Component {
 			<div>
 				<form>
 					<h5>Sign In!</h5>
-					<input type="text" name="firstName" placeholder="First Name" ref="firstNameSI" />
-					<br />
-					<input type="text" name="lastName" placeholder="Last Name" ref="lastNameSI" />
-					<br />
 					<input type="email" name="email" placeholder="Email Address" ref="emailSI" />
 					<br />
 					<input type="password" name="password" placeholder="Password" ref="passwordSI" />
