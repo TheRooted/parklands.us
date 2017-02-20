@@ -22,12 +22,12 @@ export default class Signin extends React.Component {
     return (
       <div>
         <form>
-          <h5>Sign In!</h5>
+          <h5>Sign In</h5>
           <input type="email" name="email" placeholder="Email Address" ref="emailSI" />
           <br />
           <input type="password" name="password" placeholder="Password" ref="passwordSI" />
           <br />
-          <button type="submit" onClick={this.handleSubmit.bind(this)}>Sign In!</button>
+          <button type="submit" onClick={this.handleSubmit.bind(this)}>Sign In</button>
 
         </form>
       </div>
