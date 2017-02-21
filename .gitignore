@@ -1,6 +1,5 @@
 node_modules/
 bower_components/
-public/bundle.js
 *.log
 public/bundle.js
 build/
