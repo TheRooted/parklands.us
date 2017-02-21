@@ -21,5 +21,9 @@ module.exports = {
     }
   },
 
-
+  grid: {
+    get: function() {
+      return db.models.park.findAll({})
+    }
+  },
 };

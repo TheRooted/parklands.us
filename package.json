@@ -36,6 +36,8 @@
     "passport": "^0.3.2",
     "path": "^0.12.7",
     "pg": "latest",
+    "react": "latest",
+    "react-dom": "latest",
     "react-router": "^3.0.2",
     "request": "latest",
     "sequelize": "latest"
