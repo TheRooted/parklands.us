@@ -66,32 +66,34 @@ module.exports = {
     }
   },
 
-  signin: {
-    post: function() {
-      console.log('signin post')
-      passport.use(new LocalStrategy({
-        usernameField: 'email',
-        passwordField: 'password'
-      },
-      function(username, password, done) {
-        db.models.user.findOne({ email: email }, function (err, user) {
-          if (err) { return done(err); }
-          if (!user) {
-            return done(null, false, { message: 'Incorrect username.' });
-          }
-          if (!user.validPassword(password)) {
-            return done(null, false, { message: 'Incorrect password.' });
-          }
-          return done(null, user);
-        });
-      }
-    ));
-    }
-  },
+  // signin: {
+  //   post: function() {
+  //     console.log('signin post')
+  //     passport.use(new LocalStrategy({
+  //       usernameField: 'email',
+  //       passwordField: 'password'
+  //     },
+  //     function(username, password, done) {
+  //       db.models.user.findOne({ email: email }, function (err, user) {
+  //         if (err) { return done(err); }
+  //         if (!user) {
+  //           return done(null, false, { message: 'Incorrect username.' });
+  //         }
+  //         if (!user.validPassword(password)) {
+  //           return done(null, false, { message: 'Incorrect password.' });
+  //         }
+  //         return done(null, user);
+  //       });
+  //     }
+  //   ));
+  //   }
+  // },
 
   signout: {
-    post: function() {
-      console.log('signout post')
+    post: function(req, res) {
+      req.session.destroy(function() {
+        res.sendStatus(200);
+      });
     }
   },
 
