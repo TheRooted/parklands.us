@@ -6,6 +6,7 @@ var router = require('./routes');
 var LocalStrategy = require('passport-local').Strategy;
 var db = require('../db/schema');
 var bcrypt = require('bcrypt');
+var path = require('path');
 // var RedisStore = require('connect-redis')(session)
 
 var app = express();
@@ -70,6 +71,10 @@ app.use('', router);
 // Serve static file
 app.use(express.static('public'));
 
+app.get('*', (req, res, next) => {
+   if(req.path.split('/')[1] === 'static') return next();
+   res.sendFile(path.resolve(__dirname, '../public/index.html'));
+});
 
 var port = 3000;
 
