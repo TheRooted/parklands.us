@@ -9,3 +9,5 @@ const Feed = (props) => {
     </div>
   );
 };
+
+export default Feed;
