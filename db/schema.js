@@ -52,6 +52,9 @@ sequelize
     rating: {
       type: Sequelize.INTEGER,
       defaultValue: 0
+    },
+    photo: {
+      type: Sequelize.STRING
     }
   });
 
