@@ -17,9 +17,11 @@ ReactDOM.render((
   <Router history={browserHistory}>
     <Route path='/' component={App} >
       <IndexRoute component={Landing} />
+      <Route path='signin' component={Signin} />
+      <Route path='signup' component={Signup} />
+      <Route path='userTimeline' component={UserTimeline} />
     </Route>
-    <Route path='signin' component={Signin} />
-    <Route path='signup' component={Signup} />
-    <Route path='userTimeline' component={UserTimeline} />
+
+
 
   </Router>), app);
