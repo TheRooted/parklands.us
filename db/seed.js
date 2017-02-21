@@ -6,7 +6,7 @@ var request = require('request');
 // Create Yosemite park model
 db.models.park.findOrCreate({
   where: {
-    name: 'Yosemite'
+    name: 'yosemite'
   }
 });
 

@@ -7,16 +7,37 @@
   <script src='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
 </head>
 <body>
-  <div id='app'></div>
-        <div id='map' style='width: 400px; height: 300px;'>
-        <script>
-        mapboxgl.accessToken = 'pk.eyJ1Ijoic3Blc2NoZWxsayIsImEiOiJjaXo4bXB2cG8wMHA2MnZxbzNneHlicnZyIn0.K9hcDggIDFrtjjVS8LOXdA';
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v9'
-        });
-        </script>
-      </div>
+    <div id='map' style='width: 1200px; height: 700px;'>
+      <script>
+      mapboxgl.accessToken = 'pk.eyJ1Ijoic3Blc2NoZWxsayIsImEiOiJjaXo4bXB2cG8wMHA2MnZxbzNneHlicnZyIn0.K9hcDggIDFrtjjVS8LOXdA';
+      var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/satellite-streets-v9',
+          minZoom: 3.3,
+          center: [-96, 38],
+
+      });
+      var markerHeight = 50, markerRadius = 10, linearOffset = 25;
+      var popupOffsets = {
+       'top': [0, 0],
+       'top-left': [0,0],
+       'top-right': [0,0],
+       'bottom': [0, -markerHeight],
+       'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+       'bottom-right': [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+       'left': [markerRadius, (markerHeight - markerRadius) * -1],
+       'right': [-markerRadius, (markerHeight - markerRadius) * -1]
+       };
+      var popup = new mapboxgl.Popup({offset:popupOffsets})
+        .setLngLat(e.lngLat)
+        .setHTML("<h1>Hello World!</h1>")
+        .addTo(map);
+
+      </script>
+    </div>
+  <div id='app'>
+    
+  </div>
   <script src='bundle.js'></script>
 </body>
 </html>
