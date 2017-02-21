@@ -7,7 +7,6 @@ var LocalStrategy = require('passport-local').Strategy;
 var db = require('../db/schema');
 var bcrypt = require('bcrypt');
 var path = require('path');
-// var RedisStore = require('connect-redis')(session)
 
 var app = express();
 

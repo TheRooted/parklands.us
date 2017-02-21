@@ -12,6 +12,9 @@ module.exports = {
 
   signup: {
     post: function(req, res) {
+      console.log('user is', req.body)
+      var firstName = req.body.firstName;
+      var lastName = req.body.lastName;
       var email = req.body.email;
       var password = req.body.password;
 
@@ -33,6 +36,8 @@ module.exports = {
               } else {
                 // Add new user to database
                 db.models.user.create({
+                  firstName: firstName,
+                  lastName: lastName,
                   email: email,
                   password: hash
                 })
