@@ -106,4 +106,10 @@ module.exports = {
       });
     }
   },
+
+  userTimeline: {
+    get: function () {
+
+    }
+  }
 };
