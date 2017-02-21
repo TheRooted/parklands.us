@@ -4,6 +4,9 @@
 logs
 *.log
 
+# Bundle
+public/bundle.js
+
 # Runtime data
 pids
 *.pid
@@ -17,6 +20,7 @@ coverage
 
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
+.gulp
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
