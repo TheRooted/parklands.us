@@ -1,6 +1,6 @@
 import React from 'react';
 import Nav from './navigation/Nav.js';
-
+import Grid from './landing/Grid.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class App extends React.Component {
       <div>
         <h1> am i render or am i dancer? </h1>
         <Nav user={this.state.user} />
+        <Grid />
       </div>
     )
   }
