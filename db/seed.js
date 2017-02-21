@@ -22,7 +22,7 @@ request(url, function (error, response, html) {
     var $ = cheerio.load(html);
     db.models.park.find({
       where: {
-        name: 'Yosemite'
+        name: 'yosemite'
       }
     })
     .then(function(results) {
