@@ -2,9 +2,21 @@
 <html>
 <head>
 	<title>ParkLands</title>
+  <link href='styles.css' rel='stylesheet' />
+  <link href='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
 </head>
 <body>
-	<div id='app'></div>
-	<script src='bundle.js'></script>
+  <div id='app'></div>
+        <div id='map' style='width: 400px; height: 300px;'>
+        <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoic3Blc2NoZWxsayIsImEiOiJjaXo4bXB2cG8wMHA2MnZxbzNneHlicnZyIn0.K9hcDggIDFrtjjVS8LOXdA';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v9'
+        });
+        </script>
+      </div>
+  <script src='bundle.js'></script>
 </body>
 </html>
