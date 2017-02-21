@@ -3,6 +3,5 @@ bower_components/
 *.log
 public/bundle.js
 
-
 build/
 dist/
