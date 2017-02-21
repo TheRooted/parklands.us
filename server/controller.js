@@ -105,9 +105,21 @@ module.exports = {
     get: function(req, res) {
       db.models.park.findAll({})
       .then(function(parks) {
-        console.log(parks);
         res.send(parks);
       });
+    }
+  },
+
+  park: {
+    get: function(req, res) {
+      var url = req.url.split('/');
+      url = url[url.length-1];
+      console.log(url);
+      db.models.park.findOne({
+        where: {name: url}
+      }).then(function(park) {
+        res.send(park);
+      })
     }
   },
 

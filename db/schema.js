@@ -55,6 +55,9 @@ sequelize
     },
     photo: {
       type: Sequelize.STRING
+    },
+    info: {
+      type: Sequelize.TEXT
     }
   });
 
