@@ -37,13 +37,16 @@ passport.use(new LocalStrategy({
     passwordField: 'password'
   },
   function(username, password, done) {
+    console.log('username', username)
     process.nextTick(function() {
       db.models.user.findOne({ where: { email: username }})
       .then(function(user, err) {
         console.log('user is', user);
-        if (err) { return done(err); }
-        if (!user.dataValues.email) {
-          console.log('in email');
+        if (err) { 
+          return done(err); 
+        }
+        if (user === null || !user.dataValues.email) {
+          console.log('Incorrect email or missing user');
           return done(null, false, { message: 'Incorrect email.' });
         }
         bcrypt.compare(password, user.dataValues.password, function(err, comparison) {
@@ -55,9 +58,8 @@ passport.use(new LocalStrategy({
             return done(null, false, { message: 'Incorrect password.' });
           // Supplied pw doesn't match; probably new user & should choose another username
           } else {
-            console.log('everything was okay!')
+            console.log('Everything was okay!')
             return done(null, user.dataValues);
-            // return done(user.dataValues);
           }
         });
       });
