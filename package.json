@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test",
-    "start": "webpack --watch & nodemon server/server.js",
-    "webpack": "webpack-dev-server"
+    "start": "webpack --watch & nodemon server/server.js --history-api-fallback",
+    "webpack": "webpack-dev-server --history-api-fallback"
   },
   "repository": {
     "type": "git",
