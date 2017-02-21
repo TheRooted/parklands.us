@@ -6,7 +6,7 @@ export default class Grid extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      parks: [{name: 'Yosemite', rating: 0}],
+      parks: [{name: 'Blue', rating: 0}],
     };
   }
   componentWillMount() {

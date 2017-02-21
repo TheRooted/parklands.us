@@ -98,8 +98,12 @@ module.exports = {
   },
 
   grid: {
-    get: function() {
-      return db.models.park.findAll({})
+    get: function(req, res) {
+      db.models.park.findAll({})
+      .then(function(parks) {
+        console.log(parks);
+        res.send(parks);
+      });
     }
   },
 };
