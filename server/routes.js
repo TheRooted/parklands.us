@@ -18,6 +18,11 @@ router.get('/api/park/:parkName', controller.park.get);
 
 router.get('/api/parkPhoto/:id', controller.parkPhoto.get);
 
+router.get('/api/parkComment/:id', controller.parkComment.get);
+
+//Routes for accessing user
+// router.get('/api/user/:id', controller.user.get);
+
 //Routes for user timeline
 router.get('/api/userTimeline', controller.userTimeline.get);
 

@@ -25,12 +25,15 @@ sequelize
   /*** Define Models **/
   var ParkComments = sequelize.define('parkcomment', {
     text: {
+      type: Sequelize.TEXT
+    },
+    userEmail: {
       type: Sequelize.STRING
     },
-    userId: {
+    parkId: {
       type: Sequelize.INTEGER
     },
-    parkId: {
+    userId: {
       type: Sequelize.INTEGER
     }
   });
@@ -63,7 +66,7 @@ sequelize
 
   var PostComments = sequelize.define('postcomment', {
     text: {
-      type: Sequelize.STRING
+      type: Sequelize.TEXT
     },
     userId: {
       type: Sequelize.INTEGER

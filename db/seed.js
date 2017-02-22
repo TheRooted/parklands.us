@@ -17,9 +17,9 @@ db.models.park.findOrCreate({
                   Seed Users
 ----------------------------------------------*/
 
-var user = [];
+var users = [];
 
-user.push(
+users.push(
   {
     firstName: 'Kay',
     lastName: 'Christensen',
@@ -27,7 +27,7 @@ user.push(
     password: 'rocksteady'
   }
 );
-user.push(
+users.push(
   {
     firstName: 'Jackie',
     lastName: 'Ho',
@@ -35,7 +35,7 @@ user.push(
     password: 'bee'
   }
 );
-user.push(
+users.push(
   {
     firstName: 'Tenzin',
     lastName: 'Sonam',
@@ -43,7 +43,7 @@ user.push(
     password: '10zen'
   }
 );
-user.push(
+users.push(
   {
     firstName: 'Brian',
     lastName: 'Schultz',
@@ -52,9 +52,9 @@ user.push(
   }
 );
 
-for (var i = 0; i < user.length; i++) {
+for (var i = 0; i < users.length; i++) {
 
-  axios.post('http://localhost:3000/signup', user[i]).then(function(res) {
+  axios.post('http://localhost:3000/signup', users[i]).then(function(res) {
     if (res.data) {
       console.log('successful signup');
     }
@@ -67,7 +67,8 @@ for (var i = 0; i < user.length; i++) {
 var url = 'https://twitter.com/YosemiteNPS/media';
 var numPicsToPull = 12;
 var userId = 1;
-
+var type;
+var notPhotoCount = 0;
 request(url, function (error, response, html) {
   if (error) {
     console.log('Error requesting url', error);
@@ -79,25 +80,110 @@ request(url, function (error, response, html) {
       }
     })
     .then(function(results) {
-      console.log('query results', results);
-      for (var i = 0; i < numPicsToPull; i++){
-        var photoUrl = $('#stream-items-id').children()[i].children[1].children[3].children[5].children[1].children[1].children[1].children[1].attribs['data-image-url'];
-        if (i < 3) {
+      for (var i = 0; i < (numPicsToPull + notPhotoCount); i++){
+        if ($('#stream-items-id').children()[i].children[1].children[3].children[5].children[1].children[1].children[1].children[1].attribs['class'] === 'AdaptiveMedia-photoContainer js-adaptive-photo ') {
+          type = 'photo';
+          var postUrl = $('#stream-items-id').children()[i].children[1].children[3].children[5].children[1].children[1].children[1].children[1].attribs['data-image-url'];
+        } else {
+          notPhotoCount++;
+          type = 'notphoto';
+        }
+        if ((i - notPhotoCount) < 3) {
           userId = 1;
-        } else if (i > 2 && i < 6) {
+        } else if ((i - notPhotoCount) > 2 && (i - notPhotoCount) < 6) {
           userId = 2;
-        } else if (i > 5 && i < 9) {
+        } else if ((i - notPhotoCount) > 5 && (i - notPhotoCount) < 9) {
           userId = 3;
-        } else if (i > 8) {
+        } else if ((i - notPhotoCount) > 8) {
           userId = 4;
         }
-        db.models.post.create({
-          type: 'photo',
-          filePath: photoUrl,
-          parkId: results.dataValues.id,
-          userId: userId
-        });
+        if (type === 'photo') {
+          db.models.post.create({
+            type: type,
+            filePath: postUrl,
+            parkId: results.dataValues.id,
+            userId: userId
+          });
+        }
       }
     });
   }
 });
+
+
+
+/*---------------------------------------------
+              Seed Parkcomments
+----------------------------------------------*/
+
+db.models.parkcomment.findOrCreate({
+  where: {
+    text: 'Yosemite was amazing!',
+    userEmail: 'kaychristensen@gmail.com',
+    parkId: 1,
+  }
+});
+
+db.models.parkcomment.findOrCreate({
+  where: {
+    text: 'nature eh! Incredible',
+    userEmail: 'kaychristensen@gmail.com',
+    parkId: 1,
+  }
+});
+
+db.models.parkcomment.findOrCreate({
+  where: {
+    text: '"The “firefall” on Horsetail Fall..event that can only be captured few days in February"',
+    userEmail: 'jackieh.bee@gmail.com',
+    parkId: 1,
+  }
+});
+
+db.models.parkcomment.findOrCreate({
+  where: {
+    text: 'Starting 10 million years ago, vertical movement along the Sierra fault started to uplift the Sierra Nevada.',
+    userEmail: 'jackieh.bee@gmail.com',
+    parkId: 1,
+  }
+});
+
+db.models.parkcomment.findOrCreate({
+  where: {
+    text: 'A series of glaciations further modified the region starting about 2 to 3 million years ago and ending sometime around 10,000 BP.',
+    userEmail: 'tenso2006@gmail.com',
+    parkId: 1,
+  }
+});
+
+db.models.parkcomment.findOrCreate({
+  where: {
+    text: 'Despite the richness of high-quality habitats in Yosemite, the brown bear, California condor, and least Bell\'s vireo have become extinct in the park within historical time',
+    userEmail: 'tenso2006@gmail.com',
+    parkId: 1,
+  }
+});
+
+db.models.parkcomment.findOrCreate({
+  where: {
+    text: 'The black bears of Yosemite were once famous for breaking into parked cars to steal food.',
+    userEmail: 'brianjschultz508@gmail.com',
+    parkId: 1,
+  }
+});
+
+db.models.parkcomment.findOrCreate({
+  where: {
+    text: 'Increasing ozone pollution is causing tissue damage to the massive giant sequoia trees in the park.',
+    userEmail: 'brianjschultz508@gmail.com',
+    parkId: 1,
+  }
+});
+
+
+
+
+
+
+
+

@@ -18,10 +18,11 @@ export default class Grid extends React.Component {
     });
   }
   render () {
+    var key = 0;
     return (
       <div>
         {this.state.parks.map(park =>
-          <GridElement parkName={park.name} parkRating={park.rating} />
+          <GridElement key={key++} parkName={park.name} parkRating={park.rating} />
         )}
       </div>
     )

@@ -135,6 +135,32 @@ module.exports = {
     }
   },
 
+  parkComment: {
+    get: function(req, res) {
+      var id = req.url.split('/');
+      id = id[id.length-1];
+      console.log('id inside parkComment controller:', id)
+      db.models.parkcomment.findAll({
+        where: {parkId: id}
+      }).then(function(comments) {
+        res.send(comments)
+      })
+    }
+  },
+
+  // user: {
+  //   get: function(req, res) {
+  //     var id = req.url.split('/');
+  //     id = id[id.length-1];
+  //     db.models.user.findOne({
+  //       where: {userId: id}
+  //     }).then(function(comments) {
+  //       console.log(comments);
+  //       res.send(comments)
+  //     })
+  //   }
+  // },
+
   userTimeline: {
     get: function (req, res) {
       db.models.parkphoto.findAll({})
