@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { browserHistory } from 'react-router';
 //need links from react-router?
 
 export default class Signup extends React.Component {
@@ -15,8 +16,17 @@ export default class Signup extends React.Component {
       password: this.refs.passwordSI.value
     }
     axios.post('/signup', user).then(function(res) {
-      if (res.data) {
+      console.log('signup component res', res)
+      if (res.status === 204) {
+        // send to signin page
+        browserHistory.push('/signin');
+      } else if (res.status === 401) {
+        // email recognized, but pw doesn't match; try again
+        browserHistory.push('/signup');
+      } else if (res.status === 201) {
         console.log('successful signup');
+        // successful signup, send to landing page
+        browserHistory.push('/');
       }
     })
   }

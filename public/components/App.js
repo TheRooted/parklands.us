@@ -12,7 +12,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1> am i render or am i dancer? </h1>
+        <h1> Am I Human or Am I Render? </h1>
         <Nav />
         <div>{this.props.children}</div>
       </div>
