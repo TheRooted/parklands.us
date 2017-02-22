@@ -1,7 +1,10 @@
 import React from 'react';
-import Feed from './feed.js';
+import axios from 'axios';
+import Post from './post.js';
+import Sidebar from './sidebar.js';
 
 export default class UserTimeline extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -10,6 +13,17 @@ export default class UserTimeline extends React.Component {
     };
   }
 
+  componentWillMount() {
+    const context = this;
+
+    axios.get('/api/userTimeline')
+    .then(function (res) {
+      context.setState({
+        userActivity: res.data
+      });
+      console.log('res from getParkPhotos is ', context.state.userActivity);
+    });
+  }
   // renderFeed () {
   //   return
   // }
@@ -17,15 +31,14 @@ export default class UserTimeline extends React.Component {
   render() {
     return (
       <div id="userTimeLinePageContainer">
-        <div id="sideBarContainer">
-          <h4>{this.state.currentUser}</h4>
-          <a href="#">Map</a>
-          <a href="#">Donate</a>
-        </div>
-        <div id="userTimeLineContainer">
-          <div id="timeLineFeedContainer">
-            <Feed />
-          </div>
+        <Sidebar />
+        <div>
+          {this.state.userActivity.map(activity =>
+            <Post
+              photoData={activity.photoUrl}
+              datePosted={activity.createdAt}
+            />
+          )}
         </div>
       </div>
     );
