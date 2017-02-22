@@ -42,6 +42,7 @@
     "react-dom": "latest",
     "react-router": "^3.0.2",
     "request": "latest",
+    "semantic-ui-react": "^0.66.0",
     "sequelize": "latest"
   },
   "devDependencies": {
@@ -64,6 +65,7 @@
     "jshint": "^2.9.4",
     "nodemon": "^1.11.0",
     "passport-local": "^1.0.0",
+    "semantic-ui-react": "^0.66.0",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
   }
