@@ -37,6 +37,7 @@ export default class UserTimeline extends React.Component {
             <Post
               photoData={activity.photoUrl}
               datePosted={activity.createdAt}
+              key={activity.id}
             />
           )}
         </div>

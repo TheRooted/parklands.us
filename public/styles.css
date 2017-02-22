@@ -8,12 +8,12 @@
 #sideBarContainer {
   width: 15%;
   float: left;
+  background-color: #eee;
 }
 
 #userTimeLineContainer {
   width: 85%;
   float: right;
-}
 
 
 /******************
@@ -27,12 +27,12 @@
 }
 
 /******************
-    BURGER BAR 
+    BURGER BAR
 *******************/
 
 
 /******************
-    SEARCH BAR 
+    SEARCH BAR
 *******************/
 
 

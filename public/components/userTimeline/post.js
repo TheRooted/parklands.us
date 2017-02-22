@@ -1,16 +1,28 @@
 import React from 'react';
+import Vote from './upVote.js';
 
-const Post = (props) => {
+export default class Post extends React.Component {
+  constructor(props) {
 
-  return (
-    <div id="userTimeLineContainer">
-      <div id="timeLineFeedContainer">
+    super(props);
 
-        <h3>{props.datePosted}</h3>
-        <img src={props.photoData} />
+    this.state = {
+      comment: '',
+      vote: 0
+    };
+  }
+
+  render () {
+    return (
+      <div id="userTimeLineContainer">
+        <div id="timeLineFeedContainer">
+
+          <h3>{this.props.datePosted}</h3>
+          <img src={this.props.photoData} />
+          <Vote />
+          <textarea></textarea>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
-
-export default Post;
