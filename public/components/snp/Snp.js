@@ -43,7 +43,7 @@ export default class Snp extends React.Component {
     if (this.state.view === 'Photos') {
       var mediaView = function () {
         return (context.state.photos.map(photo =>
-          <Parkphoto photo={photo.photoUrl}/>))
+          <Parkphoto photo={photo.filePath}/>))
       }
     }
     return (

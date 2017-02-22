@@ -1,6 +1,7 @@
 var db = require('./schema');
 var cheerio = require('cheerio');
 var request = require('request');
+var axios = require('axios');
 
 
 // Create Yosemite park model
@@ -12,9 +13,91 @@ db.models.park.findOrCreate({
 });
 
 
-// Seed ParkPhotos with Yosemite pics
+/*---------------------------------------------
+                  Seed Users
+----------------------------------------------*/
+var user = [];
+user.push(
+  {
+    firstName: 'Kay',
+    lastName: 'Christensen',
+    email: 'kaychristensen@gmail.com',
+    password: 'rocksteady'
+  }
+);
+user.push(
+  {
+    firstName: 'Jackie',
+    lastName: 'Ho',
+    email: 'jackieh.bee@gmail.com',
+    password: 'bee'
+  }
+);
+user.push(
+  {
+    firstName: 'Tenzin',
+    lastName: 'Sonam',
+    email: 'tenso2006@gmail.com',
+    password: '10zen'
+  }
+);
+user.push(
+  {
+    firstName: 'Brian',
+    lastName: 'Schultz',
+    email: 'brianjschultz508@gmail.com',
+    password: 'bebop'
+  }
+);
+for (var i = 0; i < user.length; i++) {
+
+  axios.post('http://localhost:3000/signup', user[i]).then(function(res) {
+    if (res.data) {
+      console.log('successful signup');
+    }
+  })
+}
+
+// db.models.user.findOrCreate({
+//   where: {
+//     firstName: 'Kay',
+//     lastName: 'Christensen',
+//     email: 'kaychristensen@gmail.com',
+//     password: 'rocksteady'
+//   }
+// });
+// db.models.user.findOrCreate({
+//   where: {
+//     firstName: 'Jackie',
+//     lastName: 'Ho',
+//     email: 'jackieh.bee@gmail.com',
+//     password: 'bee'
+//   }
+// });
+// db.models.user.findOrCreate({
+//   where: {
+//     firstName: 'Tenzin',
+//     lastName: 'Sonam',
+//     email: 'tenso2006@gmail.com',
+//     password: '10zen'
+//   }
+// });
+// db.models.user.findOrCreate({
+//   where: {
+//     firstName: 'Brian',
+//     lastName: 'Schultz',
+//     email: 'brianjschultz508@gmail.com',
+//     password: 'bebop'
+//   }
+// });
+
+
+/*---------------------------------------------
+      Seed Parkphotos with Yosemite pics
+----------------------------------------------*/
 var url = 'https://twitter.com/YosemiteNPS/media';
-var numPicsToPull = 10;
+var numPicsToPull = 12;
+var userId = 1;
 
 request(url, function (error, response, html) {
   if (error) {
@@ -30,9 +113,20 @@ request(url, function (error, response, html) {
       console.log('query results', results);
       for (var i = 0; i < numPicsToPull; i++){
         var photoUrl = $('#stream-items-id').children()[i].children[1].children[3].children[5].children[1].children[1].children[1].children[1].attribs['data-image-url'];
-        db.models.parkphoto.create({
-          photoUrl: photoUrl,
-          parkId: results.dataValues.id
+        if (i < 3) {
+          userId = 1;
+        } else if (i > 2 && i < 6) {
+          userId = 2;
+        } else if (i > 5 && i < 9) {
+          userId = 3;
+        } else if (i > 8) {
+          userId = 4;
+        }
+        db.models.post.create({
+          type: 'photo',
+          filePath: photoUrl,
+          parkId: results.dataValues.id,
+          userId: userId
         });
       }
     });
