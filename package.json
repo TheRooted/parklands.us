@@ -38,7 +38,9 @@
     "passport-local": "latest",
     "path": "^0.12.7",
     "pg": "latest",
+    "radium": "^0.18.1",
     "react": "latest",
+    "react-burger-menu": "^1.10.12",
     "react-dom": "latest",
     "react-router": "^3.0.2",
     "request": "latest",
@@ -66,5 +68,17 @@
     "passport-local": "^1.0.0",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
+  },
+  "babel": {
+    "plugins": [
+      "add-module-exports",
+      "transform-es2015-modules-commonjs",
+      "transform-decorators-legacy"
+    ],
+    "presets": [
+      "es2015-loose",
+      "stage-1",
+      "react"
+    ]
   }
 }
