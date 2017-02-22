@@ -14,16 +14,16 @@ export default class Signup extends React.Component {
       email: this.refs.emailSI.value,
       password: this.refs.passwordSI.value
     }
-    axios.post('/api/signup', user).then(function(res) {
+    axios.post('/signup', user).then(function(res) {
       if (res.data) {
-        console.log('successful signin');
+        console.log('successful signup');
       }
     })
   }
   render() {
     return (
       <div>
-        <form>
+        <form method="post">
           <h5>Sign Up</h5>
           <input type="text" name="firstName" placeholder="First Name" ref="firstNameSI" />
           <br />
