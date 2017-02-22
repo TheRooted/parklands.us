@@ -16,7 +16,9 @@ db.models.park.findOrCreate({
 /*---------------------------------------------
                   Seed Users
 ----------------------------------------------*/
+
 var user = [];
+
 user.push(
   {
     firstName: 'Kay',
@@ -49,6 +51,7 @@ user.push(
     password: 'bebop'
   }
 );
+
 for (var i = 0; i < user.length; i++) {
 
   axios.post('http://localhost:3000/signup', user[i]).then(function(res) {
@@ -57,40 +60,6 @@ for (var i = 0; i < user.length; i++) {
     }
   })
 }
-
-// db.models.user.findOrCreate({
-//   where: {
-//     firstName: 'Kay',
-//     lastName: 'Christensen',
-//     email: 'kaychristensen@gmail.com',
-//     password: 'rocksteady'
-//   }
-// });
-// db.models.user.findOrCreate({
-//   where: {
-//     firstName: 'Jackie',
-//     lastName: 'Ho',
-//     email: 'jackieh.bee@gmail.com',
-//     password: 'bee'
-//   }
-// });
-// db.models.user.findOrCreate({
-//   where: {
-//     firstName: 'Tenzin',
-//     lastName: 'Sonam',
-//     email: 'tenso2006@gmail.com',
-//     password: '10zen'
-//   }
-// });
-// db.models.user.findOrCreate({
-//   where: {
-//     firstName: 'Brian',
-//     lastName: 'Schultz',
-//     email: 'brianjschultz508@gmail.com',
-//     password: 'bebop'
-//   }
-// });
-
 
 /*---------------------------------------------
       Seed Parkphotos with Yosemite pics
