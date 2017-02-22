@@ -1,0 +1,13 @@
+/*---------------------------------------------
+                User Timeline
+----------------------------------------------*/
+
+#sideBarContainer {
+  width: 15%;
+  float: left;
+}
+
+#userTimeLineContainer {
+  width: 85%;
+  float: right;
+}
