@@ -5,11 +5,11 @@ var util = require('./util');
 
 
 // Routes for signup, signin, and signout
-router.post('/api/signup', controller.signup.post);
+router.post('/signup', controller.signup.post);
 
-router.post('/api/signin', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/api/signin' }));
+router.post('/signin', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/signin' }));
 
-router.post('/api/signout', controller.signout.post);
+router.post('/signout', controller.signout.post);
 
 //Routes for parks
 router.get('/api/grid', controller.grid.get);
