@@ -19,7 +19,7 @@ ReactDOM.render((
       <Route path='signin' component={Signin} />
       <Route path='signup' component={Signup} />
       <Route path='userTimeline' component={UserTimeline} />
-      <Route path='park/:parkName' component={Snp}/>
+      <Route path='park/:parkName' component={Snp} />
     </Route>
 
   </Router>), app);

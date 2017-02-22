@@ -14,6 +14,8 @@ router.post('/api/signout', controller.signout.post);
 //Routes for parks
 router.get('/api/grid', controller.grid.get);
 
-router.get('/api/park/:parkName', controller.park.get)
+router.get('/api/park/:parkName', controller.park.get);
+
+router.get('/api/parkPhoto/:id', controller.parkPhoto.get);
 
 module.exports = router;

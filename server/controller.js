@@ -123,6 +123,19 @@ module.exports = {
     }
   },
 
+  parkPhoto: {
+    get: function(req, res) {
+      var id = req.url.split('/');
+      id = id[id.length-1];
+      console.log(id);
+      db.models.parkphoto.findAll({
+        where: {parkId: id}
+      }).then(function(photos) {
+        res.send(photos);
+      })
+    }
+  },
+
   userTimeline: {
     get: function () {
 
