@@ -12,6 +12,7 @@ module.exports = {
 
   signup: {
     post: function(req, res) {
+      console.log('signup controller, req.body', req.body)
       var firstName = req.body.firstName;
       var lastName = req.body.lastName;
       var email = req.body.email;
