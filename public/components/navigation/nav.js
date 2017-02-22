@@ -1,4 +1,5 @@
 import React from 'react';
+import {browserHistory} from 'react-router';
 import SearchBar from './SearchBar.js';
 import BurgerBar from './BurgerBar.js';
 
@@ -18,6 +19,8 @@ class Nav extends React.Component {
   handleSubmit(event) {
     // based on input, redirect to specific page.
     console.log('beans');
+    var parkName = this.state.query.toLowerCase();
+    browserHistory.push('/park/' + parkName);
     event.preventDefault();
 
   }
