@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Post from './post.js';
 import Sidebar from './sidebar.js';
+import ImageUpload from './imagePost.js';
 
 export default class UserTimeline extends React.Component {
 
@@ -33,13 +34,18 @@ export default class UserTimeline extends React.Component {
       <div id="userTimeLinePageContainer">
         <Sidebar />
         <div>
-          {this.state.userActivity.map(activity =>
-            <Post
-              photoData={activity.photoUrl}
-              datePosted={activity.createdAt}
-              key={activity.id}
-            />
-          )}
+          <ImageUpload />
+          <div>
+            {
+              this.state.userActivity.map(activity =>
+                <Post
+                  photoData={activity.photoUrl}
+                  datePosted={activity.createdAt}
+                  key={activity.id}
+                />
+              )
+            }
+          </div>
         </div>
       </div>
     );
