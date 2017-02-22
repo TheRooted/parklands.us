@@ -32,8 +32,8 @@ class Nav extends React.Component {
           getQuery={this.getQuery.bind(this)}
           handleSubmit={this.handleSubmit.bind(this)}
         />
-        <span>Parklands</span>
         <BurgerBar />
+        <span>Parklands</span>
      </div>
     )
   }
