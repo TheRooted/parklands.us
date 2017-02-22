@@ -18,4 +18,8 @@ router.get('/api/park/:parkName', controller.park.get);
 
 router.get('/api/parkPhoto/:id', controller.parkPhoto.get);
 
+//Routes for user timeline
+router.get('/api/userTimeline', controller.userTimeline.get);
+
+
 module.exports = router;

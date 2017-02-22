@@ -119,7 +119,7 @@ module.exports = {
         where: {name: url}
       }).then(function(park) {
         res.send(park);
-      })
+      });
     }
   },
 
@@ -132,13 +132,17 @@ module.exports = {
         where: {parkId: id}
       }).then(function(photos) {
         res.send(photos);
-      })
+      });
     }
   },
 
   userTimeline: {
-    get: function () {
-
+    get: function (req, res) {
+      db.models.parkphoto.findAll({})
+      .then(function (parkPhoto) {
+        console.log('park photo is ', parkPhoto);
+        res.send(parkPhoto);
+      });
     }
   }
 };
