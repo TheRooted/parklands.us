@@ -1,5 +1,6 @@
 import React from 'react';
 import Like from './like.js';
+import ImagePost from './imagePost.js';
 
 export default class Post extends React.Component {
 
@@ -7,7 +8,8 @@ export default class Post extends React.Component {
     super(props);
     this.state = {
       comment: '',
-      vote: 0
+      vote: 0,
+      image: null
     };
   }
 
@@ -20,6 +22,7 @@ export default class Post extends React.Component {
           <img src={this.props.photoData} />
           <Like />
           <textarea></textarea>
+          <ImageUpload />
         </div>
       </div>
     );
