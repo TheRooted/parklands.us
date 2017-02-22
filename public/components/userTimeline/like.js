@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
 
-const Vote = (props) => (
+const Like = (props) => (
   <div>
     <Button
       color='red'
-      content='Vote'
+      content='Like'
       icon='heart'
       label={
         {
@@ -19,4 +19,4 @@ const Vote = (props) => (
   </div>
 )
 
-export default Vote;
+export default Like;

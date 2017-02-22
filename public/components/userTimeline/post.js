@@ -1,5 +1,5 @@
 import React from 'react';
-import Vote from './upVote.js';
+import Like from './like.js';
 
 export default class Post extends React.Component {
 
@@ -18,7 +18,7 @@ export default class Post extends React.Component {
 
           <h3>{this.props.datePosted}</h3>
           <img src={this.props.photoData} />
-          <Vote />
+          <Like />
           <textarea></textarea>
         </div>
       </div>
