@@ -2,10 +2,9 @@ import React from 'react';
 import Vote from './upVote.js';
 
 export default class Post extends React.Component {
+
   constructor(props) {
-
     super(props);
-
     this.state = {
       comment: '',
       vote: 0
