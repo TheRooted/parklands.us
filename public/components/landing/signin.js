@@ -12,9 +12,7 @@ export default class Signin extends React.Component {
       email: this.refs.emailSI.value,
       password: this.refs.passwordSI.value
     }
-    axios.post('/api/signin', user).then(function(res) {
-      //need to flush out functionality
-      console.log('signin res: ', res);
+    axios.post('/signin', user).then(function(res) {
       if (res.data) {
         console.log('successful signin');
       }
@@ -23,7 +21,7 @@ export default class Signin extends React.Component {
   render() {
     return (
       <div>
-        <form>
+        <form method="post">
           <h5>Sign In</h5>
           <input type="email" name="email" placeholder="Email Address" ref="emailSI" />
           <br />
