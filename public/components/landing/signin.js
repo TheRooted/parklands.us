@@ -13,6 +13,8 @@ export default class Signin extends React.Component {
       password: this.refs.passwordSI.value
     }
     axios.post('/api/signin', user).then(function(res) {
+      //need to flush out functionality
+      console.log('signin res: ', res);
       if (res.data) {
         console.log('successful signin');
       }

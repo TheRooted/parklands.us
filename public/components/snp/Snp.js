@@ -19,19 +19,14 @@ export default class Snp extends React.Component {
 
   componentWillMount() {
     var context = this;
-    console.log(context.props.params.parkName);
     axios.get('/api/park/' + context.props.params.parkName).then(function(res) {
-      console.log(res);
       if (res.data) {
-        console.log('Snp parks:', res.data);
         context.setState({park: res.data})
       }
     }).then(function(){
       if (context.state.park.id) {
         axios.get('/api/parkPhoto/' + context.state.park.id).then(function(res) {
-          console.log(res);
           if (res.data) {
-            console.log('Snp parkPhotos', res.data);
             context.setState({photos: res.data});
           }
         })

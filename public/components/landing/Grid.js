@@ -13,7 +13,6 @@ export default class Grid extends React.Component {
     var context = this;
     axios.get('/api/grid').then(function(res) {
       if (res.data) {
-        console.log('parks', res.data);
         context.setState({parks: res.data})
       }
     });

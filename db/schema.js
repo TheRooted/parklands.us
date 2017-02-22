@@ -141,7 +141,6 @@ sequelize
   // Sync database with defined schema
   sequelize.sync()
   .then(function() {
-    console.log('adding associations')
     /** Define Model Associations **/
     sequelize.Promise.all([
       Users.hasMany(Votes),
@@ -161,7 +160,6 @@ sequelize
       Parks.hasMany(ParkComments)
     ])
     .then(function(results) {
-      console.log('final results', results)
     });
   });
 

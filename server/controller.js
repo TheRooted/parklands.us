@@ -114,7 +114,6 @@ module.exports = {
     get: function(req, res) {
       var url = req.url.split('/');
       url = url[url.length-1];
-      console.log(url);
       db.models.park.findOne({
         where: {name: url}
       }).then(function(park) {
@@ -127,7 +126,6 @@ module.exports = {
     get: function(req, res) {
       var id = req.url.split('/');
       id = id[id.length-1];
-      console.log(id);
       db.models.parkphoto.findAll({
         where: {parkId: id}
       }).then(function(photos) {
