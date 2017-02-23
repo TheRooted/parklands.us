@@ -1,24 +1,27 @@
 import React from 'react';
+import Sidebar from './Sidebar.js';
 
 class BurgerBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {burger: true};
+    this.state = {sidebarOpen: false};
   }
 
-  burgerBarOpen() {
-
+  //check if the sidebar is opened
+  toggleSidebar() {
+    this.setState({sidebarOpen: !this.state.sidebarOpen})
   }
 
 
   render() {
     return (
       <div>
-        <img src='https://cdn1.iconfinder.com/data/icons/android-user-interface-vol-1/16/38_-_menu_bar_lines_option_list_hamburger_web-512.png'/>
+        <Sidebar isOpen={this.state.sidebarOpen} toggleSidebar={this.toggleSidebar.bind(this)}/>
       </div>
     )
   }
 }
 
 export default BurgerBar;
+
 

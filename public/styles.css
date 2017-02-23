@@ -1,5 +1,11 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
 
+#app {
+/* stop overlfow*/
+overflow-x:hidden;
+
+}
+
 /*---------------------------------------------
                 User Timeline
 ----------------------------------------------*/
@@ -32,6 +38,7 @@
   font-size: 20px;
   font-family: "Lato";
   border: 2px solid black;
+  z-index: 1px;
 }
 
 /*********************
@@ -43,6 +50,33 @@
       '------'    
 **********************/
 
+
+.sidebar {
+  position: relative;
+  float: right;
+  top: 37.5px;
+  right: -250px;
+  height: 100%;
+  width: 100px;
+  transition: right .3s ease-in-out;
+}
+.sidebar-toggle {
+  margin-right: 30px;
+  position: relative;
+  float: right;
+  right: -100px;
+  top: .1em;
+  height: 22px;
+  width: 22px;
+  cursor: pointer;
+  
+}
+
+.sidebar.open {
+  right: -150px;
+  padding: 15px;
+  background-color: green;
+}
 
 /******************
     SEARCH BAR
@@ -108,7 +142,6 @@ input[type="submit"] {
   z-index: 2;
   cursor: pointer;
   opacity: 0.4;
-  cursor: pointer;
   transition: opacity .4s ease;
 }
 
