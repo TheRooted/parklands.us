@@ -20,7 +20,8 @@ router.get('/api/parkPhoto/:id', controller.parkPhoto.get);
 
 router.get('/api/parkComment/:id', controller.parkComment.get);
 
-router.get('/api/parkAlert/:id', controller.parkAlert.get)
+// router.get('/api/parkAlert/:id', controller.parkAlert.get);
+
 //Routes for accessing user
 // router.get('/api/user/:id', controller.user.get);
 

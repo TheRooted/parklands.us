@@ -113,10 +113,10 @@ module.exports = {
 
   park: {
     get: function(req, res) {
-      var url = req.url.split('/');
-      url = url[url.length-1];
+      var name = req.url.split('/');
+      name = name[name.length-1];
       db.models.park.findOne({
-        where: {name: url}
+        where: {name: name}
       }).then(function(park) {
         res.send(park);
       });
@@ -148,25 +148,27 @@ module.exports = {
     }
   },
 
-  parkAlert: {
-    get: function(req, res) {
-      var id = req.url.split('/');
-      id = id[id.length-1];
-      console.log('id inside parkAlert controller:', id)
-      db.models.park.findOne({
-        where: {id: id}
-      }).then(function(park) {
-        console.log('park alertUrl inside parkAlert: ', park.alertUrl);
-        request(park.alertUrl, function (error, response, html) {
-          if (error) {
-            console.log('Error requesting url', error);
-          } else {
-            var $ = cheerio.load(html);
-          }
-        })
-      })
-    }
-  },
+  // parkAlert: {
+  //   get: function(req, res) {
+  //     var id = req.url.split('/');
+  //     id = id[id.length-1];
+  //     console.log('id inside parkAlert controller:', id)
+  //     db.models.park.findOne({
+  //       where: {id: id}
+  //     }).then(function(park) {
+  //       console.log('park alertUrl inside parkAlert: ', park.alertUrl);
+  //       request(park.alertUrl, function (error, response, html) {
+  //         if (error) {
+  //           console.log('Error requesting url', error);
+  //         } else {
+  //           var $ = cheerio.load(html);
+  //           console.log($('.Alerts-severity-header'))
+  //           res.end();
+  //         }
+  //       })
+  //     })
+  //   }
+  // },
 
   // user: {
   //   get: function(req, res) {

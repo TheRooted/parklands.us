@@ -15,7 +15,7 @@ export default class Snp extends React.Component {
       view: 'Photos',
       photos: [],
       comments: [],
-      alerts: [],
+      // alerts: [],
     }
 
   }
@@ -40,11 +40,11 @@ export default class Snp extends React.Component {
             context.setState({comments: res.data})
           }
         })
-        axios.get('/api/parkAlert/' + context.state.park.id).then(function(res) {
-          if (res.data) {
-            console.log('alerts', res.data);
-          }
-        })
+        // axios.get('/api/parkAlert/' + context.state.park.id).then(function(res) {
+        //   if (res.data) {
+        //     console.log('alerts', res.data);
+        //   }
+        // })
       }
     })
 
@@ -62,9 +62,9 @@ export default class Snp extends React.Component {
     this.setState({view: 'Reviews'})
   }
 
-  changeViewToAlerts() {
-    this.setState({view: 'Alerts'})
-  }
+  // changeViewToAlerts() {
+  //   this.setState({view: 'Alerts'})
+  // }
 
   render() {
     var context = this;
@@ -80,11 +80,12 @@ export default class Snp extends React.Component {
         return (context.state.comments.map(comment =>
           <Parkcomment userEmail={comment.userEmail} text={comment.text} key={key++}/>))
       }
-    } else if (this.state.view === 'Alerts') {
-      var mediaView = function () {
-        return(<h1>{context.state.alerts[0]}</h1>)
-      }
-    }
+    } 
+    // else if (this.state.view === 'Alerts') {
+    //   var mediaView = function () {
+    //     return(<h1>{context.state.alerts[0]}</h1>)
+    //   }
+    // }
     return (
       <div>
         <h1>{this.capFirstLetter(this.state.park.name)}</h1>
