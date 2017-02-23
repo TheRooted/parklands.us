@@ -1,5 +1,5 @@
 import React from 'react';
-import {browserHistory} from 'react-router';
+import {browserHistory, Link} from 'react-router';
 import SearchBar from './SearchBar.js';
 import BurgerBar from './BurgerBar.js';
 
@@ -33,7 +33,7 @@ class Nav extends React.Component {
           handleSubmit={this.handleSubmit.bind(this)}
         />
         <BurgerBar />
-        <span>Parklands</span>
+        <Link to='/' style={{textDecoration: 'none', color: 'black'}}>Parklands</Link>
      </div>
     )
   }

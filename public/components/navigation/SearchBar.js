@@ -3,7 +3,7 @@ import React from 'react';
 
 const SearchBar = (props) => (
   <div id="wrap">
-    <form action="">
+    <form>
       <datalist id='parks'>
         <option value='Yosemite'></option>
         <option value='Yellowstone'></option>

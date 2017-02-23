@@ -56,7 +56,7 @@ for (var i = 0; i < users.length; i++) {
 }
 
 /*---------------------------------------------
-      Seed Parkphotos with Yosemite pics
+      Seed Posts with Yosemite pics
 ----------------------------------------------*/
 var url = 'https://twitter.com/YosemiteNPS/media';
 var numPicsToPull = 12;
@@ -112,6 +112,31 @@ db.models.park.findOrCreate({
     }
   });
 })
+
+/*---------------------------------------------
+      Seed parkPhotos with Yosemite pics
+----------------------------------------------*/
+
+var yosemitePics = [
+  'http://miriadna.com/desctopwalls/images/max/California,-Yosemite-National-park.jpg',
+  'http://www.atlasandboots.com/wp-content/uploads/2016/01/stunning-natural-phenomena-1.jpg',
+  'https://drscdn.500px.org/photo/89719719/q%3D80_m%3D2000/f8a6fec97d623db924f2c8e88457a526',
+  'http://www.valleyviews.biz/images/homeslideshow/home_yosemite_hd8.jpg',
+  'http://blog.thomascook.in/wp-content/uploads/2016/06/Yose-1024x581.jpg'
+ ]
+
+db.models.park.find({
+  where: {
+    name: 'yosemite'
+  }
+}).then(function(results) {
+  for (var i = 0; i < yosemitePics.length; i++) {
+    db.models.parkphoto.create({
+      photoUrl: yosemitePics[i],
+      parkId: results.dataValues.id
+    });
+  }
+});
 
 
 

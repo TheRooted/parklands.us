@@ -125,6 +125,18 @@ module.exports = {
     get: function(req, res) {
       var id = req.url.split('/');
       id = id[id.length-1];
+      db.models.parkphoto.findAll({
+        where: {parkId: id}
+      }).then(function(photos) {
+        res.send(photos);
+      })
+    }
+  },
+
+  parkPhotoPost: {
+    get: function(req, res) {
+      var id = req.url.split('/');
+      id = id[id.length-1];
       db.models.post.findAll({
         where: {parkId: id}
       }).then(function(photos) {

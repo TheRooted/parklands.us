@@ -29,6 +29,23 @@ overflow-x:hidden;
   float: right;
 }
 
+/*************************
+    PARK PHOTO POST
+**************************/
+.parkphotopost {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  float: left;
+}
+
+/*************************
+    OFFICIAL PARK PHOTO 
+**************************/
+.parkphoto {
+  
+}
+
 
 /******************
     NAVIGATION
@@ -214,17 +231,20 @@ input[type="submit"]:hover {
 
 
 /******************
-    PARK PHOTOS
+      SIGN UP
 *******************/
-.parkphoto {
-  width: 400px;
-  height: 400px;
-  position: relative;
-  float: left;
+
+.signinBg {
+  height: 715px;
+  background-image: url('./images/Canyonlands-National-Park.jpg');
+  background-size: 1326px 715px;
+  background-repeat: no-repeat;
 }
 
-/*.centerText {
-  text-align: center;
-  width: 500px;
+.signupBg {
+  height: 715px;
+  background-image: url('./images/two-medicine-lake-glacier-np.jpg');
+  background-size: 1326px 715px;
+  background-repeat: no-repeat;
 }
-*/
+

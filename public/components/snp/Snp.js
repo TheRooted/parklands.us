@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import Parkphoto from './Parkphoto.js'
+import ParkPhotoPost from './ParkPhotoPost.js'
 import Parkcomment from './Parkcomment.js'
+import ParkPhoto from './ParkPhoto.js'
 
 export default class Snp extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ export default class Snp extends React.Component {
       photos: [],
       comments: [],
       // alerts: [],
+      officialPhotos: []
     }
 
   }
@@ -31,12 +33,17 @@ export default class Snp extends React.Component {
       if (context.state.park.id) {
         axios.get('/api/parkPhoto/' + context.state.park.id).then(function(res) {
           if (res.data) {
+            context.setState({officialPhotos: res.data});
+
+          }
+        })
+        axios.get('/api/parkPhotoPost/' + context.state.park.id).then(function(res) {
+          if (res.data) {
             context.setState({photos: res.data});
           }
         })
         axios.get('/api/parkComment/' + context.state.park.id).then(function(res) {
           if (res.data) {
-            console.log('comments: ', res.data);
             context.setState({comments: res.data})
           }
         })
@@ -72,7 +79,7 @@ export default class Snp extends React.Component {
       var key = 0;
       var mediaView = function () {
         return (context.state.photos.map(photo =>
-          <Parkphoto photo={photo.filePath} key={key++}/>))
+          <ParkPhotoPost photo={photo.filePath} key={key++}/>))
       }
     } else if (this.state.view === 'Reviews') {
       var key = 0;
@@ -91,6 +98,9 @@ export default class Snp extends React.Component {
         <h1>{this.capFirstLetter(this.state.park.name)}</h1>
         <h5>Info</h5>
         <p>{this.state.park.info}</p>
+        {this.state.officialPhotos.map(photo => 
+          <ParkPhoto photo={photo.photoUrl} />
+        )} 
         <button onClick={this.changeViewToPhotos.bind(this)}>Photos</button>
         <button onClick={this.changeViewToReviews.bind(this)}>Reviews</button>
         {/*<button onClick={this.changeViewToAlerts.bind(this)}>Alerts</button>*/}

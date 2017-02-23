@@ -20,7 +20,7 @@ export default class Signin extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className='signinBg'>
         <form method="post">
           <h5>Sign In</h5>
           <input type="email" name="email" placeholder="Email Address" ref="emailSI" />

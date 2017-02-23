@@ -32,7 +32,7 @@ export default class Signup extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className='signupBg'>
         <form method="post">
           <h5>Sign Up</h5>
           <input type="text" name="firstName" placeholder="First Name" ref="firstNameSI" />
