@@ -4,8 +4,8 @@ import App from './App.js';
 
 import { Router, Route, browserHistory, IndexRoute} from 'react-router';
 
-import Signin from './landing/signin.js';
-import Signup from './landing/signup.js';
+import Signin from './authPages/signin.js';
+import Signup from './authPages/signup.js';
 import UserTimeline from './userTimeline/user_timeline.js';
 import Landing from './landing/Landing.js';
 import Snp from './snp/Snp.js'
