@@ -116,7 +116,7 @@ input::-webkit-calendar-picker-indicator {
   display: none;
 }
 
-input[type="text"] {
+#search {
   height: 20px;
   font-size: 17px;
   display: inline-block;
@@ -137,11 +137,11 @@ input[type="text"] {
   cursor: pointer;
 }
 
-input[type="text"]:focus:hover {
+#search:focus:hover {
   border-bottom: 1px solid #BBB;
 }
 
-input[type="text"]:focus {
+#search:focus {
   width: 150px;
   z-index: 1;
   border-bottom: 1px solid #BBB;
