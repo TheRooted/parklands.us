@@ -3,8 +3,6 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var db = require('../db/schema');
 var util = require('./util');
-var request = require('request');
-var cheerio = require('cheerio');
 var saltRounds = 10;
 
 

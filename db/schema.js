@@ -62,9 +62,9 @@ sequelize
     info: {
       type: Sequelize.TEXT
     },
-    alertUrl: {
-      type: Sequelize.STRING
-    }
+    // alertUrl: {
+    //   type: Sequelize.STRING
+    // }
   });
 
   var PostComments = sequelize.define('postcomment', {
