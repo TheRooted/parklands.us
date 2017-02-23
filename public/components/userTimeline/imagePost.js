@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
+import sha1 from 'sha1';
+import superagent from 'superagent';
 
-export default class ImageUpload extends React.Component {
+export default class ImageUpload extends Component {
   constructor(props) {
     super(props);
     this.state = {
       file: '',
       imagePreviewUrl: '',
-      description: ''
+      description: '',
+      images: []
     };
 
     this._handleInputChange = this._handleInputChange.bind(this);
@@ -20,8 +23,32 @@ export default class ImageUpload extends React.Component {
     });
   }
 
+  //method for saving images to cloudery
   _handleSubmit(e) {
     e.preventDefault();
+    const image = this.state.file;
+
+    const cloudName = 'dgjnetyeq';
+    const url =  `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
+
+    const timestamp = Date.now()/1000;
+    const uploadPreset = 'jlgmapzb';
+
+    const paramsStr = `timestamp=${timestamp}&upload_preset=${uploadPreset}THuBkxHSIrtLd3rznaNWSgk6T48`;
+
+    const signature = sha1(paramsStr);
+
+    const params = {
+      'api_key': 615118835579627,
+      'timestamp': timestamp,
+      'upload_preset': uploadPreset,
+      'signature': signature
+    };
+
+
+
+
+
     // TODO: do something with the ->>>> this.state.file
     console.log('handle uploading-', this.state.file);
     console.log('description is - ', this.state.description);
@@ -38,6 +65,7 @@ export default class ImageUpload extends React.Component {
         file: file,
         imagePreviewUrl: reader.result
       });
+
     };
 
     reader.readAsDataURL(file);
