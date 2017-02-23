@@ -94,7 +94,7 @@ export default class Snp extends React.Component {
     //   }
     // }
     return (
-      <div>
+      <div className='snp'>
         <h1>{this.capFirstLetter(this.state.park.name)}</h1>
         <h5>Info</h5>
         <p>{this.state.park.info}</p>

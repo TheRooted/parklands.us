@@ -13,7 +13,7 @@ class Sidebar extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='sidebarContainer'>
         <img src='https://www.newfangled.com/wp-content/uploads/2014/08/stuffcontentmgrfiles2ac67e44c30a21635f8a9d498f832bc1cmisc_resized80_313_257_hamenu.png' 
           onClick={this.props.toggleSidebar} className="burger-button" />
         <div className={this.sidebarAddClass()}>

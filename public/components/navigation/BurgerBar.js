@@ -15,7 +15,7 @@ class BurgerBar extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='burger'>
         <Sidebar isOpen={this.state.sidebarOpen} toggleSidebar={this.toggleSidebar.bind(this)}/>
       </div>
     )

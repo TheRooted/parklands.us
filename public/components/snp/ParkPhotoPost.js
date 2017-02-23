@@ -1,7 +1,7 @@
 import React from 'react';
 
 var ParkPhotoPost = (props) => (
-  <div>
+  <div className='parkPhotoContainer'>
     <img className='parkphotopost' src={props.photo} />
   </div>
 );

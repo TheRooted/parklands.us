@@ -1,7 +1,7 @@
 import React from 'react';
 
 var GridElement = (props) => (
-  <div>
+  <div className='gridElement'>
     <h5>{props.parkName}</h5>
     {/* Need to add gridphoto to database
     <img src={props.park.gridphoto} />*/}
