@@ -1,5 +1,6 @@
 import React from 'react';
 import Grid from './Grid.js';
+import Mapp from '../map.js';
 
 // should render the all components of the landing page
 // (big photo, map, grid)
@@ -12,8 +13,8 @@ export default class Landing extends React.Component {
 
   render() {
     return (
-      <div className='landing'>
-        <h1> Landing Page </h1>
+      <div id="landing-div">
+        <Mapp />
         <Grid />
       </div>
     )
