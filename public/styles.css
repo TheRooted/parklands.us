@@ -3,7 +3,6 @@
 #app {
 /* stop overlfow*/
 overflow-x:hidden;
-
 }
 
 /*---------------------------------------------
@@ -60,7 +59,7 @@ overflow-x:hidden;
   width: 100px;
   transition: right .3s ease-in-out;
 }
-.sidebar-toggle {
+.burger-button {
   margin-right: 30px;
   position: relative;
   float: right;
@@ -73,9 +72,17 @@ overflow-x:hidden;
 }
 
 .sidebar.open {
-  right: -150px;
-  padding: 15px;
+  position: relative;
+  right: -145.5px;
   background-color: green;
+  z-index: 100;
+  overflow-y: hidden;
+
+}
+
+
+.sidebarContent {
+  font-size: 14px;
 }
 
 /******************
