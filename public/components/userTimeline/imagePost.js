@@ -46,6 +46,27 @@ export default class ImageUpload extends Component {
     };
 
 
+    let uploadRequest = superagent.post(url);
+    uploadRequest.attach('file', image);
+
+    Object.keys(params).forEach((key) => {
+      uploadRequest.field(key, params[key]);
+    });
+
+    uploadRequest.end((err, resp) => {
+      if (err) {
+        console.log('Error in uploading image ', err);
+        return;
+      }
+      console.log('UPLOAD Complete', JSON.stringify(resp.body));
+      const uploaded = resp.body;
+
+      let updatedImages = Object.assign([], this.state.images);
+
+      this.setState({
+        images: updatedImages
+      });
+    });
 
 
 
