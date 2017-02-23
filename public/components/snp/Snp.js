@@ -3,6 +3,7 @@ import axios from 'axios';
 import ParkPhotoPost from './ParkPhotoPost.js'
 import Parkcomment from './Parkcomment.js'
 import ParkPhoto from './ParkPhoto.js'
+import ParkMap from './ParkMap.js'
 
 export default class Snp extends React.Component {
   constructor(props) {
@@ -96,7 +97,7 @@ export default class Snp extends React.Component {
     return (
       <div className='snp'>
         <h1>{this.capFirstLetter(this.state.park.name)}</h1>
-        <h5>Info</h5>
+        <ParkMap />
         <p>{this.state.park.info}</p>
         {this.state.officialPhotos.map(photo => 
           <ParkPhoto photo={photo.photoUrl} />
