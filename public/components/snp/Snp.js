@@ -93,7 +93,7 @@ export default class Snp extends React.Component {
         <p>{this.state.park.info}</p>
         <button onClick={this.changeViewToPhotos.bind(this)}>Photos</button>
         <button onClick={this.changeViewToReviews.bind(this)}>Reviews</button>
-        <button onClick={this.changeViewToAlerts.bind(this)}>Alerts</button>
+        {/*<button onClick={this.changeViewToAlerts.bind(this)}>Alerts</button>*/}
         {mediaView()}
       </div>
     )
