@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import ParkPhotoPost from './ParkPhotoPost.js'
+import {browserHistory} from 'react-router'
 import Parkcomment from './Parkcomment.js'
 import ParkPhoto from './ParkPhoto.js'
 import ParkMap from './ParkMap.js'
@@ -9,6 +10,7 @@ export default class Snp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      url: this.props.params.parkName,
       park: {
         id: false,
         name: 'null',
@@ -23,12 +25,42 @@ export default class Snp extends React.Component {
 
   }
 
-  componentWillMount() {
-    var context = this;
+  componentWillReceiveProps(nextProps) {
+    // this.setState({url: nextProps.params.parkName});
+    this.updateParkInfo(nextProps.params.parkName);
+  }
 
-    axios.get('/api/park/' + context.props.params.parkName).then(function(res) {
+  componentWillMount() {
+    this.updateParkInfo(this.props.params.parkName);
+  }
+
+  capFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  changeViewToPhotos() {
+    this.setState({view: 'Photos'})
+  }
+
+  changeViewToReviews() {
+    this.setState({view: 'Reviews'})
+  }
+
+  // changeViewToAlerts() {
+  //   this.setState({view: 'Alerts'})
+  // }
+
+  updateParkInfo(parkName) {
+    var context = this;
+    axios.get('/api/park/' + parkName).then(function(res) {
       if (res.data) {
         context.setState({park: res.data})
+      } else {
+        context.setState({park: {
+          id: false,
+          name: 'blue',
+          info: 'not a park!',
+        }})
       }
     }).then(function(){
       if (context.state.park.id) {
@@ -53,29 +85,17 @@ export default class Snp extends React.Component {
         //     console.log('alerts', res.data);
         //   }
         // })
+      } else {
+        browserHistory.push('/notavalidpark/' + parkName);
       }
     })
-
   }
-
-  capFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
-  changeViewToPhotos() {
-    this.setState({view: 'Photos'})
-  }
-
-  changeViewToReviews() {
-    this.setState({view: 'Reviews'})
-  }
-
-  // changeViewToAlerts() {
-  //   this.setState({view: 'Alerts'})
-  // }
 
   render() {
     var context = this;
+    // if (this.state.park.name === 'null') {
+    //   this.updateParkInfo(this.props.params.parkName);
+    // }
     if (this.state.view === 'Photos') {
       var key = 0;
       var mediaView = function () {

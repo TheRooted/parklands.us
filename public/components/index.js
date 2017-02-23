@@ -9,7 +9,8 @@ import Signup from './authPages/signup.js';
 import UserTimeline from './userTimeline/user_timeline.js';
 import Landing from './landing/Landing.js';
 import Snp from './snp/Snp.js'
-
+import Map from './map.js';
+import NotAPark from './snp/NotAPark.js'
 
 const app = document.getElementById('app');
 
@@ -21,6 +22,8 @@ ReactDOM.render((
       <Route path='signup' component={Signup} />
       <Route path='userTimeline' component={UserTimeline} />
       <Route path='park/:parkName' component={Snp} />
+      <Route path='map' component={Map} />
+      <Route path='notavalidpark/:parkName' component={NotAPark}/>
     </Route>
 
   </Router>), app);
