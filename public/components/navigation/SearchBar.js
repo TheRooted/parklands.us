@@ -1,15 +1,15 @@
 import React from 'react';
-
+import ParkOption from './ParkOption.js'
 
 const SearchBar = (props) => (
   <div id="wrap">
     <form className="search-form">
       <datalist id='parks'>
-        <option value='Yosemite'></option>
-        <option value='Yellowstone'></option>
-        <option value='Denali'></option>
+        {props.parkList.map(park =>
+          <ParkOption park={park} />
+        )}
       </datalist>
-      <input id="search" type="text" placeholder="Find your park here..." list='parks' onChange={props.getQuery}></input>
+      <input id="search" type="text" autoComplete="off" placeholder="Find your park here..." list='parks' onChange={props.getQuery}></input>
       <input id="search_submit" value="Rechercher" type="submit" onClick={props.handleSubmit}></input>
     </form>
   </div>

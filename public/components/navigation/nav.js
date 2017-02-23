@@ -8,7 +8,8 @@ class Nav extends React.Component {
   constructor(props) {
     super(props);
       this.state = {
-        query: ''
+        query: '',
+        parkList: ['Arcadia', 'American Samoa', 'Arches', 'Badlands', 'Big Bend', 'Biscayne', 'Black Canyon of the Gunnison', 'Bryce Canyon', 'Canyonlands', 'Capitol Reef', 'Carlsbad Cavern', 'Channel Islands', 'Congaree', 'Crater Lake', 'Cuyahoga Valley', 'Death Valley', 'Denali', 'Dry Tortugas', 'Everglades', 'Everglades', 'Gates of the Arctic', 'Glacier', 'Glacier Bay', 'Grand Canyon', 'Grand Teton', 'Great Basin', 'Great Sand Dunes', 'Great Smoky Mountains', 'Guadalupe Mountains', 'Haleakala', 'Hawaii Volcanoes', 'Hot Springs', 'Isle Royale', 'Joshua Tree', 'Katmai', 'Kenai Fjords', 'Kings Canyon', 'Kobuk Valley', 'Lake Clark', 'Lassen Volcanic', 'Mammoth Cave', 'Mesa Verde', 'Mount Rainier', 'North Cascades', 'Olympic', 'Petrified Forest', 'Pinnacles', 'Redwood', 'Rocky Mountain', 'Saguaro', 'Sequoia',  'Shenandoah', 'Theodore Roosevelt', 'Virgin Islands', 'Voyageurs', 'Wind Caves', 'Wrangell-St. Elias', 'Yellowstone', 'Yosemite', 'Zion']
       }
     }
 
@@ -31,6 +32,7 @@ class Nav extends React.Component {
         <SearchBar 
           getQuery={this.getQuery.bind(this)}
           handleSubmit={this.handleSubmit.bind(this)}
+          parkList={this.state.parkList}
         />
         <BurgerBar />
         <Link to='/' style={{textDecoration: 'none', color: 'black'}}>Parklands</Link>
@@ -40,3 +42,4 @@ class Nav extends React.Component {
 }
 
 export default Nav;
+
