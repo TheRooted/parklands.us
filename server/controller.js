@@ -3,8 +3,8 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var db = require('../db/schema');
 var util = require('./util');
-
-
+var request = require('request');
+var cheerio = require('cheerio');
 var saltRounds = 10;
 
 
@@ -144,6 +144,26 @@ module.exports = {
         where: {parkId: id}
       }).then(function(comments) {
         res.send(comments)
+      })
+    }
+  },
+
+  parkAlert: {
+    get: function(req, res) {
+      var id = req.url.split('/');
+      id = id[id.length-1];
+      console.log('id inside parkAlert controller:', id)
+      db.models.park.findOne({
+        where: {id: id}
+      }).then(function(park) {
+        console.log('park alertUrl inside parkAlert: ', park.alertUrl);
+        request(park.alertUrl, function (error, response, html) {
+          if (error) {
+            console.log('Error requesting url', error);
+          } else {
+            var $ = cheerio.load(html);
+          }
+        })
       })
     }
   },

@@ -15,6 +15,7 @@ export default class Snp extends React.Component {
       view: 'Photos',
       photos: [],
       comments: [],
+      alerts: [],
     }
 
   }
@@ -39,8 +40,14 @@ export default class Snp extends React.Component {
             context.setState({comments: res.data})
           }
         })
+        axios.get('/api/parkAlert/' + context.state.park.id).then(function(res) {
+          if (res.data) {
+            console.log('alerts', res.data);
+          }
+        })
       }
     })
+
   }
 
   capFirstLetter(string) {
@@ -74,7 +81,9 @@ export default class Snp extends React.Component {
           <Parkcomment userEmail={comment.userEmail} text={comment.text} key={key++}/>))
       }
     } else if (this.state.view === 'Alerts') {
-
+      var mediaView = function () {
+        return(<h1>{context.state.alerts[0]}</h1>)
+      }
     }
     return (
       <div>

@@ -61,6 +61,9 @@ sequelize
     },
     info: {
       type: Sequelize.TEXT
+    },
+    alertUrl: {
+      type: Sequelize.STRING
     }
   });
 
