@@ -11,6 +11,7 @@ import Landing from './landing/Landing.js';
 import Snp from './snp/Snp.js'
 import Map from './map.js';
 import NotAPark from './snp/NotAPark.js'
+import UserFeed from './userFeed/user_Feed.js'
 
 const app = document.getElementById('app');
 
@@ -20,7 +21,8 @@ ReactDOM.render((
       <IndexRoute component={Landing} />
       <Route path='signin' component={Signin} />
       <Route path='signup' component={Signup} />
-      <Route path='userTimeline' component={UserTimeline} />
+      <Route path='usertimeline' component={UserTimeline} />
+      <Route path='userfeed' component={UserFeed} />
       <Route path='park/:parkName' component={Snp} />
       <Route path='map' component={Map} />
       <Route path='notavalidpark/:parkName' component={NotAPark}/>

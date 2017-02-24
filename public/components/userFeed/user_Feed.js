@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import SocialMediaFeed from './socialMediaFeed.js'
 
 export default class UserFeed extends React.Component {
 
@@ -16,11 +17,9 @@ export default class UserFeed extends React.Component {
         <div id="popular-Feed-Container">
           <h3>Popular Explorations</h3>
           <div id="current-view"></div>
-          <div >
         </div>
-        <div id="media-feed-container">
-
-        </div>
+        <div id="media-feed-container"></div>
+        <SocialMediaFeed />
       </div>
     );
   }
