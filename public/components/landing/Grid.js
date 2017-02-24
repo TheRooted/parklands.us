@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 var GridElement = require('./GridElement');
-import {browserHistory, Link} from 'react-router';
+import { browserHistory } from 'react-router';
 
 
 export default class Grid extends React.Component {
@@ -23,7 +23,6 @@ export default class Grid extends React.Component {
   }
 
   linkToPage(parkName) {
-    console.log('click')
     browserHistory.push('/park/' + parkName);
   }
 
