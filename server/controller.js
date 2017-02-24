@@ -145,6 +145,7 @@ module.exports = {
     }
   },
 
+
   parkComment: {
     get: function(req, res) {
       var id = req.url.split('/');
@@ -195,10 +196,10 @@ module.exports = {
 
   userTimeline: {
     get: function (req, res) {
-      db.models.parkphoto.findAll({})
-      .then(function (parkPhoto) {
-        console.log('park photo is ', parkPhoto);
-        res.send(parkPhoto);
+      db.models.post.findAll({})
+      .then(function (post) {
+        console.log('park photo is ', post);
+        res.send(post);
       });
     }
   }
