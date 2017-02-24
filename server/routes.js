@@ -1,5 +1,5 @@
 var controller = require('./controller');
-var passport = require('passport');
+var passport = require('./passport');
 var router = require('express').Router();
 var util = require('./util');
 
@@ -9,11 +9,11 @@ router.post('/signup', controller.signup.post);
 router.post('/signin', passport.authenticate('local', function(msg, user, req) {
   console.log('back in routes, args', arguments);
 
-});
+}));
 
-router.post('/signin', passport.authenticate('local'), function(req, res, next) {
-  console.log('back in routes, args', arguments);
-});
+// router.post('/signin', passport.authenticate('local'), function(req, res, next) {
+//   console.log('back in routes, args', arguments);
+// });
 
 router.post('/signout', controller.signout.post);
 
