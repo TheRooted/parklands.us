@@ -6,9 +6,9 @@ const SocialMediaFeed = (props) => (
   </div>
 )
 
-
 export default SocialMediaFeed;
 
 
 // Twitter accounts missing from list: 
 // Great Sand Dunes, Hot Springs, Isle Royale, Kobuk Valley, Mesa Verde, Virgin Islands, Voyageurs
+
