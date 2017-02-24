@@ -8,6 +8,7 @@ export default class ParkMap extends React.Component {
 
   componentDidMount() {
     this.createMap();
+    this.addLayer();
   }
 
   stringScript() {
