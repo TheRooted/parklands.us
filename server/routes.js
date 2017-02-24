@@ -3,7 +3,6 @@ var passport = require('passport');
 var router = require('express').Router();
 var util = require('./util');
 
-//router.get('/*', function() {console.log('hello')})
 // Routes for signup, signin, and signout
 router.post('/signup', controller.signup.post);
 
