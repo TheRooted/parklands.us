@@ -37,6 +37,3 @@ export default class Grid extends React.Component {
     )
   }
 }
-
-
-        <Link to='/' style={{textDecoration: 'none', color: 'black'}}>Parklands</Link>
