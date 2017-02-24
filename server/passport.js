@@ -1,32 +1,27 @@
-var express = require('express');
-var session = require('express-session');
-var parser = require('body-parser');
 var passport = require('passport');
-var router = require('./routes');
 var LocalStrategy = require('passport-local').Strategy;
 var db = require('../db/schema');
 var bcrypt = require('bcrypt');
-var path = require('path');
 
-console.log('passport file');
+
+
+// Serialize and deserialize user
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
-
 passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
+// Define local auth strategy
 passport.use(new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password'
   },
   function(username, password, done) {
-    console.log('username', username)
     process.nextTick(function() {
       db.models.user.findOne({ where: { email: username }})
       .then(function(user, err) {
-        console.log('user is', user);
         if (err) { 
           return done(err); 
         }
