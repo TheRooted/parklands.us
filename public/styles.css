@@ -61,6 +61,11 @@ overflow-x:hidden;
   float: right;
 }
 
+.previewComponent {
+  text-align: center;
+  display: inline-block;
+}
+
 /*************************
     PARK PHOTO POST
 **************************/
@@ -254,7 +259,7 @@ input[type="submit"]:hover {
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #00f;
+  background-color: #0087eb;
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
