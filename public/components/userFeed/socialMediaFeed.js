@@ -1,21 +1,11 @@
 import React from 'react'
 
-class SocialMediaFeed extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const SocialMediaFeed = (props) => (
+  <div className='allNewsFeed'>
+    <a className="twitter-timeline" data-width="300" data-height="800" href="https://twitter.com/jackieNPS/lists/national-parks"></a>
+  </div>
+)
 
-    }
-  }
-
-  render () {
-    return (
-      <div className='allNewsFeed'>
-        <a className="twitter-timeline" data-width="300" data-height="800" href="https://twitter.com/jackieNPS/lists/national-parks"></a>
-     </div>
-    )
-  }
-}
 
 export default SocialMediaFeed;
 
