@@ -7,39 +7,51 @@ var bcrypt = require('bcrypt');
 
 // Serialize and deserialize user
 passport.serializeUser(function(user, done) {
-  done(null, user);
+  done(null, user.id);
 });
-passport.deserializeUser(function(user, done) {
-  done(null, user);
+passport.deserializeUser(function(id, done) {
+  db.models.user.findById({ where: { id: id } })
+  .then(function(user) {
+    done(null, user);
+  });
 });
 
 // Define local auth strategy
 passport.use(new LocalStrategy({
     usernameField: 'email',
-    passwordField: 'password'
+    passwordField: 'password',
+    passReqToCallback : true
   },
-  function(username, password, done) {
+  function(req, email, password, done) {
     process.nextTick(function() {
-      db.models.user.findOne({ where: { email: username }})
+
+      // Find user by email submitted
+      db.models.user.findOne({ where: { email: email }})
       .then(function(user, err) {
         if (err) { 
           return done(err); 
         }
+
+        // Email entered incorrectly or user is not registered
         if (user === null || !user.dataValues.email) {
           console.log('Incorrect email or missing user');
           return done(null, false, { message: 'Incorrect email.' });
         }
+
+        // Compared password supplied with db password for selected user
         bcrypt.compare(password, user.dataValues.password, function(err, comparison) {
           if (err) {
             console.log('Error in password comparison', err);
           }
-          // Supplied password matches, user already has account; send to Signin page
+
+          // Alert incorrect password
           if (comparison === false) {
             return done(null, false, { message: 'Incorrect password.' });
-          // Supplied pw doesn't match; probably new user & should choose another username
+
+          // Email registered and password matches
           } else {
             console.log('Everything was okay!')
-            return done(null, user.dataValues);
+            return done(null, user.dataValues, req);
           }
         });
       });
