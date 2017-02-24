@@ -7,6 +7,7 @@ export default class ImageUpload extends Component {
     super(props);
     this.state = {
       file: '',
+      list: [],
       imagePreviewUrl: '',
       description: '',
       images: []
@@ -61,16 +62,17 @@ export default class ImageUpload extends Component {
       console.log('UPLOAD Complete', JSON.stringify(resp.body));
       const uploaded = resp.body;
 
-      let updatedImages = Object.assign([], this.state.images);
+      let updatedImages = Object.assign([], uploaded);
+
 
       this.setState({
         images: updatedImages
+      }, function (){
+          this.setState({list: this.state.images});
+          console.log(this.state.list);
       });
     });
 
-
-
-    // TODO: do something with the ->>>> this.state.file
     console.log('handle uploading-', this.state.file);
     console.log('description is - ', this.state.description);
   }
@@ -93,14 +95,26 @@ export default class ImageUpload extends Component {
   }
 
   render() {
+
     let {imagePreviewUrl} = this.state;
     let $imagePreview = null;
+
     if (imagePreviewUrl) {
       $imagePreview = (<img src={imagePreviewUrl} />);
     } else {
       $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
     }
+    console.log('this.state.images ',this.state.images );
 
+    let list = this.state.images.map((image, i) => {
+      return (
+        <li key={i}>
+          <img src={image.secure_url} />
+        </li>
+      )
+    });
+
+    console.log("LIST", this.state.list);
     return (
       <div className="previewComponent">
         <form onSubmit={(e)=>this._handleSubmit(e)}>
@@ -125,6 +139,12 @@ export default class ImageUpload extends Component {
         </form>
         <div className="imgPreview">
           {$imagePreview}
+        </div>
+
+        <div className="displayImageDesccription">
+          <ol>
+            {console.log(this.state.list)}
+          </ol>
         </div>
       </div>
     )
