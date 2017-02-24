@@ -14,12 +14,10 @@ export default class UserFeed extends React.Component {
   render () {
     return (
       <div id="user-feed-container">
-        <div id="popular-Feed-Container">
-          <h3>Popular Explorations</h3>
-          <div id="current-view"></div>
-        </div>
-        <div id="media-feed-container"></div>
+        <h3>Popular Explorations</h3>
         <SocialMediaFeed />
+        <div id="current-view"></div>
+        <div id="media-feed-container"></div>
       </div>
     );
   }

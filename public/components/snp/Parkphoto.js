@@ -1,9 +1,9 @@
 import React from 'react';
 
 var ParkPhoto = (props) => (
-  <div className='parkPhotoContainer'>
+  <span className='parkPhotoContainer'>
     <img className='parkphoto' src={props.photo} /> 
-  </div>
+  </span>
 );
 
 export default ParkPhoto;

@@ -42,7 +42,9 @@ overflow-x:hidden;
     OFFICIAL PARK PHOTO
 **************************/
 .parkphoto {
-
+  height: 300px;
+  width: 500px;
+  display: inline;
 }
 
 
@@ -253,3 +255,12 @@ input[type="submit"]:hover {
   background-repeat: no-repeat;
 }
 
+/**************************
+    SOCIAL MEDIA FEED
+***************************/
+
+.allNewsFeed {
+  margin-top: -45px;
+  margin-right:15px;
+  float: right;
+}
