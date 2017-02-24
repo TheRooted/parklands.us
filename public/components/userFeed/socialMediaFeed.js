@@ -6,6 +6,7 @@ const SocialMediaFeed = (props) => (
   </div>
 )
 
+
 export default SocialMediaFeed;
 
 
