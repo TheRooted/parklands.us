@@ -141,7 +141,7 @@ export default class ImageUpload extends Component {
           {$imagePreview}
         </div>
 
-        <div className="displayImageDesccription">
+        <div className="displayImageDescription">
           <ol>
             {console.log(this.state.list)}
           </ol>
