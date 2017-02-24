@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import sha1 from 'sha1';
 import superagent from 'superagent';
+import axios from 'axios';
 
 export default class ImageUpload extends Component {
   constructor(props) {
@@ -75,6 +76,21 @@ export default class ImageUpload extends Component {
 
     console.log('handle uploading-', this.state.file);
     console.log('description is - ', this.state.description);
+
+    //post user submitted photo url to database (post table)
+    axios.post('/api/userTimeline', {
+      type: 'photo',
+      filePath: this.state.file,
+      userId: 1,
+      parkId: 1
+    })
+    .then(function (resp) {
+      console.log('succesfull url saved ---', resp);
+    })
+    .catch(function (error) {
+      console.error('error saving to post table--- ', error);
+    });
+
   }
 
   _handleImageChange(e) {
