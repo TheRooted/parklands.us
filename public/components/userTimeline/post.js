@@ -1,6 +1,5 @@
 import React from 'react';
 import Like from './like.js';
-import ImagePost from './imagePost.js';
 
 export default class Post extends React.Component {
 
@@ -19,10 +18,10 @@ export default class Post extends React.Component {
         <div id="timeLineFeedContainer">
 
           <h3>{this.props.datePosted}</h3>
-          <img src={this.props.photoData} />
-          <Like />
-          <textarea></textarea>
-          <ImageUpload />
+          <img className="timelinePhotoFeed" src={this.props.photoData} />
+          <Like className="likeTimeline"/>
+          <textarea className="commentTimeline"></textarea>
+          <button className="submitButton">Comment</button>
         </div>
       </div>
     );
