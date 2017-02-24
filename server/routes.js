@@ -6,7 +6,14 @@ var util = require('./util');
 // Routes for signup, signin, and signout
 router.post('/signup', controller.signup.post);
 
-router.post('/signin', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/signin' }));
+router.post('/signin', passport.authenticate('local', function(msg, user, req) {
+  console.log('back in routes, args', arguments);
+
+});
+
+router.post('/signin', passport.authenticate('local'), function(req, res, next) {
+  console.log('back in routes, args', arguments);
+});
 
 router.post('/signout', controller.signout.post);
 
