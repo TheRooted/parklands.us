@@ -18,7 +18,7 @@ export default class ParkMap extends React.Component {
       style: 'mapbox://styles/mapbox/satellite-streets-v10',
       center: [-119.5383, 37.8651],
       minZoom: 6,
-      maxZoom: 20
+      maxZoom: 50
     });
 
     map.on('load', function() {
