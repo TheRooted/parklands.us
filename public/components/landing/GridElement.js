@@ -9,8 +9,9 @@ var GridElement = (props) => {
   return (
     <div className='gridElement'>
       <h5>{name}</h5>
-      {/* Need to add gridphoto to database
-      <img src={props.park.gridphoto} />*/}
+      <img src={props.parkPhoto} 
+        onClick={() => (props.linkToPage(props.parkName))}
+      />
       <h5>{props.parkRating}</h5>
       {/*Rating currently represented as a number, and unable to rate*/}
     </div>

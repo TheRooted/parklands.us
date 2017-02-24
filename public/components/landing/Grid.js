@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 var GridElement = require('./GridElement');
+import {browserHistory, Link} from 'react-router';
+
 
 export default class Grid extends React.Component {
 
@@ -20,14 +22,22 @@ export default class Grid extends React.Component {
     });
   }
 
+  linkToPage(parkName) {
+    console.log('click')
+    browserHistory.push('/park/' + parkName);
+  }
+
   render () {
     var key = 0;
     return (
       <div className='grid'>
         {this.state.parks.map(park =>
-          <GridElement key={key++} parkName={park.name} parkRating={park.rating} />
+          <GridElement key={key++} parkName={park.name} parkRating={park.rating} parkPhoto={park.photo} linkToPage={this.linkToPage} />
         )}
       </div>
     )
   }
 }
+
+
+        <Link to='/' style={{textDecoration: 'none', color: 'black'}}>Parklands</Link>
