@@ -26,11 +26,13 @@ export default class Signin extends React.Component {
   render() {
     return (
       <div className='signinBg'>
-        <input className="auth-fields" type="email" name="email" placeholder="Email Address" ref="emailSI" />
-        <br />
-        <input className="auth-fields" type="password" name="password" placeholder="Password" ref="passwordSI" />
-        <br />
-        <button onClick={this.handleSubmit.bind(this)}>Sign In</button>
+        <div className="auth-container">
+          <input className="auth-fields" type="email" name="email" placeholder="Email Address" ref="emailSI" />
+          <br />
+          <input className="auth-fields" type="password" name="password" placeholder="Password" ref="passwordSI" />
+          <br />
+          <button className="btn-auth" onClick={this.handleSubmit.bind(this)}>Sign In</button>
+        </div>
       </div>
     )
   }

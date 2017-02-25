@@ -4,6 +4,7 @@ html,
 body {
   height: 100vh;
   width: 100vw;
+  background-color: #f1f1f1;
 }
 
 #app {
@@ -98,15 +99,15 @@ body {
   top: 0;
   left: 0;
   height: 40px;
-  width: 100%;
+  width: 95vw;
   padding: 12px;
   padding-left: 40px;
-  background-color: #f7f7f7;
+  background-color: #fff;
+  border-bottom: 1px solid #000;
   font-size: 25px;
   font-family: "Lato";
-  text-align: center;
   border: none;
-  z-index: 1px;
+  z-index: 10px;
 }
 
 
@@ -126,13 +127,10 @@ body {
 }
 
 .burger-button {
-  margin-right: 30px;
-  position: relative;
-  float: right;
-  right: -100px;
-  top: .1em;
+  position: absolute;
+  right: 60px;
   height: 22px;
-  width: 22px;
+  width: 35px;
   cursor: pointer;
 
 }
@@ -181,7 +179,7 @@ input::-webkit-calendar-picker-indicator {
   width: 0px;
   position: absolute;
   top: 0;
-  right: 0;
+  right: 50px;
   background: none;
   z-index: 3;
   transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
@@ -203,7 +201,6 @@ input[type="submit"] {
   height: 25px;
   width: 20px;
   display: inline-block;
-  color:red;
   float: right;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADNQTFRFU1NT9fX1lJSUXl5e1dXVfn5+c3Nz6urqv7+/tLS0iYmJqampn5+fysrK39/faWlp////Vi4ZywAAABF0Uk5T/////////////////////wAlrZliAAABLklEQVR42rSWWRbDIAhFHeOUtN3/ags1zaA4cHrKZ8JFRHwoXkwTvwGP1Qo0bYObAPwiLmbNAHBWFBZlD9j0JxflDViIObNHG/Do8PRHTJk0TezAhv7qloK0JJEBh+F8+U/hopIELOWfiZUCDOZD1RADOQKA75oq4cvVkcT+OdHnqqpQCITWAjnWVgGQUWz12lJuGwGoaWgBKzRVBcCypgUkOAoWgBX/L0CmxN40u6xwcIJ1cOzWYDffp3axsQOyvdkXiH9FKRFwPRHYZUaXMgPLeiW7QhbDRciyLXJaKheCuLbiVoqx1DVRyH26yb0hsuoOFEPsoz+BVE0MRlZNjGZcRQyHYkmMp2hBTIzdkzCTc/pLqOnBrk7/yZdAOq/q5NPBH1f7x7fGP4C3AAMAQrhzX9zhcGsAAAAASUVORK5CYII=) center center no-repeat;
   background-size: 20px 20px;
@@ -211,7 +208,7 @@ input[type="submit"] {
   border: none;
   position: absolute;
   top: 0;
-  right: 0;
+  right: 50px;
   z-index: 2;
   cursor: pointer;
   opacity: 0.4;
@@ -294,10 +291,16 @@ input[type="submit"]:hover {
 *****************************/
 
 .signinBg {
+  position: fixed;
+  top: 63px;
+  left: 2vw;
+  right: 2vw;
+  bottom: 2vh;
   height: 715px;
   background-image: url('./images/Canyonlands-National-Park.jpg');
   background-size: 1326px 715px;
   background-repeat: no-repeat;
+  z-index: 0;
 }
 
 .signupBg {
@@ -307,14 +310,34 @@ input[type="submit"]:hover {
   background-repeat: no-repeat;
 }
 
+.auth-container {
+  position: absolute;
+  top: 160px;
+  left: 26vw;
+}
+
 .auth-fields {
   height: 30px;
   width: 500px;
-  padding: 5px;
-  margin: 5px;
+  padding: 10px;
+  margin: 10px;
   font-size: 15px;
   border: none;
   border-radius: 4px;
+}
+
+.btn-auth {
+  position: relative;
+  left: 230px;
+  height: 30px;
+  width: 80px;
+  padding: 5px;
+  margin: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  color: #555;
+  opacity: .8;
 }
 
 
