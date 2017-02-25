@@ -52,7 +52,7 @@ for (var i = 0; i < users.length; i++) {
     if (res.data) {
       console.log('successful signup');
     }
-  })
+  });
 }
 
 /*---------------------------------------------
@@ -99,7 +99,7 @@ db.models.park.findOrCreate({
           } else if ((i - notPhotoCount) > 8) {
             userId = 4;
           }
-          console.log('results in seeeeeeeed: ', results)
+          console.log('results in seeeeeeeed: ', results);
           if (type === 'photo') {
             db.models.post.create({
               type: type,
@@ -112,7 +112,7 @@ db.models.park.findOrCreate({
       });
     }
   });
-})
+});
 
 /*---------------------------------------------
       Seed parkPhotos with Yosemite pics
@@ -124,7 +124,7 @@ var yosemitePics = [
   'https://drscdn.500px.org/photo/89719719/q%3D80_m%3D2000/f8a6fec97d623db924f2c8e88457a526',
   'http://www.valleyviews.biz/images/homeslideshow/home_yosemite_hd8.jpg',
   'http://blog.thomascook.in/wp-content/uploads/2016/06/Yose-1024x581.jpg'
- ]
+ ];
 
 db.models.park.find({
   where: {
@@ -206,6 +206,75 @@ db.models.parkcomment.findOrCreate({
     text: 'Increasing ozone pollution is causing tissue damage to the massive giant sequoia trees in the park.',
     userEmail: 'brianjschultz508@gmail.com',
     parkId: 1,
+  }
+});
+
+
+/*---------------------------------------------
+              Seed Postcomments
+----------------------------------------------*/
+
+db.models.postcomment.findOrCreate({
+  where: {
+    text: 'Yosemite was amazing!',
+    postId: 1,
+    userId: 1
+  }
+});
+
+db.models.postcomment.findOrCreate({
+  where: {
+    text: 'nature eh! Incredible',
+    postId: 1,
+    userId: 2
+  }
+});
+
+db.models.postcomment.findOrCreate({
+  where: {
+    text: '"The “firefall” on Horsetail Fall..event that can only be captured few days in February"',
+    postId: 2,
+    userId: 1
+  }
+});
+
+db.models.postcomment.findOrCreate({
+  where: {
+    text: 'Starting 10 million years ago, vertical movement along the Sierra fault started to uplift the Sierra Nevada.',
+    postId: 1,
+    userId: 3
+  }
+});
+
+db.models.postcomment.findOrCreate({
+  where: {
+    text: 'A series of glaciations further modified the region starting about 2 to 3 million years ago and ending sometime around 10,000 BP.',
+    postId: 3,
+    userId: 1
+  }
+});
+
+db.models.postcomment.findOrCreate({
+  where: {
+    text: 'Despite the richness of high-quality habitats in Yosemite, the brown bear, California condor, and least Bell\'s vireo have become extinct in the park within historical time',
+    postId: 3,
+    userId: 2
+  }
+});
+
+db.models.postcomment.findOrCreate({
+  where: {
+    text: 'The black bears of Yosemite were once famous for breaking into parked cars to steal food.',
+    postId: 1,
+    userId: 4
+  }
+});
+
+db.models.postcomment.findOrCreate({
+  where: {
+    text: 'Increasing ozone pollution is causing tissue damage to the massive giant sequoia trees in the park.',
+    postId: 3,
+    userId: 3
   }
 });
 
