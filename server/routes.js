@@ -30,5 +30,6 @@ router.get('/api/parkComment/:id', controller.parkComment.get);
 router.get('/api/userTimeline', controller.userTimeline.get);
 router.post('/api/userTimeline', controller.userTimeline.post);
 
+router.get('/api/userfeed', controller.userfeed.get);
 
 module.exports = router;
