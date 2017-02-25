@@ -10,7 +10,7 @@ module.exports = {
 
   signup: {
     post: function(req, res) {
-      console.log('signup controller, req.body', req.body)
+      console.log('signup controller, req.body', req.body);
       var firstName = req.body.firstName;
       var lastName = req.body.lastName;
       var email = req.body.email;
@@ -129,7 +129,7 @@ module.exports = {
         where: {parkId: id}
       }).then(function(photos) {
         res.send(photos);
-      })
+      });
     }
   },
 
@@ -150,12 +150,12 @@ module.exports = {
     get: function(req, res) {
       var id = req.url.split('/');
       id = id[id.length-1];
-      console.log('id inside parkComment controller:', id)
+      console.log('id inside parkComment controller:', id);
       db.models.parkcomment.findAll({
         where: {parkId: id}
       }).then(function(comments) {
-        res.send(comments)
-      })
+        res.send(comments);
+      });
     }
   },
 
@@ -200,6 +200,17 @@ module.exports = {
       .then(function (post) {
         console.log('park photo is ', post);
         res.send(post);
+      });
+    },
+    post: function (req, res) {
+      console.log('req.body.filePath is', req.body.filePath);
+      db.models.post.findOrCreate({
+        where: {
+          type: 'photo',
+          userId: 1,
+          parkId: 1,
+          filePath: req.body.filePath
+        }
       });
     }
   }

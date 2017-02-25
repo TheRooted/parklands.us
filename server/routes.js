@@ -28,6 +28,7 @@ router.get('/api/parkComment/:id', controller.parkComment.get);
 
 //Routes for user timeline
 router.get('/api/userTimeline', controller.userTimeline.get);
+router.post('/api/userTimeline', controller.userTimeline.post);
 
 
 module.exports = router;
