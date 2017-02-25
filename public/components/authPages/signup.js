@@ -8,6 +8,7 @@ export default class Signup extends React.Component {
     super(props);
     this.state = {};
   }
+  
   handleSubmit() {
     var user = {
       firstName: this.refs.firstNameSI.value,
@@ -16,17 +17,14 @@ export default class Signup extends React.Component {
       password: this.refs.passwordSI.value
     };
     axios.post('/signup', user).then(function(res) {
-      console.log('signup res', res.status)
       if (res.status === 200) {
-        console.log('successful signup');
         browserHistory.push('/');
       } else if (res.status === 400) {
-        // email recognized, but pw doesn't match; try again
         browserHistory.push('/signup');
       }
     });
   }
-  
+
   render() {
     return (
       <div className='signupBg'>

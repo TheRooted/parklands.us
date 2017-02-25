@@ -78,9 +78,9 @@ function(req, email, password, done) {
 
 
 passport.use('local-signin', new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password',
-    passReqToCallback : true
+  usernameField: 'email',
+  passwordField: 'password',
+  passReqToCallback : true
   },
   function(req, email, password, done) {
     process.nextTick(function() {
@@ -114,5 +114,19 @@ passport.use('local-signin', new LocalStrategy({
   }
 ));
 
+//************************************//
+//          Signout Strategy          //
+//************************************//
+
+passport.use('local-signout', new LocalStrategy({
+  usernameField: 'email',
+  passwordField: 'password',
+  passReqToCallback : true
+},
+  function(req, email, password, done) {
+    req.logout();
+    return done(null);
+  }
+));
 
 module.exports = passport;
