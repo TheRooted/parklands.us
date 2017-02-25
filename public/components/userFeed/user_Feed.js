@@ -46,8 +46,6 @@ export default class UserFeed extends React.Component {
             )
           }
         </div>
-        <div id="current-view"></div>
-        <div id="media-feed-container"></div>
       </div>
     );
   }

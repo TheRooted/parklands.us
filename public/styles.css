@@ -380,6 +380,10 @@ input[type="submit"]:hover {
         TRENDING
 ***************************/
 
+#user-feed-container {
+  display: inline-block;
+}
+
 #all-feed {
   width: 80%;
   float: left;
