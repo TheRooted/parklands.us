@@ -14,14 +14,10 @@ export default class Signin extends React.Component {
       password: this.refs.passwordSI.value
     }
     axios.post('/signin', user).then(function(res) {
-      console.log('made it back to axios!', res.status)
-
       if (res.status === 200) {
-        console.log('res.status', res.status)
-        browserHistory.push('/park/yosemite');
-
+        browserHistory.push('/');
       } else if (res.status === 400) {
-        console.log('status 400')
+        browserHistory.push('/signup');
       }
     });
   }
@@ -29,14 +25,11 @@ export default class Signin extends React.Component {
   render() {
     return (
       <div className='signinBg'>
-        <form method="post">
-          <input type="email" name="email" placeholder="Email Address" ref="emailSI" />
-          <br />
-          <input type="password" name="password" placeholder="Password" ref="passwordSI" />
-          <br />
-          <button type="submit" onClick={this.handleSubmit.bind(this)}>Sign In</button>
-
-        </form>
+        <input type="email" name="email" placeholder="Email Address" ref="emailSI" />
+        <br />
+        <input type="password" name="password" placeholder="Password" ref="passwordSI" />
+        <br />
+        <button onClick={this.handleSubmit.bind(this)}>Sign In</button>
       </div>
     )
   }

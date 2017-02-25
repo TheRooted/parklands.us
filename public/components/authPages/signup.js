@@ -16,35 +16,29 @@ export default class Signup extends React.Component {
       password: this.refs.passwordSI.value
     };
     axios.post('/signup', user).then(function(res) {
-      console.log('signup component res', res);
-      if (res.status === 204) {
-        // send to signin page
-        browserHistory.push('/signin');
-      } else if (res.status === 401) {
+      console.log('signup res', res.status)
+      if (res.status === 200) {
+        console.log('successful signup');
+        browserHistory.push('/');
+      } else if (res.status === 400) {
         // email recognized, but pw doesn't match; try again
         browserHistory.push('/signup');
-      } else if (res.status === 201) {
-        console.log('successful signup');
-        // successful signup, send to landing page
-        browserHistory.push('/');
       }
     });
   }
+  
   render() {
     return (
       <div className='signupBg'>
-        <form method="post">
-          <input className="auth-fields" type="text" name="firstName" placeholder="First Name" ref="firstNameSI" />
-          <br />
-          <input className="auth-fields" type="text" name="lastName" placeholder="Last Name" ref="lastNameSI" />
-          <br />
-          <input className="auth-fields" type="email" name="email" placeholder="Email Address" ref="emailSI" />
-          <br />
-          <input className="auth-fields" type="password" name="password" placeholder="Password" ref="passwordSI" />
-          <br />
-          <button type="submit" onClick={this.handleSubmit.bind(this)}>Sign Up</button>
-
-        </form>
+        <input className="auth-fields" type="text" name="firstName" placeholder="First Name" ref="firstNameSI" />
+        <br />
+        <input className="auth-fields" type="text" name="lastName" placeholder="Last Name" ref="lastNameSI" />
+        <br />
+        <input className="auth-fields" type="email" name="email" placeholder="Email Address" ref="emailSI" />
+        <br />
+        <input className="auth-fields" type="password" name="password" placeholder="Password" ref="passwordSI" />
+        <br />
+        <button onClick={this.handleSubmit.bind(this)}>Sign Up</button>
       </div>
     )
   }

@@ -9,10 +9,12 @@ var bcrypt = require('bcrypt');
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
+
 passport.deserializeUser(function(id, done) {
-  db.models.user.findById({ where: { id: id } })
+  db.models.user.findOne({ where: { id: id } })
   .then(function(user) {
-    done(null, user);
+    console.log('deser user', user.dataValues)
+    done(null, user.dataValues);
   });
 });
 
@@ -29,7 +31,6 @@ passport.use('local-signup', new LocalStrategy({
   passReqToCallback : true
 },
 function(req, email, password, done) {
-
   var first = req.body.firstName;
   var last = req.body.lastName;
 
@@ -52,7 +53,7 @@ function(req, email, password, done) {
         // Hash password and save account
         bcrypt.hash(password, saltRounds, function(err, hash) {
           if (err) {
-            return done(null, false, { message: 'We messed up! Please try again.'});
+            return done(err);
           } else {
             db.models.user.create({
               firstName: first,
@@ -62,6 +63,7 @@ function(req, email, password, done) {
             })
             // Create session
             .then(function(user) {
+              console.log('all good!');
               return done(null, user.dataValues, req);
             });
           }
@@ -90,22 +92,18 @@ passport.use('local-signin', new LocalStrategy({
         if (err) { 
           return done(err); 
         }
-
         // Email entered incorrectly or user is not registered
         if (user === null || !user.dataValues.email) {
           return done(null, false, { message: 'Incorrect email.' });
         }
-
         // Compared password supplied with db password for selected user
         bcrypt.compare(password, user.dataValues.password, function(err, comparison) {
           if (err) {
-            return done(null, false, { message: 'We messed up! Please try again.'});
+            return done(err);
           }
-
           // Alert incorrect password
           if (comparison === false) {
             return done(null, false, { message: 'Incorrect password.' });
-
           // Email registered and password matches
           } else {
             console.log('Found you!')
