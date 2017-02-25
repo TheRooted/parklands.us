@@ -302,3 +302,19 @@ input[type="submit"]:hover {
   margin-right:15px;
   float: right;
 }
+
+
+#social-media-feed {
+  width: 20%;
+  float: right;
+}
+
+
+/**************************
+    All users feed
+***************************/
+
+#all-feed {
+  width: 80%;
+  float: left;
+}
