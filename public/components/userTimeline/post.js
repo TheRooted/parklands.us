@@ -7,7 +7,7 @@ export default class Post extends React.Component {
     super(props);
     this.state = {
       comment: '',
-      vote: 0,
+      like: 0,
       image: null
     };
   }
