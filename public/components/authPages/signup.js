@@ -14,9 +14,9 @@ export default class Signup extends React.Component {
       lastName: this.refs.lastNameSI.value,
       email: this.refs.emailSI.value,
       password: this.refs.passwordSI.value
-    }
+    };
     axios.post('/signup', user).then(function(res) {
-      console.log('signup component res', res)
+      console.log('signup component res', res);
       if (res.status === 204) {
         // send to signin page
         browserHistory.push('/signin');
@@ -28,7 +28,7 @@ export default class Signup extends React.Component {
         // successful signup, send to landing page
         browserHistory.push('/');
       }
-    })
+    });
   }
   render() {
     return (
