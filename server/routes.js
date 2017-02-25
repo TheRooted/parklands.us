@@ -34,6 +34,11 @@ router.get('/api/userTimeline', controller.userTimeline.get);
 
 router.post('/api/userTimeline', controller.userTimeline.post);
 
+
+// Routes for user user feed
 router.get('/api/userfeed', controller.userfeed.get);
+
+// Routes for post comment
+router.get('/api/postcomment', controller.postcomment.get);
 
 module.exports = router;
