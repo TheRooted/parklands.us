@@ -157,7 +157,7 @@ body {
 .burger-button {
   position: absolute;
   right: 60px;
-  top: 20px;
+  top: 24px;
   height: 22px;
   width: 35px;
   cursor: pointer;
@@ -194,7 +194,7 @@ input::-webkit-calendar-picker-indicator {
   padding-right: 60px;
   width: 0px;
   position: absolute;
-  top: 0;
+  top: 10px;
   right: 50px;
   background: none;
   z-index: 3;

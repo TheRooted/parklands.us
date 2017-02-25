@@ -36,7 +36,9 @@ class Nav extends React.Component {
           parkList={this.state.parkList}
         />
         <BurgerBar />
-        <Link to='/' style={{textDecoration: 'none', color: 'black'}}>Parklands</Link>
+        <span className="title-container">
+          <Link to='/' style={{textDecoration: 'none', color: 'black'}}>Parklands</Link>
+        </span>
      </div>
     )
   }
