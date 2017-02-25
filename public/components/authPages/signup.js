@@ -34,14 +34,13 @@ export default class Signup extends React.Component {
     return (
       <div className='signupBg'>
         <form method="post">
-          <h5>Sign Up</h5>
-          <input type="text" name="firstName" placeholder="First Name" ref="firstNameSI" />
+          <input className="auth-fields" type="text" name="firstName" placeholder="First Name" ref="firstNameSI" />
           <br />
-          <input type="text" name="lastName" placeholder="Last Name" ref="lastNameSI" />
+          <input className="auth-fields" type="text" name="lastName" placeholder="Last Name" ref="lastNameSI" />
           <br />
-          <input type="email" name="email" placeholder="Email Address" ref="emailSI" />
+          <input className="auth-fields" type="email" name="email" placeholder="Email Address" ref="emailSI" />
           <br />
-          <input type="password" name="password" placeholder="Password" ref="passwordSI" />
+          <input className="auth-fields" type="password" name="password" placeholder="Password" ref="passwordSI" />
           <br />
           <button type="submit" onClick={this.handleSubmit.bind(this)}>Sign Up</button>
 
