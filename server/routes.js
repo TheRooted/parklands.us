@@ -9,12 +9,6 @@ router.post('/signup', passport.authenticate('local-signup', { successRedirect: 
 
 router.post('/signin', passport.authenticate('local-signin', { successRedirect: '/', failureRedirect: '/signin', failureFlash: true }));
 
-// router.post('/signout', function(req, res) {
-//   console.log('res', res)
-//   req.logout();
-//   res.send();
-// });
-
 router.post('/signout', passport.authenticate('local-signout', { successRedirect: '/signin', failureRedirect: '/' }));
 
 
