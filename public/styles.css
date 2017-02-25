@@ -1,9 +1,13 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
 
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+}
 
 #app {
-/* stop overlfow*/
-overflow-x:hidden;
+  overflow-x:hidden;
 }
 
 /*---------------------------------------------
@@ -90,10 +94,18 @@ overflow-x:hidden;
     NAVIGATION
 *******************/
 .navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 40px;
+  width: 100%;
   padding: 12px;
-  font-size: 20px;
+  padding-left: 40px;
+  background-color: #f7f7f7;
+  font-size: 25px;
   font-family: "Lato";
-  border: 2px solid black;
+  text-align: center;
+  border: none;
   z-index: 1px;
 }
 
