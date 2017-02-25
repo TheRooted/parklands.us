@@ -4,12 +4,15 @@ var router = require('express').Router();
 var util = require('./util');
 
 // Routes for signup, signin, and signout
-router.post('/signup', controller.signup.post);
+// router.post('/signup', controller.signup.post);
+router.post('/signup', passport.authenticate('local-signup', {successRedirect: '/', failureRedirect: '/signin', failureFlash: true}));
 
-router.post('/signin', function(req, res, next) {
-  passport.authenticate('local');
-  res.send();
-});
+// router.post('/signin', controller.signin.post);
+// router.post('/signin', passport.authenticate('local', function(msg, user, req) {
+//   req.res.send();
+// }));
+
+router.post('/signin', passport.authenticate('local-signin', {successRedirect: '/', failureRedirect: '/signin', failureFlash: true}));
 
 router.post('/signout', controller.signout.post);
 
