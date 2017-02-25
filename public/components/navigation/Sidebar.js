@@ -25,15 +25,24 @@ class Sidebar extends React.Component {
 
   render() {
     return (
-      <div className='sidebarContainer'>
+      <div className="sidebarContainer">
         <img src='https://www.newfangled.com/wp-content/uploads/2014/08/stuffcontentmgrfiles2ac67e44c30a21635f8a9d498f832bc1cmisc_resized80_313_257_hamenu.png' 
           className="burger-button" onClick={this.props.toggleSidebar} />
         <div className={this.sidebarAddClass()}>
-          <div className="sidebarContent">Username_here</div>
-          <Link to='userTimeline' className="sidebarContent">Timeline</Link>
-          <div className="sidebarContent">Feed</div>
-          <div className="sidebarContent">Donate</div>
-          <Link to='signout' className="sidebarContent" onClick={this.handleSubmit.bind(this)}>Sign Out</Link>
+          <div className="sidebar-links">
+            <div className="sidebar-content">
+              <Link to="userfeed" className="homelink">Home</Link>
+            </div>
+            <div className="sidebar-content">
+              <Link to="usertimeline" className="profilelink">Profile</Link>
+            </div>
+            <div className="sidebar-content">
+              <Link className="donatelink">Donate</Link>
+            </div>
+            <div className="sidebar-content">
+              <Link to="signout" className="signoutlink" onClick={this.handleSubmit.bind(this)}>Sign Out</Link>
+            </div>
+          </div>
         </div>
       </div>
     );
