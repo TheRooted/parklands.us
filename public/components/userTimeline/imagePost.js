@@ -63,33 +63,35 @@ export default class ImageUpload extends Component {
       console.log('UPLOAD Complete', JSON.stringify(resp.body));
       const uploaded = resp.body;
 
+      //post user submitted photo url to database (post table)
+      console.log('this.state.file is == ', this.state.file);
+      axios.post('/api/userTimeline', {
+        type: 'photo',
+        filePath: resp.body.secure_url,
+        userId: 1,
+        parkId: 1
+      })
+      .then(function (resp) {
+        console.log('succesfull url saved ---', resp);
+      })
+      .catch(function (error) {
+        console.error('error saving to post table--- ', error);
+      });
+
       let updatedImages = Object.assign([], uploaded);
 
 
       this.setState({
         images: updatedImages
       }, function (){
-          this.setState({list: this.state.images});
-          console.log(this.state.list);
+        this.setState({list: this.state.images});
+        console.log(this.state.list);
       });
     });
 
     console.log('handle uploading-', this.state.file);
     console.log('description is - ', this.state.description);
 
-    //post user submitted photo url to database (post table)
-    axios.post('/api/userTimeline', {
-      type: 'photo',
-      filePath: this.state.file,
-      userId: 1,
-      parkId: 1
-    })
-    .then(function (resp) {
-      console.log('succesfull url saved ---', resp);
-    })
-    .catch(function (error) {
-      console.error('error saving to post table--- ', error);
-    });
 
   }
 
@@ -104,7 +106,6 @@ export default class ImageUpload extends Component {
         file: file,
         imagePreviewUrl: reader.result
       });
-
     };
 
     reader.readAsDataURL(file);
