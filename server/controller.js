@@ -139,5 +139,15 @@ module.exports = {
         res.send(userPost);
       });
     }
+  },
+
+  postcomment: {
+    get: function (req, res) {
+      db.models.postcomment.findAll({})
+      .then(function (comment) {
+        console.log('comment is ...', comment);
+        res.send(comment);
+      });
+    }
   }
 };
