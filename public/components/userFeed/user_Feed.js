@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import SocialMediaFeed from './socialMediaFeed.js';
-import ParklandsUserFeed from './parklandsUsersFeed.js';
+// import ParklandsUserFeed from './parklandsUserFeed.js';
 import Post from './../userTimeline/post.js';
 
 export default class UserFeed extends React.Component {
