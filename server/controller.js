@@ -213,5 +213,15 @@ module.exports = {
         }
       });
     }
+  },
+
+  userfeed : {
+    get: function (req, res) {
+      db.models.post.findAll({})
+      .then(function (userPost) {
+        console.log('all user post are ', userPost);
+        res.send(userPost);
+      });
+    }
   }
 };
