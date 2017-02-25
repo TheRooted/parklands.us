@@ -8,7 +8,7 @@ router.post('/signup', controller.signup.post);
 
 router.post('/signin', function(req, res, next) {
   passport.authenticate('local');
-  res.send().end();
+  res.send();
 });
 
 router.post('/signout', controller.signout.post);
