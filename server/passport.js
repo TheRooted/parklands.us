@@ -4,7 +4,6 @@ var db = require('../db/schema');
 var bcrypt = require('bcrypt');
 
 
-
 // Serialize and deserialize user
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -96,7 +95,7 @@ passport.use('local-signin', new LocalStrategy({
         if (user === null || !user.dataValues.email) {
           return done(null, false, { message: 'Incorrect email.' });
         }
-        // Compared password supplied with db password for selected user
+        // Compare password supplied with db password for selected user
         bcrypt.compare(password, user.dataValues.password, function(err, comparison) {
           if (err) {
             return done(err);
