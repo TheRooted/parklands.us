@@ -5,6 +5,7 @@ body {
   height: 100vh;
   width: 100vw;
   background: none;
+  font-family: "Lato", Arial, sans-serif;
 }
 
 #app {
@@ -101,14 +102,13 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  height: 40px;
-  width: 96vw;
+  height: 6vh;
+  width: 100vw;
   padding: 12px;
   padding-left: 40px;
   background-color: #fff;
   border-bottom: 2px solid #f9f9f9;
   font-size: 25px;
-  font-family: "Lato";
   z-index: 100;
 }
 
@@ -125,9 +125,9 @@ body {
 .sidebar {
   position: relative;
   float: right;
-  padding-top: 30px;
-  top: 55px;
-  right: -340px;
+/*  padding-top: 30px;
+  top: 55px;*/
+  right: -420px;
   height: 100vh;
   width: 250px;
   transition: right .3s ease-in-out;
@@ -246,10 +246,6 @@ input[type="submit"]:hover {
                 User ImageUpload
 ----------------------------------------------*/
 
-/*h3 {
-  margin-left: 15px;
-}
-*/
 .fileInput {
   border-bottom: 4px solid lightgray;
   border-right: 4px solid lightgray;
@@ -329,33 +325,58 @@ input[type="submit"]:hover {
 }
 
 .auth-container {
+  display: block;
   position: relative;
-  top: 200px;
-  left: 30vw;
+  margin: auto;
+  top: 65%;
+  width: 340px;
 }
 
 .auth-fields {
-  height: 30px;
-  width: 400px;
+  height: 25px;
+  width: 300px;
   padding: 10px 0px 10px 20px;
-  margin: 10px;
+  margin: 8px;
   font-size: 17px;
   border: none;
   border-radius: 4px;
 }
 
 .btn-auth {
+  display: inline-block;
+  margin: 10px;
   position: relative;
-  left: 175px;
   height: 30px;
   width: 80px;
   padding: 5px;
-  margin: 10px;
   font-size: 14px;
   border: none;
   border-radius: 4px;
+  background-color: #f1f1f1;
   color: #555;
   opacity: .8;
+}
+
+.btn-auth:hover {
+  background-color: #f1f1f1;
+  color: #555;
+  opacity: 1;
+}
+
+.signup-link,
+.signin-link {
+  position: inline-block;
+  text-align: right;
+  text-decoration: none;
+  font-size: 14px;
+  color: #f1f1f1;
+  opacity: .8;
+}
+
+.signup-link:hover,
+.signin-link:hover {
+  color: #fff;
+  opacity: 1;
 }
 
 
@@ -363,7 +384,7 @@ input[type="submit"]:hover {
     SOCIAL MEDIA FEED
 ***************************/
 
-.allNewsFeed {
+/*.allNewsFeed {
   margin-top: -45px;
   margin-right:15px;
   float: right;
@@ -372,14 +393,14 @@ input[type="submit"]:hover {
 #social-media-feed {
   width: 20%;
   float: right;
-}
+}*/
 
 
 /**************************
     All users feed
 ***************************/
 
-#all-feed {
+/*#all-feed {
   width: 80%;
   float: left;
-}
+}*/

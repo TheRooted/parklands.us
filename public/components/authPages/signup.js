@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-//need links from react-router?
+import { Link } from 'react-router';
 
 export default class Signup extends React.Component {
   constructor(props) {
@@ -29,15 +29,12 @@ export default class Signup extends React.Component {
     return (
       <div className='signupBg'>
         <div className="auth-container">
-          <input className="auth-fields" type="text" name="firstName" placeholder="First Name" ref="firstNameSI" />
-          <br />
-          <input className="auth-fields" type="text" name="lastName" placeholder="Last Name" ref="lastNameSI" />
-          <br />
           <input className="auth-fields" type="email" name="email" placeholder="Email Address" ref="emailSI" />
           <br />
           <input className="auth-fields" type="password" name="password" placeholder="Password" ref="passwordSI" />
           <br />
           <button className="btn-auth" onClick={this.handleSubmit.bind(this)}>Sign Up</button>
+          <Link to="signin" className="signin-link">Have an account? Sign in</Link>
         </div>
       </div>
     )
