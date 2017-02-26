@@ -4,7 +4,7 @@ html,
 body {
   height: 100vh;
   width: 100vw;
-  background-color: #f1f1f1;
+  background: none;
 }
 
 #app {
@@ -109,9 +109,13 @@ body {
   border-bottom: 2px solid #f9f9f9;
   font-size: 25px;
   font-family: "Lato";
-  z-index: 100px;
+  z-index: 100;
 }
 
+.title-container {
+  position: relative;
+  top: 8px;
+}
 
 /******************
       SIDEBAR
@@ -121,13 +125,14 @@ body {
 .sidebar {
   position: relative;
   float: right;
+  padding-top: 30px;
   top: 55px;
   right: -340px;
   height: 100vh;
   width: 250px;
   transition: right .3s ease-in-out;
-  background-color: #fff;
-/*  z-index: 100;*/
+  background-color: #0f0e0d;
+  z-index: 100;
 }
 
 .sidebar.open {
@@ -139,19 +144,19 @@ body {
 
 .sidebar-content {
   position: relative;
-  font-size: 16px;
-  font-weight: 700;
-  margin: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 30px;
   z-index: 100;
 }
 
 .sidebar-content a {
   text-decoration: none;
-  color: #555;
+  color: #edefef;
 }
 
 .sidebar-content a:hover {
-  color: #000;
+  color: #fff;
 }
 
 .burger-button {
@@ -224,7 +229,7 @@ input[type="submit"] {
   border: none;
   outline: none;
   position: absolute;
-  top: 6px;
+  top: 10px;
   right: 50px;
   z-index: 2;
   cursor: pointer;
@@ -314,10 +319,9 @@ input[type="submit"]:hover {
   left: 2vw;
   right: 2vw;
   bottom: 2vh;
-  background: url('./images/Canyonlands-National-Park.jpg') no-repeat;
-  background-size: 1326px 715px;
+  background: transparent url('./images/Canyonlands-National-Park.jpg') no-repeat;
+  background-size: 1326px auto;
   z-index: 0;
-/*  z-index: -1;*/
 }
 
 .signupBg {
@@ -325,24 +329,24 @@ input[type="submit"]:hover {
 }
 
 .auth-container {
-  position: absolute;
-  top: 160px;
-  left: 26vw;
+  position: relative;
+  top: 200px;
+  left: 30vw;
 }
 
 .auth-fields {
   height: 30px;
-  width: 500px;
-  padding: 10px;
+  width: 400px;
+  padding: 10px 0px 10px 20px;
   margin: 10px;
-  font-size: 15px;
+  font-size: 17px;
   border: none;
   border-radius: 4px;
 }
 
 .btn-auth {
   position: relative;
-  left: 230px;
+  left: 175px;
   height: 30px;
   width: 80px;
   padding: 5px;
