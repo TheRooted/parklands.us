@@ -74,27 +74,6 @@ body {
 }
 
 
-/*************************
-    PARK PHOTO POST
-**************************/
-.parkphotopost {
-  width: 400px;
-  height: 400px;
-  position: relative;
-  float: left;
-}
-
-
-/*************************
-    OFFICIAL PARK PHOTO
-**************************/
-.parkphoto {
-  height: 300px;
-  width: 500px;
-  display: inline;
-}
-
-
 /******************
     NAVIGATION
 *******************/
@@ -316,7 +295,7 @@ input[type="submit"]:hover {
   left: 2vw;
   right: 2vw;
   bottom: 2vh;
-  background: transparent url('./images/Canyonlands-National-Park.jpg') no-repeat;
+  background: transparent url('./images/Canyonlands-National-Park.jpg') center no-repeat;
   background-size: 100% 100%;
   z-index: 0;
 }
@@ -334,7 +313,7 @@ input[type="submit"]:hover {
 }
 
 .auth-fields {
-  height: 20px;
+  height: 15px;
   width: 300px;
   padding: 10px 0px 10px 20px;
   margin: 8px;
@@ -385,7 +364,7 @@ input[type="submit"]:hover {
     SOCIAL MEDIA FEED
 ***************************/
 
-/*.allNewsFeed {
+.allNewsFeed {
   margin-top: -45px;
   margin-right:15px;
   float: right;
@@ -394,14 +373,45 @@ input[type="submit"]:hover {
 #social-media-feed {
   width: 20%;
   float: right;
-}*/
+}
 
 
 /**************************
-    All users feed
+        TRENDING
 ***************************/
 
-/*#all-feed {
+#all-feed {
   width: 80%;
   float: left;
-}*/
+}
+
+/**************************
+        PARK PAGE
+***************************/
+
+.snp {
+  position: relative;
+  top: 70px;
+  margin: 30px;
+}
+
+.parkPhotoContainer {
+  display: inline-block;
+}
+
+.parkphotopost,
+.official-parkphoto {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  float: left;
+  border-radius: 4px;
+  margin: 20px 20px 0 0;
+}
+
+.official-parkphoto {
+  height: 240px;
+  width: 320px;
+  float: none;
+}
+

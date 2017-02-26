@@ -116,9 +116,9 @@ export default class Snp extends React.Component {
     // }
     return (
       <div className='snp'>
-        <h1>{this.capFirstLetter(this.state.park.name)} National Park</h1>
+        <h2 className="park-title">{this.capFirstLetter(this.state.park.name)} National Park</h2>
         <ParkMap />
-        <p>{this.state.park.info}</p>
+        <section>{this.state.park.info}</section>
         {this.state.officialPhotos.map(photo => 
           <ParkPhoto photo={photo.photoUrl} />
         )} 
