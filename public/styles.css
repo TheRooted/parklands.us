@@ -320,7 +320,7 @@ input[type="submit"]:hover {
   right: 2vw;
   bottom: 2vh;
   background: transparent url('./images/Canyonlands-National-Park.jpg') no-repeat;
-  background-size: 1326px auto;
+  background-size: 100% 100%;
   z-index: 0;
 }
 

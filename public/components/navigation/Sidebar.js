@@ -31,7 +31,10 @@ class Sidebar extends React.Component {
         <div className={this.sidebarAddClass()}>
           <div className="sidebar-links">
             <div className="sidebar-content">
-              <Link to="userfeed" className="homelink">Home</Link>
+              <Link to="/" className="maplink">Mapview</Link>
+            </div>
+            <div className="sidebar-content">
+              <Link to="userfeed" className="userfeedlink">Trending</Link>
             </div>
             <div className="sidebar-content">
               <Link to="usertimeline" className="profilelink">Profile</Link>
