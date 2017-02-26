@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { browserHistory } from 'react-router';
-import { Link } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 
 
 export default class Signin extends React.Component {
@@ -32,8 +31,10 @@ export default class Signin extends React.Component {
           <br />
           <input className="auth-fields" type="password" name="password" placeholder="Password" ref="passwordSI" />
           <br />
-          <button className="btn-auth" onClick={this.handleSubmit.bind(this)}>Sign In</button>
-          <Link to="signup" className="signup-link">No account? Sign up</Link>
+          <div className="buttons">
+            <button className="btn-auth" onClick={this.handleSubmit.bind(this)}>Sign In</button>
+            <Link to="signup" className="signup-link">No account? Sign up</Link>
+          </div>
         </div>
       </div>
     )

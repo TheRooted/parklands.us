@@ -102,10 +102,9 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  height: 6vh;
+  height: 45px;
   width: 100vw;
   padding: 12px;
-  padding-left: 40px;
   background-color: #fff;
   border-bottom: 2px solid #f9f9f9;
   font-size: 25px;
@@ -114,7 +113,9 @@ body {
 
 .title-container {
   position: relative;
-  top: 8px;
+  display: inline-block;
+  vertical-align: middle;
+  left: 50px;
 }
 
 /******************
@@ -125,11 +126,11 @@ body {
 .sidebar {
   position: relative;
   float: right;
-/*  padding-top: 30px;
-  top: 55px;*/
+  padding-top: 30px;
+  top: 59px;
   right: -420px;
   height: 100vh;
-  width: 250px;
+  width: 300px;
   transition: right .3s ease-in-out;
   background-color: #0f0e0d;
   z-index: 100;
@@ -161,7 +162,7 @@ body {
 
 .burger-button {
   position: absolute;
-  right: 60px;
+  right: 110px;
   top: 24px;
   height: 22px;
   width: 35px;
@@ -200,7 +201,7 @@ input::-webkit-calendar-picker-indicator {
   width: 0px;
   position: absolute;
   top: 10px;
-  right: 50px;
+  right: 100px;
   background: none;
   z-index: 3;
   transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
@@ -230,7 +231,7 @@ input[type="submit"] {
   outline: none;
   position: absolute;
   top: 10px;
-  right: 50px;
+  right: 100px;
   z-index: 2;
   cursor: pointer;
   opacity: 0.4;
@@ -333,11 +334,11 @@ input[type="submit"]:hover {
 }
 
 .auth-fields {
-  height: 25px;
+  height: 20px;
   width: 300px;
   padding: 10px 0px 10px 20px;
   margin: 8px;
-  font-size: 17px;
+  font-size: 15px;
   border: none;
   border-radius: 4px;
 }
@@ -346,10 +347,10 @@ input[type="submit"]:hover {
   display: inline-block;
   margin: 10px;
   position: relative;
-  height: 30px;
+  height: 25px;
   width: 80px;
   padding: 5px;
-  font-size: 14px;
+  font-size: 12px;
   border: none;
   border-radius: 4px;
   background-color: #f1f1f1;
