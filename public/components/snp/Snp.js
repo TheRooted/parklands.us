@@ -5,6 +5,9 @@ import {browserHistory} from 'react-router'
 import Parkcomment from './Parkcomment.js'
 import ParkPhoto from './ParkPhoto.js'
 import ParkMap from './ParkMap.js'
+import { Timeline } from 'react-twitter-widgets'
+
+
 
 export default class Snp extends React.Component {
   constructor(props) {
@@ -15,14 +18,20 @@ export default class Snp extends React.Component {
         id: false,
         name: 'null',
         info: 'null',
+        twitterHandle: 'jackie'
       },
       view: 'Photos',
       photos: [],
       comments: [],
       // alerts: [],
-      officialPhotos: []
+      officialPhotos: [],
+      photoIndex: 0
     }
 
+  }
+
+  componentWillMount() {
+    this.setState({count: 0});
   }
 
   componentWillReceiveProps(nextProps) {
@@ -60,14 +69,18 @@ export default class Snp extends React.Component {
           id: false,
           name: 'blue',
           info: 'not a park!',
+          twitterHandle: 'notvalidtwitterHandle'
         }})
       }
     }).then(function(){
       if (context.state.park.id) {
         axios.get('/api/parkPhoto/' + context.state.park.id).then(function(res) {
           if (res.data) {
-            context.setState({officialPhotos: res.data});
-
+            let photoUrls = [];
+            for (var i = 0; i < res.data.length; i++) {
+              photoUrls.push(res.data[i].photoUrl);
+            }
+            context.setState({officialPhotos: photoUrls});
           }
         })
         axios.get('/api/parkPhotoPost/' + context.state.park.id).then(function(res) {
@@ -91,6 +104,18 @@ export default class Snp extends React.Component {
     })
   }
 
+  movePrevLightbox () {
+    this.setState({
+      photoIndex: (this.state.photoIndex + this.state.officialPhotos.length - 1) % this.state.officialPhotos.length
+    })
+  }
+
+  moveNextLightbox() {
+    this.setState({
+      photoIndex: (this.state.photoIndex + 1) % this.state.officialPhotos.length
+    })
+  }
+
   render() {
     var context = this;
     // if (this.state.park.name === 'null') {
@@ -108,20 +133,25 @@ export default class Snp extends React.Component {
         return (context.state.comments.map(comment =>
           <Parkcomment userEmail={comment.userEmail} text={comment.text} key={key++}/>))
       }
-    } 
-    // else if (this.state.view === 'Alerts') {
-    //   var mediaView = function () {
-    //     return(<h1>{context.state.alerts[0]}</h1>)
-    //   }
-    // }
+    }
+
     return (
       <div className='snp'>
         <h2 className="park-title">{this.capFirstLetter(this.state.park.name)} National Park</h2>
         <ParkMap />
         <section>{this.state.park.info}</section>
-        {this.state.officialPhotos.map(photo => 
-          <ParkPhoto photo={photo.photoUrl} />
-        )} 
+        {/*  <div className='npsFeed'>
+            <a className="twitter-timeline" href="https://twitter.com/hashtag/National-Park" data-widget-id="835621044677296128">#National-Park Tweets</a>
+          </div>
+        */}
+        <p>{this.state.park.info}</p>
+        {this.state.officialPhotos.map((photo, i) =>
+          <ParkPhoto photo={photo}
+            index={i}
+            parkName={this.capFirstLetter(this.state.park.name)}
+            photoIndex={this.state.photoIndex}
+            allPhotos={this.state.officialPhotos} />
+        )}
         <button onClick={this.changeViewToPhotos.bind(this)}>Photos</button>
         <button onClick={this.changeViewToReviews.bind(this)}>Reviews</button>
         {/*<button onClick={this.changeViewToAlerts.bind(this)}>Alerts</button>*/}
