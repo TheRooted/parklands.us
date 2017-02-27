@@ -16,10 +16,40 @@ body {
                 Landing Page
 ----------------------------------------------*/
 
+.landing-div {    
+  margin: 30px;   
+ }   
+      
+.grid {   
+  position: relative;   
+  display: inline-flex;   
+  margin-top: 20px;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: space-between;   
+}   
+      
+.gridElement {    
+  position: relative;   
+  display: inline-block;    
+  margin: 20px;   
+  cursor: pointer;    
+}   
+      
 .gridElement img {
+  position: relative;   
+  display: inline-block;    
   width: 150px;
   height: 100px;
+  border-radius: 4px;   
   cursor: pointer;
+} 
+        
+.gridElement h5 {   
+    width: 150px;   
+    text-overflow: ellipsis;    
+    white-space: nowrap;    
+    overflow: hidden;   
 }
 
 
@@ -27,12 +57,13 @@ body {
                 User Timeline
 ----------------------------------------------*/
 
-/*#userTimeLinePageContainer {
-  margin:0;
-  padding:0;
-  height:100%;
+#userTimeLinePageContainer {
+  position: relative;
+  top: 60px;
+  margin: 400px;
+  margin-top: 20px;
 }
-*/
+
 #user-feed-container {
   display: block;
   position: relative;
@@ -42,15 +73,31 @@ body {
 .timelinePhotoFeed {
   width: 800px;
   height: 600px;
-  border-color: #eee;
+  border-radius: 4px;
   border-radius: 7px;
 }
 
+.likeContainer {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 10px;
+}
+
 .likeTimeline {
+  position: relative;   
+  display: inline-block;
   width: 120px;
   height: 50px;
-  border-color: #eee;
-  border-radius: 6px;
+  border-radius: 4px;
+}
+
+.commentTimeline { 
+  position: relative;
+  display: inline-block;
+  width: 535px;
+  height: 35px;
+  border-radius: 4px;
 }
 
 .commentTimeline {
@@ -82,6 +129,7 @@ body {
 /******************
     NAVIGATION
 *******************/
+
 .navigation {
   position: fixed;
   top: 0;
@@ -113,13 +161,14 @@ body {
   position: relative;
   float: right;
   padding-top: 30px;
-  top: 59px;
+  top: 54px;
   right: -420px;
   height: 100vh;
   width: 300px;
   transition: right .3s ease-in-out;
   background-color: #0f0e0d;
   z-index: 100;
+
 }
 
 .sidebar.open {
@@ -263,20 +312,30 @@ input[type="submit"]:hover {
   margin-top: 20px;
 }
 
+.commentline {   
+  position: relative;   
+  margin-top: 10px;   
+  margin-bottom: 20px;    
+}
+
 .submitButton {
-  display: inline-block;
-  padding: 12px 18px;
+  position: absolute;
+  display: inline;
+  height: 35px;
+  height: 35px;   
+  margin-left: 10px;    
+  padding: 5px 18px;    
   font-size: 12px;
   margin-left: 8px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   outline: none;
-  color: #fff;
-  background-color: #0087eb;
+  color: #555;
+  background-color: #cecece;
   border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
+  border-radius: 6px;
+  text-decoration: none;
 }
 
 .submitButton:hover {
@@ -321,7 +380,7 @@ input[type="submit"]:hover {
 .auth-fields {
   height: 15px;
   width: 300px;
-  padding: 10px 0px 10px 20px;
+  padding: 20px 0px 20px 20px;
   margin: 8px;
   font-size: 15px;
   border: none;
@@ -332,7 +391,7 @@ input[type="submit"]:hover {
   display: inline-block;
   margin: 10px;
   position: relative;
-  height: 25px;
+  height: 30px;
   width: 80px;
   padding: 5px;
   font-size: 12px;
@@ -374,11 +433,15 @@ input[type="submit"]:hover {
   margin-top: -45px;
   margin-right:15px;
   float: right;
+  height: 100vh
 }
 
 #social-media-feed {
+  position: fixed;    
+  top: 135px;   
+  right: 30px;    
   width: 20%;
-  float: right;
+  height: 100vh;
 }
 
 
@@ -388,12 +451,36 @@ input[type="submit"]:hover {
 
 #user-feed-container {
   display: inline-block;
+  width: 100%;    
+  margin: 30px;
 }
 
 #all-feed {
-  width: 80%;
-  float: left;
+  position: relative;
+  display: block;
+  margin: 400px;    
+  margin-top: 0;
 }
+
+.comment-box {   
+  position: relative;   
+  display: block;   
+  margin-bottom: 40px;    
+  width: 800px;   
+  border: 1px solid #fff;   
+  background-color: #f3f3f3;    
+}   
+   
+.comment-container {    
+  position: relative;   
+  padding: 10px;    
+  border: 2px solid #fff;   
+}   
+   
+.commentHR {    
+  color: #f1f1f1;   
+}
+
 
 /**************************
         PARK PAGE
@@ -422,11 +509,6 @@ input[type="submit"]:hover {
   margin: 20px 0 20px 0;
 }
 
-.official-parkphoto {
-  height: 253px;
-  width: 345px;
-}
-
 .photo-link,
 .review-link,
 .vertical-bar {
@@ -436,6 +518,11 @@ input[type="submit"]:hover {
   border: none;
   color: #555;
   font-size: 20px;
+}
+
+.photo-link:focus,
+.review-link:focus {
+  outline: none;
 }
 
 .official-photo-container,
@@ -461,9 +548,52 @@ input[type="submit"]:hover {
   width: 600px;
   background-color: #eee;
   margin: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 20px;
 }
 
+.official-parkphoto:hover {
+  opacity: 0.7;
+}
+
+
+/**************************   
+          PROFILE   
+***************************/    
+   
+.timeline-post-container {    
+  margin-top: 20px;
+}   
+   
+.photo-input {    
+  position: relative;   
+  margin-left: 10px;    
+  height: 44px;   
+}   
+   
+.photoButton {    
+  position: relative;
+}
+
+.photoButton:hover {    
+  background-color: #f1f1f1;
+}  
+   
+   
+/**************************   
+      PARK NOT FOUND  
+***************************/    
+   
+#notapark {   
+ position: relative;   
+ display: block;   
+ top: 60px;    
+ margin: 30px;   
+}   
+   
+#notapark img {   
+ height: auto;   
+ width: 100%;    
+}   
+  
 
 

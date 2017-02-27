@@ -22,6 +22,8 @@ export default class Mapp extends React.Component {
     });
 
     map.on('load', function() {
+      // query database
+      // get locations 
 
       // Add a layer showing the places.
       map.addLayer({
@@ -53,27 +55,27 @@ export default class Mapp extends React.Component {
 
     // Create a popup, but don't add it to the map yet.
     var popup = new mapboxgl.Popup({
-        closeButton: false,
-        closeOnClick: false
+      closeButton: false,
+      closeOnClick: false
     });
 
     map.on('mousemove', function(e) {
-        var features = map.queryRenderedFeatures(e.point, { layers: ['parks'] });
-        // Change the cursor style as a UI indicator.
-        map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+      var features = map.queryRenderedFeatures(e.point, { layers: ['parks'] });
+      // Change the cursor style as a UI indicator.
+      map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 
-        if (!features.length) {
-            popup.remove();
-            return;
-        }
+      if (!features.length) {
+          popup.remove();
+          return;
+      }
 
-        var feature = features[0];
+      var feature = features[0];
 
-        // Populate the popup and set its coordinates
-        // based on the feature found.
-        popup.setLngLat(feature.geometry.coordinates)
-            .setHTML(feature.properties.description)
-            .addTo(map);
+      // Populate the popup and set its coordinates
+      // based on the feature found.
+      popup.setLngLat(feature.geometry.coordinates)
+          .setHTML(feature.properties.description)
+          .addTo(map);
     });
   }
 
