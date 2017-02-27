@@ -30,6 +30,7 @@
   "dependencies": {
     "axios": "latest",
     "bcrypt": "latest",
+    "bluebird": "latest",
     "body-parser": "latest",
     "cheerio": "latest",
     "express": "latest",
