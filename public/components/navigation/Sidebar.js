@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
 import axios from 'axios';
-import { browserHistory } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -31,19 +30,19 @@ class Sidebar extends React.Component {
         <div className={this.sidebarAddClass()}>
           <div className="sidebar-links">
             <div className="sidebar-content">
-              <Link to="/" className="maplink">Mapview</Link>
+              <Link to="/" className="maplink" onClick={this.props.toggleSidebar}>Mapview</Link>
             </div>
             <div className="sidebar-content">
-              <Link to="userfeed" className="userfeedlink">Trending</Link>
+              <Link to="userfeed" className="userfeedlink" onClick={this.props.toggleSidebar}>Trending</Link>
             </div>
             <div className="sidebar-content">
-              <Link to="usertimeline" className="profilelink">Profile</Link>
+              <Link to="usertimeline" className="profilelink" onClick={this.props.toggleSidebar}>Profile</Link>
             </div>
             <div className="sidebar-content">
-              <Link className="donatelink">Donate</Link>
+              <Link className="donatelink" onClick={this.props.toggleSidebar}>Donate</Link>
             </div>
             <div className="sidebar-content">
-              <Link to="signout" className="signoutlink" onClick={this.handleSubmit.bind(this)}>Sign Out</Link>
+              <Link to="signout" className="signoutlink" onClick={this.props.toggleSidebar}>Sign Out</Link>
             </div>
           </div>
         </div>

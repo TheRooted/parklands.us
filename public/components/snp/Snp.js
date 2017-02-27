@@ -139,23 +139,28 @@ export default class Snp extends React.Component {
       <div className='snp'>
         <h2 className="park-title">{this.capFirstLetter(this.state.park.name)} National Park</h2>
         <ParkMap />
-        <section>{this.state.park.info}</section>
-        {/*  <div className='npsFeed'>
-            <a className="twitter-timeline" href="https://twitter.com/hashtag/National-Park" data-widget-id="835621044677296128">#National-Park Tweets</a>
-          </div>
-        */}
-        <p>{this.state.park.info}</p>
-        {this.state.officialPhotos.map((photo, i) =>
-          <ParkPhoto photo={photo}
-            index={i}
-            parkName={this.capFirstLetter(this.state.park.name)}
-            photoIndex={this.state.photoIndex}
-            allPhotos={this.state.officialPhotos} />
-        )}
-        <button onClick={this.changeViewToPhotos.bind(this)}>Photos</button>
-        <button onClick={this.changeViewToReviews.bind(this)}>Reviews</button>
-        {/*<button onClick={this.changeViewToAlerts.bind(this)}>Alerts</button>*/}
-        {mediaView()}
+        <section className="park-info">{this.state.park.info}</section>
+        <hr/>
+      {/* if this doesn't work, remove the div wrapper */}
+        <div className="official-photo-container">
+          {this.state.officialPhotos.map((photo, i) =>
+            <ParkPhoto photo={photo}
+              index={i}
+              parkName={this.capFirstLetter(this.state.park.name)}
+              photoIndex={this.state.photoIndex}
+              allPhotos={this.state.officialPhotos} />
+          )}
+        </div>
+        <hr/>
+        <div className="snp-navlinks">
+          <button className="photo-link" onClick={this.changeViewToPhotos.bind(this)}>Photos</button>
+          <span className="vertical-bar">|</span>
+          <button className="review-link" onClick={this.changeViewToReviews.bind(this)}>Reviews</button>
+          {/*<button onClick={this.changeViewToAlerts.bind(this)}>Alerts</button>*/}
+        </div>
+        <div className="mediaview-container">
+          {mediaView()}
+        </div>
       </div>
     )
   }

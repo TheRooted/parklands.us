@@ -9,7 +9,7 @@ body {
 }
 
 #app {
-  overflow-x:hidden;
+  overflow: hidden;
 }
 
 /*---------------------------------------------
@@ -183,7 +183,7 @@ input::-webkit-calendar-picker-indicator {
   right: 100px;
   background: none;
   z-index: 3;
-  transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
+  transition: width .6s cubic-bezier(0.000, 0.795, 0.000, 1.000);
   cursor: pointer;
 }
 
@@ -214,7 +214,7 @@ input[type="submit"] {
   z-index: 2;
   cursor: pointer;
   opacity: 0.4;
-  transition: opacity .4s ease;
+  transition: opacity .6s ease;
 }
 
 input[type="submit"]:hover {
@@ -399,6 +399,11 @@ input[type="submit"]:hover {
   margin: 30px;
 }
 
+.park-info {
+  margin-bottom: 20px
+}
+
+
 .parkPhotoContainer {
   display: inline-block;
 }
@@ -408,14 +413,52 @@ input[type="submit"]:hover {
   width: 300px;
   height: 300px;
   position: relative;
-  float: left;
-  border-radius: 4px;
-  margin: 20px 20px 0 0;
+  border-radius: 3px;
+  margin: 20px 5px 20px 5px;
 }
 
 .official-parkphoto {
   height: 240px;
   width: 320px;
-  float: none;
 }
+
+.photo-link,
+.review-link,
+.vertical-bar {
+  height: 30px;
+  width: 100px;
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 20px;
+}
+
+.official-photo-container {
+  position: relative;
+/*  display: flex;
+  justify-content: space-around;*/
+}
+
+.official-photo-container:first-child {
+  margin-left: 0;
+  left: 0;
+}
+
+.official-photo-container:last-child {
+  margin-right: 0;
+  right: 0;
+}
+
+.snp-navlinks {
+  display: block;
+  position: relative;
+  text-align: center;
+  margin: 20px;
+}
+
+.mediaview-container {
+
+}
+
+
 
