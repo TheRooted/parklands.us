@@ -4,32 +4,48 @@ import axios from 'axios';
 
 export default class Mapp extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+
+    this.state = {}
   }
 
   componentDidMount() {
+    var context = this;
 
     axios.get('/api/parklocations')
     .then(function (res) {
+      var features = [];
       var data = res.data;
       
       for (var i = 1; i < data.length - 1; i++) {
         var name = '';
-        var coordinates = [-data[i].long, data[i].lat];
+        var coordinates = [data[i].long, data[i].lat];
         var splitName = data[i].name.split(/[–\s]/);
 
         for (var j = 0; j < splitName.length; j++) {
-          // each word is splitName[j]
           name += splitName[j][0].toUpperCase() + splitName[j].slice(1) + ' ';
         }
-        console.log('results = ', name, coordinates);
+        
+        features.push({
+            "type": "Feature",
+            "properties": {
+              "description": name,
+              "icon": "star"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": coordinates
+          }
+        });
       }
+      // console.log('features', features);
+      context.setState({locationData: features})
+      context.createMap();
     });
-
-    this.createMap();
   }
 
   stringScript() {
+    var context = this;
     var text = mapboxgl.accessToken = 'pk.eyJ1Ijoic3Blc2NoZWxsayIsImEiOiJjaXo4bXB2cG8wMHA2MnZxbzNneHlicnZyIn0.K9hcDggIDFrtjjVS8LOXdA';
 
     var map = new mapboxgl.Map({
@@ -50,17 +66,18 @@ export default class Mapp extends React.Component {
           "type": "geojson",
           "data": {
             "type": "FeatureCollection",
-            "features": [{
-              "type": "Feature",
-              "properties": {
-                "description": "Yosemite National Park",
-                "icon": "star"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [-119.5383, 37.8651]
-            }
-            }]
+            "features": context.state.locationData
+            // "features": [{
+            //   "type": "Feature",
+            //   "properties": {
+            //     "description": "Yosemite National Park",
+            //     "icon": "star"
+            // },
+            // "geometry": {
+            //   "type": "Point",
+            //   "coordinates": [-119.5383, 37.8651]
+            // }
+            // }]
           }
         },
         "layout": {

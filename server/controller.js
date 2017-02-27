@@ -77,7 +77,6 @@ module.exports = {
     get: function(req, res) {
       db.models.park.findAll({})
       .then(function(parks) {
-        console.log('parks', parks)
         res.send(parks);
       });
     }

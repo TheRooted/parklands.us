@@ -66,10 +66,10 @@ sequelize
       type: Sequelize.TEXT
     },
     long: {
-      type: Sequelize.INTEGER
+      type: Sequelize.REAL
     },
     lat: {
-      type: Sequelize.INTEGER
+      type: Sequelize.REAL
     },
   });
 
