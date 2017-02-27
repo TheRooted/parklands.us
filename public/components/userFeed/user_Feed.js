@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import SocialMediaFeed from './socialMediaFeed.js';
+import { Timeline } from 'react-twitter-widgets';
 // import ParklandsUserFeed from './parklandsUserFeed.js';
 import Post from './../userTimeline/post.js';
 
@@ -29,7 +30,18 @@ export default class UserFeed extends React.Component {
       <div id="user-feed-container">
         <h3>Popular Explorations</h3>
         <div id="social-media-feed">
-          <SocialMediaFeed />
+        <Timeline 
+        dataSource={{
+          sourceType: 'list',
+          ownerScreenName: 'jackieNPS',
+          slug: 'National-Parks'
+        }}
+        options={{
+          username: 'jackieNPS',
+          height: '800'
+        }}
+        onLoad={() => console.log('Timeline is loaded!')}
+        />
         </div>
         {/*<ParklandsUserFeed
           allFeed={context.state.allFeed}
