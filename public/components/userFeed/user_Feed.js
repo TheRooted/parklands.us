@@ -14,8 +14,7 @@ export default class UserFeed extends React.Component {
   }
 
   componentWillMount() {
-    const context = this;
-
+    var context = this;
     axios.get('/api/userfeed')
     .then(function (res) {
       context.setState({

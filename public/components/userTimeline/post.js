@@ -1,6 +1,6 @@
 import React from 'react';
 import Like from './like.js';
-import Comments from './../userFeed/postComment.js';
+import CommentBox from './../userFeed/postComment.js';
 
 export default class Post extends React.Component {
 
@@ -23,7 +23,7 @@ export default class Post extends React.Component {
           <Like className="likeTimeline"/>
           <textarea className="commentTimeline"></textarea>
           <button className="submitButton">Comment</button>
-          <Comments />
+          <CommentBox postId={this.props.postId} />
         </div>
       </div>
     );
