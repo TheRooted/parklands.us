@@ -16,6 +16,10 @@ body {
                 Landing Page
 ----------------------------------------------*/
 
+.landing-div {
+  margin: 30px;
+}
+
 .grid {
   position: relative;
   display: inline-flex;
