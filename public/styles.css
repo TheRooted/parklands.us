@@ -567,7 +567,8 @@ input[type="submit"]:hover {
 .photo-input {    
   position: relative;   
   margin-left: 10px;    
-  height: 44px;   
+  height: 44px;  
+  padding-left: 10px; 
 }   
    
 .photoButton {    
