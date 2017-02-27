@@ -33,16 +33,16 @@ class Sidebar extends React.Component {
               <Link to="/" className="maplink" onClick={this.props.toggleSidebar}>Mapview</Link>
             </div>
             <div className="sidebar-content">
-              <Link to="userfeed" className="userfeedlink" onClick={this.props.toggleSidebar}>Trending</Link>
+              <Link to="/userfeed" className="userfeedlink" onClick={this.props.toggleSidebar}>Trending</Link>
             </div>
             <div className="sidebar-content">
-              <Link to="usertimeline" className="profilelink" onClick={this.props.toggleSidebar}>Profile</Link>
+              <Link to="/usertimeline" className="profilelink" onClick={this.props.toggleSidebar}>Profile</Link>
             </div>
             <div className="sidebar-content">
               <Link to="/park/yosemite" className="snplink" onClick={this.props.toggleSidebar}>National Park</Link>
             </div>
             <div className="sidebar-content">
-              <Link to="signout" className="signoutlink" onClick={this.props.toggleSidebar}>Sign Out</Link>
+              <Link to="/signout" className="signoutlink" onClick={this.props.toggleSidebar}>Sign Out</Link>
             </div>
           </div>
         </div>

@@ -537,3 +537,21 @@ input[type="submit"]:hover {
 .photoButton {
   position: relative;
 }
+
+
+/**************************
+        PROFILE
+***************************/
+
+#notapark {
+  position: relative;
+  display: block;
+  top: 60px;
+  margin: 30px;
+}
+
+#notapark img {
+  height: auto;
+  width: 100%;
+}
+
