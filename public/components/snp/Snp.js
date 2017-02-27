@@ -35,7 +35,6 @@ export default class Snp extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // this.setState({url: nextProps.params.parkName});
     this.updateParkInfo(nextProps.params.parkName);
   }
 
@@ -44,7 +43,21 @@ export default class Snp extends React.Component {
   }
 
   capFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+    string = string.split(' ');
+    string.forEach(function(word, index, array) {
+      if (word !== 'of' && word !== 'the' && word !== 'and') {
+        array[index] = word.charAt(0).toUpperCase() + word.slice(1);
+      }
+    })
+    string = string.join(' ');
+    string = string.split('–');
+    string.forEach(function(word, index, array) {
+      if (word !== 'of' && word !== 'the' && word !== 'and') {
+        array[index] = word.charAt(0).toUpperCase() + word.slice(1);
+      }
+    });
+    string = string.join('–');
+    return string;
   }
 
   changeViewToPhotos() {
@@ -61,6 +74,8 @@ export default class Snp extends React.Component {
 
   updateParkInfo(parkName) {
     var context = this;
+    parkName = parkName.split(' ');
+    parkName = parkName.join('%20');
     axios.get('/api/park/' + parkName).then(function(res) {
       if (res.data) {
         context.setState({park: res.data})
@@ -118,9 +133,6 @@ export default class Snp extends React.Component {
 
   render() {
     var context = this;
-    // if (this.state.park.name === 'null') {
-    //   this.updateParkInfo(this.props.params.parkName);
-    // }
     if (this.state.view === 'Photos') {
       var key = 0;
       var mediaView = function () {

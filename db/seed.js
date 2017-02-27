@@ -75,52 +75,73 @@ request(url, function (error, response, html) {
         //if j is on the column with coords
         if (j === 5) {
           if (i === 57) {
-            //special case at 57 where
+            //special case at 57 where children divs had extra spacing divs
             coords = tableRows[i].children[j].children[7].children[0].children[0].children[2].children[0].children[0].children[0].data;
           } else if (tableRows[i].children[j].children[3].children.length === 0) {
+            //special case where child node is not correct node, but 2 nexts away
             coords = tableRows[i].children[j].children[3].next.next.children[0].children[0].children[2].children[0].children[0].children[0].data;
           } else {
+            //most cases
             coords = tableRows[i].children[j].children[3].children[0].children[0].children[2].children[0].children[0].children[0].data;
           }
+          //split the selected coords on the space
           coords = coords.split(' ');
+          //splice off the degree and hemisphere then convert to num from string
           lat = coords[0].substring(0, coords[0].length - 3);
           lat = parseInt(lat);
           long = coords[1].substring(0, coords[1].length - 3);
           long = parseInt(long);
+          long = long * -1;
           if (coords[0].includes('S')) {
+            //if lat is in southern hemisphere make num negative
             lat = lat * -1;
           }
         } else if (j === 1) {
+          //in the name column
           title = tableRows[i].children[j].children[0].attribs.title;
-          title = title.split(' National Park')[0];
+          console.log('THE THE THE title: ', title);
+          title = title.split(' National')[0];
+          if (title.length === 1) {
+            //in National Park of American Samoa, grab just the American Samoa part
+            title = title.split(' of ')[1];
+          }
           title = title.toLowerCase();
         } else if (j === 3) {
+          //in img column, need to add https: to front of src
           imgPath = 'https:' + tableRows[i].children[j].children[0].children[0].attribs.src;
         }
         if (j === 13) {
+          //in info column, build out info
           infoSnippet = '';
           for (var k = 0; k < tableRows[i].children[13].children.length; k++) {
             if (tableRows[i].children[13].children[k].data) {
+              //if curent element is text
               infoSnippet += tableRows[i].children[13].children[k].data;
             } else if (tableRows[i].children[13].children[k].children[0].data){
+              //if current element is a link with text
               infoSnippet += tableRows[i].children[13].children[k].children[0].data;
             }
           }
         }
         if (j === 5) {
+          //unnecessary columns between 6 and 12
           j = 12;
         } else {
+          //columns have useless info every other column
           j++;          
         }
       }
+      //build out park object to push into array
       park.name = title;
       park.photo = imgPath;
       park.long = long;
       park.lat = lat;
       park.info = infoSnippet;
+      //push park obj into array
       parks.push(park);
     }
     parks.forEach(function(park, index, array) {
+      //for every park in parks create a row in the park db model
       parkModels.push(db.models.park.findOrCreate({
         where: {
           name: park.name,

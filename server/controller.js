@@ -29,6 +29,10 @@ module.exports = {
     get: function(req, res) {
       var name = req.url.split('/');
       name = name[name.length-1];
+      name = name.split('%20');
+      name = name.join(' ');
+      name = name.split('%E2%80%93');
+      name = name.join('–');
       db.models.park.findOne({
         where: {name: name}
       }).then(function(park) {

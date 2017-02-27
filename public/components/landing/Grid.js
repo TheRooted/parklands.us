@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 var GridElement = require('./GridElement');
 import { browserHistory } from 'react-router';
-
+import sort from './../sort.js';
 
 export default class Grid extends React.Component {
 
@@ -17,6 +17,7 @@ export default class Grid extends React.Component {
     var context = this;
     axios.get('/api/grid').then(function(res) {
       if (res.data) {
+        res.data = sort(res.data, 'alphabetically');
         context.setState({parks: res.data});
       }
     });
