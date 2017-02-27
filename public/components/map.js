@@ -65,8 +65,8 @@ export default class Mapp extends React.Component {
       map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 
       if (!features.length) {
-          popup.remove();
-          return;
+        popup.remove();
+        return;
       }
 
       var feature = features[0];
@@ -74,8 +74,8 @@ export default class Mapp extends React.Component {
       // Populate the popup and set its coordinates
       // based on the feature found.
       popup.setLngLat(feature.geometry.coordinates)
-          .setHTML(feature.properties.description)
-          .addTo(map);
+        .setHTML(feature.properties.description)
+        .addTo(map);
     });
   }
 
