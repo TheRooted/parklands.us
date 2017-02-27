@@ -15,16 +15,12 @@ export default class Post extends React.Component {
 
   render () {
     return (
-      <div id="userTimeLineContainer">
-        <div id="timeLineFeedContainer">
-
-          <h3>{this.props.datePosted}</h3>
-          <img className="timelinePhotoFeed" src={this.props.photoData} />
-          <Like className="likeTimeline"/>
-          <textarea className="commentTimeline"></textarea>
-          <button className="submitButton">Comment</button>
-          <CommentBox postId={this.props.postId} />
-        </div>
+      <div className="post-container">
+        <h5>{this.props.datePosted}</h5>
+        <img className="timelinePhotoFeed" src={this.props.photoData} />
+        <Like className="likeTimeline"/>
+        <textarea className="commentTimeline"></textarea>
+        <button className="submitButton">Comment</button>
       </div>
     );
   }

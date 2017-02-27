@@ -40,37 +40,25 @@ body {
 }
 
 .timelinePhotoFeed {
-  width: 800px;
-  height: 600px;
-  border-color: #eee;
-  border-radius: 7px;
+  width: 320px;
+  height: 240px;
+  border-radius: 4px;
 }
 
 .likeTimeline {
   width: 120px;
   height: 50px;
-  border-color: #eee;
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
 .commentTimeline {
   width: 300px;
   height: 50px;
-  border-color: #009;
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
-/*#sideBarContainer {
-  position: relative;
-  z-index: 100;
-  width: 15%;
-  float: left;
-  background-color: #eee;
-}*/
-
-#userTimeLineContainer {
-  width: 85%;
-  float: right;
+.post-container {
+  width: 320px
 }
 
 .previewComponent {
@@ -418,11 +406,6 @@ input[type="submit"]:hover {
   position: relative;
   border-radius: 3px;
   margin: 20px 0 20px 0;
-}
-
-.official-parkphoto {
-  height: 253px;
-  width: 345px;
 }
 
 .photo-link,
