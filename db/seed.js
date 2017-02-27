@@ -144,7 +144,7 @@ request(url, function (error, response, html) {
               Seed Posts with Yosemite pics
       ----------------------------------------------*/
       var url = 'https://twitter.com/YosemiteNPS/media';
-      var numPicsToPull = 12;
+      var numPicsToPull = 10;
       var userId = 1;
       var type;
       var notPhotoCount = 0;
