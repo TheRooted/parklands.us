@@ -161,6 +161,7 @@ export default class Snp extends React.Component {
         <div className="mediaview-container">
           {mediaView()}
         </div>
+        <div className="buffer-div"></div>
       </div>
     )
   }
