@@ -56,15 +56,21 @@ sequelize
       type: Sequelize.INTEGER,
       defaultValue: 0
     },
+    hero: {
+      type: Sequelize.STRING
+    },
     photo: {
       type: Sequelize.STRING
     },
     info: {
       type: Sequelize.TEXT
     },
-    // alertUrl: {
-    //   type: Sequelize.STRING
-    // }
+    long: {
+      type: Sequelize.INTEGER
+    },
+    lat: {
+      type: Sequelize.INTEGER
+    },
   });
 
   var PostComments = sequelize.define('postcomment', {
