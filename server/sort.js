@@ -6,12 +6,24 @@ var sort = function (arr, criteria) {
     case 'activity':
       arr = sortByActivity(arr);
       return arr;
+    case 'alphabetically':
+      arr = sortAlphabetically(arr);
+      return arr;
     default:
       arr = sortByLikes(arr);
       return arr;
   }
 };
 
+var sortAlphabetically = function (arr) {
+  return arr.sort(function (a, b) {
+    for (var i = 0; i < a.name.length; i++) {
+      if (a.name[i] !== b.name[i]) {
+        return a.name.charCodeAt(i) - b.name.charCodeAt(i);
+      }
+    }
+  });
+};
 
 var sortByLikes = function (arr) {
   return arr.sort(function (a, b) {
@@ -80,3 +92,19 @@ console.log(sort([
   voteCount: 3,
   updatedAt: '2017-02-27T04:17:08.033Z'
   }], 'activity'))
+console.log(sort([
+  {
+  name: 'bname',
+  voteCount: 5,
+  updatedAt: '2017-02-27T04:17:06.033Z'
+  },
+  {
+  name: 'fname',
+  voteCount: 1,
+  updatedAt: '2017-02-27T04:17:07.033Z'
+  },
+  {
+  name: 'ayellowstone',
+  voteCount: 3,
+  updatedAt: '2017-02-27T04:17:08.033Z'
+  }], 'alphabetically'))
