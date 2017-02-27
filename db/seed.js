@@ -75,6 +75,7 @@ request(url, function (error, response, html) {
         //if j is on the column with coords
         if (j === 5) {
           if (i === 57) {
+            //special case at 57 where
             coords = tableRows[i].children[j].children[7].children[0].children[0].children[2].children[0].children[0].children[0].data;
           } else if (tableRows[i].children[j].children[3].children.length === 0) {
             coords = tableRows[i].children[j].children[3].next.next.children[0].children[0].children[2].children[0].children[0].children[0].data;
@@ -100,16 +101,11 @@ request(url, function (error, response, html) {
           infoSnippet = '';
           for (var k = 0; k < tableRows[i].children[13].children.length; k++) {
             if (tableRows[i].children[13].children[k].data) {
-              // console.log('element data: ', tableRows[i].children[13].children[k].data);
               infoSnippet += tableRows[i].children[13].children[k].data;
             } else if (tableRows[i].children[13].children[k].children[0].data){
-              // console.log('element with one child deep data: ', tableRows[i].children[13].children[k].children[0].data)
               infoSnippet += tableRows[i].children[13].children[k].children[0].data;
-            } else {
-              //not an element with string
             }
           }
-          // console.log('infoSnippet: ', infoSnippet);
         }
         if (j === 5) {
           j = 12;
@@ -122,13 +118,9 @@ request(url, function (error, response, html) {
       park.long = long;
       park.lat = lat;
       park.info = infoSnippet;
-      console.log('park: ', park);
       parks.push(park);
     }
     parks.forEach(function(park, index, array) {
-      console.log('index: ', index);
-      console.log('park in foreach: ', park);
-      console.log('array at index: ', array[index]);
       parkModels.push(db.models.park.findOrCreate({
         where: {
           name: park.name,
@@ -230,7 +222,7 @@ request(url, function (error, response, html) {
           });
           db.models.parkcomment.findOrCreate({
             where: {
-              text: 'nature eh! Incredible',
+              text: 'Nature, eh? Incredible!',
               userEmail: 'kaychristensen@gmail.com',
               parkId: results.dataValues.id,
             }
