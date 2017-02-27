@@ -21,8 +21,13 @@ export default class UserFeed extends React.Component {
       context.setState({
         allFeed: res.data
       });
-      console.log('res from userFeed is ', context.state.allFeed);
+      // console.log('res from userFeed is ', context.state.allFeed);
     });
+  }
+
+  convertDate(date) {
+    var converted = new Date(date).toString();
+    return converted.slice(4, 10) + ', ' + converted.slice(11, 16);
   }
 
   render () {
@@ -52,7 +57,7 @@ export default class UserFeed extends React.Component {
               <Post
                 key={feed.id}
                 photoData={feed.filePath}
-                datePosted={feed.createdAt}
+                datePosted={this.convertDate(feed.createdAt)}
               />
             )
           }
