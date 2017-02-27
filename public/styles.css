@@ -198,7 +198,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 #search:focus {
-  width: 150px;
+  width: 200px;
   z-index: 1;
   border-bottom: 1px solid #BBB;
   cursor: text;
