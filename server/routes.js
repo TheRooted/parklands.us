@@ -42,7 +42,7 @@ router.get('/api/userfeed', controller.userfeed.get);
 router.get('/api/postcomment', controller.postcomment.get);
 
 // Routes for map
-router.get('/api/locations', controller.locations.get);
+router.get('/api/parklocations', controller.parklocations.get);
 
 
 module.exports = router;

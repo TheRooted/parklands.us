@@ -60,7 +60,6 @@ module.exports = {
     }
   },
 
-
   parkComment: {
     get: function(req, res) {
       var id = req.url.split('/');
@@ -70,6 +69,16 @@ module.exports = {
         where: {parkId: id}
       }).then(function(comments) {
         res.send(comments);
+      });
+    }
+  },
+
+  parklocations: {
+    get: function(req, res) {
+      db.models.park.findAll({})
+      .then(function(parks) {
+        console.log('parks', parks)
+        res.send(parks);
       });
     }
   },

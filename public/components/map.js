@@ -1,5 +1,6 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
+import axios from 'axios';
 
 export default class Mapp extends React.Component {
   constructor(props) {
@@ -7,15 +8,25 @@ export default class Mapp extends React.Component {
   }
 
   componentDidMount() {
-    this.createMap();
-  }
 
-  componentWillMount() {
-    const context = this;
     axios.get('/api/parklocations')
     .then(function (res) {
-      console.log('locations res is', res)
+      var data = res.data;
+      
+      for (var i = 1; i < data.length - 1; i++) {
+        var name = '';
+        var coordinates = [-data[i].long, data[i].lat];
+        var splitName = data[i].name.split(/[–\s]/);
+
+        for (var j = 0; j < splitName.length; j++) {
+          // each word is splitName[j]
+          name += splitName[j][0].toUpperCase() + splitName[j].slice(1) + ' ';
+        }
+        console.log('results = ', name, coordinates);
+      }
     });
+
+    this.createMap();
   }
 
   stringScript() {
@@ -30,8 +41,6 @@ export default class Mapp extends React.Component {
     });
 
     map.on('load', function() {
-      // query database
-      // get locations 
 
       // Add a layer showing the places.
       map.addLayer({
