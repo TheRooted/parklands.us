@@ -397,8 +397,10 @@ input[type="submit"]:hover {
 }
 
 #all-feed {
-/*  width: 80%;
-  float: left;*/
+  position: relative;
+  display: block;
+  margin: 400px;
+  margin-top: 0;
 }
 
 .comment-box {
@@ -406,13 +408,14 @@ input[type="submit"]:hover {
   display: block;
   margin-bottom: 40px;
   width: 800px;
-  border: 1px solid #f5f5f5;
+  border: 1px solid #fff;
+  background-color: #f3f3f3;
 }
 
 .comment-container {
   position: relative;
   padding: 10px;
-  border: 1px solid #f5f5f5;
+  border: 2px solid #fff;
 }
 
 .commentHR {

@@ -33,7 +33,6 @@ export default class UserFeed extends React.Component {
   render () {
     return (
       <div id="user-feed-container">
-        <h3>Popular Explorations</h3>
         <div id="social-media-feed">
         <Timeline 
         dataSource={{
