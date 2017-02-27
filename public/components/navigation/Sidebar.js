@@ -39,7 +39,7 @@ class Sidebar extends React.Component {
               <Link to="usertimeline" className="profilelink" onClick={this.props.toggleSidebar}>Profile</Link>
             </div>
             <div className="sidebar-content">
-              <Link className="donatelink" onClick={this.props.toggleSidebar}>Donate</Link>
+              <Link to="/park/yosemite" className="snplink" onClick={this.props.toggleSidebar}>National Park</Link>
             </div>
             <div className="sidebar-content">
               <Link to="signout" className="signoutlink" onClick={this.props.toggleSidebar}>Sign Out</Link>
