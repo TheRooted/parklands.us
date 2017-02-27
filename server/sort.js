@@ -21,10 +21,10 @@ var sortByLikes = function (arr) {
 
 var sortByActivity = function (arr) {
   return arr.sort(function(a, b) {
-    var aUpdatedArray = a.updatedAt.split(' ');
+    var aUpdatedArray = a.updatedAt.split('T');
     var aUpdatedDate = aUpdatedArray[0];
     var aUpdatedTime = aUpdatedArray[1];
-    var bUpdatedArray = b.updatedAt.split(' ');
+    var bUpdatedArray = b.updatedAt.split('T');
     var bUpdatedDate = bUpdatedArray[0];
     var bUpdatedTime = bUpdatedArray[1];
 
@@ -45,8 +45,8 @@ var sortByActivity = function (arr) {
         return bUpdatedTime[i] - aUpdatedTime[i];
       }
     }
-    aUpdatedTime = aUpdatedTime[2].split('-');
-    bUpdatedTime = bUpdatedTime[2].split('-');
+    aUpdatedTime = aUpdatedTime[2].split('Z');
+    bUpdatedTime = bUpdatedTime[2].split('Z');
     return bUpdatedTime[0] - aUpdatedTime[0];
 
 
@@ -70,13 +70,13 @@ console.log(sort([
 console.log(sort([
   {
   voteCount: 5,
-  updatedAt: '2017-02-23 14:36:19.795-08'
+  updatedAt: '2017-02-27T04:17:06.033Z'
   },
   {
   voteCount: 1,
-  updatedAt: '2017-02-23 14:36:18.305-08'
+  updatedAt: '2017-02-27T04:17:07.033Z'
   },
   {
   voteCount: 3,
-  updatedAt: '2017-02-23 14:36:21.305-08'
+  updatedAt: '2017-02-27T04:17:08.033Z'
   }], 'activity'))
