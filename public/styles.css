@@ -27,12 +27,12 @@ body {
                 User Timeline
 ----------------------------------------------*/
 
-/*#userTimeLinePageContainer {
+#userTimeLinePageContainer {
   margin:0;
   padding:0;
   height:100%;
 }
-*/
+
 
 #user-feed-container {
   display: block;
@@ -59,7 +59,7 @@ body {
 }
 
 .post-container {
-  width: 320px
+/*  width: 320px*/
 }
 
 .previewComponent {

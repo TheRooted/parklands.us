@@ -21,6 +21,7 @@ export default class Post extends React.Component {
         <Like className="likeTimeline"/>
         <textarea className="commentTimeline"></textarea>
         <button className="submitButton">Comment</button>
+        <CommentBox postId={this.props.postId} />
       </div>
     );
   }
