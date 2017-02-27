@@ -31,20 +31,18 @@ export default class UserTimeline extends React.Component {
   render() {
     return (
       <div id="userTimeLinePageContainer">
-        <div>
-          <ImageUpload className="imagePost" />
-          <div>
-            {
-              this.state.userActivity.map(post =>
-                <Post
-                  photoData={post.filePath}
-                  datePosted={post.createdAt}
-                  key={post.id}
-                  postId={post.id}
-                />
-              )
-            }
-          </div>
+        <ImageUpload className="imagePost" />
+        <div className="timeline-post-container">
+          {
+            this.state.userActivity.map(post =>
+              <Post
+                photoData={post.filePath}
+                datePosted={post.createdAt}
+                key={post.id}
+                postId={post.id}
+              />
+            )
+          }
         </div>
       </div>
     );

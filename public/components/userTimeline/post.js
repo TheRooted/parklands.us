@@ -13,10 +13,15 @@ export default class Post extends React.Component {
     };
   }
 
+  convertDate(date) {
+    var converted = new Date(date).toString();
+    return converted.slice(4, 10) + ', ' + converted.slice(11, 16);
+  }
+
   render () {
     return (
       <div className="post-container">
-        <h5>{this.props.datePosted}</h5>
+        <h5>{this.convertDate(this.props.datePosted)}</h5>
         <img className="timelinePhotoFeed" src={this.props.photoData} />
         <div className="commentline">
           <Like className="likeTimeline"/>

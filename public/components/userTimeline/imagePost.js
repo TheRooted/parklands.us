@@ -134,25 +134,27 @@ export default class ImageUpload extends Component {
     console.log("LIST", this.state.list);
     return (
       <div className="previewComponent">
-        <form onSubmit={(e)=>this._handleSubmit(e)}>
-          <input
-            className="fileInput"
-            type="file"
-            onChange={(e)=>this._handleImageChange(e)}
-          />
-          <label>
-            Description:
+        <form className="preview-form" onSubmit={(e)=>this._handleSubmit(e)}>
+          <div className="photo-fields">
             <input
-              type="text"
-              value={this.state.description}
-              onChange={this._handleInputChange}
+              className="fileInput"
+              type="file"
+              onChange={(e)=>this._handleImageChange(e)}
             />
-          </label>
-          <button
-            className="submitButton"
-            type="submit"
-            onClick={(e)=>this._handleSubmit(e)}>Post Status
-          </button>
+            <label>
+              Description:
+              <input className="photo-input"
+                type="text"
+                value={this.state.description}
+                onChange={this._handleInputChange}
+              />
+            </label>
+            <button
+              className="submitButton photoButton"
+              type="submit"
+              onClick={(e)=>this._handleSubmit(e)}>Post Status
+            </button>
+          </div>
         </form>
         <div className="imgPreview">
           {$imagePreview}

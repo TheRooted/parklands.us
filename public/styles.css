@@ -58,9 +58,10 @@ body {
 ----------------------------------------------*/
 
 #userTimeLinePageContainer {
-  margin:0;
-  padding:0;
-  height:100%;
+  position: relative;
+  top: 60px;
+  margin: 400px;
+  margin-top: 20px;
 }
 
 
@@ -518,3 +519,21 @@ input[type="submit"]:hover {
 }
 
 
+/**************************
+        PROFILE
+***************************/
+
+.timeline-post-container {
+  margin-top: 20px;
+
+}
+
+.photo-input {
+  position: relative;
+  margin-left: 10px;
+  height: 44px;
+}
+
+.photoButton {
+  position: relative;
+}
