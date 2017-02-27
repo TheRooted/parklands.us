@@ -16,10 +16,36 @@ body {
                 Landing Page
 ----------------------------------------------*/
 
+.grid {
+  position: relative;
+  display: inline-flex;
+  margin-top: 20px;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.gridElement {
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+  cursor: pointer;
+}
+
 .gridElement img {
+  position: relative;
+  display: inline-block;
   width: 150px;
   height: 100px;
+  border-radius: 4px;
   cursor: pointer;
+}
+
+.gridElement h5 {
+  width: 150px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 
@@ -78,6 +104,7 @@ body {
 /******************
     NAVIGATION
 *******************/
+
 .navigation {
   position: fixed;
   top: 0;
@@ -485,6 +512,5 @@ input[type="submit"]:hover {
   margin: 20px;
   padding: 20px;
 }
-
 
 

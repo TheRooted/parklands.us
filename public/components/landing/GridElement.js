@@ -12,8 +12,6 @@ var GridElement = (props) => {
       <img src={props.parkPhoto} 
         onClick={() => (props.linkToPage(props.parkName))}
       />
-      <h5>{props.parkRating}</h5>
-      {/*Rating currently represented as a number, and unable to rate*/}
     </div>
   )
 
