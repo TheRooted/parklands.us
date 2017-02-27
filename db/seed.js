@@ -99,7 +99,6 @@ request(url, function (error, response, html) {
         } else if (j === 1) {
           //in the name column
           title = tableRows[i].children[j].children[0].attribs.title;
-          console.log('THE THE THE title: ', title);
           title = title.split(' National')[0];
           if (title.length === 1) {
             //in National Park of American Samoa, grab just the American Samoa part
