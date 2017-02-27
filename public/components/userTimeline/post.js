@@ -18,9 +18,11 @@ export default class Post extends React.Component {
       <div className="post-container">
         <h5>{this.props.datePosted}</h5>
         <img className="timelinePhotoFeed" src={this.props.photoData} />
-        <Like className="likeTimeline"/>
-        <textarea className="commentTimeline"></textarea>
-        <button className="submitButton">Comment</button>
+        <div className="commentline">
+          <Like className="likeTimeline"/>
+          <textarea className="commentTimeline"></textarea>
+          <button className="submitButton">Comment</button>
+        </div>
         <CommentBox postId={this.props.postId} />
       </div>
     );

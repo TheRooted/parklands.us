@@ -14,8 +14,7 @@ export default class Comment extends Component {
   render () {
     return (
       <div className="comment-container">
-        <article>{this.props.text}</article>
-        <small>{this.props.userId}</small>
+        <p>{this.props.text}</p>
       </div>
     );
   }

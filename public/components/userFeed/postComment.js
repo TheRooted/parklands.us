@@ -27,9 +27,7 @@ export default class CommentBox extends Component {
     const comments = this._getComments();
     return (
       <div className="comment-box">
-        <div>
-          {comments}
-        </div>
+        {comments}
       </div>
     );
   }
