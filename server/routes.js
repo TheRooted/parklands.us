@@ -41,4 +41,9 @@ router.get('/api/userfeed', controller.userfeed.get);
 // Routes for post comment
 router.get('/api/postcomment', controller.postcomment.get);
 
+// Routes for map
+router.get('/api/locations', controller.locations.get);
+
+
 module.exports = router;
+

@@ -10,6 +10,14 @@ export default class Mapp extends React.Component {
     this.createMap();
   }
 
+  componentWillMount() {
+    const context = this;
+    axios.get('/api/parklocations')
+    .then(function (res) {
+      console.log('locations res is', res)
+    });
+  }
+
   stringScript() {
     var text = mapboxgl.accessToken = 'pk.eyJ1Ijoic3Blc2NoZWxsayIsImEiOiJjaXo4bXB2cG8wMHA2MnZxbzNneHlicnZyIn0.K9hcDggIDFrtjjVS8LOXdA';
 
