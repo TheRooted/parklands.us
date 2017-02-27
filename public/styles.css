@@ -16,40 +16,10 @@ body {
                 Landing Page
 ----------------------------------------------*/
 
-.landing-div {
-  margin: 30px;
-}
-
-.grid {
-  position: relative;
-  display: inline-flex;
-  margin-top: 20px;
-  flex-direction: row-reverse;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.gridElement {
-  position: relative;
-  display: inline-block;
-  margin: 20px;
-  cursor: pointer;
-}
-
 .gridElement img {
-  position: relative;
-  display: inline-block;
   width: 150px;
   height: 100px;
-  border-radius: 4px;
   cursor: pointer;
-}
-
-.gridElement h5 {
-  width: 150px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 
@@ -57,14 +27,12 @@ body {
                 User Timeline
 ----------------------------------------------*/
 
-#userTimeLinePageContainer {
-  position: relative;
-  top: 60px;
-  margin: 400px;
-  margin-top: 20px;
+/*#userTimeLinePageContainer {
+  margin:0;
+  padding:0;
+  height:100%;
 }
-
-
+*/
 #user-feed-container {
   display: block;
   position: relative;
@@ -74,30 +42,35 @@ body {
 .timelinePhotoFeed {
   width: 800px;
   height: 600px;
-  border-radius: 4px;
+  border-color: #eee;
+  border-radius: 7px;
 }
 
 .likeTimeline {
-  position: relative;
-  display: inline-block;
   width: 120px;
   height: 50px;
-  border-radius: 4px;
-}
-
-.likeContainer {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-  margin-right: 10px;
+  border-color: #eee;
+  border-radius: 6px;
 }
 
 .commentTimeline {
+  width: 300px;
+  height: 50px;
+  border-color: #009;
+  border-radius: 6px;
+}
+
+/*#sideBarContainer {
   position: relative;
-  display: inline-block;
-  width: 535px;
-  height: 35px;
-  border-radius: 4px;
+  z-index: 100;
+  width: 15%;
+  float: left;
+  background-color: #eee;
+}*/
+
+#userTimeLineContainer {
+  width: 85%;
+  float: right;
 }
 
 .previewComponent {
@@ -109,7 +82,6 @@ body {
 /******************
     NAVIGATION
 *******************/
-
 .navigation {
   position: fixed;
   top: 0;
@@ -128,6 +100,8 @@ body {
   display: inline-block;
   vertical-align: middle;
   left: 50px;
+  height: 40px;
+  padding-top: 12px;
 }
 
 
@@ -139,7 +113,7 @@ body {
   position: relative;
   float: right;
   padding-top: 30px;
-  top: 53px;
+  top: 59px;
   right: -420px;
   height: 100vh;
   width: 300px;
@@ -289,35 +263,29 @@ input[type="submit"]:hover {
   margin-top: 20px;
 }
 
-.commentline {
-  position: relative;
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-
 .submitButton {
-  position: absolute;
-  display: inline;
-  height: 35px;
-  margin-left: 10px;
-  padding: 5px 18px;
+  display: inline-block;
+  padding: 12px 18px;
   font-size: 12px;
+  margin-left: 8px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   outline: none;
-  color: #555;
-  background-color: #cecece;
+  color: #fff;
+  background-color: #0087eb;
   border: none;
-  border-radius: 6px;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
 }
 
 .submitButton:hover {
-  background-color: #f3f3f3;
+  background-color: #0cf;
 }
 
 .submitButton:active {
   background-color: #3e8e41;
+  box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
 
@@ -406,15 +374,11 @@ input[type="submit"]:hover {
   margin-top: -45px;
   margin-right:15px;
   float: right;
-  height: 100vh;
 }
 
 #social-media-feed {
-  position: fixed;
-  top: 135px;
-  right: 30px;
   width: 20%;
-  height: 100vh;
+  float: right;
 }
 
 
@@ -424,34 +388,11 @@ input[type="submit"]:hover {
 
 #user-feed-container {
   display: inline-block;
-  width: 100%;
-  margin: 30px;
 }
 
 #all-feed {
-  position: relative;
-  display: block;
-  margin: 400px;
-  margin-top: 0;
-}
-
-.comment-box {
-  position: relative;
-  display: block;
-  margin-bottom: 40px;
-  width: 800px;
-  border: 1px solid #fff;
-  background-color: #f3f3f3;
-}
-
-.comment-container {
-  position: relative;
-  padding: 10px;
-  border: 2px solid #fff;
-}
-
-.commentHR {
-  color: #f1f1f1;
+  width: 80%;
+  float: left;
 }
 
 /**************************
@@ -479,6 +420,11 @@ input[type="submit"]:hover {
   position: relative;
   border-radius: 3px;
   margin: 20px 0 20px 0;
+}
+
+.official-parkphoto {
+  height: 253px;
+  width: 345px;
 }
 
 .photo-link,
@@ -515,43 +461,9 @@ input[type="submit"]:hover {
   width: 600px;
   background-color: #eee;
   margin: 20px;
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 
-/**************************
-        PROFILE
-***************************/
-
-.timeline-post-container {
-  margin-top: 20px;
-
-}
-
-.photo-input {
-  position: relative;
-  margin-left: 10px;
-  height: 44px;
-}
-
-.photoButton {
-  position: relative;
-}
-
-
-/**************************
-        PROFILE
-***************************/
-
-#notapark {
-  position: relative;
-  display: block;
-  top: 60px;
-  margin: 30px;
-}
-
-#notapark img {
-  height: auto;
-  width: 100%;
-}
 
