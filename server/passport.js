@@ -124,9 +124,27 @@ passport.use('local-signout', new LocalStrategy({
   passReqToCallback : true
 },
   function(req, email, password, done) {
+    console.log('actually in signout');
     req.logout();
     return done(null);
   }
 ));
 
+//************************************//
+//          Signout Strategy          //
+//************************************//
+
+passport.use('local-session', new LocalStrategy({
+  usernameField: 'email',
+  passwordField: 'password',
+  passReqToCallback : true
+},
+  function(req, email, password, done) {
+    req.logout();
+    return done(null);
+  }
+));
+
+
 module.exports = passport;
+

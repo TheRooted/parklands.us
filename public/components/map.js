@@ -38,7 +38,6 @@ export default class Mapp extends React.Component {
           }
         });
       }
-      // console.log('features', features);
       context.setState({locationData: features})
       context.createMap();
     });
@@ -75,17 +74,6 @@ export default class Mapp extends React.Component {
           "data": {
             "type": "FeatureCollection",
             "features": context.state.locationData
-            // "features": [{
-            //   "type": "Feature",
-            //   "properties": {
-            //     "description": "Yosemite National Park",
-            //     "icon": "star"
-            // },
-            // "geometry": {
-            //   "type": "Point",
-            //   "coordinates": [-119.5383, 37.8651]
-            // }
-            // }]
           }
         },
         "layout": {
@@ -120,8 +108,6 @@ export default class Mapp extends React.Component {
         .addTo(map);
     });
   }
-
-  // function to find coordinates of park
 
   createMap() {
     var map = window.document.getElementById('map');
