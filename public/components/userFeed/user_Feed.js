@@ -10,7 +10,7 @@ export default class UserFeed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allFeed: []
+      allFeed: [],
     };
   }
 
@@ -34,7 +34,7 @@ export default class UserFeed extends React.Component {
     return (
       <div id="user-feed-container">
         <div id="social-media-feed">
-        <Timeline 
+        <Timeline
         dataSource={{
           sourceType: 'list',
           ownerScreenName: 'jackieNPS',
@@ -57,6 +57,7 @@ export default class UserFeed extends React.Component {
                 key={feed.id}
                 photoData={feed.filePath}
                 datePosted={this.convertDate(feed.createdAt)}
+                postId={feed.id}
               />
             )
           }
