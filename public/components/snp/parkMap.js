@@ -4,56 +4,41 @@ import axios from 'axios';
 
 export default class ParkMap extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.state = {}
+    this.state = {
+      name: null,
+      long: null,
+      lat: null
+    }
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('nextprops', nextProps.park)
-    var context = this;
+    var name = '';
+    var splitName = nextProps.park.name.split(/[–\s]/);
 
-    axios.post('/api/parklocations', { name: nextProps.park })
-    .then(function (res) {
-      console.log('res', res)
-      var features = [];
-      var name = '';
-     
-      var coordinates = [res.data.long, res.data.lat];
-      var splitName = res.data.name.split(/[–\s]/);
-
-      for (var i = 0; i < splitName.length; i++) {
-        name += splitName[i][0].toUpperCase() + splitName[i].slice(1) + ' ';
-      }
-
-      console.log('name', name, 'coordinates', coordinates)
-
-      features.push({
-          "type": "Feature",
-          "properties": {
-            "description": name,
-            "icon": "star"
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": coordinates
-        }
-      });
-      // console.log('features', features);
-      context.setState({ center: coordinates, locationData: features })
-      context.createMap();
-    });
+    for (var i = 0; i < splitName.length; i++) {
+      name += splitName[i][0].toUpperCase() + splitName[i].slice(1);
+    }
+    this.setState({ 
+      name: name,
+      long: nextProps.park.long,
+      lat: nextProps.park.lat
+    })
+    this.createMap();
   }
 
   stringScript() {
-    var context = this;
+    var name = this.state.name;
+    var long = this.state.long;
+    var lat = this.state.lat;
 
     var text = mapboxgl.accessToken = 'pk.eyJ1Ijoic3Blc2NoZWxsayIsImEiOiJjaXo4bXB2cG8wMHA2MnZxbzNneHlicnZyIn0.K9hcDggIDFrtjjVS8LOXdA';
 
     var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/satellite-streets-v10',
-      center: context.state.center,
+      center: [long, lat],
       minZoom: 6,
       maxZoom: 50
     });
@@ -68,7 +53,17 @@ export default class ParkMap extends React.Component {
           "type": "geojson",
           "data": {
             "type": "FeatureCollection",
-            "features": context.state.locationData
+            "features": [{
+              "type": "Feature",
+              "properties": {
+                "description": name,
+                "icon": "star"
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [long, lat]
+            }
+          }]
           }
         },
         "layout": {
