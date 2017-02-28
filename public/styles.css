@@ -16,40 +16,40 @@ body {
                 Landing Page
 ----------------------------------------------*/
 
-.landing-div {    
-  margin: 30px;   
- }   
-      
-.grid {   
-  position: relative;   
-  display: inline-flex;   
+.landing-div {
+  margin: 30px;
+ }
+
+.grid {
+  position: relative;
+  display: inline-flex;
   margin-top: 20px;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;   
-}   
-      
-.gridElement {    
-  position: relative;   
-  display: inline-block;    
-  margin: 20px;   
-  cursor: pointer;    
-}   
-      
+  justify-content: space-between;
+}
+
+.gridElement {
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+  cursor: pointer;
+}
+
 .gridElement img {
-  position: relative;   
-  display: inline-block;    
+  position: relative;
+  display: inline-block;
   width: 150px;
   height: 100px;
-  border-radius: 4px;   
+  border-radius: 4px;
   cursor: pointer;
-} 
-        
-.gridElement h5 {   
-    width: 150px;   
-    text-overflow: ellipsis;    
-    white-space: nowrap;    
-    overflow: hidden;   
+}
+
+.gridElement h5 {
+    width: 150px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 
@@ -84,14 +84,14 @@ body {
 }
 
 .likeTimeline {
-  position: relative;   
+  position: relative;
   display: inline-block;
   width: 120px;
   height: 50px;
   border-radius: 4px;
 }
 
-.commentTimeline { 
+.commentTimeline {
   position: relative;
   display: inline-block;
   width: 535px;
@@ -216,13 +216,14 @@ body {
   padding: 10px;
 }
 
-input::-webkit-calendar-picker-indicator {
+/*input::-webkit-calendar-picker-indicator {
   display: none;
-}
+}*/
 
 #search {
+  margin-right: 5px;
   height: 20px;
-  font-size: 17px;
+  font-size: 18px;
   display: inline-block;
   font-family: "Lato";
   font-weight: 100;
@@ -233,7 +234,7 @@ input::-webkit-calendar-picker-indicator {
   padding-right: 60px;
   width: 0px;
   position: absolute;
-  top: 10px;
+  top: 17px;
   right: 100px;
   background: none;
   z-index: 3;
@@ -246,7 +247,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 #search:focus {
-  width: 200px;
+  width: 250px;
   z-index: 1;
   border-bottom: 1px solid #BBB;
   cursor: text;
@@ -254,11 +255,11 @@ input::-webkit-calendar-picker-indicator {
 
 input[type="submit"] {
   height: 25px;
-  width: 20px;
+  width: 25px;
   display: inline-block;
   float: right;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADNQTFRFU1NT9fX1lJSUXl5e1dXVfn5+c3Nz6urqv7+/tLS0iYmJqampn5+fysrK39/faWlp////Vi4ZywAAABF0Uk5T/////////////////////wAlrZliAAABLklEQVR42rSWWRbDIAhFHeOUtN3/ags1zaA4cHrKZ8JFRHwoXkwTvwGP1Qo0bYObAPwiLmbNAHBWFBZlD9j0JxflDViIObNHG/Do8PRHTJk0TezAhv7qloK0JJEBh+F8+U/hopIELOWfiZUCDOZD1RADOQKA75oq4cvVkcT+OdHnqqpQCITWAjnWVgGQUWz12lJuGwGoaWgBKzRVBcCypgUkOAoWgBX/L0CmxN40u6xwcIJ1cOzWYDffp3axsQOyvdkXiH9FKRFwPRHYZUaXMgPLeiW7QhbDRciyLXJaKheCuLbiVoqx1DVRyH26yb0hsuoOFEPsoz+BVE0MRlZNjGZcRQyHYkmMp2hBTIzdkzCTc/pLqOnBrk7/yZdAOq/q5NPBH1f7x7fGP4C3AAMAQrhzX9zhcGsAAAAASUVORK5CYII=) center center no-repeat;
-  background-size: 20px 20px;
+  background-size: 25px 25px;
   text-indent: -10000px;
   border: none;
   outline: none;
@@ -311,19 +312,19 @@ input[type="submit"]:hover {
   margin-top: 20px;
 }
 
-.commentline {   
-  position: relative;   
-  margin-top: 10px;   
-  margin-bottom: 20px;    
+.commentline {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .submitButton {
   position: absolute;
   display: inline;
   height: 35px;
-  height: 35px;   
-  margin-left: 10px;    
-  padding: 5px 18px;    
+  height: 35px;
+  margin-left: 10px;
+  padding: 5px 18px;
   font-size: 12px;
   margin-left: 8px;
   cursor: pointer;
@@ -434,14 +435,14 @@ input[type="submit"]:hover {
   margin-right: 15px;
   float: right;*/
   height: 100vh
-  top: 90px;   
+  top: 90px;
   right: 30px;
 }
 
 #social-media-feed {
-  position: fixed;    
-  top: 90px;   
-  right: 30px;    
+  position: fixed;
+  top: 90px;
+  right: 30px;
   width: 30%;
   height: 100vh;
 }
@@ -453,7 +454,7 @@ input[type="submit"]:hover {
 
 #user-feed-container {
   display: inline-block;
-  width: 100%;    
+  width: 100%;
   margin: 30px;
 }
 
@@ -464,23 +465,23 @@ input[type="submit"]:hover {
   margin-top: 0;
 }
 
-.comment-box {   
-  position: relative;   
-  display: block;   
-  margin-bottom: 40px;    
-  width: 800px;   
-  border: 1px solid #fff;   
-  background-color: #f3f3f3;    
-}   
-   
-.comment-container {    
-  position: relative;   
-  padding: 10px;    
-  border: 2px solid #fff;   
-}   
-   
-.commentHR {    
-  color: #f1f1f1;   
+.comment-box {
+  position: relative;
+  display: block;
+  margin-bottom: 40px;
+  width: 800px;
+  border: 1px solid #fff;
+  background-color: #f3f3f3;
+}
+
+.comment-container {
+  position: relative;
+  padding: 10px;
+  border: 2px solid #fff;
+}
+
+.commentHR {
+  color: #f1f1f1;
 }
 
 
@@ -558,45 +559,42 @@ input[type="submit"]:hover {
 }
 
 
-/**************************   
-          PROFILE   
-***************************/    
-   
-.timeline-post-container {    
+/**************************
+          PROFILE
+***************************/
+
+.timeline-post-container {
   margin-top: 20px;
-}   
-   
-.photo-input {    
-  position: relative;   
-  margin-left: 10px;    
-  height: 44px;  
-  padding-left: 10px; 
-}   
-   
-.photoButton {    
+}
+
+.photo-input {
+  position: relative;
+  margin-left: 10px;
+  height: 44px;
+  padding-left: 10px;
+}
+
+.photoButton {
   position: relative;
 }
 
-.photoButton:hover {    
+.photoButton:hover {
   background-color: #f1f1f1;
-}  
-   
-   
-/**************************   
-      PARK NOT FOUND  
-***************************/    
-   
-#notapark {   
- position: relative;   
- display: block;   
- top: 60px;    
- margin: 30px;   
-}   
-   
-#notapark img {   
- height: auto;   
- width: 100%;    
-}   
-  
+}
 
 
+/**************************
+      PARK NOT FOUND
+***************************/
+
+#notapark {
+ position: relative;
+ display: block;
+ top: 60px;
+ margin: 30px;
+}
+
+#notapark img {
+ height: auto;
+ width: 100%;
+}
