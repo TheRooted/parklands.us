@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Post from './post.js';
 import ImageUpload from './imagePost.js';
+import sort from './../sort.js';
 
 export default class UserTimeline extends React.Component {
 
@@ -9,17 +10,21 @@ export default class UserTimeline extends React.Component {
     super(props);
     this.state = {
       currentUser: null,
-      userActivity: []
+      userActivity: [],
     };
   }
 
   componentWillMount() {
     const context = this;
-
     axios.get('/api/userTimeline')
     .then(function (res) {
+      var sortedRes = sort(res.data, 'created');
+      var newFeed = [];
+      for (var i = 0; i < 10; i++) {
+        newFeed.push(sortedRes[i]);
+      }
       context.setState({
-        userActivity: res.data
+        userActivity: newFeed
       });
       console.log('res from getParkPhotos is ', context.state.userActivity);
     });

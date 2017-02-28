@@ -4,6 +4,7 @@ import SocialMediaFeed from './socialMediaFeed.js';
 import { Timeline } from 'react-twitter-widgets';
 // import ParklandsUserFeed from './parklandsUserFeed.js';
 import Post from './../userTimeline/post.js';
+import sort from './../sort.js';
 
 export default class UserFeed extends React.Component {
 
@@ -11,6 +12,7 @@ export default class UserFeed extends React.Component {
     super(props);
     this.state = {
       allFeed: [],
+      photoCount: 10,
     };
   }
 
@@ -18,8 +20,13 @@ export default class UserFeed extends React.Component {
     var context = this;
     axios.get('/api/userfeed')
     .then(function (res) {
+      var sortedRes = sort(res.data, 'activity');
+      var newFeed = [];
+      for (var i = 0; i < context.state.photoCount; i++) {
+        newFeed.push(res.data[i]);
+      }
       context.setState({
-        allFeed: res.data
+        allFeed: newFeed
       });
       // console.log('res from userFeed is ', context.state.allFeed);
     });
