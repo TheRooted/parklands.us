@@ -1,8 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import SocialMediaFeed from './socialMediaFeed.js';
+// import SocialMediaFeed from './socialMediaFeed.js';
 import { Timeline } from 'react-twitter-widgets';
-// import ParklandsUserFeed from './parklandsUserFeed.js';
 import Post from './../userTimeline/post.js';
 import sort from './../sort.js';
 

@@ -5,7 +5,7 @@ import {browserHistory} from 'react-router'
 import Parkcomment from './Parkcomment.js'
 import ParkPhoto from './ParkPhoto.js'
 import ParkMap from './ParkMap.js'
-import { Timeline } from 'react-twitter-widgets'
+// import { Timeline } from 'react-twitter-widgets'
 
 
 
@@ -100,7 +100,11 @@ export default class Snp extends React.Component {
         })
         axios.get('/api/parkPhotoPost/' + context.state.park.id).then(function(res) {
           if (res.data) {
-            context.setState({photos: res.data});
+            let userPhotos = [];
+            for (var i = 0; i < res.data.length; i++) {
+              userPhotos.push(res.data[i].filePath);
+            }
+            context.setState({photos: userPhotos});
           }
         })
         axios.get('/api/parkComment/' + context.state.park.id).then(function(res) {
@@ -118,26 +122,19 @@ export default class Snp extends React.Component {
       }
     })
   }
-
-  movePrevLightbox () {
-    this.setState({
-      photoIndex: (this.state.photoIndex + this.state.officialPhotos.length - 1) % this.state.officialPhotos.length
-    })
-  }
-
-  moveNextLightbox() {
-    this.setState({
-      photoIndex: (this.state.photoIndex + 1) % this.state.officialPhotos.length
-    })
-  }
-
+  
   render() {
     var context = this;
     if (this.state.view === 'Photos') {
-      var key = 0;
       var mediaView = function () {
-        return (context.state.photos.map(photo =>
-          <ParkPhotoPost photo={photo.filePath} key={key++}/>))
+        return (context.state.photos.map((photo, i) =>
+          <ParkPhotoPost photo={photo}
+            key={i}
+            index={i}
+            parkName={context.capFirstLetter(context.state.park.name)}
+            photoIndex={context.state.photoIndex}
+            userPhotos={context.state.photos}
+          />))
       }
     } else if (this.state.view === 'Reviews') {
       var key = 0;
