@@ -403,7 +403,7 @@ db.models.postcomment.findOrCreate({
 
 db.models.postcomment.findOrCreate({
   where: {
-    text: 'nature eh! Incredible',
+    text: 'Nature, eh? Incredible!',
     postId: 1,
     userId: 2
   }

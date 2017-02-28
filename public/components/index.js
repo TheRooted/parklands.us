@@ -20,6 +20,7 @@ ReactDOM.render((
       <IndexRoute component={Landing} />
       <Route path='signin' component={Signin} />
       <Route path='signup' component={Signup} />
+      <Route path='signout' component={Signin} />
       <Route path='usertimeline' component={UserTimeline} />
       <Route path='userfeed' component={UserFeed} />
       <Route path='park/:parkName' component={Snp} />
