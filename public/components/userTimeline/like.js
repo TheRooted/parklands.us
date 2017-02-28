@@ -6,7 +6,8 @@ class Like extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      likes: 0
+      likes: 0,
+      userLiked: false
     }
   }
 
@@ -14,19 +15,23 @@ class Like extends React.Component {
     var context = this;
     axios.get('/api/photoLike', {
       params: {
-        postId: context.props.postId
+        postId: context.props.postId,
+        // ** TODO: Get userID from session **
+        userId: 321
+
       }
-    }
-  ).then(function(res) {
-    context.setState({likes: res.data.voteCount})
+    })
+    .then(function(res) {
+      console.log('res from mount', res.data)
+      context.setState({
+        likes: res.data.voteCount,
+        userLiked: res.data.userLiked
+      })
     })
   }
-  //component will mount should GET likes from DB and then set
-  // this.state.likes to the response
 
   onLike () {
     var context = this;
-    // get user ID, and post ID
     var like = {
       // ** TODO: Get userID from session **
       userId: 321,
@@ -35,7 +40,10 @@ class Like extends React.Component {
     // send a post request with user/postID
     axios.post('/api/photoLike', like).then(function(res) {
       console.log('vote count', res.data.voteCount);
-      context.setState({likes: res.data.voteCount});
+      context.setState({
+        likes: res.data.voteCount,
+        userLiked: !context.state.userLiked
+      });
     })
       // query the db to check if userID/postID exists in Vote table (find)
       // if res exists,
@@ -47,21 +55,34 @@ class Like extends React.Component {
   }
 
   render () {
+    var styles = {};
+    if (this.state.userLiked) {
+      styles = {
+        color: 'red',
+        content: 'Liked',
+      }
+    } else {
+      styles = {
+        color: 'instagram',
+        content: 'Like'
+      }
+    }
+
     return (
       <div className='likeContainer' onClick={this.onLike.bind(this)}>
         <Button
-          color='red'
-          content='Like'
+          color={styles.color}
+          content= {styles.content}
           icon='heart'
           label={
             {
               basic: true,
-              color: 'red',
+              color: styles.color,
               pointing: 'left',
               content: this.state.likes
             }
           }
-          />
+        />
       </div>
     )
   }

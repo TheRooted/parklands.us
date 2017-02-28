@@ -218,10 +218,30 @@ module.exports = {
     },
 
     get: function(req, res) {
+      var totalVotes;
       // console.log('req.body in mount', req.query)
       db.models.post.findOne({where: {id: req.query.postId }})
       .then(function (post) {
-        res.send({voteCount: post.dataValues.voteCount});
+        totalVotes = post.dataValues.voteCount;
+        db.models.vote.findOne({where:
+          {
+            userId: req.query.userId,
+            postId: req.query.postId
+          }
+        }).then(function(userLiked) {
+          if (userLiked) {
+            res.send({
+              voteCount: totalVotes,
+              userLiked: true
+            });
+          } else {
+            res.send({
+              voteCount: totalVotes,
+              userLiked: false
+            });
+          }
+        })
+
       })
     }
 
