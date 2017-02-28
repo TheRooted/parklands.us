@@ -1,14 +1,35 @@
-var path = require('path')
- 
+var path = require('path');
+var webpack = require('webpack');
+
+var buildDirectory = './public/';
+
 module.exports = {
   entry: './public/components/index.js',
-  output: { path: __dirname + '/public', filename: 'bundle.js' },
+  devServer: {
+    hot: true,
+    inline: true,
+    port: 3000,
+    historyApiFallback: true,
+  },
+  //output: { path: __dirname + '/public', filename: 'bundle.js' },
+
+  output: {
+    path: path.resolve(buildDirectory),
+    filename: 'bundle.js',
+    publicPath: 'http://localhost:3000/public',
+  },
   resolve: {
-    extensions: ['', '.js'],
+    extensions: ['', '.js','.jsx'],
     alias: {
       webworkify: 'webworkify-webpack',
       'mapbox-gl': path.resolve('./node_modules/mapbox-gl/dist/mapbox-gl.js')
     }
+  },
+
+  externals: {
+    'cheerio': 'window',
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true,
   },
   module: {
     loaders: [
