@@ -79,6 +79,16 @@ module.exports = {
       .then(function(parks) {
         res.send(parks);
       });
+    },
+    post: function(req, res) {
+      db.models.park.findOne({
+        where: {
+          name: req.body.name
+        }
+      })
+      .then(function(park) {
+        res.send(park);
+      });
     }
   },
 

@@ -44,6 +44,8 @@ router.get('/api/postcomment', controller.postcomment.get);
 // Routes for map
 router.get('/api/parklocations', controller.parklocations.get);
 
+router.post('/api/parklocations', controller.parklocations.post);
+
 
 module.exports = router;
 

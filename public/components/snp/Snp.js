@@ -150,7 +150,7 @@ export default class Snp extends React.Component {
     return (
       <div className='snp'>
         <h2 className="park-title">{this.capFirstLetter(this.state.park.name)} National Park</h2>
-        <ParkMap />
+        <ParkMap park={this.state.park.name} />
         <section className="park-info">{this.state.park.info}</section>
         <hr/>
       {/* if this doesn't work, remove the div wrapper */}
