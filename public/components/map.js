@@ -6,7 +6,7 @@ export default class Mapp extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {}
+    this.state = {};
   }
 
   componentDidMount() {
@@ -16,7 +16,7 @@ export default class Mapp extends React.Component {
     .then(function (res) {
       var features = [];
       var data = res.data;
-      
+
       for (var i = 1; i < data.length - 1; i++) {
         var name = '';
         var coordinates = [data[i].long, data[i].lat];
@@ -27,7 +27,7 @@ export default class Mapp extends React.Component {
         }
 
         var nameLink = "<a href=\"park/yosemite\">" + name + "</a>";
-        
+
         features.push({
             "type": "Feature",
             "properties": {
@@ -40,7 +40,7 @@ export default class Mapp extends React.Component {
           }
         });
       }
-      context.setState({locationData: features})
+      context.setState({locationData: features});
       context.createMap();
     });
   }
@@ -49,7 +49,7 @@ export default class Mapp extends React.Component {
     const context = this;
     axios.get('/api/parklocations')
     .then(function (res) {
-      console.log('locations res is', res)
+      console.log('locations res is', res);
     });
   }
 

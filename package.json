@@ -4,7 +4,7 @@
   "description": "A site for national park lovers",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -w Spec/component/helpers/browser.js component/*.spec.js",
+    "test": "mocha -w Spec/component/helpers/browser.js Spec/component/*.spec.js",
     "dev:hot": "webpack-dev-server --hot --inline --progress --colors --watch --display-error-details --display-cached --content-base ./",
     "start": "webpack --watch & nodemon server/server.js",
     "webpack": "webpack-dev-server"
@@ -54,11 +54,14 @@
     "superagent": "^3.5.0"
   },
   "devDependencies": {
+    "ava": "^0.18.2",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
+    "babel-preset-airbnb": "^2.2.3",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-0": "^6.22.0",
+    "bell-on-bundler-error-plugin": "^1.0.8",
     "chai": "^3.5.0",
     "del": "^2.2.2",
     "enzyme": "^2.7.1",
