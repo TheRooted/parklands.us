@@ -49,6 +49,7 @@ function(req, email, password, done) {
       }
       // Email already registered
       if (user.dataValues) {
+        console.log('got a user?')
         return done(null, false, { message: 'An account is already registered to that email. Please sign in.' });
       // No account registered for that email
       } else {
@@ -92,11 +93,13 @@ passport.use('local-signin', new LocalStrategy({
       // Find user by email submitted
       db.models.user.findOne({ where: { email: email }})
       .then(function(user, err) {
+        console.log('user is', user)
         if (err) { 
           return done(err); 
         }
         // Email entered incorrectly or user is not registered
         if (user === null || !user.dataValues.email) {
+          console.log('user is null or no email');
           return done(null, false, { message: 'Incorrect email.' });
         }
         // Compare password supplied with db password for selected user

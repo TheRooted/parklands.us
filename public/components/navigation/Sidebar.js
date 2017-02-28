@@ -14,8 +14,12 @@ class Sidebar extends React.Component {
 
   handleSignout() {
     console.log('handling submit');
+    var user = {
+      email: 'frog@email.com',
+      password: 'axios'
+    }
     // this.props.toggleSidebar;
-    axios.post('/signout').then(function(res) {
+    axios.post('/signout', user).then(function(res) {
       if (res.status === 200) {
       console.log('res', res)
         // browserHistory.push('/signin');

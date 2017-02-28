@@ -4,9 +4,9 @@ var router = require('express').Router();
 
 
 // Routes for signup, signin, and signout
-router.post('/signup', passport.authenticate('local-signup', { successRedirect: '/', failureRedirect: '/signin', failureFlash: true }));
-router.post('/signin', passport.authenticate('local-signin', { successRedirect: '/', failureRedirect: '/signin', failureFlash: true }));
-router.post('/signout', passport.authenticate('local-signout', { successRedirect: '/signup', failureRedirect: '/signin' }));
+router.post('/signup', passport.authenticate('local-signup', { successRedirect: '/', failureRedirect: '/signin' }));
+router.post('/signin', passport.authenticate('local-signin', { successRedirect: '/', failureRedirect: '/signin' }));
+router.post('/signout', passport.authenticate('local-signout', { successRedirect: '/signin', failureRedirect: '/signup' }));
 // router.post('/signout', passport.authenticate('local-signout', function(req, res) {
 //   console.log('routes args', arguments);
 // }));

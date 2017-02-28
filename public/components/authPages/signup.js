@@ -16,11 +16,10 @@ export default class Signup extends React.Component {
       password: this.refs.passwordSI.value
     };
     axios.post('/signup', user).then(function(res) {
-      if (res.status === 200) {
+      if (res.request.responseURL === 'http://localhost:3000/') {
         browserHistory.push('/');
-      } else if (res.status === 400) {
-        browserHistory.push('/signup');
-      }
+      } else (
+        browserHistory.push('/signup'));
     });
   }
 
