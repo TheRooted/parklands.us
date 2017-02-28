@@ -87,10 +87,10 @@ request(url, function (error, response, html) {
           //split the selected coords on the space
           coords = coords.split(' ');
           //splice off the degree and hemisphere then convert to num from string
-          lat = coords[0].substring(0, coords[0].length - 3);
-          lat = parseInt(lat);
-          long = coords[1].substring(0, coords[1].length - 3);
-          long = parseInt(long);
+          lat = coords[0].substring(0, coords[0].length - 2);
+          lat = parseFloat(lat);
+          long = coords[1].substring(0, coords[1].length - 2);
+          long = parseFloat(long);
           long = long * -1;
           if (coords[0].includes('S')) {
             //if lat is in southern hemisphere make num negative
@@ -137,6 +137,7 @@ request(url, function (error, response, html) {
       park.lat = lat;
       park.info = infoSnippet;
       //push park obj into array
+      console.log('park =', park)
       parks.push(park);
     }
     parks.forEach(function(park, index, array) {
