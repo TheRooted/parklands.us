@@ -156,7 +156,68 @@ request(url, function (error, response, html) {
       /*---------------------------------------------
               Seed Posts with Yosemite pics
       ----------------------------------------------*/
-      var url = 'https://twitter.com/YosemiteNPS/media';
+      // var url = 'https://twitter.com/YosemiteNPS/media';
+      var urls = [
+        'https://twitter.com/AcadiaNPS',
+        'https://twitter.com/ArchesNPS',
+        'https://twitter.com/BadlandsNPS',
+        'https://twitter.com/BigBendNPS',
+        'https://twitter.com/BiscayneNPS',
+        'https://twitter.com/BlackCanyonNPS',
+        'https://twitter.com/BryceCanyonNPS',
+        'https://twitter.com/CanyonlandsNPS',
+        'https://twitter.com/CapitolReefNPS',
+        'https://twitter.com/CavernsNPS',
+        'https://twitter.com/CHISNPS',
+        'https://twitter.com/CongareeNPS',
+        'https://twitter.com/CraterLakeNPS',
+        'https://twitter.com/CVNPNPS',
+        'https://twitter.com/DeathValleyNPS',
+        'https://twitter.com/DenaliNPS',
+        'https://twitter.com/DryTortugasNPS',
+        'https://twitter.com/EvergladesNPS',
+        'https://twitter.com/GatesArcticNPS',
+        'https://twitter.com/GlacierBayNPS',
+        'https://twitter.com/GlacierNPS',
+        'https://twitter.com/GrandCanyonNPS',
+        'https://twitter.com/GrandTetonNPS',
+        'https://twitter.com/GreatBasinNPS',
+        'https://twitter.com/visitalamosa', //great sand dunes,
+        'https://twitter.com/GreatSmokyNPS',
+        'https://twitter.com/GuadalupeMtnsNP',
+        'https://twitter.com/HaleakalaNPS',
+        'https://twitter.com/Volcanoes_NPS',
+        'https://twitter.com/HotSpringsAltNP', //tentative hot springs
+        'https://twitter.com/IsleRoyaleFFA', //tentative isle royale
+        'https://twitter.com/JoshuaTreeNPS',
+        'https://twitter.com/KatmaiNPS',
+        'https://twitter.com/KenaiFjordsNPS',
+        'https://twitter.com/SequoiaKingsNPS', //kings canyon and sequoia
+        'https://twitter.com/AlaskaNPS', //kobuk valley
+        'https://twitter.com/LakeClarkNPS',
+        'https://twitter.com/LassenNPS',
+        'https://twitter.com/MammothCaveNP',
+        'https://twitter.com/VisitMVC', //tentative mesa verde
+        'https://twitter.com/MountRainierNPS',
+        'https://twitter.com/HIPacParks', //tentative american samoa
+        'https://twitter.com/NCascadesNPS',
+        'https://twitter.com/OlympicNP',
+        'https://twitter.com/PetrifiedNPS',
+        'https://twitter.com/PinnaclesNPS',
+        'https://twitter.com/RedwoodNPS',
+        'https://twitter.com/RockyNPS',
+        'https://twitter.com/SaguaroNPS',
+        'https://twitter.com/SequoiaKingsNPS',
+        'https://twitter.com/ShenandoahNPS',
+        'https://twitter.com/TRooseveltNPS',
+        'https://twitter.com/stjusvi', //tentative virgin islands
+        'https://twitter.com/VoyageursNPS', //quite inactive (1 photo)\
+        'https://twitter.com/WindCaveNPS',
+        'https://twitter.com/WrangellStENPS',
+        'https://twitter.com/YellowstoneNPS',
+        'https://twitter.com/YosemiteNPS',
+        'https://twitter.com/ZionNPS',
+      ]
       var numPicsToPull = 10;
       var userId = 1;
       var type;
