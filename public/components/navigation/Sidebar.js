@@ -12,10 +12,13 @@ class Sidebar extends React.Component {
     return sidebarClass;
   }
 
-  handleSubmit() {
+  handleSignout() {
+    console.log('handling submit');
+    // this.props.toggleSidebar;
     axios.post('/signout').then(function(res) {
       if (res.status === 200) {
-        browserHistory.push('/signin');
+      console.log('res', res)
+        // browserHistory.push('/signin');
       } else if (res.status === 400) {
         console.log('Bad signout!');
       }
@@ -42,7 +45,7 @@ class Sidebar extends React.Component {
               <Link to="/park/yosemite" className="snplink" onClick={this.props.toggleSidebar}>National Park</Link>
             </div>
             <div className="sidebar-content">
-              <Link className="signoutlink" onClick={this.props.toggleSidebar}>Sign Out</Link>
+              <Link className="signoutlink" onClick={() =>{this.handleSignout()}}>Sign Out</Link>
             </div>
           </div>
         </div>

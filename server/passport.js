@@ -6,10 +6,12 @@ var bcrypt = require('bcrypt');
 
 // Serialize and deserialize user
 passport.serializeUser(function(user, done) {
+  console.log('serialize')
   done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
+  console.log('deserialize')
   db.models.user.findOne({ where: { id: id } })
   .then(function(user) {
     console.log('deser user', user.dataValues)
@@ -30,6 +32,7 @@ passport.use('local-signup', new LocalStrategy({
   passReqToCallback : true
 },
 function(req, email, password, done) {
+  console.log('local-signup')
   var first = req.body.firstName;
   var last = req.body.lastName;
 
@@ -83,6 +86,7 @@ passport.use('local-signin', new LocalStrategy({
   passReqToCallback : true
   },
   function(req, email, password, done) {
+    console.log('local-signin')
     process.nextTick(function() {
 
       // Find user by email submitted
@@ -124,9 +128,9 @@ passport.use('local-signout', new LocalStrategy({
   passReqToCallback : true
 },
   function(req, email, password, done) {
-    console.log('actually in signout');
+    console.log('local-signout');
     req.logout();
-    return done(null);
+    return done(null, false, { message: 'Successfully signed out.' }, req);
   }
 ));
 
@@ -134,16 +138,16 @@ passport.use('local-signout', new LocalStrategy({
 //          Signout Strategy          //
 //************************************//
 
-passport.use('local-session', new LocalStrategy({
-  usernameField: 'email',
-  passwordField: 'password',
-  passReqToCallback : true
-},
-  function(req, email, password, done) {
-    req.logout();
-    return done(null);
-  }
-));
+// passport.use('local-session', new LocalStrategy({
+//   usernameField: 'email',
+//   passwordField: 'password',
+//   passReqToCallback : true
+// },
+//   function(req, email, password, done) {
+//     req.logout();
+//     return done(null);
+//   }
+// ));
 
 
 module.exports = passport;
