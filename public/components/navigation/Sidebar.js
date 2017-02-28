@@ -18,13 +18,12 @@ class Sidebar extends React.Component {
       email: 'frog@email.com',
       password: 'axios'
     }
-    // this.props.toggleSidebar;
     axios.post('/signout', user).then(function(res) {
-      if (res.status === 200) {
-      console.log('res', res)
-        // browserHistory.push('/signin');
-      } else if (res.status === 400) {
-        console.log('Bad signout!');
+      console.log('signout res', res)
+      if (res.request.responseURL === 'http://localhost:3000/signin') {
+        browserHistory.push('/signin');
+      } else {
+        browserHistory.push('/signup');
       }
     });
   }
@@ -49,7 +48,7 @@ class Sidebar extends React.Component {
               <Link to="/park/yosemite" className="snplink" onClick={this.props.toggleSidebar}>National Park</Link>
             </div>
             <div className="sidebar-content">
-              <Link className="signoutlink" onClick={() =>{this.handleSignout()}}>Sign Out</Link>
+              <Link className="signoutlink" onClick={() =>{this.props.toggleSidebar(); this.handleSignout()}}>Sign Out</Link>
             </div>
           </div>
         </div>
