@@ -9,10 +9,22 @@ var sort = function (arr, criteria) {
     case 'alphabetically':
       arr = sortAlphabetically(arr);
       return arr;
+    case 'id':
+      arr = sortById(arr);
+      return arr;
+    case 'created':
+      arr = sortByCreatedAt(arr);
+      return arr;
     default:
       arr = sortByLikes(arr);
       return arr;
   }
+};
+
+var sortById = function (arr) {
+  return arr.sort(function(a, b) {
+    return a.id - b.id;
+  })
 };
 
 var sortAlphabetically = function (arr) {
@@ -30,6 +42,40 @@ var sortByLikes = function (arr) {
     return b.voteCount - a.voteCount;
   })
 };
+
+var sortByCreatedAt = function (arr) {
+  return arr.sort(function(a, b) {
+    var aCreatedArray = a.createdAt.split('T');
+    var aCreatedDate = aCreatedArray[0];
+    var aCreatedTime = aCreatedArray[1];
+    var bCreatedArray = b.createdAt.split('T');
+    var bCreatedDate = bCreatedArray[0];
+    var bCreatedTime = bCreatedArray[1];
+
+    //sort by date updated
+    aCreatedDate = aCreatedDate.split('-');
+    bCreatedDate = bCreatedDate.split('-');
+    for (var i = 0; i < aCreatedDate.length; i++) {
+      if (aCreatedDate[i] !== bCreatedDate[i]) {
+        return bCreatedDate[i] - aCreatedDate[i];
+      }
+    }
+
+    //sort by time updated
+    aCreatedTime = aCreatedTime.split(':');
+    bCreatedTime = bCreatedTime.split(':');
+    for (var i = 0; i < (aCreatedTime.length - 1); i++) {
+      if (aCreatedTime[i] !== bCreatedTime[i]) {
+        return bCreatedTime[i] - aCreatedTime[i];
+      }
+    }
+    aCreatedTime = aCreatedTime[2].split('Z');
+    bCreatedTime = bCreatedTime[2].split('Z');
+    return bCreatedTime[0] - aCreatedTime[0];
+
+
+  })
+}
 
 var sortByActivity = function (arr) {
   return arr.sort(function(a, b) {
@@ -64,4 +110,5 @@ var sortByActivity = function (arr) {
 
   })
 };
+
 module.exports = sort;

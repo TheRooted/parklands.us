@@ -99,10 +99,14 @@ request(url, function (error, response, html) {
         } else if (j === 1) {
           //in the name column
           title = tableRows[i].children[j].children[0].attribs.title;
-          title = title.split(' National')[0];
+          title = title.split(' National');
+          console.log('THE THE THE title: ', title);
           if (title.length === 1) {
             //in National Park of American Samoa, grab just the American Samoa part
-            title = title.split(' of ')[1];
+            title = title[0].split(' of ')[1];
+            console.log('title after split in title.length =1: ', title);
+          } else {
+            title = title[0];
           }
           title = title.toLowerCase();
         } else if (j === 3) {
@@ -153,75 +157,7 @@ request(url, function (error, response, html) {
       }));
     })
     Promise.all(parkModels).then(function(results) {
-      /*---------------------------------------------
-              Seed Posts with Yosemite pics
-      ----------------------------------------------*/
-      // var url = 'https://twitter.com/YosemiteNPS/media';
-      var urls = [
-        'https://twitter.com/AcadiaNPS',
-        'https://twitter.com/ArchesNPS',
-        'https://twitter.com/BadlandsNPS',
-        'https://twitter.com/BigBendNPS',
-        'https://twitter.com/BiscayneNPS',
-        'https://twitter.com/BlackCanyonNPS',
-        'https://twitter.com/BryceCanyonNPS',
-        'https://twitter.com/CanyonlandsNPS',
-        'https://twitter.com/CapitolReefNPS',
-        'https://twitter.com/CavernsNPS',
-        'https://twitter.com/CHISNPS',
-        'https://twitter.com/CongareeNPS',
-        'https://twitter.com/CraterLakeNPS',
-        'https://twitter.com/CVNPNPS',
-        'https://twitter.com/DeathValleyNPS',
-        'https://twitter.com/DenaliNPS',
-        'https://twitter.com/DryTortugasNPS',
-        'https://twitter.com/EvergladesNPS',
-        'https://twitter.com/GatesArcticNPS',
-        'https://twitter.com/GlacierBayNPS',
-        'https://twitter.com/GlacierNPS',
-        'https://twitter.com/GrandCanyonNPS',
-        'https://twitter.com/GrandTetonNPS',
-        'https://twitter.com/GreatBasinNPS',
-        'https://twitter.com/visitalamosa', //great sand dunes,
-        'https://twitter.com/GreatSmokyNPS',
-        'https://twitter.com/GuadalupeMtnsNP',
-        'https://twitter.com/HaleakalaNPS',
-        'https://twitter.com/Volcanoes_NPS',
-        'https://twitter.com/HotSpringsAltNP', //tentative hot springs
-        'https://twitter.com/IsleRoyaleFFA', //tentative isle royale
-        'https://twitter.com/JoshuaTreeNPS',
-        'https://twitter.com/KatmaiNPS',
-        'https://twitter.com/KenaiFjordsNPS',
-        'https://twitter.com/SequoiaKingsNPS', //kings canyon and sequoia
-        'https://twitter.com/AlaskaNPS', //kobuk valley
-        'https://twitter.com/LakeClarkNPS',
-        'https://twitter.com/LassenNPS',
-        'https://twitter.com/MammothCaveNP',
-        'https://twitter.com/VisitMVC', //tentative mesa verde
-        'https://twitter.com/MountRainierNPS',
-        'https://twitter.com/HIPacParks', //tentative american samoa
-        'https://twitter.com/NCascadesNPS',
-        'https://twitter.com/OlympicNP',
-        'https://twitter.com/PetrifiedNPS',
-        'https://twitter.com/PinnaclesNPS',
-        'https://twitter.com/RedwoodNPS',
-        'https://twitter.com/RockyNPS',
-        'https://twitter.com/SaguaroNPS',
-        'https://twitter.com/SequoiaKingsNPS',
-        'https://twitter.com/ShenandoahNPS',
-        'https://twitter.com/TRooseveltNPS',
-        'https://twitter.com/stjusvi', //tentative virgin islands
-        'https://twitter.com/VoyageursNPS', //quite inactive (1 photo)\
-        'https://twitter.com/WindCaveNPS',
-        'https://twitter.com/WrangellStENPS',
-        'https://twitter.com/YellowstoneNPS',
-        'https://twitter.com/YosemiteNPS',
-        'https://twitter.com/ZionNPS',
-      ]
-      var numPicsToPull = 10;
-      var userId = 1;
-      var type;
-      var notPhotoCount = 0;
+      //update yosemite with long info
       db.models.park.update({
         info: 'Yosemite National Park (/joʊˈsɛmᵻti/ yoh-sem-it-ee) is a national park spanning portions of Tuolumne, Mariposa and Madera counties in Northern California. The park, which is managed by the National Park Service, covers an area of 747,956 acres (1,168.681 sq mi; 302,687 ha; 3,026.87 km2) and reaches across the western slopes of the Sierra Nevada mountain range. On average, about 4 million people visit Yosemite each year, and most spend the majority of their time in the seven square miles (18 km2) of Yosemite Valley. The park set a visitation record in 2016, surpassing 5 million visitors for the first time in its history. Designated a World Heritage Site in 1984, Yosemite is internationally recognized for its granite cliffs, waterfalls, clear streams, giant sequoia groves, lakes, mountains, glaciers, and biological diversity. Almost 95% of the park is designated wilderness. Yosemite was central to the development of the national park idea. First, Galen Clark and others lobbied to protect Yosemite Valley from development, ultimately leading to President Abraham Lincoln\'s signing the Yosemite Grant in 1864. Later, John Muir led a successful movement to establish a larger national park encompassing not just the valley, but surrounding mountains and forests as well—paving the way for the United States national park system. Yosemite is one of the largest and least fragmented habitat blocks in the Sierra Nevada, and the park supports a diversity of plants and animals. The park has an elevation range from 2,127 to 13,114 feet (648 to 3,997 m) and contains five major vegetation zones: chaparral/oak woodland, lower montane forest, upper montane forest, subalpine zone, and alpine. Of California\'s 7,000 plant species, about 50% occur in the Sierra Nevada and more than 20% within Yosemite. There is suitable habitat for more than 160 rare plants in the park, with rare local geologic formations and unique soils characterizing the restricted ranges many of these plants occupy. The geology of the Yosemite area is characterized by granitic rocks and remnants of older rock. About 10 million years ago, the Sierra Nevada was uplifted and then tilted to form its relatively gentle western slopes and the more dramatic eastern slopes. The uplift increased the steepness of stream and river beds, resulting in formation of deep, narrow canyons. About one million years ago, snow and ice accumulated, forming glaciers at the higher alpine meadows that moved down the river valleys. Ice thickness in Yosemite Valley may have reached 4,000 feet (1,200 m) during the early glacial episode. The downslope movement of the ice masses cut and sculpted the U-shaped valley that attracts so many visitors to its scenic vistas today. The name \"Yosemite\" (meaning \"killer\" in Miwok) originally referred to the name of a renegade tribe which was driven out of the area (and possibly annihilated) by the Mariposa Battalion. Before then the area was called \"Ahwahnee\" (\"big mouth\") by indigenous people.'
       }, {
@@ -229,144 +165,221 @@ request(url, function (error, response, html) {
           name: 'yosemite'
         }
       })
-      db.models.park.find({
-        where: {
-          name: 'yosemite',
-          // info: 'Yosemite National Park (/joʊˈsɛmᵻti/ yoh-sem-it-ee[4]) is a national park spanning portions of Tuolumne, Mariposa and Madera counties in Northern California.[5][6] The park, which is managed by the National Park Service, covers an area of 747,956 acres (1,168.681 sq mi; 302,687 ha; 3,026.87 km2)[2] and reaches across the western slopes of the Sierra Nevada mountain range.[7] On average, about 4 million people visit Yosemite each year,[3] and most spend the majority of their time in the seven square miles (18 km2) of Yosemite Valley.[8] The park set a visitation record in 2016, surpassing 5 million visitors for the first time in its history.[9] Designated a World Heritage Site in 1984, Yosemite is internationally recognized for its granite cliffs, waterfalls, clear streams, giant sequoia groves, lakes, mountains, glaciers, and biological diversity.[8] Almost 95% of the park is designated wilderness.[10] Yosemite was central to the development of the national park idea. First, Galen Clark and others lobbied to protect Yosemite Valley from development, ultimately leading to President Abraham Lincoln\'s signing the Yosemite Grant in 1864. Later, John Muir led a successful movement to establish a larger national park encompassing not just the valley, but surrounding mountains and forests as well—paving the way for the United States national park system.[11] Yosemite is one of the largest and least fragmented habitat blocks in the Sierra Nevada, and the park supports a diversity of plants and animals. The park has an elevation range from 2,127 to 13,114 feet (648 to 3,997 m) and contains five major vegetation zones: chaparral/oak woodland, lower montane forest, upper montane forest, subalpine zone, and alpine. Of California\'s 7,000 plant species, about 50% occur in the Sierra Nevada and more than 20% within Yosemite. There is suitable habitat for more than 160 rare plants in the park, with rare local geologic formations and unique soils characterizing the restricted ranges many of these plants occupy.[8] The geology of the Yosemite area is characterized by granitic rocks and remnants of older rock. About 10 million years ago, the Sierra Nevada was uplifted and then tilted to form its relatively gentle western slopes and the more dramatic eastern slopes. The uplift increased the steepness of stream and river beds, resulting in formation of deep, narrow canyons. About one million years ago, snow and ice accumulated, forming glaciers at the higher alpine meadows that moved down the river valleys. Ice thickness in Yosemite Valley may have reached 4,000 feet (1,200 m) during the early glacial episode. The downslope movement of the ice masses cut and sculpted the U-shaped valley that attracts so many visitors to its scenic vistas today.[8] The name \"Yosemite\" (meaning \"killer\" in Miwok) originally referred to the name of a renegade tribe which was driven out of the area (and possibly annihilated) by the Mariposa Battalion. Before then the area was called \"Ahwahnee\" (\"big mouth\") by indigenous people.',
-        }
-      }).then(function() {
-        request(url, function (error, response, html) {
-          if (error) {
-            console.log('Error requesting url', error);
-          } else {
-            var $ = cheerio.load(html);
-            db.models.park.find({
-              where: {
-                name: 'yosemite'
-              }
-            })
-            .then(function(results) {
-              for (var i = 0; i < (numPicsToPull + notPhotoCount); i++){
-                if ($('#stream-items-id').children()[i].children[1].children[3].children[5].children[1].children[1].children[1].children[1].attribs['class'] === 'AdaptiveMedia-photoContainer js-adaptive-photo ') {
-                  type = 'photo';
-                  var postUrl = $('#stream-items-id').children()[i].children[1].children[3].children[5].children[1].children[1].children[1].children[1].attribs['data-image-url'];
-                } else {
-                  notPhotoCount++;
-                  type = 'notphoto';
-                }
-                if ((i - notPhotoCount) < 3) {
-                  userId = 1;
-                } else if ((i - notPhotoCount) > 2 && (i - notPhotoCount) < 6) {
-                  userId = 2;
-                } else if ((i - notPhotoCount) > 5 && (i - notPhotoCount) < 9) {
-                  userId = 3;
-                } else if ((i - notPhotoCount) > 8) {
-                  userId = 4;
-                }
-                console.log('results in seeeeeeeed: ', results)
-                if (type === 'photo') {
-                  db.models.post.create({
-                    type: type,
-                    filePath: postUrl,
-                    voteCount: 0,
-                    parkId: results.dataValues.id,
-                    userId: userId
-                  });
-                }
-              }
-            });
-          }
-        });
-        /*---------------------------------------------
-              Seed parkPhotos with Yosemite pics
-        ----------------------------------------------*/
-
-        var yosemitePics = [
-          'http://miriadna.com/desctopwalls/images/max/California,-Yosemite-National-park.jpg',
-          'http://www.atlasandboots.com/wp-content/uploads/2016/01/stunning-natural-phenomena-1.jpg',
-          'https://drscdn.500px.org/photo/89719719/q%3D80_m%3D2000/f8a6fec97d623db924f2c8e88457a526',
-          'http://www.valleyviews.biz/images/homeslideshow/home_yosemite_hd8.jpg',
-          'http://blog.thomascook.in/wp-content/uploads/2016/06/Yose-1024x581.jpg'
-         ]
-
+      /*---------------------------------------------
+              Seed Posts with Yosemite pics
+      ----------------------------------------------*/
+      var urls = [
+        {url: 'https://twitter.com/AcadiaNPS', name: 'acadia'},
+        {url: 'https://twitter.com/HIPacParks', name: 'american samoa'}, //tentative american samoa
+        {url: 'https://twitter.com/ArchesNPS', name: 'arches'}, 
+        {url: 'https://twitter.com/BadlandsNPS', name: 'badlands'},
+        {url: 'https://twitter.com/BigBendNPS', name: 'big bend'},
+        {url: 'https://twitter.com/BiscayneNPS', name: 'biscayne'},
+        {url: 'https://twitter.com/BlackCanyonNPS', name: 'black canyon of the gunnison'},
+        {url: 'https://twitter.com/BryceCanyonNPS', name: 'bryce canyon'},
+        {url: 'https://twitter.com/CanyonlandsNPS', name: 'canyonlands'},
+        {url: 'https://twitter.com/CapitolReefNPS', name: 'capitol reef'},
+        {url: 'https://twitter.com/CavernsNPS', name: 'carlsbad caverns'},
+        {url: 'https://twitter.com/CHISNPS', name: 'channel islands'},
+        {url: 'https://twitter.com/CongareeNPS', name: 'congaree'},
+        {url: 'https://twitter.com/CraterLakeNPS', name: 'crater lake'},
+        {url: 'https://twitter.com/CVNPNPS', name: 'cuyahoga valley'},
+        {url: 'https://twitter.com/DeathValleyNPS', name: 'death valley'},
+        {url: 'https://twitter.com/DenaliNPS', name: 'denali'},
+        {url: 'https://twitter.com/DryTortugasNPS', name: 'dry tortugas'},
+        {url: 'https://twitter.com/EvergladesNPS', name: 'everglades'},
+        {url: 'https://twitter.com/GatesArcticNPS', name: 'gates of the arctic'},
+        {url: 'https://twitter.com/GlacierBayNPS', name: 'glacier bay'},
+        {url: 'https://twitter.com/GlacierNPS', name: 'glacier'},
+        {url: 'https://twitter.com/GrandCanyonNPS', name: 'grand canyon'},
+        {url: 'https://twitter.com/GrandTetonNPS', name: 'grand teton'},
+        {url: 'https://twitter.com/GreatBasinNPS', name: 'great basin'},
+        {url: 'https://twitter.com/visitalamosa', name: 'great sand dunes'}, //great sand dunes,
+        {url: 'https://twitter.com/GreatSmokyNPS', name: 'great smoky mountains'},
+        {url: 'https://twitter.com/GuadalupeMtnsNP', name: 'guadalupe mountains'},
+        {url: 'https://twitter.com/HaleakalaNPS', name: 'haleakalā'},
+        {url: 'https://twitter.com/Volcanoes_NPS', name: 'hawaii volcanoes'},
+        {url: 'https://twitter.com/HotSpringsAltNP', name: 'hot springs'}, //tentative hot springs
+        {url: 'https://twitter.com/IsleRoyaleFFA', name: 'isle royale'}, //tentative isle royale
+        {url: 'https://twitter.com/JoshuaTreeNPS', name: 'joshua tree'},
+        {url: 'https://twitter.com/KatmaiNPS', name: 'katmai'},
+        {url: 'https://twitter.com/KenaiFjordsNPS', name: 'kenai fjords'},
+        {url: 'https://twitter.com/SequoiaKingsNPS', name: 'kings canyon'}, //kings canyon and sequoia
+        {url: 'https://twitter.com/AlaskaNPS', name: 'kobuk valley'}, //kobuk valley
+        {url: 'https://twitter.com/LakeClarkNPS', name: 'lake clark'},
+        {url: 'https://twitter.com/LassenNPS', name: 'lassen volcanic'},
+        {url: 'https://twitter.com/MammothCaveNP', name: 'mammoth cave'},
+        {url: 'https://twitter.com/VisitMVC', name: 'mesa verde'}, //tentative mesa verde
+        {url: 'https://twitter.com/MountRainierNPS', name: 'mount rainier'},
+        {url: 'https://twitter.com/NCascadesNPS', name: 'north cascades'},
+        {url: 'https://twitter.com/OlympicNP', name: 'olympic'},
+        {url: 'https://twitter.com/PetrifiedNPS', name: 'petrified forest'},
+        {url: 'https://twitter.com/PinnaclesNPS', name: 'pinnacles'},
+        {url: 'https://twitter.com/RedwoodNPS', name: 'redwood'},
+        {url: 'https://twitter.com/RockyNPS', name: 'rocky mountain'},
+        {url: 'https://twitter.com/SaguaroNPS', name: 'saguaro'},
+        {url: 'https://twitter.com/SequoiaKingsNPS', name: 'sequoia'},
+        {url: 'https://twitter.com/ShenandoahNPS', name: 'shenandoah'},
+        {url: 'https://twitter.com/TRooseveltNPS', name: 'theodore roosevelt'},
+        {url: 'https://twitter.com/stjusvi', name: 'virgin islands'}, //tentative virgin islands
+        {url: 'https://twitter.com/VoyageursNPS', name: 'voyageurs'}, //quite inactive (1 photo)\
+        {url: 'https://twitter.com/WindCaveNPS', name: 'wind cave'},
+        {url: 'https://twitter.com/WrangellStENPS', name: 'wrangell–st. elias'},
+        {url: 'https://twitter.com/YellowstoneNPS', name: 'yellowstone'},
+        {url: 'https://twitter.com/YosemiteNPS', name: 'yosemite'},
+        {url: 'https://twitter.com/ZionNPS', name: 'zion'},
+      ];
+      var requests = [];
+      urls.forEach(function(individualPark, index, array) {
         db.models.park.find({
           where: {
-            name: 'yosemite'
+            name: individualPark.name,
           }
-        }).then(function(results) {
-          for (var i = 0; i < yosemitePics.length; i++) {
-            db.models.parkphoto.create({
-              photoUrl: yosemitePics[i],
-              parkId: results.dataValues.id
-            });
+        }).then(function() {
+          requests.push(request((individualPark.url + '/media'), function (error, response, html) {
+            if (error) {
+              console.log('Error requesting url', error);
+            } else {
+              var $ = cheerio.load(html);
+              db.models.park.find({
+                where: {
+                  name: individualPark.name
+                }
+              })
+              .then(function(results) {
+                var numPicsToPull = 10;
+                var userId = 1;
+                var type;
+                var notPhotoCount = 0;
+                for (var i = 0; i < (numPicsToPull + notPhotoCount); i++){
+                  console.log('super long obvious string: ', individualPark.url);
+                  type = 'notphoto';
+                  if ($('#stream-items-id').children()[i] === undefined) {
+                    //photo list has ended
+                    break;
+                  }
+                  if ($('#stream-items-id').children()[i].children[1].children[3].children[5].children[1].children[1] !== undefined) {
+                    if ($('#stream-items-id').children()[i].children[1].children[3].children[5].children[1].children[1].children[1].children[1].attribs['class'] === 'AdaptiveMedia-photoContainer js-adaptive-photo ') {
+                      type = 'photo';
+                      var postUrl = $('#stream-items-id').children()[i].children[1].children[3].children[5].children[1].children[1].children[1].children[1].attribs['data-image-url'];
+                    } else {
+                      notPhotoCount++;
+                      type = 'notphoto';
+                    }
+                    
+                  }
+                  if ((i - notPhotoCount) < 3) {
+                    userId = 1;
+                  } else if ((i - notPhotoCount) > 2 && (i - notPhotoCount) < 6) {
+                    userId = 2;
+                  } else if ((i - notPhotoCount) > 5 && (i - notPhotoCount) < 9) {
+                    userId = 3;
+                  } else if ((i - notPhotoCount) > 8) {
+                    userId = 4;
+                  }
+                  if (type === 'photo') {
+                    db.models.post.create({
+                      type: type,
+                      filePath: postUrl,
+                      parkId: results.dataValues.id,
+                      userId: userId
+                    });
+                  }
+                }
+              });
+            }
+          }));
+        });
+      })
+      Promise.all(requests);
+      /*---------------------------------------------
+            Seed parkPhotos with Yosemite pics
+      ----------------------------------------------*/
+
+      var yosemitePics = [
+        'http://miriadna.com/desctopwalls/images/max/California,-Yosemite-National-park.jpg',
+        'http://www.atlasandboots.com/wp-content/uploads/2016/01/stunning-natural-phenomena-1.jpg',
+        'https://drscdn.500px.org/photo/89719719/q%3D80_m%3D2000/f8a6fec97d623db924f2c8e88457a526',
+        'http://www.valleyviews.biz/images/homeslideshow/home_yosemite_hd8.jpg',
+        'http://blog.thomascook.in/wp-content/uploads/2016/06/Yose-1024x581.jpg'
+       ]
+
+      db.models.park.find({
+        where: {
+          name: 'yosemite'
+        }
+      }).then(function(results) {
+        for (var i = 0; i < yosemitePics.length; i++) {
+          db.models.parkphoto.create({
+            photoUrl: yosemitePics[i],
+            parkId: results.dataValues.id
+          });
+        }
+      /*---------------------------------------------
+                    Seed Parkcomments
+      ----------------------------------------------*/
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: 'Yosemite was amazing!',
+            userEmail: 'kaychristensen@gmail.com',
+            parkId: results.dataValues.id,
           }
-          /*---------------------------------------------
-                        Seed Parkcomments
-          ----------------------------------------------*/
-          db.models.parkcomment.findOrCreate({
-            where: {
-              text: 'Yosemite was amazing!',
-              userEmail: 'kaychristensen@gmail.com',
-              parkId: results.dataValues.id,
-            }
-          });
-          db.models.parkcomment.findOrCreate({
-            where: {
-              text: 'Nature, eh? Incredible!',
-              userEmail: 'kaychristensen@gmail.com',
-              parkId: results.dataValues.id,
-            }
-          });
-          db.models.parkcomment.findOrCreate({
-            where: {
-              text: '"The “firefall” on Horsetail Fall..event that can only be captured few days in February"',
-              userEmail: 'jackieh.bee@gmail.com',
-              parkId: results.dataValues.id,
-            }
-          });
-
-          db.models.parkcomment.findOrCreate({
-            where: {
-              text: 'Starting 10 million years ago, vertical movement along the Sierra fault started to uplift the Sierra Nevada.',
-              userEmail: 'jackieh.bee@gmail.com',
-              parkId: results.dataValues.id,
-            }
-          });
-
-          db.models.parkcomment.findOrCreate({
-            where: {
-              text: 'A series of glaciations further modified the region starting about 2 to 3 million years ago and ending sometime around 10,000 BP.',
-              userEmail: 'tenso2006@gmail.com',
-              parkId: results.dataValues.id,
-            }
-          });
-
-          db.models.parkcomment.findOrCreate({
-            where: {
-              text: 'Despite the richness of high-quality habitats in Yosemite, the brown bear, California condor, and least Bell\'s vireo have become extinct in the park within historical time',
-              userEmail: 'tenso2006@gmail.com',
-              parkId: results.dataValues.id,
-            }
-          });
-
-          db.models.parkcomment.findOrCreate({
-            where: {
-              text: 'The black bears of Yosemite were once famous for breaking into parked cars to steal food.',
-              userEmail: 'brianjschultz508@gmail.com',
-              parkId: results.dataValues.id,
-            }
-          });
-
-          db.models.parkcomment.findOrCreate({
-            where: {
-              text: 'Increasing ozone pollution is causing tissue damage to the massive giant sequoia trees in the park.',
-              userEmail: 'brianjschultz508@gmail.com',
-              parkId: results.dataValues.id,
-            }
-          });
+        });
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: 'Nature, eh? Incredible!',
+            userEmail: 'kaychristensen@gmail.com',
+            parkId: results.dataValues.id,
+          }
+        });
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: '"The “firefall” on Horsetail Fall..event that can only be captured few days in February"',
+            userEmail: 'jackieh.bee@gmail.com',
+            parkId: results.dataValues.id,
+          }
         });
 
-      })
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: 'Starting 10 million years ago, vertical movement along the Sierra fault started to uplift the Sierra Nevada.',
+            userEmail: 'jackieh.bee@gmail.com',
+            parkId: results.dataValues.id,
+          }
+        });
+
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: 'A series of glaciations further modified the region starting about 2 to 3 million years ago and ending sometime around 10,000 BP.',
+            userEmail: 'tenso2006@gmail.com',
+            parkId: results.dataValues.id,
+          }
+        });
+
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: 'Despite the richness of high-quality habitats in Yosemite, the brown bear, California condor, and least Bell\'s vireo have become extinct in the park within historical time',
+            userEmail: 'tenso2006@gmail.com',
+            parkId: results.dataValues.id,
+          }
+        });
+
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: 'The black bears of Yosemite were once famous for breaking into parked cars to steal food.',
+            userEmail: 'brianjschultz508@gmail.com',
+            parkId: results.dataValues.id,
+          }
+        });
+
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: 'Increasing ozone pollution is causing tissue damage to the massive giant sequoia trees in the park.',
+            userEmail: 'brianjschultz508@gmail.com',
+            parkId: results.dataValues.id,
+          }
+        });
+      });
     })
   }
 });
