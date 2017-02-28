@@ -157,6 +157,7 @@ export default class Snp extends React.Component {
         <div className="official-photo-container">
           {this.state.officialPhotos.map((photo, i) =>
             <ParkPhoto photo={photo}
+              key={i}
               index={i}
               parkName={this.capFirstLetter(this.state.park.name)}
               photoIndex={this.state.photoIndex}

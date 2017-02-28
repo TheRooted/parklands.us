@@ -5,8 +5,8 @@ const SearchBar = (props) => (
   <div id="wrap">
     <form className="search-form">
       <datalist id='parks'>
-        {props.parkList.map(park =>
-          <ParkOption park={park} />
+        {props.parkList.map((park, i) =>
+          <ParkOption park={park} key={i} />
         )}
       </datalist>
       <input id="search" type="text" autoComplete="off" placeholder="Find your park here..." list='parks' onChange={props.getQuery}></input>

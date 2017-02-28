@@ -131,7 +131,7 @@ module.exports = {
     get: function (req, res) {
       db.models.post.findAll({})
       .then(function (post) {
-        console.log('park photo is ', post);
+        //console.log('park photo is ', post);
         res.send(post);
       });
     },
@@ -140,6 +140,7 @@ module.exports = {
       db.models.post.findOrCreate({
         where: {
           type: 'photo',
+          voteCount: 1,
           userId: 1,
           parkId: 1,
           filePath: req.body.filePath
@@ -152,7 +153,7 @@ module.exports = {
     get: function (req, res) {
       db.models.post.findAll({})
       .then(function (userPost) {
-        console.log('all user post are ', userPost);
+        //console.log('all user post are ', userPost);
         res.send(userPost);
       });
     }
@@ -162,9 +163,75 @@ module.exports = {
     get: function (req, res) {
       db.models.postcomment.findAll({})
       .then(function (comment) {
-        console.log('comment is ...', comment);
+        //console.log('comment is ...', comment);
         res.send(comment);
       });
     }
+  },
+
+  photoLike: {
+    post: function (req, res) {
+      db.models.vote.findOne({where: {
+        userId: req.body.userId,
+        postId: req.body.postId
+      } })
+      .then(function (like) {
+        // console.log('what is like', like)
+        if (!like) {
+          db.models.vote.create(req.body)
+          .then(function (createdRow) {
+            db.models.post.findOne({where: {id: req.body.postId }})
+            .then(function(post) {
+              // console.log('@@@@@post', post.dataValues.voteCount);
+              db.models.post.update({
+                voteCount: post.dataValues.voteCount + 1
+              },
+              {
+                fields: ['voteCount'],
+                where: {id: req.body.postId}
+              })
+              .then(function(response) {
+                res.send({voteCount: post.dataValues.voteCount + 1})
+              })
+            })
+          })
+        } else {
+          console.log('already voted, insert remove like logic here')
+          like.destroy()
+          .then(function() {
+            db.models.post.findOne({where: {id: req.body.postId }})
+            .then(function(post) {
+              db.models.post.update({
+                voteCount: post.dataValues.voteCount - 1
+              },
+              {
+                fields: ['voteCount'],
+                where: {id: req.body.postId}
+              })
+              .then(function(response) {
+                res.send({voteCount: post.dataValues.voteCount - 1})
+              })
+            })
+          })
+        }
+      })
+    },
+
+    get: function(req, res) {
+      // console.log('req.body in mount', req.query)
+      db.models.post.findOne({where: {id: req.query.postId }})
+      .then(function (post) {
+        res.send({voteCount: post.dataValues.voteCount});
+      })
+    }
+
   }
 };
+
+// db.Alert.update(
+//   { url: url },
+//   {
+//     fields: ['url'],
+//     where: {id: id}
+//   }
+// );

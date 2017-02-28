@@ -207,6 +207,7 @@ request(url, function (error, response, html) {
                   db.models.post.create({
                     type: type,
                     filePath: postUrl,
+                    voteCount: 0,
                     parkId: results.dataValues.id,
                     userId: userId
                   });
@@ -381,5 +382,3 @@ db.models.postcomment.findOrCreate({
     userId: 3
   }
 });
-
-

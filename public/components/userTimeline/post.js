@@ -24,7 +24,7 @@ export default class Post extends React.Component {
         <h5>{this.convertDate(this.props.datePosted)}</h5>
         <img className="timelinePhotoFeed" src={this.props.photoData} />
         <div className="commentline">
-          <Like className="likeTimeline"/>
+          <Like className="likeTimeline" postId={this.props.postId}/>
           <textarea className="commentTimeline"></textarea>
           <button className="submitButton">Comment</button>
         </div>

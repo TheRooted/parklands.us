@@ -34,6 +34,9 @@ router.get('/api/userTimeline', controller.userTimeline.get);
 
 router.post('/api/userTimeline', controller.userTimeline.post);
 
+// Routes for likes on photos
+router.get('/api/photoLike', controller.photoLike.get)
+router.post('/api/photoLike', controller.photoLike.post);
 
 // Routes for user user feed
 router.get('/api/userfeed', controller.userfeed.get);
