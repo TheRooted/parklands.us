@@ -6,7 +6,7 @@ var bcrypt = require('bcrypt');
 
 // Serialize and deserialize user
 passport.serializeUser(function(user, done) {
-  console.log('serialize')
+  console.log('serialize user', user)
   done(null, user.id);
 });
 
@@ -49,7 +49,6 @@ function(req, email, password, done) {
       }
       // Email already registered
       if (user.dataValues) {
-        console.log('got a user?')
         return done(null, false, { message: 'An account is already registered to that email. Please sign in.' });
       // No account registered for that email
       } else {
@@ -68,7 +67,7 @@ function(req, email, password, done) {
             .then(function(user) {
               console.log('all good!');
               return done(null, user.dataValues, req);
-            });
+           });
           }
         });
       }
@@ -88,6 +87,7 @@ passport.use('local-signin', new LocalStrategy({
   },
   function(req, email, password, done) {
     console.log('local-signin')
+    // console.log('req', req)
     process.nextTick(function() {
 
       // Find user by email submitted
@@ -138,19 +138,19 @@ passport.use('local-signout', new LocalStrategy({
 ));
 
 //************************************//
-//          Signout Strategy          //
+//         Check Auth Strategy        //
 //************************************//
 
-// passport.use('local-session', new LocalStrategy({
-//   usernameField: 'email',
-//   passwordField: 'password',
-//   passReqToCallback : true
-// },
-//   function(req, email, password, done) {
-//     req.logout();
-//     return done(null);
-//   }
-// ));
+passport.use('local-session', new LocalStrategy({
+  usernameField: 'email',
+  passwordField: 'password',
+  passReqToCallback : true
+},
+  function(req, email, password, done) {
+    console.log('SESSION')
+    return done(null, email);
+  }
+));
 
 
 module.exports = passport;

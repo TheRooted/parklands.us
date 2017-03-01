@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.js';
+import axios from 'axios';
 
 import { Router, Route, browserHistory, IndexRoute} from 'react-router';
 
@@ -14,16 +15,27 @@ import UserFeed from './userFeed/user_Feed.js'
 
 const app = document.getElementById('app');
 
+var isLoggedIn = () => {
+  // console.log('checking login')
+  // var user = {
+  //   email: "kaychristensen@gmail.com",
+  //   password: "rocksteady"
+  // }
+  // axios.post('/session', user).then(function(res) {
+  //   console.log('isLoggedIn res', res);
+  // });
+}
+
 ReactDOM.render((
   <Router history={browserHistory}>
     <Route path='/' component={App} >
       <IndexRoute component={Landing} />
       <Route path='signin' component={Signin} />
       <Route path='signup' component={Signup} />
-      <Route path='usertimeline' component={UserTimeline} />
-      <Route path='userfeed' component={UserFeed} />
-      <Route path='park/:parkName' component={Snp} />
-      <Route path='notavalidpark/:parkName' component={NotAPark}/>
+      <Route path='usertimeline' onEnter={isLoggedIn} component={UserTimeline} />
+      <Route path='userfeed' onEnter={isLoggedIn} component={UserFeed} />
+      <Route path='park/:parkName' onEnter={isLoggedIn} component={Snp} />
+      <Route path='notavalidpark/:parkName' onEnter={isLoggedIn} component={NotAPark}/>
     </Route>
 
   </Router>), app);

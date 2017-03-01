@@ -11,11 +11,13 @@ var app = express();
 // Passport middleware
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }) );
-
 app.use(session({  
   secret: 'saucecat',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  cookie: {
+    secure: false
+  }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -30,6 +32,7 @@ app.get('*', (req, res, next) => {
    if(req.path.split('/')[1] === 'static') return next();
    res.sendFile(path.resolve(__dirname, '../public/index.html'));
 });
+
 
 var port = 3000;
 

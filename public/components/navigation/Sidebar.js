@@ -5,6 +5,7 @@ import { browserHistory, Link } from 'react-router';
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {}
   }
 
   sidebarAddClass() {
@@ -13,13 +14,11 @@ class Sidebar extends React.Component {
   }
 
   handleSignout() {
-    console.log('handling submit');
     var user = {
       email: 'frog@email.com',
-      password: 'axios'
+      password: 'frog'
     }
     axios.post('/signout', user).then(function(res) {
-      console.log('signout res', res)
       if (res.request.responseURL === 'http://localhost:3000/signin') {
         browserHistory.push('/signin');
       } else {

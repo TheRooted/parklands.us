@@ -10,8 +10,8 @@ export default class Signup extends React.Component {
   
   handleSubmit() {
     var user = {
-      firstName: this.refs.firstNameSI.value,
-      lastName: this.refs.lastNameSI.value,
+      // firstName: this.refs.firstNameSI.value,
+      // lastName: this.refs.lastNameSI.value,
       email: this.refs.emailSI.value,
       password: this.refs.passwordSI.value
     };
@@ -33,7 +33,7 @@ export default class Signup extends React.Component {
           <br />
           <div className="buttons">
             <button className="btn-auth" onClick={this.handleSubmit.bind(this)}>Sign Up</button>
-            <Link to="signin" className="signin-link">Have an account? Sign in</Link>
+            <Link to="signin" className="signin-link">Already have an account? Sign in</Link>
           </div>
         </div>
       </div>
