@@ -156,6 +156,7 @@ module.exports = {
 
   userfeed : {
     get: function (req, res) {
+      console.log('req.body in userfeed is ', req.body);
       db.models.post.findAll({})
       .then(function (userPost) {
         //console.log('all user post are ', userPost);
@@ -166,13 +167,32 @@ module.exports = {
 
   postcomment: {
     get: function (req, res) {
-      db.models.postcomment.findAll({})
+      console.log('req.query ', req.query);
+      db.models.postcomment.findAll({
+        where: {
+          postId: parseInt(req.query.postId)
+        }
+      })
       .then(function (comment) {
-        //console.log('comment is ...', comment);
+        console.log('comment is ...', comment);
         res.send(comment);
       });
     }
   },
+
+  // comment : {
+  //   get: function (req, res) {
+  //     console.log('req.body.postId is ', req.body.postId);
+  //     db.models.postcomment.findOne({
+  //       where: {
+  //         postId: req.body.postId
+  //       }
+  //     })
+  //     .then(function (comment) {
+  //       console.log('comment is ', comment);
+  //     });
+  //   }
+  // },
 
   photoLike: {
     post: function (req, res) {

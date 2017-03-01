@@ -13,8 +13,13 @@ export default class CommentBox extends Component {
   }
 
   componentWillMount() {
+    console.log('post id ',this.props.postId);
     const context = this;
-    axios.get('/api/postcomment')
+    axios.get('/api/postcomment', {
+      params: {
+        postId: context.props.postId
+      }
+    })
     .then(function (res) {
       context.setState({
         comments: res.data
@@ -27,7 +32,9 @@ export default class CommentBox extends Component {
     const comments = this._getComments();
     return (
       <div className="comment-box">
-        {comments}
+        <div>
+          {comments}
+        </div>
       </div>
     );
   }

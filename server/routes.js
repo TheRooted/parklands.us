@@ -39,6 +39,9 @@ router.get('/api/userfeed', controller.userfeed.get);
 // Routes for post comment
 router.get('/api/postcomment', controller.postcomment.get);
 
+//Routes for one comment
+//router.get('/api/eachComment', controller.comment.get);
+
 // Routes for map
 router.get('/api/parklocations', controller.parklocations.get);
 
