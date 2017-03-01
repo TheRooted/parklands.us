@@ -53,6 +53,7 @@ export default class Snp extends React.Component {
       }
     })
     string = string.join(' ');
+    //Wrangell-St. Elias code:
     string = string.split('–');
     string.forEach(function(word, index, array) {
       if (word !== 'of' && word !== 'the' && word !== 'and') {
@@ -79,8 +80,6 @@ export default class Snp extends React.Component {
     var context = this;
     parkName = parkName.split(' ');
     parkName = parkName.join('%20');
-    // console.log('updateParkInfo parkName', parkName);
-
     axios.get('/api/park/' + parkName).then(function(res) {
       if (res.data) {
         context.setState({park: res.data})
@@ -91,7 +90,7 @@ export default class Snp extends React.Component {
           info: 'not a park!',
           twitterHandle: 'notvalidtwitterHandle'
         }})
-      }
+      } // then get parkPhotos, posts, and comments
     }).then(function(){
       if (context.state.park.id) {
         axios.get('/api/parkPhoto/' + context.state.park.id).then(function(res) {
@@ -120,12 +119,7 @@ export default class Snp extends React.Component {
         axios.get('/api/parkAverageRating/' + context.state.park.id).then(function(res){
           context.setState({averageRating: res.data.rating})
         })
-        // axios.get('/api/parkAlert/' + context.state.park.id).then(function(res) {
-        //   if (res.data) {
-        //     console.log('alerts', res.data);
-        //   }
-        // })
-      } else {
+      } else { //if data comes back without an id it's not a valid park name
         browserHistory.push('/notavalidpark/' + parkName);
       }
     })
@@ -157,7 +151,6 @@ export default class Snp extends React.Component {
         )
       }
     } else if (this.state.view === 'Reviews') {
-      var key = 0;
       var mediaView = function () {
         return (
           <div className='review-view-container'>
