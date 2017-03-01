@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+@import url('https://fonts.googleapis.com/css?family=Cuprum|Noticia+Text|Pathway+Gothic+One|Playfair+Display');
 
 html,
 body {
@@ -494,6 +495,35 @@ input[type="submit"]:hover {
   margin: 30px;
 }
 
+.hero {
+  /*position: relative;*/
+
+  width: 100%;
+}
+
+.hero-photo {
+  position: relative;
+  width: 100%;
+  z-index: -1;
+}
+
+.park-title {
+  font-family: 'Playfair Display', serif;
+  color: white;
+  padding: 10px;
+}
+
+
+.park-title-box {
+  /*position: absolute;*/
+  /*top: 15%;*/
+  left: 5%;
+  text-align: center;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.5);
+}
+
+
 .park-info {
   margin-bottom: 20px
 }
@@ -535,6 +565,10 @@ input[type="submit"]:hover {
   justify-content: space-between;
 }
 
+.official-parkphoto:hover {
+  opacity: 0.7;
+}
+
 .snp-navlinks,
 .snp-navlinks:focus {
   display: block;
@@ -553,9 +587,6 @@ input[type="submit"]:hover {
   padding: 20px;
 }
 
-.official-parkphoto:hover {
-  opacity: 0.7;
-}
 
 
 /**************************

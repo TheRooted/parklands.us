@@ -1,4 +1,5 @@
 var db = require('../db/schema');
+var Promise = require('bluebird');
 
 
 module.exports = {
@@ -248,8 +249,75 @@ module.exports = {
 
       })
     }
+  },
 
+  rating: {
+    post: function (req, res) {
+      // for average rating of overall park
+      var average;
+      var starContainer = [];
+
+      console.log('req.body', req.body)
+
+      db.models.rating.findOne({where: {
+        userId: req.body.userId,
+        parkId: req.body.parkId
+      } })
+      .then(function(ratings) {
+        console.log('@@rating', ratings)
+        // if the rating doesnt exist
+        if (!ratings) {
+          // create a row in ratings
+          starContainer.push(
+            db.models.rating.create(req.body)
+            .then(function(createdRow) {
+              console.log('rating row created')
+            })
+          )
+        } else {
+          // update the rating
+          console.log('@@in updating', req.body)
+          starContainer.push(
+            db.models.rating.update({
+              ratingVal: req.body.ratingVal
+            },
+            {
+              fields: ['ratingVal'],
+              where: {
+                userId: req.body.userId,
+                parkId: req.body.parkId
+              }
+            })
+          )
+        }
+        // updating total stars on national parks
+        // get the total amount of stars
+        Promise.all(starContainer).then(function(response) {
+          db.models.rating.findAll({attributes: ['ratingVal']})
+          .then(function(ratings) {
+            var total = 0;
+            for (var i = 0; i < ratings.length; i++) {
+              var toNum = parseInt(ratings[i].dataValues.ratingVal);
+              total = total + toNum;
+            }
+            // rounded to an integer
+            average = Math.round(total/ratings.length);
+            //update the park with the average rating
+            db.models.park.update({
+              rating: average
+            },
+            {
+              fields: ['rating'],
+              where: {id: req.body.parkId}
+            }).then(function(updated) {
+              res.send({averageRating: average})
+            })
+          })
+        })
+      })
+    }
   }
+
 };
 
 // db.Alert.update(

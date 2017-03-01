@@ -5,6 +5,8 @@ import {browserHistory} from 'react-router'
 import Parkcomment from './Parkcomment.js'
 import ParkPhoto from './ParkPhoto.js'
 import ParkMap from './ParkMap.js'
+import RatingPark from './rating.js'
+
 // import { Timeline } from 'react-twitter-widgets'
 
 
@@ -18,7 +20,7 @@ export default class Snp extends React.Component {
         id: false,
         name: 'null',
         info: 'null',
-        twitterHandle: 'jackie'
+        twitterHandle: 'undefined'
       },
       view: 'Photos',
       photos: [],
@@ -122,7 +124,7 @@ export default class Snp extends React.Component {
       }
     })
   }
-  
+
   render() {
     var context = this;
     if (this.state.view === 'Photos') {
@@ -146,11 +148,19 @@ export default class Snp extends React.Component {
 
     return (
       <div className='snp'>
-        <h2 className="park-title">{this.capFirstLetter(this.state.park.name)} National Park</h2>
+        <div className='hero'>
+          {/*<img className='hero-photo' src='http://www.tnaqua.org/images/uploads/blog/Half_Dome_in_Yosemite_National_Park_%C2%A9Dmitri_Fomin-_newsroom.jpg' /> */}
+            {/*https://coolworks-bucket001.s3.amazonaws.com/production/pages/heros/209/content/HERO_Yosemite_Half_Dome.jpg?1480224700' */}
+          <div className='park-title-box'>
+            <h2 className="park-title">{this.capFirstLetter(this.state.park.name)} National Park</h2>
+            <RatingPark parkId={this.state.park.id}
+            />
+          </div>
+
+        </div>
         <ParkMap park={this.state.park} />
         <section className="park-info">{this.state.park.info}</section>
         <hr/>
-      {/* if this doesn't work, remove the div wrapper */}
         <div className="official-photo-container">
           {this.state.officialPhotos.map((photo, i) =>
             <ParkPhoto photo={photo}
