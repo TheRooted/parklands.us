@@ -27,7 +27,8 @@ export default class Snp extends React.Component {
       comments: [],
       // alerts: [],
       officialPhotos: [],
-      photoIndex: 0
+      photoIndex: 0,
+      averageRating: 0
     }
 
   }
@@ -125,6 +126,13 @@ export default class Snp extends React.Component {
     })
   }
 
+  updateAverageRating (avgRate) {
+    this.setState({averageRating: avgRate}, function(done) {
+      console.log('snp page avgr', this.state.averageRating)
+    });
+
+  }
+
   render() {
     var context = this;
     if (this.state.view === 'Photos') {
@@ -154,6 +162,7 @@ export default class Snp extends React.Component {
           <div className='park-title-box'>
             <h2 className="park-title">{this.capFirstLetter(this.state.park.name)} National Park</h2>
             <RatingPark parkId={this.state.park.id}
+              updateAverageRating={this.updateAverageRating.bind(this)}
             />
           </div>
 

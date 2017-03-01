@@ -17,7 +17,7 @@ class RatingPark extends React.Component {
   */
   componentWillReceiveProps(nextProps) {
     var context = this;
-    // if (this.props.parkId !== nextProps.parkId) {
+    if (this.props.parkId !== nextProps.parkId) {
       axios.get('/api/rating', {
         params: {
           parkId: nextProps.parkId,
@@ -31,7 +31,7 @@ class RatingPark extends React.Component {
         var star = parseInt(res.data.rating);
         context.setState({userStars: star})
       })
-    // }
+    }
   }
 
   handleRate (e, data) {
@@ -42,12 +42,13 @@ class RatingPark extends React.Component {
       ratingVal: data.rating,
       parkId: context.props.parkId,
       // *******FIXME: userId hardcoded******
-      userId: 105
+      userId: 106
 
     }
     axios.post('/api/rating', userRating).then(function(res) {
-      //TODO
+      //TODO ** PASS AVERAGE BACK TO SNP **
       console.log('rating has been saved', res)
+      context.props.updateAverageRating(res.data.averageRating);
     })
   }
 

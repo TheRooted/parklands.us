@@ -306,14 +306,17 @@ module.exports = {
         // updating total stars on national parks
         // get the total amount of stars
         Promise.all(starContainer).then(function(response) {
-          db.models.rating.findAll({attributes: ['ratingVal']})
-          .then(function(ratings) {
+          db.models.rating.findAll({where: {
+            parkId: req.body.parkId
+          }}).then(function(parkRatings) {
+            console.log('park ratings', parkRatings);
+
             var total = 0;
-            for (var i = 0; i < ratings.length; i++) {
-              total = total + ratings[i].dataValues.ratingVal;
+            for (var i = 0; i < parkRatings.length; i++) {
+              total = total + parkRatings[i].dataValues.ratingVal;
             }
             // rounded to an integer
-            average = Math.round(total/ratings.length);
+            average = Math.round(total/parkRatings.length);
             //update the park with the average rating
             db.models.park.update({
               rating: average
@@ -324,6 +327,7 @@ module.exports = {
             }).then(function(updated) {
               res.send({averageRating: average})
             })
+
           })
         })
       })
