@@ -523,5 +523,3 @@ db.models.postcomment.findOrCreate({
     userId: 3
   }
 });
-
-// }
