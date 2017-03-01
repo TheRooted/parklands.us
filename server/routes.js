@@ -6,14 +6,17 @@ var router = require('express').Router();
 // Routes for signup, signin, and signout
 router.post('/signup', passport.authenticate('local-signup', { successRedirect: '/', failureRedirect: '/signup' }));
 router.post('/signin', passport.authenticate('local-signin', { successRedirect: '/', failureRedirect: '/signin' }));
-// router.post('/signin', passport.authenticate('local-signin', function(req, res) {
-//   console.log('routes args', arguments);
-// }));
 router.post('/signout', passport.authenticate('local-signout', { successRedirect: '/signin', failureRedirect: '/signin' })); 
-// router.post('/session', passport.authenticate('local-session', function(args) {
-//   console.log('session args', arguments);
-// })); 
-router.post('/session', passport.authenticate('local-session', { successRedirect: '/next', failureRedirect: '/signin' })); 
+router.get('/session', function(req, res) {
+  console.log('session req', req.user)
+  if (req.user) {
+    console.log('there is a user')
+    res.sendStatus(200).end();
+  } else {
+    console.log('there is not a user')
+    res.sendStatus(201).end();
+  }
+}); 
 
 // Routes for parks
 router.get('/api/grid', controller.grid.get);

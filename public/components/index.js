@@ -15,7 +15,17 @@ import UserFeed from './userFeed/user_Feed.js'
 
 const app = document.getElementById('app');
 
-var isLoggedIn = () => {
+const isLoggedIn = (nextState, replace) => {
+  console.log('checking is logged in')
+  axios.get('/session').then(function(res) {
+    console.log('session res status', res.status)
+    if (res.status !== 200) {
+      browserHistory.push('/signin')
+      // replace({
+      //   pathname: '/signin'
+      // })
+    }
+  });
   // console.log('checking login')
   // var user = {
   //   email: "kaychristensen@gmail.com",

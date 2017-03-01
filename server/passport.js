@@ -93,7 +93,6 @@ passport.use('local-signin', new LocalStrategy({
       // Find user by email submitted
       db.models.user.findOne({ where: { email: email }})
       .then(function(user, err) {
-        console.log('user is', user)
         if (err) { 
           return done(err); 
         }

@@ -15,6 +15,7 @@ export default class Signin extends React.Component {
       password: this.refs.passwordSI.value
     }
     axios.post('/signin', user).then(function(res) {
+      console.log('signin res', res)
       if (res.request.responseURL === 'http://localhost:3000/') {
         browserHistory.push('/');
       } else (
