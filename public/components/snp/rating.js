@@ -6,21 +6,18 @@ class RatingPark extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userStars: 0,
+      userStars: 0
     }
   }
 
   /*TODO:
     componentWillMount:
-      grab userRating from database
       grab overallRating in SNP page (not here)
-
-      investigate componentWillMount vs recieveProps in like.js
 
   */
   componentWillReceiveProps(nextProps) {
     var context = this;
-    if (this.props.parkId !== nextProps.parkId) {
+    // if (this.props.parkId !== nextProps.parkId) {
       axios.get('/api/rating', {
         params: {
           parkId: nextProps.parkId,
@@ -34,7 +31,7 @@ class RatingPark extends React.Component {
         var star = parseInt(res.data.rating);
         context.setState({userStars: star})
       })
-    }
+    // }
   }
 
   handleRate (e, data) {
@@ -60,6 +57,7 @@ class RatingPark extends React.Component {
         <Rating
           icon={'star'}
           maxRating={5}
+          clearable={true}
           rating={this.state.userStars}
           size= {'large'}
           onRate={this.handleRate.bind(this)}

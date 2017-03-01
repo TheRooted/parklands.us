@@ -105,7 +105,7 @@ sequelize
 
   var Ratings = sequelize.define('rating', {
     ratingVal: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     userId: {
       type: Sequelize.INTEGER

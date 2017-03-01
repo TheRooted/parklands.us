@@ -259,6 +259,19 @@ module.exports = {
 
       console.log('req.body', req.body)
 
+      // if the rating is zero, find and delete the row
+      if (req.body.ratingVal === 0) {
+        db.models.rating.findOne({where: {
+          userId: req.body.userId,
+          parkId: req.body.parkId
+        } })
+        .then(function(ratingRow) {
+          ratingRow.destroy();
+        })
+      }
+
+      // else, do all the things
+
       db.models.rating.findOne({where: {
         userId: req.body.userId,
         parkId: req.body.parkId
@@ -297,8 +310,7 @@ module.exports = {
           .then(function(ratings) {
             var total = 0;
             for (var i = 0; i < ratings.length; i++) {
-              var toNum = parseInt(ratings[i].dataValues.ratingVal);
-              total = total + toNum;
+              total = total + ratings[i].dataValues.ratingVal;
             }
             // rounded to an integer
             average = Math.round(total/ratings.length);
@@ -324,7 +336,13 @@ module.exports = {
       } })
       .then(function(ratingInstance) {
         console.log('userRating', ratingInstance)
-        var ratingContainer = {rating: ratingInstance.dataValues.ratingVal}
+        var rate;
+        if (!ratingInstance) {
+          rate = 0;
+        } else {
+          rate = ratingInstance.dataValues.ratingVal;
+        }
+        var ratingContainer = {rating: rate}
         res.send(ratingContainer);
       })
     }

@@ -131,7 +131,7 @@ request(url, function (error, response, html) {
           j = 12;
         } else {
           //columns have useless info every other column
-          j++;          
+          j++;
         }
       }
       //build out park object to push into array
@@ -171,7 +171,7 @@ request(url, function (error, response, html) {
       var urls = [
         {url: 'https://twitter.com/AcadiaNPS', name: 'acadia'},
         {url: 'https://twitter.com/HIPacParks', name: 'american samoa'}, //tentative american samoa
-        {url: 'https://twitter.com/ArchesNPS', name: 'arches'}, 
+        {url: 'https://twitter.com/ArchesNPS', name: 'arches'},
         {url: 'https://twitter.com/BadlandsNPS', name: 'badlands'},
         {url: 'https://twitter.com/BigBendNPS', name: 'big bend'},
         {url: 'https://twitter.com/BiscayneNPS', name: 'biscayne'},
@@ -266,7 +266,7 @@ request(url, function (error, response, html) {
                       notPhotoCount++;
                       type = 'notphoto';
                     }
-                    
+
                   }
                   if ((i - notPhotoCount) < 3) {
                     userId = 1;
@@ -291,7 +291,9 @@ request(url, function (error, response, html) {
           }));
         });
       })
-      Promise.all(requests);
+      Promise.all(requests).then(function() {
+        console.log('@@@@@@@@FINISHED SEEDING')
+      });
       /*---------------------------------------------
             Seed parkPhotos with Yosemite pics
       ----------------------------------------------*/
