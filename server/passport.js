@@ -137,21 +137,6 @@ passport.use('local-signout', new LocalStrategy({
   }
 ));
 
-//************************************//
-//         Check Auth Strategy        //
-//************************************//
-
-passport.use('local-session', new LocalStrategy({
-  usernameField: 'email',
-  passwordField: 'password',
-  passReqToCallback : true
-},
-  function(req, email, password, done) {
-    console.log('SESSION')
-    return done(null, email);
-  }
-));
-
 
 module.exports = passport;
 
