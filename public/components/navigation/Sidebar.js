@@ -14,17 +14,15 @@ class Sidebar extends React.Component {
   }
 
   handleSignout() {
-    var user = {
-      email: 'frog@email.com',
-      password: 'frog'
-    }
-    axios.post('/signout', user).then(function(res) {
-      if (res.request.responseURL === 'http://localhost:3000/signin') {
-        browserHistory.push('/signin');
-      } else {
-        browserHistory.push('/signup');
-      }
-    });
+    axios.get('/api/session').then(function(res) {
+      var user = res.data;
+
+      axios.post('/signout', user).then(function(res) {
+        if (res.request.responseURL === 'http://localhost:3000/signin') {
+          browserHistory.push('/signin');
+        }
+      });
+    })
   }
 
   render() {

@@ -12,8 +12,8 @@ export default class Signup extends React.Component {
     var user = {
       // firstName: this.refs.firstNameSI.value,
       // lastName: this.refs.lastNameSI.value,
-      email: this.refs.emailSI.value,
-      password: this.refs.passwordSI.value
+      email: this.refs.emailSU.value,
+      password: this.refs.passwordSU.value
     };
     axios.post('/signup', user).then(function(res) {
       if (res.request.responseURL === 'http://localhost:3000/') {
@@ -27,13 +27,13 @@ export default class Signup extends React.Component {
     return (
       <div className='signupBg'>
         <div className="auth-container">
-          <input className="auth-fields" type="email" name="email" placeholder="Email Address" ref="emailSI" />
+          <input className="auth-fields" type="email" name="email" placeholder="Email Address" ref="emailSU" />
           <br />
-          <input className="auth-fields" type="password" name="password" placeholder="Password" ref="passwordSI" />
+          <input className="auth-fields" type="password" name="password" placeholder="Password" ref="passwordSU" />
           <br />
           <div className="buttons">
             <button className="btn-auth" onClick={this.handleSubmit.bind(this)}>Sign Up</button>
-            <Link to="signin" className="signin-link">Already have an account? Sign in</Link>
+            <Link to="/signin" className="signin-link">Already have an account? Sign in</Link>
           </div>
         </div>
       </div>

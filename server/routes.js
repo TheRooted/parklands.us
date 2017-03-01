@@ -10,15 +10,7 @@ router.post('/signout', passport.authenticate('local-signout', { successRedirect
 
 // Route to check if there is an active user session; if so, sends back user info
 // Access user object in res.data
-router.get('/api/session', function(req, res) {
-  if (req.user) {
-    console.log('there is a user')
-    res.status(200).send(req.user);
-  } else {
-    console.log('there is not a user')
-    res.sendStatus(201).end();
-  }
-}); 
+router.get('/api/session', controller.session.get);
 
 // Routes for parks
 router.get('/api/grid', controller.grid.get);

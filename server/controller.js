@@ -3,11 +3,15 @@ var db = require('../db/schema');
 
 module.exports = {
 
-  signout: {
-    post: function(req, res) {
-      req.session.destroy(function() {
-        res.sendStatus(200);
-      });
+  session: {
+    get: function(req, res) {
+      if (req.user) {
+        console.log('there is a user')
+        res.status(200).send(req.user);
+      } else {
+        console.log('there is not a user')
+        res.sendStatus(201).end();
+      }
     }
   },
 

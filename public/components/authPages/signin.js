@@ -33,7 +33,7 @@ export default class Signin extends React.Component {
           <br />
           <div className="buttons">
             <button className="btn-auth" onClick={this.handleSubmit.bind(this)}>Sign In</button>
-            <Link to="signup" className="signup-link">Don't have an account? Sign up</Link>
+            <Link to="/signup" className="signup-link">Don't have an account? Sign up</Link>
           </div>
         </div>
       </div>
