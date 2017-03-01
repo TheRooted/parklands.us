@@ -121,11 +121,16 @@ export default class Snp extends React.Component {
             context.setState({comments: commentArr})
           }
         })
+<<<<<<< HEAD
         axios.get('/api/parkAverageRating/' + context.state.park.id).then(function(res){
           context.setState({averageRating: res.data.rating})
         })
       } else { //if data comes back without an id it's not a valid park name
         browserHistory.replace('/notavalidpark/' + parkName);
+=======
+      } else { //if data comes back without an id it's not a valid park name
+        browserHistory.push('/notavalidpark/' + parkName);
+>>>>>>> replace unnecessary vars with index of array for key elements
       }
     })
   }
