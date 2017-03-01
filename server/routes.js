@@ -8,7 +8,7 @@ router.post('/signup', passport.authenticate('local-signup', { successRedirect: 
 router.post('/signin', passport.authenticate('local-signin', { successRedirect: '/', failureRedirect: '/signin' }));
 router.post('/signout', passport.authenticate('local-signout', { successRedirect: '/signin', failureRedirect: '/signin' })); 
 
-// Checks if there is an active user session and sends back user info
+// Route to check if there is an active user session; if so, sends back user info
 // Access user object in res.data
 router.get('/api/session', function(req, res) {
   if (req.user) {

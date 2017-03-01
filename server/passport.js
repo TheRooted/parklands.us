@@ -131,6 +131,7 @@ passport.use('local-signout', new LocalStrategy({
 },
   function(req, email, password, done) {
     console.log('local-signout');
+    req.session.destroy();
     req.logout();
     return done(null, false, { message: 'Successfully signed out.' }, req);
   }
