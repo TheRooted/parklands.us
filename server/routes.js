@@ -7,11 +7,13 @@ var router = require('express').Router();
 router.post('/signup', passport.authenticate('local-signup', { successRedirect: '/', failureRedirect: '/signup' }));
 router.post('/signin', passport.authenticate('local-signin', { successRedirect: '/', failureRedirect: '/signin' }));
 router.post('/signout', passport.authenticate('local-signout', { successRedirect: '/signin', failureRedirect: '/signin' })); 
-router.get('/session', function(req, res) {
-  console.log('session req', req.user)
+
+// Checks if there is an active user session and sends back user info
+// Access user object in res.data
+router.get('/api/session', function(req, res) {
   if (req.user) {
     console.log('there is a user')
-    res.sendStatus(200).end();
+    res.status(200).send(req.user);
   } else {
     console.log('there is not a user')
     res.sendStatus(201).end();
