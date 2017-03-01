@@ -19,6 +19,8 @@ router.get('/api/parkPhotoPost/:id', controller.parkPhotoPost.get);
 router.get('/api/parkComment/:id', controller.parkComment.get);
 
 //Routes for snp Page
+router.get('/api/rating', controller.rating.get);
+
 router.post('/api/rating', controller.rating.post);
 
 // router.get('/api/parkAlert/:id', controller.parkAlert.get);

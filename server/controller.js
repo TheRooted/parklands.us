@@ -315,6 +315,18 @@ module.exports = {
           })
         })
       })
+    },
+
+    get: function(req, res) {
+      db.models.rating.findOne({where: {
+        parkId: parseInt(req.query.parkId),
+        userId: parseInt(req.query.userId)
+      } })
+      .then(function(ratingInstance) {
+        console.log('userRating', ratingInstance)
+        var ratingContainer = {rating: ratingInstance.dataValues.ratingVal}
+        res.send(ratingContainer);
+      })
     }
   }
 
