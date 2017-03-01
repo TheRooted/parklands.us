@@ -8,8 +8,7 @@ router.post('/signup', passport.authenticate('local-signup', { successRedirect: 
 router.post('/signin', passport.authenticate('local-signin', { successRedirect: '/', failureRedirect: '/signin' }));
 router.post('/signout', passport.authenticate('local-signout', { successRedirect: '/signin', failureRedirect: '/signin' })); 
 
-// Route to check if there is an active user session; if so, sends back user info
-// Access user object in res.data
+// Route to check and get active session user
 router.get('/api/session', controller.session.get);
 
 // Routes for parks
@@ -20,10 +19,6 @@ router.get('/api/parkPhotoPost/:id', controller.parkPhotoPost.get);
 router.get('/api/parkComment/:id', controller.parkComment.get);
 
 // router.get('/api/parkAlert/:id', controller.parkAlert.get);
-
-//Routes for accessing user
-// router.get('/api/user/:id', controller.user.get);
-
 
 // Routes for user timeline
 router.get('/api/userTimeline', controller.userTimeline.get);
@@ -41,7 +36,6 @@ router.get('/api/postcomment', controller.postcomment.get);
 
 // Routes for map
 router.get('/api/parklocations', controller.parklocations.get);
-router.post('/api/parklocations', controller.parklocations.post);
 
 
 module.exports = router;

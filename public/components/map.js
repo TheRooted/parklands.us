@@ -25,11 +25,13 @@ export default class Mapp extends React.Component {
         for (var j = 0; j < splitName.length; j++) {
           name += splitName[j][0].toUpperCase() + splitName[j].slice(1) + ' ';
         }
+
+        var nameLink = "<a href=\"park/yosemite\">" + name + "</a>";
         
         features.push({
             "type": "Feature",
             "properties": {
-              "description": name,
+              "description": nameLink,
               "icon": "star"
           },
           "geometry": {
