@@ -16,8 +16,8 @@ export default class Mapp extends React.Component {
     .then(function (res) {
       var features = [];
       var data = res.data;
-
-      for (var i = 1; i < data.length - 1; i++) {
+      
+      for (var i = 0; i < data.length; i++) {
         var name = '';
         var coordinates = [data[i].long, data[i].lat];
         var splitName = data[i].name.split(/[–\s]/);

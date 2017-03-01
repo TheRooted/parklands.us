@@ -16,6 +16,8 @@ export default class Signin extends React.Component {
     }
     axios.post('/signin', user).then(function(res) {
       console.log('signin res', res)
+
+      // TODO: update with flexible urls
       if (res.request.responseURL === 'http://localhost:3000/' || res.request.responseURL === 'http://127.0.0.1:3000/') {
         browserHistory.push('/');
       } else (
