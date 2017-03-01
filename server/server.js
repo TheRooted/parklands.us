@@ -9,8 +9,8 @@ var app = express();
 
 
 // Passport middleware
-app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }) );
+app.use(parser.json());
 app.use(session({  
   secret: 'saucecat',
   resave: false,
