@@ -402,7 +402,7 @@ module.exports = {
         }
         var ratingContainer = {rating: rate}
         res.send(ratingContainer);
-      })
+      });
     }
   },
 
