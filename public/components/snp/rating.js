@@ -10,20 +10,6 @@ class RatingPark extends React.Component {
     }
   }
 
-  componentWillMount() {
-    axios.get('/api/rating', {
-      params: {
-        parkId: this.props.parkId,
-        // **TODO: get userID from session **
-        userId: 106
-      }
-    })
-    .then(function(res){
-      // set state of the userStars
-      var star = parseInt(res.data.rating);
-      context.setState({userStars: star})
-    })
-  }
 
   componentWillReceiveProps(nextProps) {
     var context = this;
