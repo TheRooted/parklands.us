@@ -28,7 +28,7 @@ export default class Signin extends React.Component {
   render() {
     return (
       <div className='signinBg'>
-        <div className="auth-container">
+        <form className="auth-container" type="post" onSubmit={event.preventDefault(this)}>
           <input className="auth-fields" type="email" name="email" placeholder="Email Address" ref="emailSI" />
           <br />
           <input className="auth-fields" type="password" name="password" placeholder="Password" ref="passwordSI" />
@@ -37,7 +37,7 @@ export default class Signin extends React.Component {
             <button className="btn-auth" onClick={this.handleSubmit.bind(this)}>Sign In</button>
             <Link to="/signup" className="signup-link">Don't have an account? Sign up</Link>
           </div>
-        </div>
+        </form>
       </div>
     )
   }

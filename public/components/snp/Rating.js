@@ -66,3 +66,4 @@ class RatingPark extends React.Component {
 }
 
 export default RatingPark;
+
