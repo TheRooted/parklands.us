@@ -2,8 +2,8 @@ var Sequelize = require('sequelize');
 var cfg = require('./dbConfig.js');
 
 var sequelize = new Sequelize(cfg.myLocalDB, cfg.myLocalDBRole, cfg.myLocalDBPW, {
-  // host: 'postgresql-parklands.cb7jjlsrmerv.us-west-1.rds.amazonaws.com',
-  host: 'localhost',
+  host: 'postgresql-parklands.cb7jjlsrmerv.us-west-1.rds.amazonaws.com',
+  // host: 'localhost',
   dialect: 'postgres',
 
   pool: {
