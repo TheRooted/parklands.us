@@ -22,6 +22,7 @@ export default class Comment extends Component {
       }
     })
     .then(function (res) {
+      // console.log('res from comment mount is ', res.data);
       context.setState({
         user: res.data
       });
