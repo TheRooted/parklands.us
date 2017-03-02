@@ -85,15 +85,15 @@ module.exports = {
 
   parkAverageRating: {
     get: function(req, res) {
-      console.log('park averageRating')
+      console.log('park averageRating');
       // console.log('@@@@@@@inside park average rating', req.url)
       var id = req.url.split('/');
       id = id[id.length-1];
       db.models.park.findOne({
         where: {id: id}
       }).then(function(park) {
-        res.send({rating: park.dataValues.rating})
-      })
+        res.send({rating: park.dataValues.rating});
+      });
     }
   },
 
@@ -325,7 +325,7 @@ module.exports = {
         } })
         .then(function(ratingRow) {
           ratingRow.destroy();
-        })
+        });
       }
 
       // else, do all the things
@@ -335,19 +335,19 @@ module.exports = {
         parkId: req.body.parkId
       } })
       .then(function(ratings) {
-        console.log('@@rating', ratings)
+        console.log('@@rating', ratings);
         // if the rating doesn't exist
         if (!ratings) {
           // create a row in ratings
           starContainer.push(
             db.models.rating.create(req.body)
             .then(function(createdRow) {
-              console.log('rating row created')
+              console.log('rating row created');
             })
-          )
+          );
         } else {
           // update the rating
-          console.log('@@in updating', req.body)
+          console.log('@@in updating', req.body);
           starContainer.push(
             db.models.rating.update({
               ratingVal: req.body.ratingVal
@@ -359,7 +359,7 @@ module.exports = {
                 parkId: req.body.parkId
               }
             })
-          )
+          );
         }
         // updating total stars on national parks
         // get the total amount of stars
@@ -387,12 +387,12 @@ module.exports = {
               fields: ['rating'],
               where: {id: req.body.parkId}
             }).then(function(updated) {
-              res.send({averageRating: average})
-            })
+              res.send({averageRating: average});
+            });
 
-          })
-        })
-      })
+          });
+        });
+      });
     },
 
     get: function(req, res) {
@@ -408,7 +408,7 @@ module.exports = {
         } else {
           rate = ratingInstance.dataValues.ratingVal;
         }
-        var ratingContainer = {rating: rate}
+        var ratingContainer = {rating: rate};
         res.send(ratingContainer);
       });
     }
@@ -416,8 +416,8 @@ module.exports = {
 
   simpleRating: {
     get: function(req, res) {
-      console.log('in simpleRating')
-      db.models.rating.findAll({ 
+      console.log('in simpleRating');
+      db.models.rating.findAll({
         where: {
           // TODO: replace with actual userId
           // userId: parseInt(req.query.userId)
@@ -425,15 +425,15 @@ module.exports = {
         }
       })
       .then((results) => {
-        console.log('simpleRating results', results)
+        console.log('simpleRating results', results);
         res.send(results);
-      })
+      });
     }
   },
 
   parkReview: {
     post: function(req, res) {
-      console.log(req.body)
+      console.log(req.body);
       // insert review into table
       db.models.parkcomment.create({
         text: req.body.userReview,
@@ -441,11 +441,10 @@ module.exports = {
         userId: req.body.userId,
         parkId: req.body.parkId
       }).then(function(createdRow) {
-        res.send({})
-      })
+        res.send({});
+      });
     }
   }
-
 };
 
 // db.Alert.update(
