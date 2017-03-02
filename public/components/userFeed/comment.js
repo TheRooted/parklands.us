@@ -13,6 +13,11 @@ export default class Comment extends Component {
     };
   }
 
+  convertDate(date) {
+    var converted = new Date(date).toString();
+    return converted.slice(4, 10) + ', ' + converted.slice(11, 16);
+  }
+
   componentWillMount() {
     var context = this;
     axios.get('/api/username', {
@@ -23,18 +28,16 @@ export default class Comment extends Component {
     .then(function (res) {
       console.log('res from comment mount is ', res.data);
       context.setState({
-        user: `${res.data.firstName} ${res.data.lastName}`
+        user: res.data
       });
     });
   }
   render () {
     return (
       <div className="comment-container">
-        <strong>{this.state.user}</strong>
+        <strong>{`${this.state.user.firstName} ${this.state.user.lastName}`}</strong>
         <article>{this.props.text}</article>
-
-        <small>{this.props.userId}</small>
-        <small>Post Id is {this.props.postId}</small>
+        <small>{this.convertDate(this.state.user.createdAt)}</small>
       </div>
     );
   }
