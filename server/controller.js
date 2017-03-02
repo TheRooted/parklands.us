@@ -7,10 +7,10 @@ module.exports = {
   session: {
     get: function(req, res) {
       if (req.user) {
-        console.log('there is a user')
+        console.log('there is a user');
         res.status(200).send(req.user);
       } else {
-        console.log('there is not a user')
+        console.log('there is not a user');
         res.sendStatus(201).end();
       }
     }
@@ -165,6 +165,20 @@ module.exports = {
     }
   },
 
+  username: {
+    get: function (req, res) {
+      db.models.user.findOne({
+        where: {
+          id: parseInt(req.query.userId)
+        }
+      }).
+      then(function (user) {
+        console.log('user isssss ', user);
+        res.send(user);
+      });
+    }
+  },
+
   postcomment: {
     get: function (req, res) {
       console.log('req.query ', req.query);
@@ -216,12 +230,12 @@ module.exports = {
                 where: {id: req.body.postId}
               })
               .then(function(response) {
-                res.send({voteCount: post.dataValues.voteCount + 1})
-              })
-            })
-          })
+                res.send({voteCount: post.dataValues.voteCount + 1});
+              });
+            });
+          });
         } else {
-          console.log('already voted, insert remove like logic here')
+          console.log('already voted, insert remove like logic here');
           like.destroy()
           .then(function() {
             db.models.post.findOne({where: {id: req.body.postId }})
@@ -234,12 +248,12 @@ module.exports = {
                 where: {id: req.body.postId}
               })
               .then(function(response) {
-                res.send({voteCount: post.dataValues.voteCount - 1})
-              })
-            })
-          })
+                res.send({voteCount: post.dataValues.voteCount - 1});
+              });
+            });
+          });
         }
-      })
+      });
     },
 
     get: function(req, res) {
@@ -265,9 +279,9 @@ module.exports = {
               userLiked: false
             });
           }
-        })
+        });
 
-      })
+      });
     }
   },
 
