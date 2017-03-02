@@ -22,7 +22,7 @@ class RatingPark extends React.Component {
         params: {
           parkId: nextProps.parkId,
           // **TODO: get userID from session **
-          userId: 105
+          userId: 106
         }
       })
       .then(function(res){
