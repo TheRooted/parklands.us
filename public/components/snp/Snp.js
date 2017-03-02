@@ -5,7 +5,7 @@ import {browserHistory} from 'react-router'
 import Parkcomment from './Parkcomment.js'
 import ParkPhoto from './ParkPhoto.js'
 import ParkMap from './ParkMap.js'
-import RatingPark from './rating.js'
+import RatingPark from './Rating.js'
 import { Rating } from 'semantic-ui-react';
 
 
