@@ -8,6 +8,7 @@ module.exports = {
     get: function(req, res) {
       process.nextTick(function() {
         if (req.user) {
+          // TODO: REMOVE THIS CONSOLE LOG
           console.log('there is a user', req.user);
           res.status(200).send(req.user);
         } else {
