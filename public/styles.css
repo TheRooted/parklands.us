@@ -564,11 +564,17 @@ input[type="submit"]:hover {
 }
 
 .official-photo-container,
-.mediaview-container {
+.photo-view-container,
+.review-view-container {
   position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.review-view-container {
+  text-align: center;
+  font-size: 
 }
 
 .official-parkphoto:hover {

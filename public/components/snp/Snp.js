@@ -142,28 +142,35 @@ export default class Snp extends React.Component {
     var context = this;
     if (this.state.view === 'Photos') {
       var mediaView = function () {
-        return (context.state.photos.map((photo, i) =>
-          <ParkPhotoPost photo={photo}
-            key={i}
-            index={i}
-            parkName={context.capFirstLetter(context.state.park.name)}
-            photoIndex={context.state.photoIndex}
-            userPhotos={context.state.photos}
-          />))
+        return (
+          <div className='photos-view-container'>
+            {context.state.photos.map((photo, i) =>
+              <ParkPhotoPost photo={photo}
+                key={i}
+                index={i}
+                parkName={context.capFirstLetter(context.state.park.name)}
+                photoIndex={context.state.photoIndex}
+                userPhotos={context.state.photos}
+              />)
+            }
+          </div>
+        )
       }
     } else if (this.state.view === 'Reviews') {
       var key = 0;
       var mediaView = function () {
         return (
-          <div>
-            <p> NATURE, EH? INCREDIBLE!!!</p>
-            <Rating
-              icon={'star'}
-              maxRating={5}
-              rating={context.state.averageRating}
-              size= {'huge'}
-              disabled={true}
-            />
+          <div className='review-view-container'>
+            <div className='review-header'>
+              <h1>{context.capFirstLetter(context.state.park.name) + ' National Park'}</h1>
+              <Rating
+                icon={'star'}
+                maxRating={5}
+                rating={context.state.averageRating}
+                size= {'huge'}
+                disabled={true}
+                />
+            </div>
             {context.state.comments.map(comment =>
               <Parkcomment userEmail={comment.userEmail} text={comment.text} key={key++}/>)
             }
@@ -209,7 +216,6 @@ export default class Snp extends React.Component {
         <div className="mediaview-container">
           {mediaView()}
         </div>
-        <div className="buffer-div"></div>
       </div>
     )
   }
