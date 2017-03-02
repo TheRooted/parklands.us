@@ -134,6 +134,7 @@ export default class Snp extends React.Component {
 
   render() {
     var context = this;
+    console.log('what is state', context.state)
     if (this.state.view === 'Photos') {
       var mediaView = function () {
         return (
@@ -154,19 +155,27 @@ export default class Snp extends React.Component {
       var mediaView = function () {
         return (
           <div className='review-view-container'>
-            <div className='review-header'>
-              <h1>{context.capFirstLetter(context.state.park.name) + ' National Park'}</h1>
-              <Rating
-                icon={'star'}
-                maxRating={5}
-                rating={context.state.averageRating}
-                size= {'huge'}
-                disabled={true}
+            <div className='review-view-left' >
+              <div className='review-header'>
+                <div className='review-title'>{context.capFirstLetter(context.state.park.name) + ' National Park'}</div>
+                <Rating
+                  icon={'star'}
+                  maxRating={5}
+                  rating={context.state.averageRating}
+                  size= {'huge'}
+                  disabled={true}
                 />
+                <div className='reviewCommnentBox'>
+                  <ReviewCommentBox />
+                </div>
+              </div>
             </div>
-            {context.state.comments.map(comment =>
-              <Parkcomment userEmail={comment.userEmail} text={comment.text} key={key++}/>)
-            }
+
+            <div className='review-comments'>
+              {context.state.comments.map(comment =>
+                <Parkcomment userEmail={comment.userEmail} text={comment.text} key={key++}/>)
+                }
+            </div>
           </div>
         )
       }

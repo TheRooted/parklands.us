@@ -105,12 +105,8 @@ body {
   height: 35px;
   border-color: #009;
   border-radius: 6px;
-  display: inline-block;
 }
 
-.comment {
-  display: inline;
-}
 /*#sideBarContainer {
   position: relative;
   z-index: 100;
@@ -572,21 +568,33 @@ input[type="submit"]:hover {
 }
 
 .official-photo-container,
-.photo-view-container,
-.review-view-container {
+.photo-view-container {
   position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.review-view-container {
-  text-align: center;
-  font-size: 
-}
-
 .official-parkphoto:hover {
   opacity: 0.7;
+}
+
+.review-view-left {
+  float: left;
+}
+
+.review-header {
+  text-align: center;
+}
+
+.review-comments {
+  float: right;
+}
+
+.review-title {
+  display: block;
+  margin-bottom: 25px;
+  font-size: 40px;
 }
 
 .snp-navlinks,
