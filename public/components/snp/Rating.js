@@ -10,15 +10,11 @@ class RatingPark extends React.Component {
     }
   }
 
-<<<<<<< HEAD
-
-=======
   /*TODO:
     componentWillMount:
       grab overallRating in SNP page (not here)
 
   */
->>>>>>> allow seeding of online db
   componentWillReceiveProps(nextProps) {
     var context = this;
     if (this.props.parkId !== nextProps.parkId) {
@@ -26,11 +22,7 @@ class RatingPark extends React.Component {
         params: {
           parkId: nextProps.parkId,
           // **TODO: get userID from session **
-<<<<<<< HEAD
-          userId: 106
-=======
           userId: 105
->>>>>>> allow seeding of online db
         }
       })
       .then(function(res){
@@ -64,10 +56,7 @@ class RatingPark extends React.Component {
     return (
       <div className="rating-container">
         <Rating
-<<<<<<< HEAD
           className={'rating-star'}
-=======
->>>>>>> allow seeding of online db
           icon={'star'}
           maxRating={5}
           clearable={true}
