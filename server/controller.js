@@ -6,13 +6,15 @@ module.exports = {
 
   session: {
     get: function(req, res) {
-      if (req.user) {
-        console.log('there is a user', req.user);
-        res.status(200).send(req.user);
-      } else {
-        //console.log('there is not a user');
-        res.sendStatus(201).end();
-      }
+      process.nextTick(function() {
+        if (req.user) {
+          console.log('there is a user', req.user);
+          res.status(200).send(req.user);
+        } else {
+          console.log('there is not a user');
+          res.sendStatus(201).end();
+        }
+      });
     }
   },
 
