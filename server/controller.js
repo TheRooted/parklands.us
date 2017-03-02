@@ -33,6 +33,9 @@ module.exports = {
       name = name.join(' ');
       name = name.split('%E2%80%93');
       name = name.join('–');
+      // For Haleakalā National Park:
+      name = name.split('%C4%81');
+      name = name.join('ā')
       db.models.park.findOne({
         where: {name: name}
       }).then(function(park) {

@@ -79,6 +79,8 @@ export default class Snp extends React.Component {
     var context = this;
     parkName = parkName.split(' ');
     parkName = parkName.join('%20');
+    // console.log('updateParkInfo parkName', parkName);
+
     axios.get('/api/park/' + parkName).then(function(res) {
       if (res.data) {
         context.setState({park: res.data})
