@@ -49,5 +49,4 @@ router.get(path.resolve(__dirname, '/api/username'), controller.username.get);
 // Routes for map
 router.get(path.resolve(__dirname, '/api/parklocations'), controller.parklocations.get);
 
-
 module.exports = router;
