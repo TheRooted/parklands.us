@@ -10,6 +10,14 @@ class RatingPark extends React.Component {
     }
   }
 
+<<<<<<< HEAD
+=======
+  /*TODO:
+    componentWillMount:
+      grab overallRating in SNP page (not here)
+
+  */
+>>>>>>> allow seeding of online db
   componentWillReceiveProps(nextProps) {
     var context = this;
     if (this.props.parkId !== nextProps.parkId) {
@@ -49,9 +57,14 @@ class RatingPark extends React.Component {
 
   render () {
     return (
+<<<<<<< HEAD
       <div className="rating-container">
         <Rating
           className={'rating-star'}
+=======
+      <div>
+        <Rating
+>>>>>>> allow seeding of online db
           icon={'star'}
           maxRating={5}
           clearable={true}
