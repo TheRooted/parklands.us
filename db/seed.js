@@ -1,4 +1,4 @@
-// module.exports = function () {
+module.exports = function () {
 var db = require('./schema');
 var cheerio = require('cheerio');
 var request = require('request');
@@ -524,4 +524,4 @@ db.models.postcomment.findOrCreate({
   }
 });
 
-// }
+}

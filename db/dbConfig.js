@@ -3,4 +3,3 @@ module.exports = {
   myLocalDBRole: 'lilb',
   myLocalDBPW: 'blackjack',
 };
-//fg.myLocalDBRole, cfg.myLocalDBPW
