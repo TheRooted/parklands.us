@@ -8,7 +8,6 @@ import ParkMap from './ParkMap.js'
 import RatingPark from './Rating.js'
 import { Rating } from 'semantic-ui-react';
 
-
 // import { Timeline } from 'react-twitter-widgets'
 
 
