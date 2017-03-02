@@ -500,8 +500,7 @@ input[type="submit"]:hover {
 }
 
 .hero {
-  /*position: relative;*/
-
+  position: relative;
   width: 100%;
 }
 
@@ -514,19 +513,22 @@ input[type="submit"]:hover {
 .park-title {
   font-family: 'Playfair Display', serif;
   color: white;
-  padding: 10px;
+  padding: 12px;
 }
 
 
 .park-title-box {
-  /*position: absolute;*/
-  /*top: 15%;*/
-  left: 5%;
+  position: absolute;
+  bottom: 4px;
+  width: 100%;
   text-align: center;
   background: rgb(0, 0, 0); /* fallback color */
   background: rgba(0, 0, 0, 0.5);
 }
 
+.park-star {
+  background-color: white;
+}
 
 .park-info {
   margin-bottom: 20px

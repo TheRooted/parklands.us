@@ -157,13 +157,14 @@ export default class Snp extends React.Component {
     return (
       <div className='snp'>
         <div className='hero'>
-          {/*<img className='hero-photo' src='http://www.tnaqua.org/images/uploads/blog/Half_Dome_in_Yosemite_National_Park_%C2%A9Dmitri_Fomin-_newsroom.jpg' /> */}
-            {/*https://coolworks-bucket001.s3.amazonaws.com/production/pages/heros/209/content/HERO_Yosemite_Half_Dome.jpg?1480224700' */}
+          <img className='hero-photo' src='https://coolworks-bucket001.s3.amazonaws.com/production/pages/heros/209/content/HERO_Yosemite_Half_Dome.jpg?1480224700' />
           <div className='park-title-box'>
             <h2 className="park-title">{this.capFirstLetter(this.state.park.name)} National Park</h2>
-            <RatingPark parkId={this.state.park.id}
-              updateAverageRating={this.updateAverageRating.bind(this)}
-            />
+            <div className="park-rating">
+              <RatingPark parkId={this.state.park.id}
+                updateAverageRating={this.updateAverageRating.bind(this)}
+              />
+            </div>
           </div>
 
         </div>

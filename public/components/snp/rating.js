@@ -56,6 +56,7 @@ class RatingPark extends React.Component {
     return (
       <div>
         <Rating
+          className={'rating-star'}
           icon={'star'}
           maxRating={5}
           clearable={true}
