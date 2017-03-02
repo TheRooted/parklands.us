@@ -8,7 +8,7 @@ class Like extends React.Component {
     this.state = {
       likes: 0,
       userLiked: false
-    }
+    };
   }
 
   componentWillMount() {
@@ -22,12 +22,12 @@ class Like extends React.Component {
       }
     })
     .then(function(res) {
-      console.log('res from mount', res.data)
+      console.log('res from mount', res.data);
       context.setState({
         likes: res.data.voteCount,
         userLiked: res.data.userLiked
-      })
-    })
+      });
+    });
   }
 
   onLike () {
@@ -36,7 +36,7 @@ class Like extends React.Component {
       // ** TODO: Get userID from session **
       userId: 321,
       postId: context.props.postId
-    }
+    };
     // send a post request with user/postID
     axios.post('/api/photoLike', like).then(function(res) {
       console.log('vote count', res.data.voteCount);
@@ -44,7 +44,7 @@ class Like extends React.Component {
         likes: res.data.voteCount,
         userLiked: !context.state.userLiked
       });
-    })
+    });
       // query the db to check if userID/postID exists in Vote table (find)
       // if res exists,
         // do nothing because they've already liked it
@@ -60,12 +60,12 @@ class Like extends React.Component {
       styles = {
         color: 'red',
         content: 'Liked',
-      }
+      };
     } else {
       styles = {
         color: 'instagram',
         content: 'Like'
-      }
+      };
     }
 
     return (
