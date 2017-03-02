@@ -152,7 +152,6 @@ export default class Snp extends React.Component {
       }
     } else if (this.state.view === 'Reviews') {
       var mediaView = function () {
-<<<<<<< HEAD
         return (
           <div className='review-view-container'>
             <div className='review-header'>
@@ -170,10 +169,6 @@ export default class Snp extends React.Component {
             }
           </div>
         )
-=======
-        return (context.state.comments.map((comment, i) =>
-          <Parkcomment userEmail={comment.userEmail} text={comment.text} key={i}/>))
->>>>>>> replace unnecessary vars with index of array for key elements
       }
     }
 
