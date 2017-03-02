@@ -50,7 +50,7 @@ class RatingPark extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="rating-container">
         <Rating
           className={'rating-star'}
           icon={'star'}

@@ -511,11 +511,11 @@ input[type="submit"]:hover {
 }
 
 .park-title {
+  height: 35px;
+  padding: 12px;
   font-family: 'Playfair Display', serif;
   color: white;
-  padding: 12px;
 }
-
 
 .park-title-box {
   position: absolute;
@@ -526,8 +526,12 @@ input[type="submit"]:hover {
   background: rgba(0, 0, 0, 0.5);
 }
 
-.park-star {
-  background-color: white;
+.rating-container {
+  height: 30px;
+}
+
+.ui.star.rating .icon {
+  color: rgba(255, 255, 255, 0.4)!important;
 }
 
 .park-info {
@@ -640,3 +644,4 @@ input[type="submit"]:hover {
  height: auto;
  width: 100%;
 }
+
