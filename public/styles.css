@@ -534,6 +534,10 @@ input[type="submit"]:hover {
   color: rgba(255, 255, 255, 0.4)!important;
 }
 
+.ui.star.rating .icon:focus {
+  outline: none!important;
+}
+
 .park-info {
   margin-bottom: 20px
 }
