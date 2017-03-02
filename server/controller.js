@@ -7,7 +7,7 @@ module.exports = {
   session: {
     get: function(req, res) {
       if (req.user) {
-        //console.log('there is a user');
+        console.log('there is a user', req.user);
         res.status(200).send(req.user);
       } else {
         //console.log('there is not a user');

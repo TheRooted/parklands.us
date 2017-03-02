@@ -35,10 +35,6 @@ app.get('*', (req, res, next) => {
    res.sendFile(path.resolve(__dirname, '../public/index.html'));
 });
 
-axios.get('https://developer.nps.gov/api/v0/parks', headers: { Authorization: {'API KEY'} })
-
-
-
 var port = process.env.PORT || 3000;
 
 app.listen(port, () => {
