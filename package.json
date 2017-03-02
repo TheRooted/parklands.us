@@ -7,6 +7,7 @@
     "test": "mocha -w Spec/component/helpers/browser.js Spec/component/*.spec.js",
     "dev:hot": "webpack-dev-server --hot --inline --progress --colors --watch --display-error-details --display-cached --content-base ./",
     "build": "webpack --config webpack.config.js",
+    "create": "node server/server.js",
     "start": "webpack --watch & nodemon server/server.js",
     "webpack": "webpack-dev-server"
   },
