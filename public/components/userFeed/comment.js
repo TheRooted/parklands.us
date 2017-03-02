@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import moment from 'moment';
 
 export default class Comment extends Component {
 
@@ -35,9 +36,11 @@ export default class Comment extends Component {
   render () {
     return (
       <div className="comment-container">
-        <strong>{`${this.state.user.firstName} ${this.state.user.lastName}`}</strong>
-        <article>{this.props.text}</article>
-        <small>{this.convertDate(this.state.user.createdAt)}</small>
+        <div className="comment">
+          <strong>{`${this.state.user.firstName} ${this.state.user.lastName}`}</strong>
+          <article>{this.props.text}</article>
+        </div>
+          <small>{moment(this.state.user.createdAt).fromNow()}</small>
       </div>
     );
   }

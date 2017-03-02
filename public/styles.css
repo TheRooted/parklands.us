@@ -105,8 +105,12 @@ body {
   height: 35px;
   border-color: #009;
   border-radius: 6px;
+  display: inline-block;
 }
 
+.comment {
+  display: inline;
+}
 /*#sideBarContainer {
   position: relative;
   z-index: 100;
