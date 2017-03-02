@@ -17,13 +17,14 @@ const app = document.getElementById('app');
 
 const isLoggedIn = (nextState, replace) => {
   console.log('checking if user is logged in')
-  
+
   axios.get('/api/session').then(function(res) {
     console.log('React res.status', res.status)
     console.log('React res', res)
-    if (res.status !== 200) {
-      browserHistory.push('/signin')
-    }
+    //TODO: UNCOMMENT ME OUT 
+    // if (res.status !== 200) {
+    //   browserHistory.push('/signin')
+    // }
   });
 }
 

@@ -16,6 +16,7 @@ router.post(path.resolve(__dirname, '/signout'), passport.authenticate('local-si
 router.get(path.resolve(__dirname, '/api/session'), controller.session.get);
 
 // Routes for parks
+<<<<<<< HEAD
 router.get(path.resolve(__dirname, '/api/grid'), controller.grid.get);
 router.get(path.resolve(__dirname, '/api/park/:parkName'), controller.park.get);
 router.get(path.resolve(__dirname, '/api/parkPhoto/:id'), controller.parkPhoto.get);
@@ -24,8 +25,21 @@ router.get(path.resolve(__dirname, '/api/parkComment/:id'), controller.parkComme
 
 //Routes for snp Page
 router.get(path.resolve(__dirname, '/api/rating'), controller.rating.get);
+=======
+router.get('/api/grid', controller.grid.get);
+router.get('/api/park/:parkName', controller.park.get);
+router.get('/api/parkPhoto/:id', controller.parkPhoto.get);
+router.get('/api/parkPhotoPost/:id', controller.parkPhotoPost.get);
+router.get('/api/parkComment/:id', controller.parkComment.get);
+router.get('/api/parkAverageRating/:id', controller.parkAverageRating.get);
+//Routes for snp Page Ratings
+router.get('/api/rating', controller.rating.get);
+>>>>>>> work on review fnc
 
 router.post(path.resolve(__dirname, '/api/rating'), controller.rating.post);
+
+//Routes for snp page park reviews
+router.post('/api/parkReview', controller.parkReview.post);
 
 // router.get('/api/parkAlert/:id', controller.parkAlert.get);
 

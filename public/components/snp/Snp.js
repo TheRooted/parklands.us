@@ -7,6 +7,7 @@ import ParkPhoto from './ParkPhoto.js'
 import ParkMap from './ParkMap.js'
 import RatingPark from './Rating.js'
 import { Rating } from 'semantic-ui-react';
+import ReviewCommentBox from './ReviewCommentBox.js'
 
 // import { Timeline } from 'react-twitter-widgets'
 
@@ -165,8 +166,12 @@ export default class Snp extends React.Component {
                   size= {'huge'}
                   disabled={true}
                 />
-                <div className='reviewCommnentBox'>
-                  <ReviewCommentBox />
+                <div className='reviewCommentBox'>
+                  <ReviewCommentBox
+                    parkId={this.state.park.id}
+                    {/*TODO: call sessions to get user id, pass along to all props */}
+                    userId={'106'}
+                  />
                 </div>
               </div>
             </div>

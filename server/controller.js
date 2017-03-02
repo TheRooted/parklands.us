@@ -400,6 +400,12 @@ module.exports = {
         res.send(ratingContainer);
       })
     }
+  },
+
+  parkReview: {
+    post: function(req, res) {
+
+    }
   }
 
 
