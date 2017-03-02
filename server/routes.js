@@ -4,6 +4,9 @@ var router = require('express').Router();
 var path = require('path');
 
 
+//seed online db
+var seed = require('./../db/seed.js');
+router.get(__dirname + '/api/seedDB', seed);
 // Routes for signup, signin, and signout
 router.post(__dirname + '/signup', passport.authenticate('local-signup', { successRedirect: '/', failureRedirect: '/signup' }));
 router.post(__dirname + '/signin', passport.authenticate('local-signin', { successRedirect: '/', failureRedirect: '/signin' }));

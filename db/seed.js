@@ -1,3 +1,4 @@
+module.exports = function () {
 var db = require('./schema');
 var cheerio = require('cheerio');
 var request = require('request');
@@ -458,13 +459,6 @@ db.models.postcomment.findOrCreate({
     userId: 3
   }
 });
-
-
-
-
-
-
-
 
 db.models.postcomment.findOrCreate({
   where: {
