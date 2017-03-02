@@ -17,8 +17,8 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     secure: false,
-    expires: new Date(Date.now() + (60 * 60 * 1000)),
-    maxAge: 60 * 60 * 1000
+    maxAge: 60 * 60 * 1000,
+    name: 'parklands-cookie'
   }
 }));
 app.use(passport.initialize());
