@@ -10,11 +10,6 @@ class RatingPark extends React.Component {
     }
   }
 
-  /*TODO:
-    componentWillMount:
-      grab overallRating in SNP page (not here)
-
-  */
   componentWillReceiveProps(nextProps) {
     var context = this;
     if (this.props.parkId !== nextProps.parkId) {
