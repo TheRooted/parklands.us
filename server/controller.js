@@ -81,6 +81,19 @@ module.exports = {
     }
   },
 
+  parkAverageRating: {
+    get: function(req, res) {
+      console.log('@@@@@@@inside park average rating', req.url)
+      var id = req.url.split('/');
+      id = id[id.length-1];
+      db.models.park.findOne({
+        where: {id: id}
+      }).then(function(park) {
+        res.send({rating: park.dataValues.rating})
+      })
+    }
+  },
+
   parklocations: {
     get: function(req, res) {
       db.models.park.findAll({})
@@ -388,6 +401,7 @@ module.exports = {
       })
     }
   }
+
 
 };
 

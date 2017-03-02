@@ -6,6 +6,8 @@ import Parkcomment from './Parkcomment.js'
 import ParkPhoto from './ParkPhoto.js'
 import ParkMap from './ParkMap.js'
 import RatingPark from './rating.js'
+import { Rating } from 'semantic-ui-react';
+
 
 // import { Timeline } from 'react-twitter-widgets'
 
@@ -33,9 +35,7 @@ export default class Snp extends React.Component {
 
   }
 
-  componentWillMount() {
-    this.setState({count: 0});
-  }
+
 
   componentWillReceiveProps(nextProps) {
     this.updateParkInfo(nextProps.params.parkName);
@@ -117,6 +117,9 @@ export default class Snp extends React.Component {
             context.setState({comments: res.data})
           }
         })
+        axios.get('/api/parkAverageRating/' + context.state.park.id).then(function(res){
+          context.setState({averageRating: res.rating})
+        })
         // axios.get('/api/parkAlert/' + context.state.park.id).then(function(res) {
         //   if (res.data) {
         //     console.log('alerts', res.data);
@@ -151,8 +154,21 @@ export default class Snp extends React.Component {
     } else if (this.state.view === 'Reviews') {
       var key = 0;
       var mediaView = function () {
-        return (context.state.comments.map(comment =>
-          <Parkcomment userEmail={comment.userEmail} text={comment.text} key={key++}/>))
+        return (
+          <div>
+            <p> NATURE, EH? INCREDIBLE!!!</p>
+            <Rating
+              icon={'star'}
+              maxRating={5}
+              rating={context.state.averageRating}
+              size= {'huge'}
+              disabled={true}
+            />
+            {context.state.comments.map(comment =>
+              <Parkcomment userEmail={comment.userEmail} text={comment.text} key={key++}/>)
+            }
+          </div>
+        )
       }
     }
 

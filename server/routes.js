@@ -17,7 +17,7 @@ router.get('/api/park/:parkName', controller.park.get);
 router.get('/api/parkPhoto/:id', controller.parkPhoto.get);
 router.get('/api/parkPhotoPost/:id', controller.parkPhotoPost.get);
 router.get('/api/parkComment/:id', controller.parkComment.get);
-
+router.get('/api/parkAverageRating/:id', controller.parkAverageRating.get);
 //Routes for snp Page
 router.get('/api/rating', controller.rating.get);
 
