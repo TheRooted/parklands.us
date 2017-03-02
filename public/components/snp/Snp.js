@@ -118,7 +118,7 @@ export default class Snp extends React.Component {
           }
         })
         axios.get('/api/parkAverageRating/' + context.state.park.id).then(function(res){
-          context.setState({averageRating: res.rating})
+          context.setState({averageRating: res.data.rating})
         })
         // axios.get('/api/parkAlert/' + context.state.park.id).then(function(res) {
         //   if (res.data) {
