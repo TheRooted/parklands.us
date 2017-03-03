@@ -40,7 +40,7 @@ class ReviewCommentBox extends React.Component {
 
 render () {
   return (
-    <div>
+    <div className='review-comment-box-child'>
       <textarea className="textarea-review" value={this.state.userReview} placeholder="Share your experience here..." rows="7" cols="50"
         onChange={this.handleChange.bind(this)} >
       </textarea>
