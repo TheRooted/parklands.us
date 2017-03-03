@@ -36,8 +36,9 @@ export default class UserFeed extends React.Component {
   loadMorePhotos() {
     var newFeed = this.state.newFeed
     var remainingFeed = this.state.remainingFeed
-    if (remainingFeed.length > 10) {
-      for (var i = 0; i < 10; i++) {
+    var photosToLoad = 10;
+    if (remainingFeed.length > photosToLoad) {
+      for (var i = 0; i < photosToLoad; i++) {
         newFeed.push(remainingFeed.shift());
       }
     } else {
