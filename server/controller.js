@@ -87,7 +87,7 @@ module.exports = {
     get: function(req, res) {
       console.log('park averageRating')
       // console.log('@@@@@@@inside park average rating', req.url)
-      var id = req .url.split('/');
+      var id = req.url.split('/');
       id = id[id.length-1];
       db.models.park.findOne({
         where: {id: id}
