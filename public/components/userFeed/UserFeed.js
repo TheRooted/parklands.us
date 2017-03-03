@@ -61,19 +61,18 @@ export default class UserFeed extends React.Component {
     return (
       <div id="user-feed-container">
         <div id="social-media-feed">
-        <Timeline
-        dataSource={{
-          sourceType: 'list',
-          ownerScreenName: 'jackieNPS',
-          slug: 'National-Parks'
-        }}
-        options={{
-          username: 'jackieNPS',
-          height: '800'
-        }}
-        onLoad={() => console.log('Timeline is loaded!')}
-        />
-      
+          <Timeline
+          dataSource={{
+            sourceType: 'list',
+            ownerScreenName: 'jackieNPS',
+            slug: 'National-Parks'
+          }}
+          options={{
+            username: 'jackieNPS',
+            height: '800'
+          }}
+          onLoad={() => console.log('Timeline is loaded!')}
+          />
         </div>
         {/*<ParklandsUserFeed
           allFeed={context.state.allFeed}
