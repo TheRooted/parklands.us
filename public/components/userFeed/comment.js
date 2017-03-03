@@ -14,10 +14,10 @@ export default class Comment extends Component {
     };
   }
 
-  convertDate(date) {
-    var converted = new Date(date).toString();
-    return converted.slice(4, 10) + ', ' + converted.slice(11, 16);
-  }
+  // convertDate(date) {
+  //   var converted = new Date(date).toString();
+  //   return converted.slice(4, 10) + ', ' + converted.slice(11, 16);
+  // }
 
   componentWillMount() {
     var context = this;

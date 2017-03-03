@@ -2,31 +2,30 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import Comment from './comment.js';
 
-export default class CommentBox extends Component {
+export default class PostComment extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      showComments: false,
-      comments: []
+      showComments: false
     };
   }
 
-  componentWillMount() {
-    console.log('post id ',this.props.postId);
-    const context = this;
-    axios.get('/api/postcomment', {
-      params: {
-        postId: context.props.postId
-      }
-    })
-    .then(function (res) {
-      context.setState({
-        comments: res.data
-      });
-      console.log('comment list is ', context.state.comments);
-    });
-  }
+  // componentWillMount() {
+  //   //console.log('post id ',this.props.postId);
+  //   const context = this;
+  //   axios.get('/api/postcomment', {
+  //     params: {
+  //       postId: context.props.postId
+  //     }
+  //   })
+  //   .then(function (res) {
+  //     context.setState({
+  //       comments: res.data
+  //     });
+  //     //console.log('comment list is ', context.state.comments);
+  //   });
+  // }
 
   render () {
     const comments = this._getComments();
@@ -40,7 +39,7 @@ export default class CommentBox extends Component {
   }
 
   _getComments() {
-    return this.state.comments.map((comment) => {
+    return this.props.allComments.map((comment) => {
       return (
         <Comment
           id={comment.id}
