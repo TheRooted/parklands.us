@@ -7,10 +7,10 @@ module.exports = {
   session: {
     get: function(req, res) {
       if (req.user) {
-        console.log('there is a user');
+        //console.log('there is a user');
         res.status(200).send(req.user);
       } else {
-        console.log('there is not a user');
+        //console.log('there is not a user');
         res.sendStatus(201).end();
       }
     }
@@ -72,7 +72,7 @@ module.exports = {
     get: function(req, res) {
       var id = req.url.split('/');
       id = id[id.length-1];
-      console.log('id inside parkComment controller:', id);
+      //console.log('id inside parkComment controller:', id);
       db.models.parkcomment.findAll({
         where: {parkId: id}
       }).then(function(comments) {
@@ -157,7 +157,7 @@ module.exports = {
       });
     },
     post: function (req, res) {
-      console.log('req.body.filePath is', req.body.filePath);
+      //console.log('req.body.filePath is', req.body.filePath);
       db.models.post.findOrCreate({
         where: {
           type: 'photo',
@@ -172,7 +172,7 @@ module.exports = {
 
   userfeed : {
     get: function (req, res) {
-      console.log('req.body in userfeed is ', req.body);
+      //console.log('req.body in userfeed is ', req.body);
       db.models.post.findAll({})
       .then(function (userPost) {
         //console.log('all user post are ', userPost);
@@ -189,7 +189,7 @@ module.exports = {
         }
       }).
       then(function (user) {
-        console.log('user isssss ', user);
+        //console.log('user isssss ', user);
         res.send(user);
       });
     }
@@ -197,19 +197,26 @@ module.exports = {
 
   postcomment: {
     get: function (req, res) {
-      console.log('req.query ', req.query);
+      //console.log('req.query ', req.query);
       db.models.postcomment.findAll({
         where: {
           postId: parseInt(req.query.postId)
         }
       })
       .then(function (comment) {
-        console.log('comment is ...', comment);
+        //console.log('comment is ...', comment);
         res.send(comment);
+      });
+    },
+    post: function (req, res) {
+      console.log('req.body in post comment is ', req.body);
+      db.models.postcomment.create(req.body)
+      .then(function (response) {
+        res.send(response);
+        console.log('after saving comment in db, res is ',response);
       });
     }
   },
-
   // comment : {
   //   get: function (req, res) {
   //     console.log('req.body.postId is ', req.body.postId);

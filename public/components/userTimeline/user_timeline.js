@@ -26,7 +26,6 @@ export default class UserTimeline extends React.Component {
       context.setState({
         userActivity: newFeed
       });
-      console.log('res from getParkPhotos is ', context.state.userActivity);
     });
   }
   // renderFeed () {
