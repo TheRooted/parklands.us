@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Post from './post.js';
+import Post from './Post.js';
 import ImageUpload from './ImageUpload.js';
 import sort from './../sort.js';
 
@@ -51,7 +51,7 @@ export default class UserTimeline extends React.Component {
   render() {
     return (
       <div id="userTimeLinePageContainer">
-        <ImageUpload className="imagePost" />
+        <ImageUpload className="ImageUpload" />
         <div className="timeline-post-container">
           {
             this.state.userActivity.map(post =>

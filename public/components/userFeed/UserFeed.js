@@ -18,7 +18,6 @@ export default class UserFeed extends React.Component {
 
   componentWillMount() {
     var context = this;
-    console.log('component mounted');
     axios.get('/api/userfeed')
     .then(function (res) {
       var sortedRes = sort(res.data, 'activity');

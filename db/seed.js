@@ -459,7 +459,6 @@ db.models.postcomment.findOrCreate({
     userId: 3
   }
 });
-<<<<<<< HEAD
 
 db.models.postcomment.findOrCreate({
   where: {
