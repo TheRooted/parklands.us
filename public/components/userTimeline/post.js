@@ -1,6 +1,8 @@
 import React from 'react';
 import Like from './like.js';
-import CommentBox from './../userFeed/postComment.js';
+import PostComment from './../userFeed/postComment.js';
+import axios from 'axios';
+import sort from './../sort.js';
 
 export default class Post extends React.Component {
 
@@ -9,13 +11,57 @@ export default class Post extends React.Component {
     this.state = {
       comment: '',
       like: 0,
-      image: null
+      image: null,
+      allComments: []
     };
+  }
+
+  componentWillMount() {
+    //console.log('post id ',this.props.postId);
+    const context = this;
+    axios.get('/api/postcomment', {
+      params: {
+        postId: context.props.postId
+      }
+    })
+    .then(function (res) {
+      context.setState({
+        allComments: res.data
+      });
+      console.log('comment list is ', context.state.allComments);
+    });
   }
 
   convertDate(date) {
     var converted = new Date(date).toString();
     return converted.slice(4, 10) + ', ' + converted.slice(11, 16);
+  }
+
+  _handleInputChange(event) {
+    this.setState({comment: event.target.value});
+  }
+
+
+  _addComment () {
+    var context = this;
+    axios.get('/api/session')
+    .then(function(res) {
+      var user = res.data;
+      console.log('user is ', user);
+      axios.post('/api/postcomment', {
+        userId: user.id,
+        postId: context.props.postId,
+        text: context.state.comment
+      })
+      .then(function (res) {
+        console.log('res from post comment is ', res.data);
+        var all = [res.data].concat(context.state.allComments);
+
+        context.setState({
+          allComments: all
+        });
+      });
+    });
   }
 
   render () {
@@ -25,10 +71,17 @@ export default class Post extends React.Component {
         <img className="timelinePhotoFeed" src={this.props.photoData} />
         <div className="commentline">
           <Like className="likeTimeline" postId={this.props.postId}/>
-          <textarea className="commentTimeline"></textarea>
-          <button className="submitButton">Comment</button>
+          <textarea
+            className="commentTimeline"
+            value={this.state.comment}
+            onChange={this._handleInputChange.bind(this)}>
+          </textarea>
+          <button
+            className="submitButton"
+            onClick={this._addComment.bind(this)}
+            >Comment</button>
         </div>
-        <CommentBox postId={this.props.postId} />
+        <PostComment allComments={this.state.allComments} postId={this.props.postId} />
       </div>
     );
   }

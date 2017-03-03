@@ -27,7 +27,7 @@ export default class UserFeed extends React.Component {
       context.setState({
         allFeed: newFeed
       });
-      // console.log('res from userFeed is ', context.state.allFeed);
+       console.log('res from userFeed is ', context.state.allFeed);
     });
   }
 
