@@ -120,7 +120,7 @@ export default class Snp extends React.Component {
           context.setState({averageRating: res.data.rating})
         })
       } else { //if data comes back without an id it's not a valid park name
-        browserHistory.push('/notavalidpark/' + parkName);
+        browserHistory.replace('/notavalidpark/' + parkName);
       }
     })
   }
