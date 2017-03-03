@@ -4,6 +4,7 @@ var parser = require('body-parser');
 var passport = require('passport');
 var router = require('./routes');
 var path = require('path');
+var request = require('request');
 
 var app = express();
 
@@ -29,6 +30,8 @@ app.use('', router);
 
 // Serve static file
 app.use(express.static('public'));
+
+
 
 app.get('*', (req, res, next) => {
    if(req.path.split('/')[1] === 'static') return next();

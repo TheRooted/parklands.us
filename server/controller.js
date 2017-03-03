@@ -1,6 +1,7 @@
 var db = require('../db/schema');
 var Promise = require('bluebird');
-
+var parser = require('body-parser');
+var request = require('request');
 
 module.exports = {
 
@@ -86,8 +87,9 @@ module.exports = {
 
   parkAverageRating: {
     get: function(req, res) {
+      console.log('park averageRating')
       // console.log('@@@@@@@inside park average rating', req.url)
-      var id = req.url.split('/');
+      var id = req .url.split('/');
       id = id[id.length-1];
       db.models.park.findOne({
         where: {id: id}
@@ -429,8 +431,7 @@ module.exports = {
         res.send({})
       })
     }
-  }
-
+  },
 
 };
 

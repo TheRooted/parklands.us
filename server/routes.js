@@ -23,16 +23,18 @@ router.get(path.resolve(__dirname, '/api/parkPhoto/:id'), controller.parkPhoto.g
 router.get(path.resolve(__dirname, '/api/parkPhotoPost/:id'), controller.parkPhotoPost.get);
 router.get(path.resolve(__dirname, '/api/parkComment/:id'), controller.parkComment.get);
 
+//Routes for rating average on SNP
+router.get(path.resolve(__dirname, '/api/parkAverageRating/:id'), controller.parkAverageRating.get);
+
+
 //Routes for snp Page
 router.get(path.resolve(__dirname, '/api/rating'), controller.rating.get);
 
-//Routes for snp Page Ratings
-;
 
 router.post(path.resolve(__dirname, '/api/rating'), controller.rating.post);
 
 //Routes for snp page park reviews
-router.post(path.resolve(__dirname,'/api/parkReview'), controller.parkReview.post);
+router.post(path.resolve(__dirname, '/api/parkReview'), controller.parkReview.post);
 
 // router.get('/api/parkAlert/:id', controller.parkAlert.get);
 
@@ -56,5 +58,7 @@ router.get(path.resolve(__dirname, '/api/username'), controller.username.get);
 
 // Routes for map
 router.get(path.resolve(__dirname, '/api/parklocations'), controller.parklocations.get);
+
+
 
 module.exports = router;

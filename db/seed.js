@@ -166,6 +166,30 @@ request(url, function (error, response, html) {
           name: 'yosemite'
         }
       })
+
+      // If NPS decides to fix their API...
+      // var npsKey = 'hidden';
+      // var parkCodes = 'dena,gaar,glba,katm,kefj,kova,lacl,wrst,grca,pefo,sagu,hosp,chis,deva,jotr,seki,lavo,pinn,redw,seki,blca,grsa,meve,romo,ever,bisc,drto,hale,havo,maca,acad,isro,voya,glac,grba,cave,grsm,thro,cuva,crla,cong,badl,wica,bibe,gumo,arch,brca,care,cany,shen,mora,noca,olym,yell,yose,zion,viis,grte,npsa';
+      // var options = {
+      //   url: 'https://developer.nps.gov/api/v0/alerts?parkCode=yose',
+      //   headers: {
+      //     'Authorization': npsKey
+      //   }
+      // };
+      //
+      // request(options, function(error, response, body) {
+      //   if (error) {
+      //     console.log('error! cannot access nps API')
+      //   } else {
+      //     console.log('status code: ', response.statusCode)
+      //     var parkData = body;
+      //     console.log('nps parkData', body);
+      //   }
+      // });
+
+
+
+
       /*---------------------------------------------
               Seed Posts with Yosemite pics
       ----------------------------------------------*/

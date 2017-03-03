@@ -38,6 +38,7 @@ export default class Snp extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.updateParkInfo(nextProps.params.parkName);
+
   }
 
   componentWillMount() {
@@ -93,6 +94,7 @@ export default class Snp extends React.Component {
       } // then get parkPhotos, posts, and comments
     }).then(function(){
       if (context.state.park.id) {
+
         axios.get('/api/parkPhoto/' + context.state.park.id).then(function(res) {
           if (res.data) {
             let photoUrls = [];
@@ -118,6 +120,7 @@ export default class Snp extends React.Component {
           }
         })
         axios.get('/api/parkAverageRating/' + context.state.park.id).then(function(res){
+          console.log('avg park rating', res)
           context.setState({averageRating: res.data.rating})
         })
       } else { //if data comes back without an id it's not a valid park name
