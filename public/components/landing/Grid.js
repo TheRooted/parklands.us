@@ -3,6 +3,7 @@ import axios from 'axios';
 var GridElement = require('./GridElement');
 import { browserHistory } from 'react-router';
 import sort from './../sort.js';
+import { Rating } from 'semantic-ui-react';
 
 export default class Grid extends React.Component {
 
@@ -10,6 +11,7 @@ export default class Grid extends React.Component {
     super(props);
     this.state = {
       parks: [{name: 'Blue', rating: 0}],
+      parkRating: 0,
     };
   }
 
