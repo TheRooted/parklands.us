@@ -10,25 +10,47 @@ export default class UserFeed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allFeed: [],
+      remainingFeed: [],
       photoCount: 10,
+      newFeed: [],
     };
   }
 
   componentWillMount() {
     var context = this;
+    console.log('component mounted');
     axios.get('/api/userfeed')
     .then(function (res) {
       var sortedRes = sort(res.data, 'activity');
       var newFeed = [];
       for (var i = 0; i < context.state.photoCount; i++) {
-        newFeed.push(res.data[i]);
+        newFeed.push(sortedRes.shift());
       }
       context.setState({
-        allFeed: newFeed
+        remainingFeed: sortedRes,
+        newFeed: newFeed
       });
        console.log('res from userFeed is ', context.state.allFeed);
     });
+  }
+
+  loadMorePhotos() {
+    var newFeed = this.state.newFeed
+    var remainingFeed = this.state.remainingFeed
+    if (remainingFeed.length > 10) {
+      for (var i = 0; i < 10; i++) {
+        newFeed.push(remainingFeed.shift());
+      }
+      
+    } else {
+      for (var i = 0; i < remainingFeed.length; i++) {
+        newFeed.push(remainingFeed.shift());
+      }
+    }
+    this.setState({
+      remainingFeed: remainingFeed,
+      newFeed: newFeed
+    })
   }
 
   convertDate(date) {
@@ -57,9 +79,10 @@ export default class UserFeed extends React.Component {
         {/*<ParklandsUserFeed
           allFeed={context.state.allFeed}
         />*/}
+
         <div id="all-feed">
           {
-            this.state.allFeed.map(feed =>
+            this.state.newFeed.map(feed =>
               <Post
                 key={feed.id}
                 photoData={feed.filePath}
@@ -68,6 +91,7 @@ export default class UserFeed extends React.Component {
               />
             )
           }
+          <button onClick={this.loadMorePhotos.bind(this)}>Load More Photos</button>
         </div>
       </div>
     );
