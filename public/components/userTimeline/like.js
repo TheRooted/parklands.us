@@ -18,7 +18,6 @@ class Like extends React.Component {
         postId: context.props.postId,
         // ** TODO: Get userID from session **
         userId: 321
-
       }
     })
     .then(function(res) {
@@ -39,7 +38,7 @@ class Like extends React.Component {
     };
     // send a post request with user/postID
     axios.post('/api/photoLike', like).then(function(res) {
-      console.log('vote count', res.data.voteCount);
+      // console.log('vote count', res.data.voteCount);
       context.setState({
         likes: res.data.voteCount,
         userLiked: !context.state.userLiked
