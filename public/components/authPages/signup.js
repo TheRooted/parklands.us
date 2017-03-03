@@ -26,7 +26,10 @@ export default class Signup extends React.Component {
   render() {
     return (
       <div className='signupBg'>
-        <div className="auth-container">
+        <div className="auth-container signup">
+          <input className="auth-fields" type="text" name="firstName" placeholder="First" ref="firstSU" />
+          <br />
+          <input className="auth-fields" type="text" name="lastName" placeholder="Password" ref="lastSU" />
           <input className="auth-fields" type="email" name="email" placeholder="Email Address" ref="emailSU" />
           <br />
           <input className="auth-fields" type="password" name="password" placeholder="Password" ref="passwordSU" />

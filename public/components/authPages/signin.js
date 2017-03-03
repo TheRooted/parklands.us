@@ -26,7 +26,7 @@ export default class Signin extends React.Component {
   render() {
     return (
       <div className='signinBg'>
-        <div className="auth-container">
+        <div className="auth-container signin">
           <input className="auth-fields" type="email" name="email" placeholder="Email Address" ref="emailSI" />
           <br />
           <input className="auth-fields" type="password" name="password" placeholder="Password" ref="passwordSI" />

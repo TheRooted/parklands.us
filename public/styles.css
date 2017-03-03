@@ -374,7 +374,11 @@ input[type="submit"]:hover {
   position: relative;
   margin: auto;
   top: 65%;
-  width: 340px;
+  width: 320px;
+}
+
+.auth-container.signup {
+  top: 53%;
 }
 
 .auth-fields {
