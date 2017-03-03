@@ -53,6 +53,7 @@ export default class UserTimeline extends React.Component {
                 datePosted={post.createdAt}
                 key={post.id}
                 postId={post.id}
+                allPost={this.state.userActivity}
               />
             )
           }

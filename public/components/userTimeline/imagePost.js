@@ -11,9 +11,7 @@ export default class ImageUpload extends Component {
       imagePreviewUrl: '',
       description: '',
       images: [],
-      imagePreview: '',
-      fileName: '',
-      allPost: this.props.allPost
+      imagePreview: ''
     };
 
     this._handleInputChange = this._handleInputChange.bind(this);
@@ -68,28 +66,17 @@ export default class ImageUpload extends Component {
 
       //post user submitted photo url to database (post table)
       console.log('this.state.file name is == ', this.state.file.name);
-
-      axios.get('/api/session')
-      .then(function(response) {
-        var user = response.data;
-        axios.post('/api/userTimeline', {
-          type: 'photo',
-          filePath: resp.body.secure_url,
-          //TODO: relace 1's with actual data
-          userId: user.id,
-          parkId: 1
-        })
-        .then(function (resp) {
-          var allPost = [resp.data].concat(context.state.allPost);
-
-          context.setState({
-            allPost: allPost
-          });
-          console.log('succesfull url saved ---', resp);
-        })
-        .catch(function (error) {
-          console.error('error saving to post table--- ', error);
-        });
+      axios.post('/api/userTimeline', {
+        type: 'photo',
+        filePath: resp.body.secure_url,
+        userId: 1,
+        parkId: 1
+      })
+      .then(function (resp) {
+        console.log('succesfull url saved ---', resp);
+      })
+      .catch(function (error) {
+        console.error('error saving to post table--- ', error);
       });
 
       context.setState({
@@ -98,8 +85,8 @@ export default class ImageUpload extends Component {
         description: '',
         images: [],
         imagePreview: null,
-        fileName: ''
       });
+      //let updatedImages = Object.assign([], uploaded);
     });
 
     console.log('handle uploading-', this.state.file);
