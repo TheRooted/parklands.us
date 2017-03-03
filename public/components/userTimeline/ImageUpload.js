@@ -68,6 +68,7 @@ export default class ImageUpload extends Component {
       axios.post('/api/userTimeline', {
         type: 'photo',
         filePath: resp.body.secure_url,
+        //TODO: relace 1's with actual data
         userId: 1,
         parkId: 1
       })
