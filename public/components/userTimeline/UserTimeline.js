@@ -35,7 +35,7 @@ export default class UserTimeline extends React.Component {
   render() {
     return (
       <div id="userTimeLinePageContainer">
-        <ImageUpload className="imagePost" />
+        <ImageUpload className="ImageUpload" />
         <div className="timeline-post-container">
           {
             this.state.userActivity.map(post =>
