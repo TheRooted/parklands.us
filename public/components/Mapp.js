@@ -165,6 +165,23 @@ export default class Mapp extends React.Component {
         .setHTML(feature.properties.description)
         .addTo(map);
     });
+
+    map.on('click', function(e) {
+      // Use queryRenderedFeatures to get features at a click event's point
+      // Use layer option to avoid getting results from other layers
+      var features = map.queryRenderedFeatures(e.point, { layers: ['parks'] });
+      // if there are features within the given radius of the click event,
+      // fly to the location of the click event
+      if (features.length) {
+        // Get coordinates from the symbol and center the map on those coordinates
+        map.flyTo({
+          center: features[0].geometry.coordinates,
+          bearing: 0,
+          speed: 0.1,
+          curve: 0.3
+        });
+      }
+    });
   }
 
   // Stringify and attach map script; insert script in DOM
