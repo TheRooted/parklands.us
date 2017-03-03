@@ -1,5 +1,5 @@
 import React from 'react';
-import Like from './like.js';
+import Like from './Like.js';
 import PostComment from './../userFeed/PostComments.js';
 import axios from 'axios';
 import sort from './../sort.js';
