@@ -5,8 +5,8 @@ import axios from 'axios';
 
 import { Router, Route, browserHistory, IndexRoute} from 'react-router';
 
-import Signin from './authPages/signin.js';
-import Signup from './authPages/signup.js';
+import Signin from './authPages/Signin.js';
+import Signup from './authPages/Signup.js';
 import UserTimeline from './userTimeline/UserTimeline.js';
 import Landing from './landing/Landing.js';
 import Snp from './snp/Snp.js'
