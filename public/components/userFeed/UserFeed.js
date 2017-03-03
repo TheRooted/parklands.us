@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Timeline } from 'react-twitter-widgets';
 import Post from './../userTimeline/Post.js';
 import sort from './../sort.js';
-
+import loadMore from './../loadMore.js';
 export default class UserFeed extends React.Component {
 
   constructor(props) {
@@ -34,22 +34,11 @@ export default class UserFeed extends React.Component {
   }
 
   loadMorePhotos() {
-    var newFeed = this.state.newFeed
-    var remainingFeed = this.state.remainingFeed
-    var photosToLoad = 10;
-    if (remainingFeed.length > photosToLoad) {
-      for (var i = 0; i < photosToLoad; i++) {
-        newFeed.push(remainingFeed.shift());
-      }
-    } else {
-      for (var i = 0; i < remainingFeed.length; i++) {
-        newFeed.push(remainingFeed.shift());
-      }
-    }
+    var arrays = loadMore(this.state.photoCount, this.state.newFeed, this.state.remainingFeed);
     this.setState({
-      remainingFeed: remainingFeed,
-      newFeed: newFeed
-    })
+      newFeed: arrays[0],
+      remainingFeed: arrays[1],
+    });
   }
 
   convertDate(date) {

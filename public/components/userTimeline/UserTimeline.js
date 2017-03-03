@@ -3,14 +3,16 @@ import axios from 'axios';
 import Post from './Post.js';
 import ImageUpload from './ImageUpload.js';
 import sort from './../sort.js';
-
+import loadMore from './../loadMore.js';
 export default class UserTimeline extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       currentUser: null,
-      userActivity: [],
+      photoCount: 10,
+      remainingActivity: [],
+      displayedActivity: [],
     };
   }
 
@@ -20,33 +22,23 @@ export default class UserTimeline extends React.Component {
     .then(function (res) {
       var sortedRes = sort(res.data, 'created');
       var newFeed = [];
-      for (var i = 0; i < 10; i++) {
-        newFeed.push(sortedRes[i]);
+      for (var i = 0; i < context.state.photoCount; i++) {
+        newFeed.push(sortedRes.shift());
       }
       context.setState({
-        userActivity: newFeed
+        remainingActivity: sortedRes,
+        displayedActivity: newFeed,
       });
       console.log('res from getParkPhotos is ', context.state.userActivity);
     });
   }
 
   loadMorePhotos() {
-    var newFeed = this.state.newFeed;
-    var remainingFeed = this.state.remainingFeed;
-    var photosToLoad = 10;
-    if (remainingFeed.length > photosToLoad) {
-      for (var i = 0; i < photosToLoad; i++) {
-        newFeed.push(remainingFeed.shift());
-      }
-    } else {
-      for (var i = 0; i < remainingFeed.length; i++) {
-        newFeed.push(remainingFeed.shift());
-      }
-    }
+    var arrays = loadMore(this.state.photoCount, this.state.displayedActivity, this.state.remainingActivity);
     this.setState({
-      remainingFeed: remainingFeed,
-      newFeed: newFeed
-    })
+      displayedActivity: arrays[0],
+      remainingActivity: arrays[1],
+    });
   }
 
   render() {

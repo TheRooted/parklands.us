@@ -8,7 +8,7 @@ import ParkMap from './ParkMap.js'
 import RatingPark from './Rating.js'
 import { Rating } from 'semantic-ui-react';
 import ReviewCommentBox from './ReviewCommentBox.js'
-
+import loadMore from './../loadMore.js';
 // import { Timeline } from 'react-twitter-widgets'
 
 
@@ -25,12 +25,15 @@ export default class Snp extends React.Component {
         twitterHandle: 'undefined'
       },
       view: 'Photos',
-      photos: [],
-      comments: [],
+      photosRemaining: [],
+      photosDisplay: [],
+      commentsRemaining: [],
+      commentsDisplay: [],
       // alerts: [],
       officialPhotos: [],
       photoIndex: 0,
-      averageRating: 0
+      averageRating: 0,
+      photoCount: 10,
     }
   }
 
@@ -110,13 +113,21 @@ export default class Snp extends React.Component {
             for (var i = 0; i < res.data.length; i++) {
               userPhotos.push(res.data[i].filePath);
             }
-            context.setState({photos: userPhotos});
+            var arrays = loadMore(context.state.photoCount, [], userPhotos);
+            context.setState({
+              photosDisplay: arrays[0],
+              photosRemaining: arrays[1],
+            })
           }
         })
         axios.get('/api/parkComment/' + context.state.park.id).then(function(res) {
           if (res.data) {
             var commentArr = res.data.reverse();
-            context.setState({comments: commentArr})
+            var arrays = loadMore(context.state.photoCount, [], commentArr);
+            context.setState({
+              commentsDisplay: arrays[0],
+              commentsRemaining: arrays[1],
+            })
           }
         })
         axios.get('/api/parkAverageRating/' + context.state.park.id).then(function(res){
@@ -133,11 +144,26 @@ export default class Snp extends React.Component {
     this.setState({averageRating: avgRate}, function(done) {
       console.log('snp page avgr', this.state.averageRating)
     });
-
   }
 
   getCommentsAfterPost (reviews) {
     this.setState({comments: reviews});
+  }
+
+  loadMorePhotos () {
+    var arrays = loadMore(this.state.photoCount, this.state.photosDisplay, this.state.photosRemaining);
+    this.setState({
+      photosDisplay: arrays[0],
+      photosRemaining: arrays[1],
+    });
+  }
+
+  loadMoreComments () {
+    var arrays = loadMore(this.state.photoCount, this.state.commentsDisplay, this.state.commentsRemaining);
+    this.setState({
+      commentsDisplay: arrays[0],
+      commentsRemaining: arrays[1],
+    });
   }
 
   render() {
@@ -146,7 +172,7 @@ export default class Snp extends React.Component {
       var mediaView = function () {
         return (
           <div className='photo-view-container'>
-            {context.state.photos.map((photo, i) =>
+            {context.state.photosDisplay.map((photo, i) =>
               <ParkPhotoPost photo={photo}
                 key={i}
                 index={i}
@@ -155,6 +181,7 @@ export default class Snp extends React.Component {
                 userPhotos={context.state.photos}
               />
             )}
+            <button onClick={context.loadMorePhotos.bind(context)}>Load More</button>
           </div>
         )
       }
@@ -187,9 +214,10 @@ export default class Snp extends React.Component {
             </div>
 
             <div className='review-comments'>
-              {context.state.comments.map((comment, i) =>
+              {context.state.commentsDisplay.map((comment, i) =>
                 <Parkcomment firstName={comment.firstName} text={comment.text} key={i}/>
               )}
+            <button onClick={context.loadMoreComments.bind(context)}>Load More</button>
             </div>
           </div>
         )
