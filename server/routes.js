@@ -46,7 +46,7 @@ router.post(path.resolve(__dirname, '/api/userTimeline'), controller.userTimelin
 router.get(path.resolve(__dirname, '/api/photoLike'), controller.photoLike.get);
 router.post(path.resolve(__dirname, '/api/photoLike'), controller.photoLike.post);
 
-// Routes for user user feed
+// Routes for user feed
 router.get(path.resolve(__dirname, '/api/userfeed'), controller.userfeed.get);
 
 // Routes for post comment
@@ -58,6 +58,7 @@ router.get(path.resolve(__dirname, '/api/username'), controller.username.get);
 
 // Routes for map
 router.get(path.resolve(__dirname, '/api/parklocations'), controller.parklocations.get);
+router.get(path.resolve(__dirname, '/api/simpleRating'), controller.simpleRating.get);
 
 
 

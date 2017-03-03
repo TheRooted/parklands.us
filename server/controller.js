@@ -173,7 +173,7 @@ module.exports = {
     }
   },
 
-  userfeed : {
+  userfeed: {
     get: function (req, res) {
       //console.log('req.body in userfeed is ', req.body);
       db.models.post.findAll({})
@@ -317,8 +317,6 @@ module.exports = {
       var average;
       var starContainer = [];
 
-      console.log('req.body', req.body)
-
       // if the rating is zero, find and delete the row
       if (req.body.ratingVal === 0) {
         db.models.rating.findOne({where: {
@@ -338,7 +336,7 @@ module.exports = {
       } })
       .then(function(ratings) {
         console.log('@@rating', ratings)
-        // if the rating doesnt exist
+        // if the rating doesn't exist
         if (!ratings) {
           // create a row in ratings
           starContainer.push(
@@ -416,6 +414,23 @@ module.exports = {
     }
   },
 
+  simpleRating: {
+    get: function(req, res) {
+      console.log('in simpleRating')
+      db.models.rating.findAll({ 
+        where: {
+          // TODO: replace with actual userId
+          // userId: parseInt(req.query.userId)
+          userId: 106
+        }
+      })
+      .then((results) => {
+        console.log('simpleRating results', results)
+        res.send(results);
+      })
+    }
+  },
+
   parkReview: {
     post: function(req, res) {
       console.log(req.body)
@@ -429,7 +444,7 @@ module.exports = {
         res.send({})
       })
     }
-  },
+  }
 
 };
 

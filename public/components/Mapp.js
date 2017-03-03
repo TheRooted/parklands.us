@@ -6,56 +6,113 @@ export default class Mapp extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      userId: null,
+      parkObjects: null
+    };
+  }
+
+  componentWillMount() {
+    var context = this;
+
+    // Retrieve all park information
+    axios.get('/api/parklocations')
+    .then((res) => {
+      var parkObjects = [];
+      var parkLink;
+      var name;
+      var linkName;
+      var splitName;
+      
+      for (var i = 0; i < res.data.length; i++) {
+        // Convert to displayable name
+        name = '';
+        splitName = res.data[i].name.split(/[–\s]/);
+        for (var j = 0; j < splitName.length; j++) {
+          name += splitName[j][0].toUpperCase() + splitName[j].slice(1) + ' ';
+        }
+        // Create park name endpoint
+        linkName = res.data[i].name;
+        linkName = linkName.split(' ');
+        linkName = linkName.join('%20');
+        
+        // Create park link HTML
+        parkLink = "<a href=\"park/" + linkName + "\">" + name + "</a>";
+
+        // Create a park object
+        var parkObj = {
+          id: res.data[i].id,
+          name: name,
+          parkLink: parkLink,
+          linkName: linkName,
+          coordinates: [res.data[i].long, res.data[i].lat],
+          ratingDescription: "Have you been here?"
+        }
+
+        // Push completed park object into parkObjects array
+        parkObjects.push(parkObj);
+        context.setState({ parkObjects: parkObjects })
+      }
+    });
   }
 
   componentDidMount() {
     var context = this;
+    var ratings = [];
+    var features = [];
 
-    axios.get('/api/parklocations')
-    .then(function (res) {
-      var features = [];
-      var data = res.data;
-      
-      for (var i = 0; i < data.length; i++) {
-        var name = '';
-        var coordinates = [data[i].long, data[i].lat];
-        var splitName = data[i].name.split(/[–\s]/);
+    axios.get('/api/session')
+    .then((res) => {
+      if (res.data) {
+        context.setState({ userId: res.data.id });
+      }
 
-        for (var j = 0; j < splitName.length; j++) {
-          name += splitName[j][0].toUpperCase() + splitName[j].slice(1) + ' ';
+      axios.get('/api/simpleRating', {
+        params: {
+          userId: res.data.id
         }
-        var linkName = data[i].name
-        linkName = linkName.split(' ');
-        linkName = linkName.join('%20');
-        
-        var parkLink = "<a href=\"park/" + linkName + "\">" + name + "</a>";
+      })
+      .then(function(results) {
+        for (var j = 0; j < results.data.length; j++) {
+          var ratingObj = {
+            parkId: results.data[j].parkId,
+            rating: results.data[j].ratingVal
+          }
+          ratings.push(ratingObj);
+        }
 
-        features.push({
+        // Run through each parkObject
+        for (var k = 0; k < context.state.parkObjects.length; k++) {
+          for (var l = 0; l < ratings.length; l++) {
+            // If user has rated that park, add the rating to the parkObject
+            if (ratings[l].parkId === context.state.parkObjects[k].id) {
+              context.state.parkObjects[k].rating = ratings[l].rating;
+              context.state.parkObjects[k].ratingDescription = "You gave this park " + ratings[l].rating + " stars!";
+            }
+          }
+          features.push({
             "type": "Feature",
             "properties": {
-              "description": parkLink,
-              "icon": "star"
-          },
-          "geometry": {
-            "type": "Point",
-            "coordinates": coordinates
-          }
-        });
-      }
+              "description": context.state.parkObjects[k].parkLink + "\n" + context.state.parkObjects[k].ratingDescription,
+              "icon": "triangle"
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": context.state.parkObjects[k].coordinates
+            }
+          });
+        }
+      });
+      // Set component state and create map
+      // Fill features array with map layer script for each park
       context.setState({locationData: features});
       context.createMap();
     });
+
   }
 
-  componentWillMount() {
-    const context = this;
-    axios.get('/api/parklocations')
-    .then(function (res) {
-      console.log('locations res is', res);
-    });
-  }
-
+  // Specify map styles and script that adds 
+  // park locations layer once map is loaded
   stringScript() {
     var context = this;
     var text = mapboxgl.accessToken = 'pk.eyJ1Ijoic3Blc2NoZWxsayIsImEiOiJjaXo4bXB2cG8wMHA2MnZxbzNneHlicnZyIn0.K9hcDggIDFrtjjVS8LOXdA';
@@ -69,8 +126,7 @@ export default class Mapp extends React.Component {
     });
 
     map.on('load', function() {
-
-      // Add a layer showing the places.
+      // Add a map layer showing the parks
       map.addLayer({
         "id": "parks",
         "type": "symbol",
@@ -88,7 +144,7 @@ export default class Mapp extends React.Component {
       });
     });
 
-    // Create a popup, but don't add it to the map yet.
+    // Create a popup, but don't add it to the map yet
     var popup = new mapboxgl.Popup({
       closeButton: false,
       closeOnClick: false
@@ -107,13 +163,14 @@ export default class Mapp extends React.Component {
       var feature = features[0];
 
       // Populate the popup and set its coordinates
-      // based on the feature found.
+      // based on the park found
       popup.setLngLat(feature.geometry.coordinates)
         .setHTML(feature.properties.description)
         .addTo(map);
     });
   }
 
+  // Stringify and attach map script; insert script in DOM
   createMap() {
     var map = window.document.getElementById('map');
     var script = window.document.createElement('script');
