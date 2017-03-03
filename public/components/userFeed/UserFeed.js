@@ -41,7 +41,6 @@ export default class UserFeed extends React.Component {
       for (var i = 0; i < 10; i++) {
         newFeed.push(remainingFeed.shift());
       }
-      
     } else {
       for (var i = 0; i < remainingFeed.length; i++) {
         newFeed.push(remainingFeed.shift());

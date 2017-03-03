@@ -28,9 +28,24 @@ export default class UserTimeline extends React.Component {
       });
     });
   }
-  // renderFeed () {
-  //   return
-  // }
+
+  loadMorePhotos() {
+    var newFeed = this.state.newFeed;
+    var remainingFeed = this.state.remainingFeed;
+    if (remainingFeed.length > 10) {
+      for (var i = 0; i < 10; i++) {
+        newFeed.push(remainingFeed.shift());
+      }
+    } else {
+      for (var i = 0; i < remainingFeed.length; i++) {
+        newFeed.push(remainingFeed.shift());
+      }
+    }
+    this.setState({
+      remainingFeed: remainingFeed,
+      newFeed: newFeed
+    })
+  }
 
   render() {
     return (
@@ -47,6 +62,7 @@ export default class UserTimeline extends React.Component {
               />
             )
           }
+          <button onClick={this.loadMorePhotos.bind(this)}>Load More Photos</button>
         </div>
       </div>
     );
