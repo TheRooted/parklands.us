@@ -203,7 +203,7 @@ export default class Mapp extends React.Component {
 
   render() {
     return (
-      <div id='map' style={{width:'99vw', height:'70vh'}}></div>
+      <div id='map' style={{width:'99.5%', height:'70vh'}}></div>
     )
   }
 }

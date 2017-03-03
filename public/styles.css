@@ -497,6 +497,21 @@ input[type="submit"]:hover {
 
 
 /**************************
+          MAIN MAP
+***************************/
+
+.mapbox-canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl {
+  margin: 60px 20px;
+  float: right;
+}
+
+
+/**************************
         PARK PAGE
 ***************************/
 
