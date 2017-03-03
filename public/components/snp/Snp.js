@@ -32,7 +32,6 @@ export default class Snp extends React.Component {
       photoIndex: 0,
       averageRating: 0
     }
-
   }
 
 
@@ -43,10 +42,10 @@ export default class Snp extends React.Component {
 
   componentWillMount() {
     this.updateParkInfo(this.props.params.parkName);
-    axios.get('https://developer.nps.gov/api/v0/parks')
-    .then(function(res) {
-      console.log('res from nps api', res)
-    })
+    // axios.get('https://developer.nps.gov/api/v0/parks')
+    // .then(function(res) {
+    //   console.log('res from nps api', res)
+    // })
   }
 
   capFirstLetter(string) {
@@ -147,7 +146,7 @@ export default class Snp extends React.Component {
     if (this.state.view === 'Photos') {
       var mediaView = function () {
         return (
-          <div className='photos-view-container'>
+          <div className='photo-view-container'>
             {context.state.photos.map((photo, i) =>
               <ParkPhotoPost photo={photo}
                 key={i}

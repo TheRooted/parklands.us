@@ -27,27 +27,24 @@ class ParkPhotoPost extends React.Component {
 
   render () {
     return (
-      <div>
-        <div className='parkPhotoContainer'>
-          <img className='parkphotopost' src={this.props.photo} onClick={this.openLightbox.bind(this)} />
+      <div className='parkPhotoContainer'>
+        <img className='parkphotopost' src={this.props.photo} onClick={this.openLightbox.bind(this)} />
 
-            {this.state.isOpen &&
-              <Lightbox
-                mainSrc={this.state.userPhotos[this.state.photoIndex]}
-                imageCaption={'Fill caption here... '}
-                onCloseRequest={this.closeLightbox.bind(this)}
-                nextSrc={this.state.userPhotos[(this.state.photoIndex + 1) % this.state.userPhotos.length]}
-                prevSrc={this.state.userPhotos[(this.state.photoIndex + this.state.userPhotos.length - 1) % this.state.userPhotos.length]}
-                onMovePrevRequest={() => this.setState({
-                    photoIndex: (this.state.photoIndex + this.state.userPhotos.length - 1) % this.state.userPhotos.length
-                })}
-                onMoveNextRequest={() => this.setState({
-                    photoIndex: (this.state.photoIndex + 1) % this.state.userPhotos.length
-                })}
-              />
-            }
-        </div>
-
+          {this.state.isOpen &&
+            <Lightbox
+              mainSrc={this.state.userPhotos[this.state.photoIndex]}
+              imageCaption={'Fill caption here... '}
+              onCloseRequest={this.closeLightbox.bind(this)}
+              nextSrc={this.state.userPhotos[(this.state.photoIndex + 1) % this.state.userPhotos.length]}
+              prevSrc={this.state.userPhotos[(this.state.photoIndex + this.state.userPhotos.length - 1) % this.state.userPhotos.length]}
+              onMovePrevRequest={() => this.setState({
+                  photoIndex: (this.state.photoIndex + this.state.userPhotos.length - 1) % this.state.userPhotos.length
+              })}
+              onMoveNextRequest={() => this.setState({
+                  photoIndex: (this.state.photoIndex + 1) % this.state.userPhotos.length
+              })}
+            />
+          }
       </div>
     )
   }
