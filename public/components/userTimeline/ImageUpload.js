@@ -11,7 +11,9 @@ export default class ImageUpload extends Component {
       list: [],
       imagePreviewUrl: '',
       description: '',
-      images: []
+      images: [],
+      imagePreview: '',
+      fileName: ''
     };
 
     this._handleInputChange = this._handleInputChange.bind(this);
@@ -47,6 +49,7 @@ export default class ImageUpload extends Component {
       'signature': signature
     };
 
+    const context = this;
 
     let uploadRequest = superagent.post(url);
     uploadRequest.attach('file', image);
@@ -64,7 +67,7 @@ export default class ImageUpload extends Component {
       const uploaded = resp.body;
 
       //post user submitted photo url to database (post table)
-      console.log('this.state.file is == ', this.state.file);
+      console.log('this.state.file name is == ', this.state.file.name);
       axios.post('/api/userTimeline', {
         type: 'photo',
         filePath: resp.body.secure_url,
@@ -79,15 +82,24 @@ export default class ImageUpload extends Component {
         console.error('error saving to post table--- ', error);
       });
 
-      let updatedImages = Object.assign([], uploaded);
-
-
-      this.setState({
-        images: updatedImages
-      }, function (){
-        this.setState({list: this.state.images});
-        console.log(this.state.list);
+      context.setState({
+        file: '',
+        list: [],
+        imagePreviewUrl: '',
+        description: '',
+        images: [],
+        imagePreview: null,
+        fileName: ''
       });
+      //let updatedImages = Object.assign([], uploaded);
+
+
+      // this.setState({
+      //   images: updatedImages
+      // }, function (){
+      //   this.setState({list: this.state.images});
+      //   console.log(this.state.list);
+      // });
     });
 
     console.log('handle uploading-', this.state.file);
@@ -105,10 +117,12 @@ export default class ImageUpload extends Component {
     reader.onloadend = () => {
       this.setState({
         file: file,
-        imagePreviewUrl: reader.result
+        imagePreviewUrl: reader.result,
+        fileName: file.name
       });
     };
-
+    console.log('file is ', file);
+    console.log('this.state.imagePreviewUrl is ', this.state.imagePreviewUrl);
     reader.readAsDataURL(file);
   }
 
@@ -118,7 +132,7 @@ export default class ImageUpload extends Component {
     let $imagePreview = null;
 
     if (imagePreviewUrl) {
-      $imagePreview = (<img src={imagePreviewUrl} />);
+      $imagePreview = (<img src={this.state.imagePreviewUrl} />);
     } else {
       $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
     }
@@ -138,6 +152,7 @@ export default class ImageUpload extends Component {
         <form className="preview-form" onSubmit={(e)=>this._handleSubmit(e)}>
           <div className="photo-fields">
             <input
+
               className="fileInput"
               type="file"
               onChange={(e)=>this._handleImageChange(e)}
