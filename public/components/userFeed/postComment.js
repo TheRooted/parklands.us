@@ -11,22 +11,6 @@ export default class PostComment extends Component {
     };
   }
 
-  // componentWillMount() {
-  //   //console.log('post id ',this.props.postId);
-  //   const context = this;
-  //   axios.get('/api/postcomment', {
-  //     params: {
-  //       postId: context.props.postId
-  //     }
-  //   })
-  //   .then(function (res) {
-  //     context.setState({
-  //       comments: res.data
-  //     });
-  //     //console.log('comment list is ', context.state.comments);
-  //   });
-  // }
-
   render () {
     const comments = this._getComments();
     return (
