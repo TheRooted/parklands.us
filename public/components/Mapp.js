@@ -93,7 +93,7 @@ export default class Mapp extends React.Component {
           features.push({
             "type": "Feature",
             "properties": {
-              "description": context.state.parkObjects[k].parkLink + "\n" + context.state.parkObjects[k].ratingDescription,
+              "description": "<p>" + context.state.parkObjects[k].parkLink + "</p><p>" + context.state.parkObjects[k].ratingDescription + "</p>",
               "icon": "triangle"
             },
             "geometry": {
@@ -116,7 +116,6 @@ export default class Mapp extends React.Component {
   stringScript() {
     var context = this;
     var text = mapboxgl.accessToken = 'pk.eyJ1Ijoic3Blc2NoZWxsayIsImEiOiJjaXo4bXB2cG8wMHA2MnZxbzNneHlicnZyIn0.K9hcDggIDFrtjjVS8LOXdA';
-
     var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/satellite-streets-v10',
@@ -124,7 +123,6 @@ export default class Mapp extends React.Component {
       minZoom: 3.5,
       maxZoom: 20
     });
-
     map.on('load', function() {
       // Add a map layer showing the parks
       map.addLayer({
@@ -143,7 +141,6 @@ export default class Mapp extends React.Component {
         }
       });
     });
-
     // Create a popup, but don't add it to the map yet
     var popup = new mapboxgl.Popup({
       closeButton: false,
