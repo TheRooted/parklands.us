@@ -207,6 +207,10 @@ body {
   cursor: pointer;
 }
 
+.signoutlink {
+  cursor: pointer;
+}
+
 
 /******************
     SEARCH BAR
@@ -673,3 +677,4 @@ input[type="submit"]:hover {
  height: auto;
  width: 100%;
 }
+
