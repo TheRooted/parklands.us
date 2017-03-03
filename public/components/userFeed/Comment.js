@@ -34,7 +34,7 @@ export default class Comment extends Component {
       <div className="comment-container">
         <div className="comment">
           <strong>{`${this.state.user.firstName} ${this.state.user.lastName}`}</strong>
-          <article>{this.props.text}</article>
+          <p>{this.props.text}</p>
         </div>
           <small>{moment(this.state.user.createdAt).fromNow()}</small>
       </div>

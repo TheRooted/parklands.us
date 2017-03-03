@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid from './Grid.js';
-import Mapp from '../map.js';
+import Mapp from '../Mapp.js';
 
 // should render the all components of the landing page
 // (big photo, map, grid)
