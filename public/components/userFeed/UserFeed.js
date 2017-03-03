@@ -61,7 +61,7 @@ export default class UserFeed extends React.Component {
     return (
       <div id="user-feed-container">
         <div id="social-media-feed">
-        {/*<Timeline
+        <Timeline
         dataSource={{
           sourceType: 'list',
           ownerScreenName: 'jackieNPS',
@@ -73,7 +73,7 @@ export default class UserFeed extends React.Component {
         }}
         onLoad={() => console.log('Timeline is loaded!')}
         />
-        */}
+      
         </div>
         {/*<ParklandsUserFeed
           allFeed={context.state.allFeed}

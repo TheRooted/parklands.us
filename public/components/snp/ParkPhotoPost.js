@@ -12,9 +12,15 @@ class ParkPhotoPost extends React.Component {
     }
   }
 
+  componentWillMount() {
+    this.setState({userPhotos: this.props.userPhotos})
+    this.setState({photoIndex: this.props.index})
+  }
+
   componentWillReceiveProps(nextProps) {
-    this.setState({userPhotos: nextProps.userPhotos})
-    this.setState({photoIndex: nextProps.index})
+    console.log('photos toggle', this.state.userPhotos)
+      this.setState({userPhotos: nextProps.userPhotos})
+      this.setState({photoIndex: nextProps.index})
   }
 
   openLightbox () {
@@ -26,6 +32,7 @@ class ParkPhotoPost extends React.Component {
   }
 
   render () {
+    console.log('photo toggle in comp', this.state.userPhotos)
     return (
       <div className='parkPhotoContainer'>
         <img className='parkphotopost' src={this.props.photo} onClick={this.openLightbox.bind(this)} />
