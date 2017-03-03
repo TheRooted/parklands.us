@@ -86,6 +86,16 @@ sequelize
     },
     postId: {
       type: Sequelize.INTEGER
+    },
+    createdAt: {
+      type: Sequelize.DATE,
+      defaultValue: sequelize.fn('NOW'),
+      allowNull: false
+    },
+    updatedAt: {
+      type: Sequelize.DATE,
+      defaultValue: sequelize.fn('NOW'),
+      allowNull: false
     }
   });
 

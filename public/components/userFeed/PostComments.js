@@ -24,6 +24,7 @@ export default class PostComment extends Component {
 
   _getComments() {
     return this.props.allComments.map((comment) => {
+      console.log('comment isssss ', comment)
       return (
         <Comment
           id={comment.id}
@@ -31,6 +32,7 @@ export default class PostComment extends Component {
           userId={comment.userId}
           postId={comment.postId}
           key={comment.id}
+          dateTime={comment.createdAt}
         />
       )
     })

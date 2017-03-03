@@ -22,7 +22,6 @@ export default class Comment extends Component {
       }
     })
     .then(function (res) {
-      // console.log('res from comment mount is ', res.data);
       context.setState({
         user: res.data
       });
@@ -36,7 +35,7 @@ export default class Comment extends Component {
           <strong>{`${this.state.user.firstName} ${this.state.user.lastName}`}</strong>
           <p>{this.props.text}</p>
         </div>
-          <small>{moment(this.state.user.createdAt).fromNow()}</small>
+          <small>{moment.utc(this.props.dateTime).fromNow()}</small>
       </div>
     );
   }
