@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 // import SocialMediaFeed from './socialMediaFeed.js';
 import { Timeline } from 'react-twitter-widgets';
-import Post from './../userTimeline/post.js';
+import Post from './../userTimeline/Post.js';
 import sort from './../sort.js';
 
 export default class UserFeed extends React.Component {

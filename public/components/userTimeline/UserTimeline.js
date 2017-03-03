@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import Post from './post.js';
-import ImageUpload from './imagePost.js';
+import Post from './Post.js';
+import ImageUpload from './ImagePost.js';
 import sort from './../sort.js';
 
 export default class UserTimeline extends React.Component {

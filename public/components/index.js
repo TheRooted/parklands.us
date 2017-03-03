@@ -7,11 +7,11 @@ import { Router, Route, browserHistory, IndexRoute} from 'react-router';
 
 import Signin from './authPages/signin.js';
 import Signup from './authPages/signup.js';
-import UserTimeline from './userTimeline/user_timeline.js';
+import UserTimeline from './userTimeline/UserTimeline.js';
 import Landing from './landing/Landing.js';
 import Snp from './snp/Snp.js'
 import NotAPark from './snp/NotAPark.js'
-import UserFeed from './userFeed/user_Feed.js'
+import UserFeed from './userFeed/UserFeed.js'
 
 const app = document.getElementById('app');
 

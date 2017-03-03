@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import Comment from './comment.js';
+import Comment from './Comment.js';
 
 export default class PostComment extends Component {
   constructor(props) {

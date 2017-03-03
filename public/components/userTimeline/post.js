@@ -1,6 +1,6 @@
 import React from 'react';
 import Like from './like.js';
-import PostComment from './../userFeed/postComment.js';
+import PostComment from './../userFeed/PostComments.js';
 import axios from 'axios';
 import sort from './../sort.js';
 
@@ -28,7 +28,6 @@ export default class Post extends React.Component {
       context.setState({
         allComments: res.data
       });
-      console.log('comment list is ', context.state.allComments);
     });
   }
 
@@ -54,11 +53,10 @@ export default class Post extends React.Component {
         text: context.state.comment
       })
       .then(function (res) {
-        console.log('res from post comment is ', res.data);
-        var all = [res.data].concat(context.state.allComments);
+        var allComment = [res.data].concat(context.state.allComments);
 
         context.setState({
-          allComments: all,
+          allComments: allComment,
           comment: ''
         });
       });
