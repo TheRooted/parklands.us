@@ -506,7 +506,7 @@ input[type="submit"]:hover {
 }
 
 .mapboxgl-ctrl-top-right .mapboxgl-ctrl {
-  margin: 60px 20px;
+  margin: 60px 25px;
   float: right;
 }
 
