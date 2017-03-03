@@ -505,8 +505,12 @@ input[type="submit"]:hover {
   height: 100% !important;
 }
 
+.mapbox-directions-component,
 .mapboxgl-ctrl-top-right .mapboxgl-ctrl {
-  margin: 60px 25px;
+  margin: 60px 25px !important;
+}
+
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl {
   float: right;
 }
 

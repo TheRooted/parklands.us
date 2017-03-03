@@ -23,7 +23,7 @@ const isLoggedIn = (nextState, replace) => {
     console.log('React res', res);
     //TODO: UNCOMMENT ME OUT
     if (res.status !== 200) {
-      browserHistory.push('/signin');
+      browserHistory.push('/signin')
     }
   });
 };
