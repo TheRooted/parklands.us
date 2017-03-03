@@ -1,7 +1,5 @@
 var db = require('../db/schema');
 var Promise = require('bluebird');
-var parser = require('body-parser');
-var request = require('request');
 
 module.exports = {
 
