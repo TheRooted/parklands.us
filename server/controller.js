@@ -415,6 +415,8 @@ module.exports = {
         firstName: req.body.firstName,
         userId: req.body.userId,
         parkId: req.body.parkId
+      }).then(function(createdRow) {
+        res.send({})
       })
     }
   }

@@ -18,18 +18,19 @@ class ReviewCommentBox extends React.Component {
       userReview: context.state.userReview,
       userId: context.props.userId,
       parkId: context.props.parkId,
+      userEmail: context.props.userEmail,
       firstName: context.props.firstName
     }
     // axios request to server..
-    // axios.post('/api/parkReview', userReviewObj)
-    // .then(function(res) {
-      //axios.get('/api/parkComment/' + context.props.parkId)
-      // .then(function(response) {
-      //   console.log('should be park comments', response)
-      //   // call function to set state at snp page for comments
-      //   // context.getCommentsAfterPost(FILLME)
-      // })
-      //});
+    axios.post('/api/parkReview', userReviewObj)
+    .then(function(res) {
+      axios.get('/api/parkComment/' + context.props.parkId)
+      .then(function(response) {
+        console.log('should be park comments', response)
+        // call function to set state at snp page for comments
+        context.props.getCommentsAfterPost(response.data.reverse())
+      })
+    });
 
   };
 

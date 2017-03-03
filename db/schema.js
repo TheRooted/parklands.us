@@ -28,8 +28,11 @@ sequelize
     text: {
       type: Sequelize.TEXT
     },
-    firstName: {
+    userEmail: {
       type: Sequelize.STRING
+    },
+    firstName: {
+      type:Sequelize.STRING
     },
     parkId: {
       type: Sequelize.INTEGER

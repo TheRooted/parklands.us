@@ -114,7 +114,8 @@ export default class Snp extends React.Component {
         })
         axios.get('/api/parkComment/' + context.state.park.id).then(function(res) {
           if (res.data) {
-            context.setState({comments: res.data})
+            var commentArr = res.data.reverse();
+            context.setState({comments: commentArr})
           }
         })
         axios.get('/api/parkAverageRating/' + context.state.park.id).then(function(res){
@@ -134,7 +135,7 @@ export default class Snp extends React.Component {
   }
 
   getCommentsAfterPost (reviews) {
-    this.setState({comments: reviews})
+    this.setState({comments: reviews});
   }
 
   render() {
@@ -175,6 +176,8 @@ export default class Snp extends React.Component {
                     parkId={context.state.park.id}
                     userId={106}
                     firstName={'jackie'}
+                    userEmail={'jackieh.bee@gmail.com'}
+                    getCommentsAfterPost={context.getCommentsAfterPost.bind(context)}
                   />
                 </div>
 
@@ -182,8 +185,8 @@ export default class Snp extends React.Component {
             </div>
 
             <div className='review-comments'>
-              {context.state.comments.map(comment =>
-                <Parkcomment userEmail={comment.userEmail} text={comment.text} key={key++}/>
+              {context.state.comments.map((comment, i) =>
+                <Parkcomment firstName={comment.firstName} text={comment.text} key={i}/>
               )}
             </div>
           </div>

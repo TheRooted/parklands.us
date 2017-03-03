@@ -573,6 +573,15 @@ input[type="submit"]:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-bottom: 100px;
+}
+
+.review-comments {
+  margin-bottom: 100px;
+  height: auto;
+}
+
+.review-view-container {
 }
 
 .official-parkphoto:hover {
@@ -656,4 +665,3 @@ input[type="submit"]:hover {
  height: auto;
  width: 100%;
 }
-
