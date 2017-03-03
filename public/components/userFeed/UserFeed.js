@@ -30,7 +30,7 @@ export default class UserFeed extends React.Component {
         remainingFeed: sortedRes,
         newFeed: newFeed
       });
-       console.log('res from userFeed is ', context.state.allFeed);
+      // console.log('res from userFeed is ', context.state.allFeed);
     });
   }
 
