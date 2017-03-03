@@ -9,33 +9,30 @@ export default class Signin extends React.Component {
     this.state = {};
   }
   
-  handleSubmit() {
+  validateForm() {
     var user = {
       email: this.refs.emailSI.value,
       password: this.refs.passwordSI.value
     }
-    axios.post('/signin', user).then(function(res) {
-      console.log('signin res', res)
-      // TODO: update with flexible urls
-      if (res.request.responseURL === 'http://localhost:3000/' || res.request.responseURL === 'http://127.0.0.1:3000/') {
-        browserHistory.push('/');
-      }
-    });
+
+    if (!user.email || !user.password) {
+      alert('Please fill in all fields so we can connect you to your parks!');
+    }
   }
 
   render() {
     return (
       <div className='signinBg'>
-        <div className="auth-container signin">
+        <form method="post" className="auth-container signin">
           <input className="auth-fields" type="email" name="email" placeholder="Email Address" ref="emailSI" />
           <br />
           <input className="auth-fields" type="password" name="password" placeholder="Password" ref="passwordSI" />
           <br />
           <div className="buttons">
-            <button className="btn-auth" onClick={this.handleSubmit.bind(this)}>Sign In</button>
+            <button className="btn-auth" onClick={this.validateForm.bind(this)}>Sign In</button>
             <Link to="/signup" className="signup-link">Don't have an account? Sign up</Link>
           </div>
-        </div>
+        </form>
       </div>
     )
   }
