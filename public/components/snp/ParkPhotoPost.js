@@ -18,8 +18,8 @@ class ParkPhotoPost extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-      this.setState({userPhotos: nextProps.userPhotos})
-      this.setState({photoIndex: nextProps.index})
+    this.setState({userPhotos: nextProps.userPhotos})
+    this.setState({photoIndex: nextProps.index})
   }
 
   openLightbox () {
