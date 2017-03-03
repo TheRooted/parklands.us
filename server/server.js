@@ -11,7 +11,7 @@ var app = express();
 // Passport middleware
 app.use(parser.urlencoded({ extended: true }) );
 app.use(parser.json());
-app.use(session({  
+app.use(session({
   secret: 'saucecat',
   resave: false,
   saveUninitialized: false,
@@ -34,6 +34,9 @@ app.get('*', (req, res, next) => {
    if(req.path.split('/')[1] === 'static') return next();
    res.sendFile(path.resolve(__dirname, '../public/index.html'));
 });
+
+axios.get('https://developer.nps.gov/api/v0/parks', headers: { Authorization: {'API KEY'} })
+
 
 
 var port = process.env.PORT || 3000;

@@ -43,6 +43,10 @@ export default class Snp extends React.Component {
 
   componentWillMount() {
     this.updateParkInfo(this.props.params.parkName);
+    // axios.get('https://developer.nps.gov/api/v0/parks')
+    // .then(function(res) {
+    //   console.log('res from nps api', res)
+    // })
   }
 
   capFirstLetter(string) {

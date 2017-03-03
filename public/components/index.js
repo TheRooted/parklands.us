@@ -21,10 +21,10 @@ const isLoggedIn = (nextState, replace) => {
   axios.get('/api/session').then(function(res) {
     console.log('React res.status', res.status)
     console.log('React res', res)
-    //TODO: UNCOMMENT ME OUT 
-    // if (res.status !== 200) {
-    //   browserHistory.push('/signin')
-    // }
+    //TODO: UNCOMMENT ME OUT
+    if (res.status !== 200) {
+      browserHistory.push('/signin')
+    }
   });
 }
 
