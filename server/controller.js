@@ -83,7 +83,7 @@ module.exports = {
 
   parkAverageRating: {
     get: function(req, res) {
-      console.log('@@@@@@@inside park average rating', req.url)
+      // console.log('@@@@@@@inside park average rating', req.url)
       var id = req.url.split('/');
       id = id[id.length-1];
       db.models.park.findOne({
@@ -366,7 +366,11 @@ module.exports = {
               total = total + parkRatings[i].dataValues.ratingVal;
             }
             // rounded to an integer
-            average = Math.round(total/parkRatings.length);
+            if (parkRatings.length === 0) {
+              average = 0;
+            } else {
+              average = Math.round(total/parkRatings.length);
+            }
             //update the park with the average rating
             db.models.park.update({
               rating: average
@@ -389,7 +393,7 @@ module.exports = {
         userId: parseInt(req.query.userId)
       } })
       .then(function(ratingInstance) {
-        console.log('userRating', ratingInstance)
+        // console.log('userRating', ratingInstance)
         var rate;
         if (!ratingInstance) {
           rate = 0;
@@ -404,7 +408,14 @@ module.exports = {
 
   parkReview: {
     post: function(req, res) {
-
+      console.log(req.body)
+      // insert review into table
+      db.models.parkcomment.create({
+        text: req.body.userReview,
+        firstName: req.body.firstName,
+        userId: req.body.userId,
+        parkId: req.body.parkId
+      })
     }
   }
 

@@ -11,15 +11,25 @@ class ReviewCommentBox extends React.Component {
   }
 
   postReview () {
-    console.log('clicked button', this.state.userReview)
+    console.log('clicked button')
+    var context = this;
     // grab the data from input form
     var userReviewObj = {
-      userReview: this.state.userReview,
-      userId: this.props.userId,
-      parkId: this.props.parkId
+      userReview: context.state.userReview,
+      userId: context.props.userId,
+      parkId: context.props.parkId,
+      firstName: context.props.firstName
     }
     // axios request to server..
-    axios.get('/api/parkReview', userReviewObj)
+    // axios.post('/api/parkReview', userReviewObj)
+    // .then(function(res) {
+      //axios.get('/api/parkComment/' + context.props.parkId)
+      // .then(function(response) {
+      //   console.log('should be park comments', response)
+      //   // call function to set state at snp page for comments
+      //   // context.getCommentsAfterPost(FILLME)
+      // })
+      //});
 
   };
 

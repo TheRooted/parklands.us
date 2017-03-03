@@ -133,9 +133,12 @@ export default class Snp extends React.Component {
 
   }
 
+  getCommentsAfterPost (reviews) {
+    this.setState({comments: reviews})
+  }
+
   render() {
     var context = this;
-    console.log('what is state', context.state)
     if (this.state.view === 'Photos') {
       var mediaView = function () {
         return (
@@ -147,8 +150,8 @@ export default class Snp extends React.Component {
                 parkName={context.capFirstLetter(context.state.park.name)}
                 photoIndex={context.state.photoIndex}
                 userPhotos={context.state.photos}
-              />)
-            }
+              />
+            )}
           </div>
         )
       }
@@ -167,19 +170,21 @@ export default class Snp extends React.Component {
                   disabled={true}
                 />
                 <div className='reviewCommentBox'>
+                  {/*TODO change sessions for userID and get name*/}
                   <ReviewCommentBox
-                    parkId={this.state.park.id}
-                    {/*TODO: call sessions to get user id, pass along to all props */}
-                    userId={'106'}
+                    parkId={context.state.park.id}
+                    userId={106}
+                    firstName={'jackie'}
                   />
                 </div>
+
               </div>
             </div>
 
             <div className='review-comments'>
               {context.state.comments.map(comment =>
-                <Parkcomment userEmail={comment.userEmail} text={comment.text} key={key++}/>)
-                }
+                <Parkcomment userEmail={comment.userEmail} text={comment.text} key={key++}/>
+              )}
             </div>
           </div>
         )

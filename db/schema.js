@@ -28,7 +28,7 @@ sequelize
     text: {
       type: Sequelize.TEXT
     },
-    userEmail: {
+    firstName: {
       type: Sequelize.STRING
     },
     parkId: {
