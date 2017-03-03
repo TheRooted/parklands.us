@@ -18,7 +18,6 @@ class ParkPhotoPost extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('photos toggle', this.state.userPhotos)
       this.setState({userPhotos: nextProps.userPhotos})
       this.setState({photoIndex: nextProps.index})
   }
@@ -32,7 +31,6 @@ class ParkPhotoPost extends React.Component {
   }
 
   render () {
-    console.log('photo toggle in comp', this.state.userPhotos)
     return (
       <div className='parkPhotoContainer'>
         <img className='parkphotopost' src={this.props.photo} onClick={this.openLightbox.bind(this)} />

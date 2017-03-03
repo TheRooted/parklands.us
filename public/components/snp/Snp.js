@@ -150,7 +150,6 @@ export default class Snp extends React.Component {
               <ParkPhotoPost photo={photo}
                 key={i}
                 index={i}
-                parkId={context.state.park.id}
                 parkName={context.capFirstLetter(context.state.park.name)}
                 photoIndex={context.state.photoIndex}
                 userPhotos={context.state.photos}
