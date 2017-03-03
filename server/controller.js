@@ -212,11 +212,11 @@ module.exports = {
       });
     },
     post: function (req, res) {
-      console.log('req.body in post comment is ', req.body);
+      //console.log('req.body in post comment is ', req.body);
       db.models.postcomment.create(req.body)
       .then(function (response) {
         res.send(response);
-        console.log('after saving comment in db, res is ',response);
+        //console.log('after saving comment in db, res is ',response);
       });
     }
   },
