@@ -7,6 +7,9 @@ var capFirstLetter = function (string) {
 }
 
 var GridElement = (props) => {
+
+  
+
   var words = props.parkName.split(' ');
   for (var i = 0; i < words.length; i++) {
     if (words[i] === 'wrangell–st.') {

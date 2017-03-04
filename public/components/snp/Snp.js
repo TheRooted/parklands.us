@@ -144,8 +144,10 @@ export default class Snp extends React.Component {
     });
   }
 
-  getCommentsAfterPost (reviews) {
-    this.setState({comments: reviews});
+  getCommentsAfterPost (review) {
+    var addNewComment = this.state.commentsDisplay;
+    addNewComment.unshift(review)
+    this.setState({commentsDisplay: addNewComment});
   }
 
   loadMorePhotos () {

@@ -27,6 +27,37 @@ module.exports = {
     }
   },
 
+  gridParkRating: {
+    get: function(req, res) {
+      for (var id = 0; id < 60; id++) {
+        db.models.rating.findAll({where: {
+          parkId: id
+        }}).then(function(parkRatings) {
+          console.log('park ratings', parkRatings);
+
+          var total = 0;
+          for (var i = 0; i < parkRatings.length; i++) {
+            total = total + parkRatings[i].dataValues.ratingVal;
+          }
+          // rounded to an integer
+          if (parkRatings.length === 0) {
+            average = 0;
+          } else {
+            average = Math.round(total/parkRatings.length);
+          }
+          //update the park with the average rating
+          db.models.park.update({
+            rating: average
+          },
+          {
+            fields: ['rating'],
+            where: {id: id}
+          })
+        });
+      }
+    }
+  },
+
   park: {
     get: function(req, res) {
       var name = req.url.split('/');

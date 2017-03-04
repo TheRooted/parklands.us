@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import sort from './../sort.js';
+
 
 
 class ReviewCommentBox extends React.Component {
@@ -26,9 +28,10 @@ class ReviewCommentBox extends React.Component {
     .then(function(res) {
       axios.get('/api/parkComment/' + context.props.parkId)
       .then(function(response) {
-        console.log('should be park comments', response)
+        var sorted = sort(response.data, 'created');
+        console.log('should be park comments', sorted[0])
         // call function to set state at snp page for comments
-        context.props.getCommentsAfterPost(response.data.reverse())
+        context.props.getCommentsAfterPost(sorted[0])
       })
     });
 

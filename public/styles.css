@@ -1,5 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
 @import url('https://fonts.googleapis.com/css?family=Cuprum|Noticia+Text|Pathway+Gothic+One|Playfair+Display');
+@import url('https://fonts.googleapis.com/css?family=Anton|Dosis');
+
 
 html,
 body {
@@ -20,6 +22,61 @@ body {
 .landing-div {
   margin: 30px;
  }
+
+
+/*.splash-img {
+  position: relative;
+  width: 99.5%;
+
+}
+
+.splash-title {
+  font-family: 'Anton';
+  color: white;
+  font-size: 100px;
+  z-index: 100;
+}*/
+
+.splash-landing {
+  width: 99.5%;
+  position: relative;
+}
+.splash-img {
+  position: relative;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.splash-title {
+  z-index: 100;
+  font-family: 'Dosis';
+  position: absolute;
+  color: white;
+  font-size: 100px;
+  left: 150px;
+  top: 350px;
+}
+
+#container {
+  height: 400px;
+  width: 400px;
+  position: relative;
+}
+#image {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#text {
+  z-index: 100;
+  position: relative;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  left: 150px;
+  top: 350px;
+}
 
 .grid {
   position: relative;
@@ -721,5 +778,3 @@ input[type="submit"]:hover {
   font-weight: 700;
   flex-wrap: wrap;
 }
-
-
