@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-// import SocialMediaFeed from './socialMediaFeed.js';
+import SocialMediaFeed from './socialMediaFeed.js';
 import { Timeline } from 'react-twitter-widgets';
 import Post from './../userTimeline/Post.js';
 import sort from './../sort.js';
 import loadMore from './../loadMore.js';
+
 export default class UserFeed extends React.Component {
 
   constructor(props) {
@@ -18,6 +19,7 @@ export default class UserFeed extends React.Component {
 
   componentWillMount() {
     var context = this;
+
     axios.get('/api/userfeed')
     .then(function (res) {
       var sortedRes = sort(res.data, 'activity');
@@ -29,7 +31,6 @@ export default class UserFeed extends React.Component {
         remainingFeed: sortedRes,
         newFeed: newFeed
       });
-      // console.log('res from userFeed is ', context.state.allFeed);
     });
   }
 
@@ -48,7 +49,7 @@ export default class UserFeed extends React.Component {
 
   render () {
     return (
-      <div id="user-feed-container">
+      <div className="user-feed-container">
         <div id="social-media-feed">
           <Timeline
           dataSource={{
@@ -58,14 +59,11 @@ export default class UserFeed extends React.Component {
           }}
           options={{
             username: 'jackieNPS',
-            height: '800'
+            height: '880'
           }}
           onLoad={() => console.log('Timeline is loaded!')}
           />
         </div>
-        {/*<ParklandsUserFeed
-          allFeed={context.state.allFeed}
-        />*/}
 
         <div id="all-feed">
           {
