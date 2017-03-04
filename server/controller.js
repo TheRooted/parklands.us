@@ -29,32 +29,51 @@ module.exports = {
 
   gridParkRating: {
     get: function(req, res) {
-      for (var id = 0; id < 60; id++) {
-        db.models.rating.findAll({where: {
-          parkId: id
-        }}).then(function(parkRatings) {
-          console.log('park ratings', parkRatings);
-
+      var pid;
+      var parkArray = [];
+      for (var j = 1; j < 60; j++) {
+        pid = j
+        // push each find all parkRating to array
+        parkArray.push(
+          db.models.rating.findAll({where: {
+            parkId: pid
+          }})
+        );
+      }
+      Promise.all(parkArray).then(function(parkRatings) {
+        console.log('@@PARKARRAY', parkRatings)
+        var parkRatingsArray = [];
+        for (var i = 0; i < parkRatings.length; i++) {
+          var average;
           var total = 0;
-          for (var i = 0; i < parkRatings.length; i++) {
-            total = total + parkRatings[i].dataValues.ratingVal;
+          var parkId;
+          for (var b = 0; b < parkRatings[i].length; b++) {
+            parkId = parkRatings[i][b].dataValues.parkId;
+            total = total + parkRatings[i][b].dataValues.ratingVal;
+            // rounded to an integer
           }
-          // rounded to an integer
-          if (parkRatings.length === 0) {
+          if (parkRatings[i].length === 0) {
             average = 0;
           } else {
-            average = Math.round(total/parkRatings.length);
+            average = Math.round(total/parkRatings[i].length);
           }
+          console.log('@@@@average', average)
           //update the park with the average rating
-          db.models.park.update({
-            rating: average
-          },
-          {
-            fields: ['rating'],
-            where: {id: id}
-          })
-        });
-      }
+          parkRatingsArray.push(
+            db.models.park.update({
+              rating: average
+            },
+            {
+              fields: ['rating'],
+              where: {id: parkId}
+            })
+          )
+        }
+        Promise.all(parkRatingsArray).then(function(response) {
+          console.log('what is response', response)
+          res.end();
+        })
+      });
     }
   },
 

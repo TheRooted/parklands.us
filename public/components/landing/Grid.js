@@ -19,6 +19,7 @@ export default class Grid extends React.Component {
     axios.get('/api/gridParkRating').then(function(res) {
       axios.get('/api/grid').then(function(res) {
         if (res.data) {
+          console.log('mounted, park data', res.data)
           res.data = sort(res.data, 'alphabetically');
           context.setState({parks: res.data});
         }
@@ -47,7 +48,7 @@ export default class Grid extends React.Component {
         <button onClick={this.sortAlphabetical.bind(this)}>Alphabetical</button>
         <button onClick={this.sortRated.bind(this)}>Highest Rated</button>
         {this.state.parks.map((park, i) =>
-          <GridElement key={i} parkName={park.name} parkPhoto={park.photo} linkToPage={this.linkToPage} />
+          <GridElement key={i} parkName={park.name} parkPhoto={park.photo} parkRating={park.rating} linkToPage={this.linkToPage} />
         )}
       </div>
     )
