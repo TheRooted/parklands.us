@@ -7,7 +7,11 @@ class Like extends React.Component {
     super(props);
     this.state = {
       likes: 0,
-      userLiked: false
+      userLiked: false,
+      styles: {
+        color: 'instagram',
+        content: 'Like'
+      }
     };
   }
 
@@ -21,15 +25,35 @@ class Like extends React.Component {
       }
     })
     .then(function(res) {
-      console.log('res from mount', res.data);
       context.setState({
         likes: res.data.voteCount,
-        userLiked: res.data.userLiked
+        userLiked: res.data.userLiked,
       });
     });
   }
 
+  componentWillReceiveProps(nextProps) {
+    var context = this;
+    if (context.props.parkId !== nextProps.parkId) {
+      axios.get('/api/photoLike', {
+        params: {
+          postId: nextProps.postId,
+          // ** TODO: Get userID from session **
+          userId: 321
+        }
+      })
+      .then(function(res) {
+        context.setState({
+          likes: res.data.voteCount,
+          userLiked: res.data.userLiked
+        });
+      });
+   }
+  }
+
+
   onLike () {
+    console.log('firing')
     var context = this;
     var like = {
       // ** TODO: Get userID from session **
@@ -54,6 +78,7 @@ class Like extends React.Component {
   }
 
   render () {
+    // console.log('am i render or am i dancer', this.state.userLiked)
     var styles = {};
     if (this.state.userLiked) {
       styles = {

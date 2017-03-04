@@ -12,7 +12,8 @@ export default class Post extends React.Component {
       comment: '',
       like: 0,
       image: null,
-      allComments: []
+      allComments: [],
+      parkId: 'notvalid'
     };
   }
 
@@ -71,7 +72,7 @@ export default class Post extends React.Component {
         <h5>{this.convertDate(this.props.datePosted)}</h5>
         <img className="timelinePhotoFeed" src={this.props.photoData} />
         <div className="commentline">
-          <Like className="likeTimeline" postId={this.props.postId}/>
+          <Like className="likeTimeline" postId={this.props.postId} parkId={this.state.parkId}/>
           <textarea
             className="commentTimeline"
             value={this.state.comment}

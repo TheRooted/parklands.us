@@ -110,11 +110,7 @@ export default class Snp extends React.Component {
         })
         axios.get('/api/parkPhotoPost/' + context.state.park.id).then(function(res) {
           if (res.data) {
-            let userPhotos = [];
-            for (var i = 0; i < res.data.length; i++) {
-              userPhotos.push(res.data[i].filePath);
-            }
-            var arrays = loadMore(context.state.photoCount, [], userPhotos);
+            var arrays = loadMore(context.state.photoCount, [], res.data);
             context.setState({
               photosDisplay: arrays[0],
               photosRemaining: arrays[1],
@@ -175,12 +171,14 @@ export default class Snp extends React.Component {
         return (
           <div className='photo-view-container'>
             {context.state.photosDisplay.map((photo, i) =>
-              <ParkPhotoPost photo={photo}
+              <ParkPhotoPost photo={photo.filePath}
                 key={i}
                 index={i}
                 parkName={context.capFirstLetter(context.state.park.name)}
                 photoIndex={context.state.photoIndex}
                 userPhotos={context.state.photosDisplay}
+                postId={photo.id}
+                parkId={photo.parkId}
               />
             )}
             <button onClick={context.loadMorePhotos.bind(context)}>Load More</button>

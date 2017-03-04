@@ -1,6 +1,6 @@
 import React from 'react';
 import Lightbox from 'react-image-lightbox';
-
+import Like from './../userTimeline/Like.js';
 
 class ParkPhotoPost extends React.Component {
   constructor(props) {
@@ -8,18 +8,20 @@ class ParkPhotoPost extends React.Component {
     this.state = {
       isOpen: false,
       photoIndex: this.props.index,
-      userPhotos: []
+      userPhotos: this.props.userPhotos,
+      parkId: this.props.parkId,
+      postId: this.props.postId
+
     }
   }
 
-  componentWillMount() {
-    this.setState({userPhotos: this.props.userPhotos})
-    this.setState({photoIndex: this.props.index})
-  }
-
   componentWillReceiveProps(nextProps) {
-    this.setState({userPhotos: nextProps.userPhotos})
-    this.setState({photoIndex: nextProps.index})
+    this.setState({
+      userPhotos: nextProps.userPhotos,
+      photoIndex: nextProps.index,
+      postId: nextProps.postId,
+      parkId: nextProps.parkId
+    })
   }
 
   openLightbox () {
@@ -34,14 +36,17 @@ class ParkPhotoPost extends React.Component {
     return (
       <div className='parkPhotoContainer'>
         <img className='parkphotopost' src={this.props.photo} onClick={this.openLightbox.bind(this)} />
+        <div className='snp-like'>
+          <Like postId={this.state.postId} parkId={this.state.parkId}/>
+        </div>
 
           {this.state.isOpen &&
             <Lightbox
-              mainSrc={this.state.userPhotos[this.state.photoIndex]}
+              mainSrc={this.state.userPhotos[this.state.photoIndex].filePath}
               imageCaption={'Fill caption here... '}
               onCloseRequest={this.closeLightbox.bind(this)}
-              nextSrc={this.state.userPhotos[(this.state.photoIndex + 1) % this.state.userPhotos.length]}
-              prevSrc={this.state.userPhotos[(this.state.photoIndex + this.state.userPhotos.length - 1) % this.state.userPhotos.length]}
+              nextSrc={this.state.userPhotos[(this.state.photoIndex + 1) % this.state.userPhotos.length].filePath}
+              prevSrc={this.state.userPhotos[(this.state.photoIndex + this.state.userPhotos.length - 1) % this.state.userPhotos.length].filePath}
               onMovePrevRequest={() => this.setState({
                   photoIndex: (this.state.photoIndex + this.state.userPhotos.length - 1) % this.state.userPhotos.length
               })}

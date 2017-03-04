@@ -662,7 +662,9 @@ input[type="submit"]:hover {
   padding: 20px;
 }
 
-
+.snp-like {
+  text-align: center;
+}
 
 /**************************
           PROFILE

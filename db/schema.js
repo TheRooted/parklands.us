@@ -105,7 +105,8 @@ sequelize
       type: Sequelize.STRING
     },
     voteCount: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
+      defaultValue: 0
     },
     filePath: {
       type: Sequelize.STRING
