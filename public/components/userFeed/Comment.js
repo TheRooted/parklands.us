@@ -8,8 +8,6 @@ export default class Comment extends Component {
     super(props);
 
     this.state = {
-      like: 0,
-      comment: [],
       user: ''
     };
   }
