@@ -54,7 +54,7 @@ export default class Post extends React.Component {
       })
       .then(function (res) {
         console.log('data in add comment is ',res.data);
-        var allComment = [res.data].concat(context.state.allComments);
+        var allComment = context.state.allComments.concat(res.data);
         console.log('data in add comment ALLCOMMENt is ',allComment);
         context.setState({
           allComments: allComment,
