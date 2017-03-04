@@ -25,6 +25,7 @@ export default class Post extends React.Component {
       }
     })
     .then(function (res) {
+      var sortedRes = sort(res.data, 'activity');
       context.setState({
         allComments: res.data
       });
