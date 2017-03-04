@@ -5,6 +5,7 @@ import {expect} from 'chai';
 import axios from 'axios';
 import moxios from 'moxios';
 import sinon from 'sinon';
+import { equal } from 'assert';
 
 import Comment from './../../../public/components/userFeed/Comment.js';
 
@@ -40,6 +41,22 @@ describe('<Comment> should fetch data', () => {
   afterEach(function () {
     // import and pass your custom axios instance to this method
     moxios.uninstall();
+  });
+
+  it('stub response for request URL', function (done) {
+    // Match against an exact URL value
+    moxios.stubRequest('/api/username', {
+      status: 200,
+      responseText: 'Mr X'
+    });
+
+    let onFulfilled = sinon.spy();
+    axios.get('/api/username').then(onFulfilled);
+
+    moxios.wait(function () {
+      equal(onFulfilled.getCall(0).args[0].data, 'Mr X');
+      done();
+    });
   });
 
 });
