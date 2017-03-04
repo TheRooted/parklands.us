@@ -9,6 +9,7 @@ import RatingPark from './Rating.js'
 import { Rating } from 'semantic-ui-react';
 import ReviewCommentBox from './ReviewCommentBox.js'
 import loadMore from './../loadMore.js';
+import sort from './../sort.js';
 // import { Timeline } from 'react-twitter-widgets'
 
 
@@ -123,7 +124,8 @@ export default class Snp extends React.Component {
         axios.get('/api/parkComment/' + context.state.park.id).then(function(res) {
           if (res.data) {
             var commentArr = res.data.reverse();
-            var arrays = loadMore(context.state.photoCount, [], commentArr);
+            var sortedComment = sort(res.data, 'activity');
+            var arrays = loadMore(context.state.photoCount, [], sortedComment);
             context.setState({
               commentsDisplay: arrays[0],
               commentsRemaining: arrays[1],
