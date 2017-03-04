@@ -5,7 +5,7 @@ import moment from 'moment';
 var Parkcomment = (props) => (
   <div className= 'parkcommentContainer'>
     <h4 className='parkcommentusername'>{props.firstName}</h4>
-    <span className='parkcomment'>{props.text}</span>
+    <p className='parkcomment'>{props.text}</p>
     <small>{moment.utc(props.datePosted).fromNow()}</small>
   </div>
 );
