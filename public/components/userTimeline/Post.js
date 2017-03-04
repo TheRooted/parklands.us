@@ -47,13 +47,16 @@ export default class Post extends React.Component {
     axios.get('/api/session')
     .then(function(res) {
       var user = res.data;
+
       axios.post('/api/postcomment', {
         userId: user.id,
         postId: context.props.postId,
         text: context.state.comment
       })
       .then(function (res) {
-        var allComment = context.state.allComments.concat(res.data);
+
+        var allComment = [res.data].concat(context.state.allComments);
+
         context.setState({
           allComments: allComment,
           comment: ''
