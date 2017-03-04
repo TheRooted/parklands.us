@@ -15,7 +15,7 @@ describe('<Comment>', () => {
   beforeEach(() => sandbox = sinon.sandbox.create());
   afterEach(() => sandbox.restore());
 
-  it('should start with a no user', () => {
+  it('should start with no user', () => {
     const wrapper = shallow(<Comment/>);
     expect(wrapper.state('user')).to.equal('');
   });
