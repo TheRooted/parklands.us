@@ -189,7 +189,6 @@ request(url, function (error, response, html) {
 
 
 
-
       /*---------------------------------------------
               Seed Posts with Yosemite pics
       ----------------------------------------------*/
@@ -547,4 +546,20 @@ db.models.postcomment.findOrCreate({
     userId: 3
   }
 });
+/*---------------------------------------------
+          Seed Parks with Ratings
+----------------------------------------------*/
+var ratings = [];
+for (var i = 0 ; i < users.length; i++) {
+  for (var j = 1; j < 60; j++) {
+    ratings.push(db.models.rating.findOrCreate({
+      where: {
+        userId: i,
+        parkId: j,
+        ratingVal: Math.ceil(Math.random() * 5)
+      }
+    }))
+  }
+}
+Promise.all(ratings);
 // }
