@@ -41,6 +41,25 @@ describe('<Comment>', () => {
     expect(wrapper.props().userId).to.be.defined;
   });
 
+  it('should have props for id', function () {
+    const wrapper = shallow(<Comment/>);
+    expect(wrapper.props().id).to.be.defined;
+  });
+
+  it('should have props for postId', function () {
+    const wrapper = shallow(<Comment/>);
+    expect(wrapper.props().postId).to.be.defined;
+  });
+
+  it('should have props for dateTime', function () {
+    const wrapper = shallow(<Comment/>);
+    expect(wrapper.props().dateTime).to.be.defined;
+  });
+
+  it('should have props for key', function () {
+    const wrapper = shallow(<Comment/>);
+    expect(wrapper.props().key).to.be.defined;
+  });
 });
 
 describe('<Comment> should fetch data', () => {
