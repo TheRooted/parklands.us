@@ -1,6 +1,7 @@
 import React from 'react';
 import Lightbox from 'react-image-lightbox';
 import Like from './../userTimeline/Like.js';
+import axios from 'axios';
 
 class ParkPhotoPost extends React.Component {
   constructor(props) {
@@ -10,17 +11,29 @@ class ParkPhotoPost extends React.Component {
       photoIndex: this.props.index,
       userPhotos: this.props.userPhotos,
       parkId: this.props.parkId,
-      postId: this.props.postId
-
+      postId: this.props.postId,
+      userEmail: '',
     }
   }
 
   componentWillReceiveProps(nextProps) {
+    var context = this;
     this.setState({
       userPhotos: nextProps.userPhotos,
       photoIndex: nextProps.index,
       postId: nextProps.postId,
       parkId: nextProps.parkId
+    }, function () {
+      axios.get('/api/userNameFromPostId', {
+        params: {
+          postId: this.state.postId
+        }
+      }).then(function (res) {
+        console.log(res);
+        context.setState({
+          userEmail: res.data.firstName
+        })
+      })
     })
   }
 
@@ -35,6 +48,7 @@ class ParkPhotoPost extends React.Component {
   render () {
     return (
       <div className='parkPhotoContainer'>
+        <h5>{this.state.userEmail} shared: </h5>
         <img className='parkphotopost' src={this.props.photo} onClick={this.openLightbox.bind(this)} />
         <div className='snp-like'>
           <Like postId={this.state.postId} parkId={this.state.parkId}/>

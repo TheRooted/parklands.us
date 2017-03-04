@@ -311,6 +311,25 @@ module.exports = {
     }
   },
 
+  userNameFromPostId: {
+    get: function (req, res) {
+      // req.query === postId
+      db.models.post.findOne({
+        where: {
+          id: req.query.postId
+        }
+      }).then(function(post) {
+        db.models.user.findOne({
+          where: {
+            id: post.userId
+          }
+        }).then(function(user) {
+          res.send(user);
+        })
+      })
+    }
+  },
+
   rating: {
     post: function (req, res) {
       // for average rating of overall park

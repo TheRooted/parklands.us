@@ -30,8 +30,10 @@ router.get(path.resolve(__dirname, '/api/parkAverageRating/:id'), controller.par
 //Routes for snp Page
 router.get(path.resolve(__dirname, '/api/rating'), controller.rating.get);
 
-
 router.post(path.resolve(__dirname, '/api/rating'), controller.rating.post);
+
+//Route for getting UserId from PostId
+router.get(path.resolve(__dirname, '/api/userNameFromPostId'), controller.userNameFromPostId.get)
 
 //Routes for snp page park reviews
 router.post(path.resolve(__dirname, '/api/parkReview'), controller.parkReview.post);
