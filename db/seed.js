@@ -550,7 +550,7 @@ db.models.postcomment.findOrCreate({
           Seed Parks with Ratings
 ----------------------------------------------*/
 var ratings = [];
-for (var i = 0 ; i < users.length; i++) {
+for (var i = 1 ; i < users.length + 1; i++) {
   for (var j = 1; j < 60; j++) {
     ratings.push(db.models.rating.findOrCreate({
       where: {
