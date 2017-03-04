@@ -110,7 +110,8 @@ export default class Snp extends React.Component {
         })
         axios.get('/api/parkPhotoPost/' + context.state.park.id).then(function(res) {
           if (res.data) {
-            var arrays = loadMore(context.state.photoCount, [], res.data);
+            var sortedPhotos = sort(res.data, 'activity');
+            var arrays = loadMore(context.state.photoCount, [], sortedPhotos);
             context.setState({
               photosDisplay: arrays[0],
               photosRemaining: arrays[1],
@@ -129,7 +130,6 @@ export default class Snp extends React.Component {
           }
         })
         axios.get('/api/parkAverageRating/' + context.state.park.id).then(function(res){
-          console.log('avg park rating', res)
           context.setState({averageRating: Math.round(res.data.rating)})
         })
       } else { //if data comes back without an id it's not a valid park name
@@ -139,9 +139,7 @@ export default class Snp extends React.Component {
   }
 
   updateAverageRating (avgRate) {
-    this.setState({averageRating: avgRate}, function(done) {
-      console.log('snp page avgr', this.state.averageRating)
-    });
+    this.setState({averageRating: avgRate});
   }
 
   getCommentsAfterPost (review) {

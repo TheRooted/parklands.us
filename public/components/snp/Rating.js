@@ -22,7 +22,6 @@ class RatingPark extends React.Component {
       })
       .then(function(res){
         // set state of the userStars
-        console.log('come back to meee',res)
         var star = parseInt(Math.round(res.data.rating));
         context.setState({userStars: star})
       })
@@ -31,7 +30,6 @@ class RatingPark extends React.Component {
 
   handleRate (e, data) {
     var context = this;
-    console.log('userRating', data.rating)
     this.setState({userStars: data.rating})
     var userRating = {
       ratingVal: data.rating,
@@ -41,8 +39,6 @@ class RatingPark extends React.Component {
 
     }
     axios.post('/api/rating', userRating).then(function(res) {
-      //TODO ** PASS AVERAGE BACK TO SNP **
-      console.log('rating has been saved', res)
       context.props.updateAverageRating(res.data.averageRating);
     })
   }

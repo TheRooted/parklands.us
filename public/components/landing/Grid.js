@@ -19,7 +19,6 @@ export default class Grid extends React.Component {
     axios.get('/api/gridParkRating').then(function(res) {
       axios.get('/api/grid').then(function(res) {
         if (res.data) {
-          console.log('mounted, park data', res.data)
           res.data = sort(res.data, 'alphabetically');
           context.setState({parks: res.data});
         }

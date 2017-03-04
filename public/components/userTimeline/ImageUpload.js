@@ -63,32 +63,31 @@ export default class ImageUpload extends Component {
         console.log('Error in uploading image ', err);
         return;
       }
-      console.log('UPLOAD Complete', JSON.stringify(resp.body));
       const uploaded = resp.body;
 
       //post user submitted photo url to database (post table)
-      console.log('this.state.file name is == ', this.state.file.name);
 
       axios.get('/api/session')
       .then(function(response) {
         var user = response.data;
-        axios.post('/api/userTimeline', {
+        var photo = {
           type: 'photo',
           filePath: resp.body.secure_url,
-          //TODO: relace 1's with actual data
           userId: user.id,
+          //TODO: relace 1's with actual data,
           parkId: 1
-        })
+        }
+        axios.post('/api/userTimeline', photo)
         .then(function (resp) {
+          console.log('sending back addPhoto');
+          context.props.addPhoto();
           var allPost = [resp.data].concat(context.state.allPost);
 
-          context.setState({
-            allPost: allPost
-          });
-          console.log('succesfull url saved ---', resp);
+          // context.setState({
+          //   allPost: allPost
+          // });
         })
         .catch(function (error) {
-          console.error('error saving to post table--- ', error);
         });
       });
 
@@ -99,13 +98,10 @@ export default class ImageUpload extends Component {
         images: [],
         imagePreview: null,
         fileName: ''
+      }, function () {
+        // context.props.addPhoto();
       });
     });
-
-    console.log('handle uploading-', this.state.file);
-    console.log('description is - ', this.state.description);
-
-
   }
 
   _handleImageChange(e) {
@@ -121,8 +117,6 @@ export default class ImageUpload extends Component {
         fileName: file.name
       });
     };
-    console.log('file is ', file);
-    console.log('this.state.imagePreviewUrl is ', this.state.imagePreviewUrl);
     reader.readAsDataURL(file);
   }
 
@@ -136,7 +130,6 @@ export default class ImageUpload extends Component {
     } else {
       $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
     }
-    console.log('this.state.images ',this.state.images );
 
     let list = this.state.images.map((image, i) => {
       return (
@@ -146,7 +139,6 @@ export default class ImageUpload extends Component {
       )
     });
 
-    console.log("LIST", this.state.list);
     return (
       <div className="previewComponent">
         <form className="preview-form" onSubmit={(e)=>this._handleSubmit(e)}>

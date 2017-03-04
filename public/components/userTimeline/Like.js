@@ -53,7 +53,6 @@ class Like extends React.Component {
 
 
   onLike () {
-    console.log('firing')
     var context = this;
     var like = {
       // ** TODO: Get userID from session **
@@ -62,7 +61,6 @@ class Like extends React.Component {
     };
     // send a post request with user/postID
     axios.post('/api/photoLike', like).then(function(res) {
-      // console.log('vote count', res.data.voteCount);
       context.setState({
         likes: res.data.voteCount,
         userLiked: !context.state.userLiked

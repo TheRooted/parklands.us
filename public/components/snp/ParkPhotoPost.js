@@ -29,7 +29,6 @@ class ParkPhotoPost extends React.Component {
           postId: this.state.postId
         }
       }).then(function (res) {
-        console.log(res);
         context.setState({
           userEmail: res.data.firstName
         })

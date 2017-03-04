@@ -30,7 +30,6 @@ export default class UserTimeline extends React.Component {
         remainingActivity: sortedRes,
         displayedActivity: newFeed,
       });
-      console.log('res from getParkPhotos is ', context.state.userActivity);
     });
   }
 
@@ -42,10 +41,23 @@ export default class UserTimeline extends React.Component {
     });
   }
 
+  addPhoto() {
+    const context = this;
+    axios.get('/api/userTimeline').then(function (res) {
+      var sortedRes = sort(res.data, 'created');
+      var newFeed = context.state.displayedActivity.slice();
+      var newElement = sortedRes.shift();
+      newFeed.unshift(newElement);
+      context.setState({
+        displayedActivity: newFeed
+      })
+    })
+  }
+
   render() {
     return (
       <div id="userTimeLinePageContainer">
-        <ImageUpload className="ImageUpload" />
+        <ImageUpload className="ImageUpload" addPhoto={this.addPhoto.bind(this)}/>
         <div className="timeline-post-container">
           {
             this.state.displayedActivity.map(post =>
@@ -54,7 +66,7 @@ export default class UserTimeline extends React.Component {
                 datePosted={post.createdAt}
                 key={post.id}
                 postId={post.id}
-                allPost={this.state.userActivity}
+                allPost={this.state.displayedActivity}
               />
             )
           }

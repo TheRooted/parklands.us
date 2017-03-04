@@ -18,7 +18,6 @@ export default class Post extends React.Component {
   }
 
   componentWillMount() {
-    //console.log('post id ',this.props.postId);
     const context = this;
     axios.get('/api/postcomment', {
       params: {
@@ -48,16 +47,13 @@ export default class Post extends React.Component {
     axios.get('/api/session')
     .then(function(res) {
       var user = res.data;
-      console.log('user is ', user);
       axios.post('/api/postcomment', {
         userId: user.id,
         postId: context.props.postId,
         text: context.state.comment
       })
       .then(function (res) {
-        console.log('data in add comment is ',res.data);
         var allComment = context.state.allComments.concat(res.data);
-        console.log('data in add comment ALLCOMMENt is ',allComment);
         context.setState({
           allComments: allComment,
           comment: ''

@@ -13,7 +13,6 @@ class ReviewCommentBox extends React.Component {
   }
 
   postReview () {
-    console.log('clicked button')
     var context = this;
     // grab the data from input form
     var userReviewObj = {
@@ -29,7 +28,6 @@ class ReviewCommentBox extends React.Component {
       axios.get('/api/parkComment/' + context.props.parkId)
       .then(function(response) {
         var sorted = sort(response.data, 'created');
-        console.log('should be park comments', sorted[0])
         // call function to set state at snp page for comments
         context.props.getCommentsAfterPost(sorted[0])
       })
