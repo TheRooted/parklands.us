@@ -686,14 +686,31 @@ input[type="submit"]:hover {
 ***************************/
 
 #notapark {
- position: relative;
- display: block;
- top: 60px;
- margin: 30px;
+  position: relative;
+  display: block;
+  height: 90vh;
+  width: auto;
+  margin: 30px;
 }
 
 #notapark img {
- height: auto;
- width: 100%;
+  width: 100%;
+  height: auto;
+  opacity: .6;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
 }
+
+.invalid-message {
+  position: relative;
+  display: flex;
+  top: 50%;
+  left: 25%;
+  color: #555;
+  font-size: 50px;
+  font-weight: 700;
+  flex-wrap: wrap;
+}
+
 
