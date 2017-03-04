@@ -32,9 +32,17 @@ var sortById = function (arr) {
 
 var sortByRating = function (arr) {
   return arr.sort(function(a, b) {
-    return b.rating - a.rating;
+    if (b.rating !== a.rating) {
+      return b.rating - a.rating;
+    } else {
+      for (var i = 0; i < a.name.length; i++) {
+        if (a.name[i] !== b.name[i]) {
+          return a.name.charCodeAt(i) - b.name.charCodeAt(i);
+        }
+      }
+    }
   })
-}
+};
 
 var sortAlphabetically = function (arr) {
   return arr.sort(function (a, b) {
@@ -84,7 +92,7 @@ var sortByCreatedAt = function (arr) {
 
 
   })
-}
+};
 
 var sortByActivity = function (arr) {
   return arr.sort(function(a, b) {

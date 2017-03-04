@@ -23,7 +23,7 @@ class RatingPark extends React.Component {
       .then(function(res){
         // set state of the userStars
         console.log('come back to meee',res)
-        var star = parseInt(res.data.rating);
+        var star = parseInt(Math.round(res.data.rating));
         context.setState({userStars: star})
       })
     }

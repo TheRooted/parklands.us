@@ -55,7 +55,7 @@ module.exports = {
           if (parkRatings[i].length === 0) {
             average = 0;
           } else {
-            average = Math.round(total/parkRatings[i].length);
+            average = total/parkRatings[i].length;
           }
           console.log('@@@@average', average)
           //update the park with the average rating
@@ -446,7 +446,7 @@ module.exports = {
             if (parkRatings.length === 0) {
               average = 0;
             } else {
-              average = Math.round(total/parkRatings.length);
+              average = total/parkRatings.length;
             }
             //update the park with the average rating
             db.models.park.update({

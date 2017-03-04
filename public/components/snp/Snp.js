@@ -130,7 +130,7 @@ export default class Snp extends React.Component {
         })
         axios.get('/api/parkAverageRating/' + context.state.park.id).then(function(res){
           console.log('avg park rating', res)
-          context.setState({averageRating: res.data.rating})
+          context.setState({averageRating: Math.round(res.data.rating)})
         })
       } else { //if data comes back without an id it's not a valid park name
         browserHistory.replace('/notavalidpark/' + parkName);

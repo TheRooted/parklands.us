@@ -31,10 +31,11 @@ var GridElement = (props) => {
       />
     <br />
     <div className='grid-rating'>
+      <span>Avg. </span>
       <Rating
         icon={'star'}
         maxRating={5}
-        rating={props.parkRating}
+        rating={Math.round(props.parkRating)}
         size= {'tiny'}
         disabled={true}
         />

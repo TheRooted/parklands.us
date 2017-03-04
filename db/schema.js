@@ -57,7 +57,7 @@ sequelize
       type: Sequelize.STRING
     },
     rating: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.REAL,
       defaultValue: 0
     },
     hero: {
