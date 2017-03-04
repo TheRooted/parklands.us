@@ -178,7 +178,7 @@ export default class Snp extends React.Component {
                 index={i}
                 parkName={context.capFirstLetter(context.state.park.name)}
                 photoIndex={context.state.photoIndex}
-                userPhotos={context.state.photos}
+                userPhotos={context.state.photosDisplay}
               />
             )}
             <button onClick={context.loadMorePhotos.bind(context)}>Load More</button>
