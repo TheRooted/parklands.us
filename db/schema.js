@@ -46,7 +46,6 @@ sequelize
   var ParkPhotos = sequelize.define('parkphoto', {
     photoUrl: {
       type: Sequelize.STRING,
-      unique: true
     },
     parkId: {
       type: Sequelize.INTEGER

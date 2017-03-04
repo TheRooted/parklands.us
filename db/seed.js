@@ -328,19 +328,28 @@ request(url, function (error, response, html) {
         'https://drscdn.500px.org/photo/89719719/q%3D80_m%3D2000/f8a6fec97d623db924f2c8e88457a526',
         'http://www.valleyviews.biz/images/homeslideshow/home_yosemite_hd8.jpg',
         'http://blog.thomascook.in/wp-content/uploads/2016/06/Yose-1024x581.jpg'
-       ]
-
+      ];
+      var parkPhotosCreation = [];
+      for (var i = 1; i < 60; i++) {
+        for (var j = 0; j < yosemitePics.length; j++) {
+          parkPhotosCreation.push(db.models.parkphoto.create({
+            photoUrl: yosemitePics[j],
+            parkId: i
+          }));
+        }
+      }
+      Promise.all(parkPhotosCreation);
       db.models.park.find({
         where: {
           name: 'yosemite'
         }
       }).then(function(results) {
-        for (var i = 0; i < yosemitePics.length; i++) {
-          db.models.parkphoto.create({
-            photoUrl: yosemitePics[i],
-            parkId: results.dataValues.id
-          });
-        }
+      //   for (var i = 0; i < yosemitePics.length; i++) {
+      //     db.models.parkphoto.create({
+      //       photoUrl: yosemitePics[i],
+      //       parkId: results.dataValues.id
+      //     });
+      //   }
       /*---------------------------------------------
                     Seed Parkcomments
       ----------------------------------------------*/
