@@ -150,6 +150,9 @@ export default class Mapp extends React.Component {
     // Add zoom and cardinal direction control
     map.addControl(new mapboxgl.NavigationControl());
 
+    // Add user location control
+    map.addControl(new mapboxgl.GeolocateControl());
+
     // Add driving directions module
     map.addControl(new MapboxDirections({
         accessToken: 'pk.eyJ1Ijoic3Blc2NoZWxsayIsImEiOiJjaXo4bXB2cG8wMHA2MnZxbzNneHlicnZyIn0.K9hcDggIDFrtjjVS8LOXdA'
