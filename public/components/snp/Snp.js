@@ -212,10 +212,9 @@ export default class Snp extends React.Component {
 
               </div>
             </div>
-
             <div className='review-comments'>
               {context.state.commentsDisplay.map((comment, i) =>
-                <Parkcomment firstName={comment.firstName} text={comment.text} key={i}/>
+                <Parkcomment firstName={comment.firstName} text={comment.text} datePosted={comment.createdAt} key={i}/>
               )}
             <button onClick={context.loadMoreComments.bind(context)}>Load More</button>
             </div>
