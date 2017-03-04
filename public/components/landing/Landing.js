@@ -16,7 +16,7 @@ export default class Landing extends React.Component {
       <div className="landing-div">
         <div className='splash-landing'>
           <img className='splash-img' src='https://www.adventure-journal.com/wp-content/uploads/2015/07/15155461297_402eeb3fd7_h.jpg' />
-            <div className='splash-title'>START EXPLORING</div>
+          <div className='splash-title'>START EXPLORING</div>
         </div>
         <Mapp />
         <Grid />
