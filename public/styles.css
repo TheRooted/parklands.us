@@ -492,20 +492,11 @@ input[type="submit"]:hover {
   opacity: 1;
 }
 
+.
 
 /**************************
     SOCIAL MEDIA FEED
 ***************************/
-
-/*.twitter-timeline-container {
-  position: fixed;
-  margin-top: -45px;
-  margin-right: 15px;
-  float: right;
-  height: 100vh
-  top: 90px;
-  right: 30px;
-}*/
 
 /** DO NOT TOUCH **/
 #social-media-feed {
@@ -520,17 +511,7 @@ input[type="submit"]:hover {
         TRENDING
 ***************************/
 
-
-
-/*#user-feed-container {
-  position: fixed;
-  display: inline-block;
-  top: 90px;
-  width: 20%;
-  right: 10px;
-}*/
-
-/** DO NOT TOUCH **/
+/** DO NOT TOUCH ALL-FEED **/
 #all-feed {
   margin-top: 90px;
   margin-left: 60px;

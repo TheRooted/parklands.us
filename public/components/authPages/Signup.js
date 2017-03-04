@@ -1,14 +1,17 @@
 import React from 'react';
 import axios from 'axios';
+import Alert from './Alert.js';
 import { browserHistory, Link } from 'react-router';
 
 export default class Signup extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { AlertShown: false };
   }
   
-  validateForm() {
+  validateForm(event) {
+    event.preventdefault();
+
     var user = {
       firstName: this.refs.firstNameSU.value,
       lastName: this.refs.lastNameSU.value,
