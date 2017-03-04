@@ -4,6 +4,7 @@ import Post from './Post.js';
 import ImageUpload from './ImageUpload.js';
 import sort from './../sort.js';
 import loadMore from './../loadMore.js';
+
 export default class UserTimeline extends React.Component {
 
   constructor(props) {

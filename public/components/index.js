@@ -9,24 +9,24 @@ import Signin from './authPages/Signin.js';
 import Signup from './authPages/Signup.js';
 import UserTimeline from './userTimeline/UserTimeline.js';
 import Landing from './landing/Landing.js';
-import Snp from './snp/Snp.js'
-import NotAPark from './snp/NotAPark.js'
-import UserFeed from './userFeed/UserFeed.js'
+import Snp from './snp/Snp.js';
+import NotAPark from './snp/NotAPark.js';
+import UserFeed from './userFeed/UserFeed.js';
 
 const app = document.getElementById('app');
 
 const isLoggedIn = (nextState, replace) => {
-  console.log('checking if user is logged in')
+  console.log('checking if user is logged in');
 
   axios.get('/api/session').then(function(res) {
-    console.log('React res.status', res.status)
-    console.log('React res', res)
+    console.log('React res.status', res.status);
+    console.log('React res', res);
     //TODO: UNCOMMENT ME OUT
-    // if (res.status !== 200) {
-    //   browserHistory.push('/signin')
-    // }
+    if (res.status !== 200) {
+      browserHistory.push('/signin');
+    }
   });
-}
+};
 
 ReactDOM.render((
   <Router history={browserHistory}>
