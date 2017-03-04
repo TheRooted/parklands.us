@@ -47,7 +47,7 @@ export default class UserTimeline extends React.Component {
         <ImageUpload className="ImageUpload" />
         <div className="timeline-post-container">
           {
-            this.state.userActivity.map(post =>
+            this.state.displayedActivity.map(post =>
               <Post
                 photoData={post.filePath}
                 datePosted={post.createdAt}
