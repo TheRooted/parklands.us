@@ -30,6 +30,17 @@ describe('<Comment>', () => {
     const wrapper = shallow(<Comment/>);
     expect(wrapper.props().componentWillMount).to.be.defined;
   });
+
+  it('should have props for text', function () {
+    const wrapper = shallow(<Comment/>);
+    expect(wrapper.props().text).to.be.defined;
+  });
+
+  it('should have props for userId', function () {
+    const wrapper = shallow(<Comment/>);
+    expect(wrapper.props().userId).to.be.defined;
+  });
+
 });
 
 describe('<Comment> should fetch data', () => {
@@ -58,5 +69,6 @@ describe('<Comment> should fetch data', () => {
       done();
     });
   });
+
 
 });
