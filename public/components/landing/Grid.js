@@ -25,6 +25,16 @@ export default class Grid extends React.Component {
     });
   }
 
+  sortAlphabetical() {
+    var arr = sort(this.state.parks, 'alphabetically');
+    this.setState({parks: arr});
+  }
+
+  sortRated() {
+    var arr = sort(this.state.parks, 'rating');
+    this.setState({parks: arr});
+  }
+
   linkToPage(parkName) {
     browserHistory.push('/park/' + parkName);
   }
@@ -32,6 +42,8 @@ export default class Grid extends React.Component {
   render () {
     return (
       <div className='grid'>
+        <button onClick={this.sortAlphabetical.bind(this)}>Alphabetical</button>
+        <button onClick={this.sortRated.bind(this)}>Highest Rated</button>
         {this.state.parks.map((park, i) =>
           <GridElement key={i} parkName={park.name} parkRating={park.rating} parkPhoto={park.photo} linkToPage={this.linkToPage} />
         )}

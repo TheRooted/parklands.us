@@ -1,6 +1,6 @@
 var sort = function (arr, criteria) {
   switch(criteria) {
-    case 'rating':
+    case 'likes':
       arr = sortByLikes(arr);
       return arr;
     case 'activity':
@@ -15,6 +15,9 @@ var sort = function (arr, criteria) {
     case 'created':
       arr = sortByCreatedAt(arr);
       return arr;
+    case 'rating':
+      arr = sortByRating(arr);
+      return arr;
     default:
       arr = sortByLikes(arr);
       return arr;
@@ -26,6 +29,12 @@ var sortById = function (arr) {
     return a.id - b.id;
   })
 };
+
+var sortByRating = function (arr) {
+  return arr.sort(function(a, b) {
+    return b.rating - a.rating;
+  })
+}
 
 var sortAlphabetically = function (arr) {
   return arr.sort(function (a, b) {
@@ -110,5 +119,6 @@ var sortByActivity = function (arr) {
 
   })
 };
+
 
 module.exports = sort;
