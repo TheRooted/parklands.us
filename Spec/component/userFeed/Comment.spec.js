@@ -14,4 +14,9 @@ describe('<Comment>', () => {
     const wrapper = shallow(<Comment/>);
     expect(wrapper.find('strong')).to.have.length(1);
   });
+
+  it('should have props for componentWillMount', function () {
+    const wrapper = shallow(<Comment/>);
+    expect(wrapper.props().componentWillMount).to.be.defined;
+  });
 });
