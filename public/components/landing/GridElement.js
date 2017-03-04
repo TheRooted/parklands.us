@@ -31,7 +31,7 @@ var GridElement = (props) => {
       />
     <br />
     <div className='grid-rating'>
-      <span>Avg. </span>
+      <span>Avg </span>
       <Rating
         icon={'star'}
         maxRating={5}
