@@ -85,6 +85,7 @@
     "json-loader": "^0.5.4",
     "mapbox-gl": "^0.32.1",
     "mocha": "^3.2.0",
+    "moxios": "^0.3.0",
     "nodemon": "^1.11.0",
     "passport-local": "^1.0.0",
     "react-addons-test-utils": "^15.4.2",
