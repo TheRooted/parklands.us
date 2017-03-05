@@ -318,6 +318,35 @@ request(url, function (error, response, html) {
       Promise.all(requests).then(function() {
         console.log('@@@@@@@@FINISHED SEEDING')
       });
+
+      /*---------------------------------------------
+            Seed twitter snp photos with comments
+      ----------------------------------------------*/
+      // iterate over 543 post photos
+      var twitterSnpPhotos = [];
+      var randomComment = ['Nature, eh? Incredible!!', 'Wildlife, huh? Spectacular!!', 'Outdoors, right? Amazing!!', 'National parks, hm? Wonderous!']
+      var getRandomNumber = function(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      // iterate over all 543 posts and add comment
+      for (var i = 1 ; i < 544; i++) {
+        twitterSnpPhotos.push(
+          db.models.postcomment.create({
+            text: randomComment[getRandomNumber(0,3)],
+            userId: getRandomNumber(1,4),
+            postId: i,
+          })
+        )
+      }
+      //run promise on array
+      Promise.all(twitterSnpPhotos).then(function(res) {
+        console.log('stored!')
+      })
+
+
       /*---------------------------------------------
             Seed parkPhotos with Yosemite pics
       ----------------------------------------------*/

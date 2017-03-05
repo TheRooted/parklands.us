@@ -725,6 +725,32 @@ input[type="submit"]:hover {
   text-align: center;
 }
 
+.photo-comment-box-child {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.write-button {
+  float: right;
+
+}
+
+.textarea-photo {
+  height: 33.5px;
+}
+
+.load-hide-comments {
+  margin-top: 10px;
+ }
+.show-less-comments {
+  display: inline;
+}
+
+.show-less-comments {
+  display: inline;
+  float: right;
+}
+
 /**************************
           PROFILE
 ***************************/

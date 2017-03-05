@@ -10,7 +10,6 @@ import { Rating } from 'semantic-ui-react';
 import ReviewCommentBox from './ReviewCommentBox.js'
 import loadMore from './../loadMore.js';
 import sort from './../sort.js';
-// import { Timeline } from 'react-twitter-widgets'
 
 
 

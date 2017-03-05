@@ -27,9 +27,11 @@ export default class Comment extends Component {
   }
 
   render () {
+
+
     return (
       <div className="comment-container">
-        <div className="comment">
+        <div className='comment'>
           <strong>{`${this.state.user.firstName} ${this.state.user.lastName}`}</strong>
           <p>{this.props.text}</p>
         </div>

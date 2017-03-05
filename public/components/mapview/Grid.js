@@ -24,7 +24,6 @@ export default class Grid extends React.Component {
         }
       });
     })
-
   }
 
   sortAlphabetical() {
