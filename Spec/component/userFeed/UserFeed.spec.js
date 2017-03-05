@@ -34,4 +34,13 @@ describe('<UserFeed>', () => {
     expect(wrapper.state('remainingFeed')).to.eql([]);
   });
 
+  it('should have photoCount state', () => {
+    const wrapper = shallow(<UserFeed/>);
+    expect(wrapper.state('photoCount')).to.be.defined;
+  });
+
+  it('initial value of photoCount state should be ', () => {
+    const wrapper = shallow(<UserFeed/>);
+    expect(wrapper.state('photoCount')).to.equal(10);
+  });
 });
