@@ -24,18 +24,18 @@ body {
  }
 
 
-.splash-img {
-/*  position: relative;
-  width: 99.5%;*/
-}
+/*.splash-img {
+  position: relative;
+  width: 99.5%;
+}*/
 
-.splash-title {
+/*.splash-title {
   font-family: 'Anton';
   color: white;
   font-size: 100px;
   z-index: 100;
   cursor: pointer;
-}
+}*/
 
 .hvr-grow {
   display: inline-block;
@@ -57,6 +57,7 @@ body {
   width: 99.5%;
   position: relative;
 }
+
 .splash-img {
   position: relative;
   width: 100%;
@@ -72,6 +73,7 @@ body {
   font-size: 100px;
   left: 150px;
   top: 350px;
+  cursor: pointer;
 }
 
 #container {
