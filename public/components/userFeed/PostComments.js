@@ -4,9 +4,9 @@ import Comment from './Comment.js';
 
 const PostComment = (props) => {
     // const comments = this._getComments();
-  console.log('all comment iss ',props.allComments);
+  // console.log('all comment iss ',props.allComments);
   return (
-    <div className="comment-box">
+    <div className={props.commentStyle ? props.commentStyle : 'comment-box'}>
         {
           props.allComments.map((comment) => {
             return (
