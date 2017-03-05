@@ -739,16 +739,11 @@ input[type="submit"]:hover {
   height: 33.5px;
 }
 
-.load-hide-comments {
-  margin-top: 10px;
- }
-.show-less-comments {
-  display: inline;
-}
-
-.show-less-comments {
-  display: inline;
-  float: right;
+.post-comment-scroll {
+  overflow: auto;
+  height: 150px;
+  width: 350px;
+  margin-top: 5px;
 }
 
 /**************************

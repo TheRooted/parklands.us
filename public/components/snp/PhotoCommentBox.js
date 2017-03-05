@@ -18,7 +18,6 @@ class PhotoCommentBox extends React.Component {
     var commentBox = context.refs.commentBox;
     // make sure the user isnt submitting an empty response
     if (this.state.userComment !== '') {
-      (console.log('running postCommentOnPhoto', context.state.userComment))
       var userComment = {
         text: context.state.userComment,
         userId: context.props.userId,
