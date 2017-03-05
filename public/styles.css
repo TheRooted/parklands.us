@@ -173,14 +173,6 @@ body {
 .commentTimeline {
   position: relative;
   display: inline-block;
-  width: 535px;
-  height: 35px;
-  border-radius: 4px;
-}
-
-.commentTimeline {
-  width: 535px;
-  height: 35px;
   border-color: #009;
   border-radius: 6px;
 }
@@ -201,6 +193,7 @@ body {
 .previewComponent {
   text-align: center;
   display: inline-block;
+
 }
 
 
@@ -363,14 +356,24 @@ input[type="submit"]:hover {
                 User ImageUpload
 ----------------------------------------------*/
 
+::-webkit-file-upload-button {
+  background: #3d698e;
+  color: white;
+  padding: 7px 18px;
+  border-radius: 4px;
+
+}
+
 .fileInput {
-  border-bottom: 4px solid lightgray;
-  border-right: 4px solid lightgray;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
+  border-bottom: 4px solid #4267b2;
+  border-right: 4px solid #4267b2;
+  border-top: 1px solid #4267b2;
+  border-left: 1px solid #4267b2;
   padding: 10px;
   margin: 15px;
   cursor: pointer;
+  border-radius: 5px;
+  color: #4267b2;
 }
 
 .imgPreview {
@@ -378,10 +381,11 @@ input[type="submit"]:hover {
   margin: 5px 15px;
   height: 200px;
   width: 500px;
-  border-left: 1px solid gray;
-  border-right: 1px solid gray;
-  border-top: 5px solid gray;
-  border-bottom: 5px solid gray;
+  border-left: 1px solid #4267b2;
+  border-right: 1px solid #4267b2;
+  border-top: 5px solid #4267b2;
+  border-bottom: 5px solid #4267b2;
+  border-radius: 5px;
 }
 
 .imgPreview img {
