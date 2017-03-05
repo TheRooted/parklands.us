@@ -43,4 +43,15 @@ describe('<UserFeed>', () => {
     const wrapper = shallow(<UserFeed/>);
     expect(wrapper.state('photoCount')).to.equal(10);
   });
+
+  it('should have newFeed state', () => {
+    const wrapper = shallow(<UserFeed/>);
+    expect(wrapper.state('newFeed')).to.be.defined;
+  });
+
+  it('initial value of newFeed state should be ', () => {
+    const wrapper = shallow(<UserFeed/>);
+    expect(wrapper.state('newFeed')).to.eql([]);
+  });
+
 });
