@@ -47,6 +47,11 @@ var sortByRating = function (arr) {
 var sortAlphabetically = function (arr) {
   return arr.sort(function (a, b) {
     for (var i = 0; i < a.name.length; i++) {
+      if (a.name === 'glacier bay' && b.name === 'glacier') {
+        return 1;
+      } else if (a.name === 'glacier' && b.name === 'glacier bay') {
+        return -1;
+      }
       if (a.name[i] !== b.name[i]) {
         return a.name.charCodeAt(i) - b.name.charCodeAt(i);
       }

@@ -12,6 +12,7 @@ import Landing from './landing/Landing.js';
 import Snp from './snp/Snp.js';
 import NotAPark from './snp/NotAPark.js';
 import UserFeed from './userFeed/UserFeed.js';
+import Mapview from './mapview/Mapview.js';
 
 const app = document.getElementById('app');
 
@@ -32,6 +33,7 @@ ReactDOM.render((
   <Router history={browserHistory}>
     <Route path='/' component={App} >
       <IndexRoute component={Landing} />
+      <Route path='mapview' component={Mapview} />
       <Route path='signin' component={Signin} />
       <Route path='signup' component={Signup} />
       <Route path='usertimeline' onEnter={isLoggedIn} component={UserTimeline} />

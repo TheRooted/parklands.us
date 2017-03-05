@@ -1,9 +1,5 @@
 import React from 'react';
-import Grid from './Grid.js';
-import Mapp from '../Mapp.js';
-
-// should render the all components of the landing page
-// (big photo, map, grid)
+import { browserHistory } from 'react-router';
 
 export default class Landing extends React.Component {
   constructor(props) {
@@ -11,15 +7,18 @@ export default class Landing extends React.Component {
     this.state = {}
   }
 
+  linkToMapView() {
+    browserHistory.push('/mapview');
+  }
+
   render() {
     return (
       <div className="landing-div">
         <div className='splash-landing'>
-          <img className='splash-img' src='https://www.adventure-journal.com/wp-content/uploads/2015/07/15155461297_402eeb3fd7_h.jpg' />
-          <div className='splash-title'>START EXPLORING</div>
+          <img className='splash-img' onClick={this.linkToMapView.bind(this)} src='https://www.adventure-journal.com/wp-content/uploads/2015/07/15155461297_402eeb3fd7_h.jpg' />
+          <div className='splash-title' onClick={this.linkToMapView.bind(this)}>START EXPLORING</div>
         </div>
-        <Mapp />
-        <Grid />
+        
       </div>
     )
   }

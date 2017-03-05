@@ -10,7 +10,7 @@ export default class Grid extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      parks: [{name: 'Blue', rating: 0}],
+      parks: [{name: 'Loading', photo: 'http://bikeportal.ro/addons/shared_addons/themes/foundation_6/img/img_thumb_small.png', rating: 0}],
     };
   }
 
