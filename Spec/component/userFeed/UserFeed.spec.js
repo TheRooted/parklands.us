@@ -53,5 +53,33 @@ describe('<UserFeed>', () => {
     const wrapper = shallow(<UserFeed/>);
     expect(wrapper.state('newFeed')).to.eql([]);
   });
-
 });
+
+describe('<UserFeed>', () => {
+  beforeEach(function () {
+    // import and pass your custom axios instance to this method
+    moxios.install();
+  });
+
+  afterEach(function () {
+    // import and pass your custom axios instance to this method
+    moxios.uninstall();
+  });
+
+  it('stub response for request URL', function (done) {
+    // Match against an exact URL value
+    moxios.stubRequest('/api/userfeed', {
+      status: 200,
+      responseText: 'response in userfeed'
+    });
+
+    let onFulfilled = sinon.spy();
+    axios.get('/api/userfeed').then(onFulfilled);
+
+    moxios.wait(function () {
+      equal(onFulfilled.getCall(0).args[0].data, 'response in userfeed');
+      done();
+    });
+  });
+});
+

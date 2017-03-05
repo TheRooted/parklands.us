@@ -4,6 +4,7 @@ import Comment from './Comment.js';
 
 const PostComment = (props) => {
     // const comments = this._getComments();
+  console.log('all comment iss ',props.allComments);
   return (
     <div className="comment-box">
         {
@@ -23,6 +24,5 @@ const PostComment = (props) => {
     </div>
   );
 }
-
 
 module.exports = PostComment;
