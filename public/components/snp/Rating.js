@@ -10,9 +10,30 @@ class RatingPark extends React.Component {
     }
   }
 
+  componentWillMount() {
+    var context = this;
+    axios.get('/api/rating', {
+      params: {
+        parkId: this.props.parkId,
+        // **TODO: get userID from session **
+        userId: 106
+      }
+    })
+    .then(function(res){
+      // set state of the userStars
+      var star = parseInt(Math.round(res.data.rating));
+      if (star === 0) {
+        context.props.didUserRate(false)
+      } else {
+        context.props.didUserRate(true)
+      }
+      context.setState({userStars: star})
+    })
+  }
+
   componentWillReceiveProps(nextProps) {
     var context = this;
-    if (this.props.parkId !== nextProps.parkId) {
+    // if (context.props.parkId !== nextProps.parkId) {
       axios.get('/api/rating', {
         params: {
           parkId: nextProps.parkId,
@@ -25,11 +46,16 @@ class RatingPark extends React.Component {
         var star = parseInt(Math.round(res.data.rating));
         context.setState({userStars: star})
       })
-    }
+    // }
   }
 
   handleRate (e, data) {
     var context = this;
+    if (data.rating === 0) {
+      context.props.didUserRate(false);
+    } else {
+      context.props.didUserRate(true);
+    }
     this.setState({userStars: data.rating})
     var userRating = {
       ratingVal: data.rating,
@@ -45,7 +71,7 @@ class RatingPark extends React.Component {
 
   render () {
     return (
-      <div className="rating-container">
+      <div className={this.props.styleBox ? 'rating-container-review' : "rating-container"}>
         <Rating
           className={'rating-star'}
           icon={'star'}

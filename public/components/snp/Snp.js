@@ -34,6 +34,7 @@ export default class Snp extends React.Component {
       photoIndex: 0,
       averageRating: 0,
       photoCount: 10,
+      didUserRate: false,
     }
   }
 
@@ -137,6 +138,10 @@ export default class Snp extends React.Component {
     })
   }
 
+  didUserRate(bool) {
+    this.setState({didUserRate: bool});
+  }
+
   updateAverageRating (avgRate) {
     this.setState({averageRating: avgRate});
   }
@@ -198,17 +203,26 @@ export default class Snp extends React.Component {
                   size= {'huge'}
                   disabled={true}
                 />
-                <div className='reviewCommentBox'>
-                  {/*TODO change sessions for userID and get name*/}
-                  <ReviewCommentBox
-                    parkId={context.state.park.id}
-                    userId={106}
-                    firstName={'jackie'}
-                    userEmail={'jackieh.bee@gmail.com'}
-                    getCommentsAfterPost={context.getCommentsAfterPost.bind(context)}
-                  />
+              <div className='review-section-snp'>
+                <div className='review-rating-box'>
+                  <RatingPark parkId={context.state.park.id}
+                    styleBox={'rating-container-review'}
+                    didUserRate={context.didUserRate.bind(context)}
+                    updateAverageRating={context.updateAverageRating.bind(context)}
+                    />
+                  <h3>{context.state.didUserRate ? 'Thanks for rating ' + context.capFirstLetter(context.state.park.name) + ' National Park' : 'Rate your experience'}</h3>
                 </div>
-
+                  <div className='reviewCommentBox'>
+                    {/*TODO change sessions for userID and get name*/}
+                    <ReviewCommentBox
+                      parkId={context.state.park.id}
+                      userId={106}
+                      firstName={'jackie'}
+                      userEmail={'jackieh.bee@gmail.com'}
+                      getCommentsAfterPost={context.getCommentsAfterPost.bind(context)}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
             <div className='review-comments'>

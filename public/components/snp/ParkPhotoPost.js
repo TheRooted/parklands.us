@@ -37,22 +37,24 @@ class ParkPhotoPost extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     var context = this;
-    this.setState({
-      userPhotos: nextProps.userPhotos,
-      photoIndex: nextProps.index,
-      postId: nextProps.postId,
-      parkId: nextProps.parkId
-    }, function () {
-      axios.get('/api/userNameFromPostId', {
-        params: {
-          postId: this.state.postId
-        }
-      }).then(function (res) {
-        context.setState({
-          userEmail: res.data.firstName
+    if (this.state.parkId !== nextProps.parkId) {
+      this.setState({
+        userPhotos: nextProps.userPhotos,
+        photoIndex: nextProps.index,
+        postId: nextProps.postId,
+        parkId: nextProps.parkId
+      }, function () {
+        axios.get('/api/userNameFromPostId', {
+          params: {
+            postId: context.state.postId
+          }
+        }).then(function (res) {
+          context.setState({
+            userEmail: res.data.firstName
+          })
         })
       })
-    })
+    }
   }
 
   setNewComments (comments) {
