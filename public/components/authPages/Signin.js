@@ -9,14 +9,26 @@ export default class Signin extends React.Component {
     this.state = {};
   }
   
-  validateForm() {
-    var user = {
-      email: this.refs.emailSI.value,
-      password: this.refs.passwordSI.value
+  validateForm(event) {
+    if (!this.refs.emailSI.value) {
+      var el3 = document.getElementById('email-input');
+      el3.className += ' missing';
+      el3.placeholder = 'Please enter your email.';
+      event.preventDefault();
     }
-
-    if (!user.email || !user.password) {
-      alert('Please fill in all fields so we can connect you to your parks!');
+    if (!this.refs.passwordSI.value) {
+      var el4 = document.getElementById('password-input');
+      el4.className += ' missing';
+      el4.placeholder = 'Please enter your password.'
+      event.preventDefault();
+    }
+    if (this.refs.emailSI.value) {
+      var el3 = document.getElementById('email-input');
+      el3.className = 'auth-fields';
+    }
+    if (this.refs.passwordSI.value) {
+      var el4 = document.getElementById('password-input');
+      el4.className = 'auth-fields';
     }
   }
 
@@ -24,12 +36,12 @@ export default class Signin extends React.Component {
     return (
       <div className='signinBg'>
         <form method="post" className="auth-container signin">
-          <input className="auth-fields" type="email" name="email" placeholder="Email Address" ref="emailSI" />
+          <input id="email-input" className="auth-fields" type="email" name="email" placeholder="Email" ref="emailSI" />
           <br />
-          <input className="auth-fields" type="password" name="password" placeholder="Password" ref="passwordSI" />
+          <input id="password-input" className="auth-fields" type="password" name="password" placeholder="Password" ref="passwordSI" />
           <br />
           <div className="buttons">
-            <button className="btn-auth" onClick={this.validateForm.bind(this)}>Sign In</button>
+            <button className="btn-auth" onClick={ this.validateForm.bind(this) }>Sign In</button>
             <Link to="/signup" className="signup-link">Don't have an account? Sign up</Link>
           </div>
         </form>

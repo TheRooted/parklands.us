@@ -455,6 +455,10 @@ input[type="submit"]:hover {
   border-radius: 4px;
 }
 
+.auth-fields.missing {
+  border: 3px solid red;
+}
+
 .btn-auth {
   display: inline-block;
   margin: 10px;
@@ -492,7 +496,6 @@ input[type="submit"]:hover {
   opacity: 1;
 }
 
-.
 
 /**************************
     SOCIAL MEDIA FEED
