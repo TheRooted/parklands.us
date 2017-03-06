@@ -184,8 +184,8 @@ module.exports = {
         where: {
           type: 'photo',
           voteCount: 0,
-          userId: 1,
-          parkId: 1,
+          userId: req.body.userId,
+          parkId: req.body.parkId,
           filePath: req.body.filePath
         }
       }).then(function () {

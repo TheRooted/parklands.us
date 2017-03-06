@@ -13,12 +13,32 @@ export default class ImageUpload extends Component {
       images: [],
       imagePreview: '',
       fileName: '',
-      allPost: this.props.allPost
+      allPost: this.props.allPost,
+      styling: {
+        display: 'none'
+      },
     };
 
     this._handleInputChange = this._handleInputChange.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
     this._handleImageChange = this._handleImageChange.bind(this);
+  }
+
+  componentWillReceiveProps (nextProps) {
+    console.log('parkId: ',nextProps.parkId);
+    if (nextProps.displayUpload !== 'none') {
+      this.setState({
+        styling: {
+          display: 'inline-block'
+        }
+      })
+    } else {
+      this.setState({
+        styling: {
+          display: 'none'
+        }
+      })
+    }
   }
 
   _handleInputChange(e) {
@@ -69,26 +89,27 @@ export default class ImageUpload extends Component {
 
       axios.get('/api/session')
       .then(function(response) {
-        var user = response.data;
-        var photo = {
-          type: 'photo',
-          filePath: resp.body.secure_url,
-          userId: user.id,
-          //TODO: relace 1's with actual data,
-          parkId: 1
-        }
-        axios.post('/api/userTimeline', photo)
-        .then(function (resp) {
-          console.log('sending back addPhoto');
-          context.props.addPhoto();
-          var allPost = [resp.data].concat(context.state.allPost);
+        if (response.data) {
+          var user = response.data;
+          var photo = {
+            type: 'photo',
+            filePath: resp.body.secure_url,
+            parkId: context.props.parkId,
+            userId: user.id,
+          }
+          axios.post('/api/userTimeline', photo)
+          .then(function (resp) {
+            console.log('sending back addPhoto');
+            context.props.addPhoto();
+            var allPost = [resp.data].concat(context.state.allPost);
 
-          // context.setState({
-          //   allPost: allPost
-          // });
-        })
-        .catch(function (error) {
-        });
+            context.setState({
+              allPost: allPost
+            });
+          })
+          .catch(function (error) {
+          });
+        }
       });
 
       context.setState({
@@ -140,7 +161,7 @@ export default class ImageUpload extends Component {
     });
 
     return (
-      <div className="previewComponent">
+      <div className="previewComponent" style={this.state.styling}>
         <form className="preview-form" onSubmit={(e)=>this._handleSubmit(e)}>
           <div className="photo-fields">
             <input

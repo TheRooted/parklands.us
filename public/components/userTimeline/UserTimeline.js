@@ -4,6 +4,7 @@ import Post from './Post.js';
 import ImageUpload from './ImageUpload.js';
 import sort from './../sort.js';
 import loadMore from './../loadMore.js';
+import Select from 'react-select';
 
 export default class UserTimeline extends React.Component {
 
@@ -14,6 +15,69 @@ export default class UserTimeline extends React.Component {
       photoCount: 10,
       remainingActivity: [],
       displayedActivity: [],
+      displayUpload: 'none',
+      selectValue: 'Select...',
+      parkId: null,
+      parkList: [
+        {value: 'acadia', label: 'Acadia'},
+        {value: 'american samoa', label: 'American Samoa'},
+        {value: 'arches', label: 'Arches'},
+        {value: 'badlands', label: 'Badlands'},
+        {value: 'big bend', label: 'Big Bend'},
+        {value: 'biscayne', label: 'Biscayne'},
+        {value: 'black canyon of the gunnison', label: 'Black Canyon of the Gunnison'},
+        {value: 'bryce canyon', label: 'Bryce Canyon'},
+        {value: 'canyonlands', label: 'Canyonlands'},
+        {value: 'capitol reef', label: 'Capitol Reef'},
+        {value: 'carlsbad', label: 'Carlsbad Cavern'},
+        {value: 'channel islands', label: 'Channel Islands'},
+        {value: 'congaree', label: 'Congaree'},
+        {value: 'crater lake', label: 'Crater Lake'},
+        {value: 'cuyahoga valley', label: 'Cuyahoga Valley'},
+        {value: 'death valley', label: 'Death Valley'},
+        {value: 'denali', label: 'Denali'},
+        {value: 'dry tortugas', label: 'Dry Tortugas'},
+        {value: 'everglades', label: 'Everglades'},
+        {value: 'gates of the arctic', label: 'Gates of the Arctic'},
+        {value: 'glacier', label: 'Glacier'},
+        {value: 'glacier bay', label: 'Glacier Bay'},
+        {value: 'grand canyon', label: 'Grand Canyon'},
+        {value: 'grand teton', label: 'Grand Teton'},
+        {value: 'great basin', label: 'Great Basin'},
+        {value: 'great sand dunes', label: 'Great Sand Dunes'},
+        {value: 'great smoky mountains', label: 'Great Smoky Mountains'},
+        {value: 'guadalupe mountains', label: 'Guadalupe Mountains'},
+        {value: 'haleakalā', label: 'Haleakalā'},
+        {value: 'hawaii volcanoes', label: 'Hawaii Volcanoes'},
+        {value: 'hot springs', label: 'Hot Springs'},
+        {value: 'isle royale', label: 'Isle Royale'},
+        {value: 'joshua tree', label: 'Joshua Tree'},
+        {value: 'katmai', label: 'Katmai'},
+        {value: 'kenai fjords', label: 'Kenai Fjords'},
+        {value: 'kings canyon', label: 'Kings Canyon'},
+        {value: 'kobuk valley', label: 'Kobuk Valley'},
+        {value: 'lake clark', label: 'Lake Clark'},
+        {value: 'lassen volcanic', label: 'Lassen Volcanic'},
+        {value: 'mammoth cave', label: 'Mammoth Cave'},
+        {value: 'mesa verde', label: 'Mesa Verde'},
+        {value: 'mount rainier', label: 'Mount Rainier'},
+        {value: 'north cascades', label: 'North Cascades'},
+        {value: 'olympic', label: 'Olympic'},
+        {value: 'petrified forest', label: 'Petrified Forest'},
+        {value: 'pinnacles', label: 'Pinnacles'},
+        {value: 'redwood', label: 'Redwood'},
+        {value: 'rocky mountains', label: 'Rocky Mountain'},
+        {value: 'saguaro', label: 'Saguaro'},
+        {value: 'sequoia', label: 'Sequoia'},
+        {value: 'shenandoah', label: 'Shenandoah'},
+        {value: 'theodore roosevelt', label: 'Theodore Roosevelt'},
+        {value: 'virgin islands', label: 'Virgin Islands'},
+        {value: 'voyaguers', label: 'Voyageurs'},
+        {value: 'wind caves', label: 'Wind Caves'},
+        {value: 'wrangell-st. elias', label: 'Wrangell-St. Elias'},
+        {value: 'yellowstone', label: 'Yellowstone'},
+        {value: 'yosemite', label: 'Yosemite'},
+        {value: 'zion', label: 'Zion'}],
     };
   }
 
@@ -54,10 +118,38 @@ export default class UserTimeline extends React.Component {
     })
   }
 
+  selectParkChange(val) {
+    if (val === null) {
+      this.setState({
+        selectValue: 'Select...',
+        displayUpload: 'none'
+      })
+    } else {
+      var context = this;
+      axios.get('/api/park/' + val.value).then(function(res) {
+        if (res.data) {
+          context.setState({
+            selectValue: val.value,
+            displayUpload: 'inline-block',
+            parkId: res.data.id
+          })
+        }
+      })
+    }
+  }
+
   render() {
     return (
       <div id="userTimeLinePageContainer">
-        <ImageUpload className="ImageUpload" addPhoto={this.addPhoto.bind(this)}/>
+        <span>Select a park to upload a photo to:</span>
+        <Select
+          className='selectParkImgUpload'
+          name="form-field-name"
+          value={this.state.selectValue}
+          options={this.state.parkList}
+          onChange={this.selectParkChange.bind(this)}
+        />
+        <ImageUpload className="ImageUpload" addPhoto={this.addPhoto.bind(this)} displayUpload={this.state.displayUpload} parkId={this.state.parkId}/>
         <div className="timeline-post-container">
           {
             this.state.displayedActivity.map(post =>

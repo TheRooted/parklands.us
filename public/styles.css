@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
 @import url('https://fonts.googleapis.com/css?family=Cuprum|Noticia+Text|Pathway+Gothic+One|Playfair+Display');
 @import url('https://fonts.googleapis.com/css?family=Anton|Dosis');
-
+@import 'react-select/dist/react-select.css';
 
 html,
 body {
@@ -801,3 +801,4 @@ input[type="submit"]:hover {
   font-weight: 700;
   flex-wrap: wrap;
 }
+
