@@ -8,12 +8,19 @@ class ReviewCommentBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userReview: ''
+      userReview: '',
+      clickedPost: false,
+      canUserPost: false,
     }
+  }
+
+  userPost(bool) {
+    this.setState({canUserPost: bool})
   }
 
   postReview () {
     var context = this;
+    this.setState({clickedPost: true})
     // grab the data from input form
     var userReviewObj = {
       userReview: context.state.userReview,
@@ -23,15 +30,20 @@ class ReviewCommentBox extends React.Component {
       firstName: context.props.firstName
     }
     // axios request to server..
-    axios.post('/api/parkReview', userReviewObj)
-    .then(function(res) {
-      axios.get('/api/parkComment/' + context.props.parkId)
-      .then(function(response) {
-        var sorted = sort(response.data, 'created');
-        // call function to set state at snp page for comments
-        context.props.getCommentsAfterPost(sorted[0])
-      })
-    });
+    if (context.props.didUserRate) {
+      context.userPost(true);
+      axios.post('/api/parkReview', userReviewObj)
+      .then(function(res) {
+        axios.get('/api/parkComment/' + context.props.parkId)
+        .then(function(response) {
+          var sorted = sort(response.data, 'created');
+          // call function to set state at snp page for comments
+          context.props.getCommentsAfterPost(sorted[0])
+        })
+      });
+    } else {
+      context.userPost(false);
+    }
 
   };
 
@@ -47,6 +59,10 @@ render () {
       </textarea>
       <br />
       <button className="btn-review" onClick={this.postReview.bind(this)}>Post</button>
+      <br />
+      {this.state.clickedPost &&
+        <div>{this.state.canUserPost ? 'Thanks for sharing!' : 'We need you to rate this park before submitting your review!' }</div>
+      }
     </div>
   )}
 }

@@ -215,6 +215,7 @@ export default class Snp extends React.Component {
                   <div className='reviewCommentBox'>
                     {/*TODO change sessions for userID and get name*/}
                     <ReviewCommentBox
+                      didUserRate={context.state.didUserRate}
                       parkId={context.state.park.id}
                       userId={106}
                       firstName={'jackie'}
