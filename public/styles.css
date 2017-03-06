@@ -359,9 +359,8 @@ input[type="submit"]:hover {
 ::-webkit-file-upload-button {
   background: #3d698e;
   color: white;
-  padding: 7px 18px;
+  padding: 5px 15px;
   border-radius: 4px;
-
 }
 
 .fileInput {
@@ -369,11 +368,13 @@ input[type="submit"]:hover {
   border-right: 4px solid #4267b2;
   border-top: 1px solid #4267b2;
   border-left: 1px solid #4267b2;
-  padding: 10px;
+  padding: 6px;
   margin: 15px;
   cursor: pointer;
   border-radius: 5px;
   color: #4267b2;
+  width: 240px;
+  height: 44px;
 }
 
 .imgPreview {
@@ -396,6 +397,7 @@ input[type="submit"]:hover {
 .previewText {
   width: 100%;
   margin-top: 20px;
+  color: #4267b2;
 }
 
 .commentline {
@@ -408,8 +410,6 @@ input[type="submit"]:hover {
   position: absolute;
   display: inline;
   height: 35px;
-  height: 35px;
-  margin-left: 10px;
   padding: 5px 18px;
   font-size: 12px;
   margin-left: 8px;
@@ -417,9 +417,10 @@ input[type="submit"]:hover {
   text-align: center;
   text-decoration: none;
   outline: none;
-  color: #555;
   background-color: #cecece;
   border: none;
+  background: #3d698e;
+  color: white;
   border-radius: 6px;
   text-decoration: none;
 }
@@ -783,10 +784,20 @@ input[type="submit"]:hover {
 }
 
 .photo-input {
+  border-bottom: 4px solid #4267b2;
+  border-right: 4px solid #4267b2;
+  border-top: 1px solid #4267b2;
+  border-left: 1px solid #4267b2;
+  cursor: pointer;
+  color: #4267b2;
+
   position: relative;
   margin-left: 10px;
   height: 44px;
   padding-left: 10px;
+  border-radius: 6px;
+  width: 400px;
+  border-color: #4267b2;
 }
 
 .photoButton {

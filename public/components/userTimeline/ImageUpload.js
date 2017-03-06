@@ -147,7 +147,7 @@ export default class ImageUpload extends Component {
     let $imagePreview = null;
 
     if (imagePreviewUrl) {
-      $imagePreview = (<img src={this.state.imagePreviewUrl} />);
+      $imagePreview = (<img src={this.state.imagePreviewUrl} className="imgPreview" />);
     } else {
       $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
     }
@@ -171,8 +171,8 @@ export default class ImageUpload extends Component {
               onChange={(e)=>this._handleImageChange(e)}
             />
             <label>
-              Description:
               <input className="photo-input"
+                placeholder="Say something about this photo..."
                 type="text"
                 value={this.state.description}
                 onChange={this._handleInputChange}
@@ -185,10 +185,9 @@ export default class ImageUpload extends Component {
             </button>
           </div>
         </form>
-        <div className="imgPreview">
-          {$imagePreview}
-        </div>
 
+          {$imagePreview}
+          <hr/>
         <div className="displayImageDescription">
         </div>
       </div>
