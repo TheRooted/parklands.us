@@ -247,6 +247,7 @@ export default class Snp extends React.Component {
             <div className="park-rating">
               <RatingPark parkId={this.state.park.id}
                 size={'large'}
+                didUserRate={this.didUserRate.bind(this)}
                 updateAverageRating={this.updateAverageRating.bind(this)}
               />
             </div>

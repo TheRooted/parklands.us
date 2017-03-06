@@ -25,11 +25,11 @@ class Parkcomment extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     var context = this
-      if (this.props.parkId !== nextProps.parkId) {
+      if (this.props.parkId !== nextProps.parkId || this.props.text !== nextProps.text) {
       axios.get('/api/rating', {
         params: {
           parkId: nextProps.parkId,
-          userId: nextProps.props.userId
+          userId: nextProps.userId
         }
       }).then(function(res) {
         console.log('res.data', res.data.rating)

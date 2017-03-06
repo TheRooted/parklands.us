@@ -27,7 +27,7 @@ class ReviewCommentBox extends React.Component {
     }
     // axios request to server..
     if (context.props.didUserRate) {
-      conext.setState({canUserPost: true})
+      context.setState({canUserPost: true})
       axios.post('/api/parkReview', userReviewObj)
       .then(function(res) {
         axios.get('/api/parkComment/' + context.props.parkId)
