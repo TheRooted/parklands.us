@@ -434,7 +434,6 @@ module.exports = {
         }
       })
       .then(function(ratings){
-        console.log('@@@ratings', ratings)
         res.send({reviews: ratings.length})
       })
     }

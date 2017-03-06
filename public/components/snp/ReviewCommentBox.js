@@ -28,6 +28,7 @@ class ReviewCommentBox extends React.Component {
     // axios request to server..
     if (context.props.didUserRate) {
       context.setState({canUserPost: true})
+      context.refs.reviewBox.value='';
       axios.post('/api/parkReview', userReviewObj)
       .then(function(res) {
         axios.get('/api/parkComment/' + context.props.parkId)
@@ -50,7 +51,7 @@ class ReviewCommentBox extends React.Component {
 render () {
   return (
     <div className='review-comment-box-child'>
-      <textarea className="textarea-review" value={this.state.userReview} placeholder="Share your experience here..." rows="7" cols="50"
+      <textarea className="textarea-review" ref='reviewBox' placeholder="Share your experience here..." rows="7" cols="50"
         onChange={this.handleChange.bind(this)} >
       </textarea>
       <br />
