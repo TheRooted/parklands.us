@@ -35,6 +35,7 @@ export default class Snp extends React.Component {
       averageRating: 0,
       photoCount: 10,
       didUserRate: false,
+      totalReviews: 0
     }
   }
 
@@ -129,6 +130,11 @@ export default class Snp extends React.Component {
             })
           }
         })
+        axios.get('/api/totalReviews', {params: {
+          parkId: context.state.park.id
+        }}).then(function(res) {
+          context.setState({totalReviews: res.data.reviews})
+        })
         axios.get('/api/parkAverageRating/' + context.state.park.id).then(function(res){
           context.setState({averageRating: Math.round(res.data.rating)})
         })
@@ -203,7 +209,9 @@ export default class Snp extends React.Component {
                   size= {'huge'}
                   disabled={true}
                 />
+              <span>{context.state.totalReviews} reviews</span>
               <div className='review-section-snp'>
+                <h1>Write a review</h1>
                 <div className='review-rating-box'>
                   <RatingPark parkId={context.state.park.id}
                     size={'huge'}

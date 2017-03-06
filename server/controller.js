@@ -426,6 +426,20 @@ module.exports = {
     }
   },
 
+  totalReviews: {
+    get: function(req, res) {
+      db.models.rating.findAll({
+        where: {
+          parkId: req.query.parkId
+        }
+      })
+      .then(function(ratings){
+        console.log('@@@ratings', ratings)
+        res.send({reviews: ratings.length})
+      })
+    }
+  },
+
   simpleRating: {
     get: function(req, res) {
       db.models.rating.findAll({

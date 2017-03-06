@@ -29,8 +29,8 @@ router.get(path.resolve(__dirname, '/api/gridParkRating'), controller.gridParkRa
 
 //Routes for snp Page
 router.get(path.resolve(__dirname, '/api/rating'), controller.rating.get);
-
 router.post(path.resolve(__dirname, '/api/rating'), controller.rating.post);
+router.get(path.resolve(__dirname, '/api/totalReviews'), controller.totalReviews.get);
 
 //Route for getting UserId from PostId
 router.get(path.resolve(__dirname, '/api/userNameFromPostId'), controller.userNameFromPostId.get)
