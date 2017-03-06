@@ -43,9 +43,10 @@ class Parkcomment extends React.Component {
   render () {
     return (
       <div className= 'parkcommentContainer'>
-        <div>
+        <div className='parkCommentHeader'>
           <h4 className='parkcommentusername'>{this.props.firstName}</h4>
           <Rating
+            className={'allUserRating'}
             icon={'star'}
             maxRating={5}
             rating={this.state.userRating}

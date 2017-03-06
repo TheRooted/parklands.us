@@ -691,7 +691,15 @@ input[type="submit"]:hover {
 }
 
 .rating-container-review {
-  height: 10px; 
+  height: 10px;
+}
+
+.parkcommentusername {
+  display: inline;
+}
+
+.allUserRating {
+  float: right;
 }
 
 /*.review-view-container {
@@ -817,4 +825,3 @@ input[type="submit"]:hover {
   font-weight: 700;
   flex-wrap: wrap;
 }
-
