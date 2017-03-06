@@ -9,7 +9,7 @@ var path = require('path');
 // router.get(path.resolve(__dirname, '/api/seedDB'), seed);
 // Routes for signup, signin, and signout
 
-router.post(path.resolve(__dirname, '/signup'), passport.authenticate('local-signup', { successRedirect: '/', failureRedirect: '/signup' }));
+router.post(path.resolve(__dirname, '/signup'), passport.authenticate('local-signup', { successRedirect: '/', failureRedirect: '/signup', failureFlash: 'There was an error in signup' }));
 router.post(path.resolve(__dirname, '/signin'), passport.authenticate('local-signin', { successRedirect: '/', failureRedirect: '/signin' }));
 router.post(path.resolve(__dirname, '/signout'), passport.authenticate('local-signout', { successRedirect: '/signin', failureRedirect: '/signin' }));
 

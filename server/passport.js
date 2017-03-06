@@ -37,10 +37,6 @@ function(req, email, password, done) {
   var last = req.body.lastName;
 
   process.nextTick(function() {
-    // Reject if user left email or password blank
-    if (email === '' || password === '') {
-      done(null, false, { message: 'Please enter an email and a password.'});
-    }
     // Check whether account already exists for submitted email
     db.models.user.findAll({ where: { email: email }})
     .then(function(user, err) {
@@ -67,10 +63,16 @@ function(req, email, password, done) {
             .then(function(user) {
               console.log('all good!');
               return done(null, user.dataValues, req);
-           });
+            })
+            .catch(function(err) {
+              return done(null, err, req);
+            });
           }
         });
       }
+    })
+    .catch(function(err) {
+      return done(null, err, req);
     });
   });
 }));
@@ -115,6 +117,9 @@ passport.use('local-signin', new LocalStrategy({
             return done(null, user.dataValues, req);
           }
         });
+      })
+      .catch(function(err) {
+        return done(err);
       });
     })
   }

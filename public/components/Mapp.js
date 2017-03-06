@@ -127,9 +127,10 @@ export default class Mapp extends React.Component {
 
     var map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/satellite-streets-v10',
+      style: 'mapbox://styles/speschellk/cizykjb9y00452rplpbxptucn',
       center: [-96, 39.5],
-      minZoom: 3.5,
+      minZoom: 1,
+      zoom: 3.5,
       maxZoom: 20
     });
 
