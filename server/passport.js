@@ -6,14 +6,12 @@ var bcrypt = require('bcrypt');
 
 // Serialize and deserialize user
 passport.serializeUser(function(user, done) {
-  console.log('serialize user', user)
   done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
-  console.log('deserialize')
   db.models.user.findOne({ where: { id: id } })
-  .then(function(user) {
+  .then((user) => {
     console.log('deser user', user.dataValues)
     done(null, user.dataValues);
   });
@@ -31,25 +29,25 @@ passport.use('local-signup', new LocalStrategy({
   passwordField : 'password',
   passReqToCallback : true
 },
-function(req, email, password, done) {
+(req, email, password, done) => {
   console.log('local-signup')
   var first = req.body.firstName;
   var last = req.body.lastName;
 
-  process.nextTick(function() {
+  process.nextTick(() => {
     // Check whether account already exists for submitted email
     db.models.user.findAll({ where: { email: email }})
-    .then(function(user, err) {
+    .then((user, err) => {
       if (err) {
         return done(err);
       }
       // Email already registered
       if (user.dataValues) {
-        return done(null, false, { message: 'An account is already registered to that email. Please sign in.' });
+        return done(null, false, { message: req.flash('already taken') });
       // No account registered for that email
       } else {
         // Hash password and save account
-        bcrypt.hash(password, saltRounds, function(err, hash) {
+        bcrypt.hash(password, saltRounds, (err, hash) => {
           if (err) {
             return done(err);
           } else {
@@ -60,19 +58,19 @@ function(req, email, password, done) {
               password: hash
             })
             // Create session
-            .then(function(user) {
+            .then((user) => {
               console.log('all good!');
               return done(null, user.dataValues, req);
             })
-            .catch(function(err) {
-              return done(null, err, req);
+            .catch((err) => {
+              return done(null, err);
             });
           }
         });
       }
     })
-    .catch(function(err) {
-      return done(null, err, req);
+    .catch((err) => {
+      return done(null, err);
     });
   });
 }));
@@ -87,14 +85,14 @@ passport.use('local-signin', new LocalStrategy({
   passwordField: 'password',
   passReqToCallback : true
   },
-  function(req, email, password, done) {
+  (req, email, password, done) => {
     console.log('local-signin')
     // console.log('req', req)
-    process.nextTick(function() {
+    process.nextTick(() => {
 
       // Find user by email submitted
       db.models.user.findOne({ where: { email: email }})
-      .then(function(user, err) {
+      .then((user, err) => {
         if (err) { 
           return done(err); 
         }
@@ -104,7 +102,7 @@ passport.use('local-signin', new LocalStrategy({
           return done(null, false, { message: 'Incorrect email.' });
         }
         // Compare password supplied with db password for selected user
-        bcrypt.compare(password, user.dataValues.password, function(err, comparison) {
+        bcrypt.compare(password, user.dataValues.password, (err, comparison) => {
           if (err) {
             return done(err);
           }
@@ -118,8 +116,8 @@ passport.use('local-signin', new LocalStrategy({
           }
         });
       })
-      .catch(function(err) {
-        return done(err);
+      .catch((err) => {
+        return done(null, err);
       });
     })
   }
@@ -134,7 +132,7 @@ passport.use('local-signout', new LocalStrategy({
   passwordField: 'password',
   passReqToCallback : true
 },
-  function(req, email, password, done) {
+  (req, email, password, done) => {
     console.log('local-signout');
     req.session.destroy();
     req.logout();
