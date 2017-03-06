@@ -78,7 +78,7 @@ class RatingPark extends React.Component {
           maxRating={5}
           clearable={true}
           rating={this.state.userStars}
-          size= {'large'}
+          size= {this.props.size}
           onRate={this.handleRate.bind(this)}
         />
       </div>

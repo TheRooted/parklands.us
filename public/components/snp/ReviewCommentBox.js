@@ -14,10 +14,6 @@ class ReviewCommentBox extends React.Component {
     }
   }
 
-  userPost(bool) {
-    this.setState({canUserPost: bool})
-  }
-
   postReview () {
     var context = this;
     this.setState({clickedPost: true})
@@ -31,7 +27,7 @@ class ReviewCommentBox extends React.Component {
     }
     // axios request to server..
     if (context.props.didUserRate) {
-      context.userPost(true);
+      conext.setState({canUserPost: true})
       axios.post('/api/parkReview', userReviewObj)
       .then(function(res) {
         axios.get('/api/parkComment/' + context.props.parkId)
@@ -42,7 +38,7 @@ class ReviewCommentBox extends React.Component {
         })
       });
     } else {
-      context.userPost(false);
+      context.setState({canUserPost: false})
     }
 
   };

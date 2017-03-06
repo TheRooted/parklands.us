@@ -206,6 +206,7 @@ export default class Snp extends React.Component {
               <div className='review-section-snp'>
                 <div className='review-rating-box'>
                   <RatingPark parkId={context.state.park.id}
+                    size={'huge'}
                     styleBox={'rating-container-review'}
                     didUserRate={context.didUserRate.bind(context)}
                     updateAverageRating={context.updateAverageRating.bind(context)}
@@ -228,7 +229,7 @@ export default class Snp extends React.Component {
             </div>
             <div className='review-comments'>
               {context.state.commentsDisplay.map((comment, i) =>
-                <Parkcomment firstName={comment.firstName} text={comment.text} datePosted={comment.createdAt} key={i}/>
+                <Parkcomment parkId={comment.parkId} userId={comment.userId} firstName={comment.firstName} text={comment.text} datePosted={comment.createdAt} key={i}/>
               )}
             <button onClick={context.loadMoreComments.bind(context)}>Load More</button>
             </div>
@@ -245,6 +246,7 @@ export default class Snp extends React.Component {
             <h2 className="park-title">{this.capFirstLetter(this.state.park.name)} National Park</h2>
             <div className="park-rating">
               <RatingPark parkId={this.state.park.id}
+                size={'large'}
                 updateAverageRating={this.updateAverageRating.bind(this)}
               />
             </div>
