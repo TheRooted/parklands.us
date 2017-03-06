@@ -175,6 +175,7 @@ body {
   display: inline-block;
   border-color: #009;
   border-radius: 6px;
+  width: 555px;
 }
 
 /*#sideBarContainer {
@@ -705,6 +706,7 @@ input[type="submit"]:hover {
 
 .allUserRating {
   float: right;
+  height: 10px;
 }
 
 /*.review-view-container {
