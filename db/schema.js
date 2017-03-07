@@ -128,6 +128,9 @@ sequelize
     },
     description: {
       type: Sequelize.STRING
+    },
+    firstName: {
+      type: Sequelize.STRING
     }
   });
 
