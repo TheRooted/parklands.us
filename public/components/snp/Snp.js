@@ -27,6 +27,7 @@ export default class Snp extends React.Component {
         hours: 'null',
         contact: 'null',
         location: 'null',
+        rating: 'null'
       },
       view: 'Photos',
       photosRemaining: [],
@@ -93,6 +94,7 @@ export default class Snp extends React.Component {
     axios.get('/api/park/' + parkName).then(function(res) {
       if (res.data) {
         context.setState({park: res.data})
+        context.setState({averageRating: res.data.rating})
       } else {
         context.setState({park: {
           id: false,
