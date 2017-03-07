@@ -187,7 +187,8 @@ module.exports = {
           userId: req.body.userId,
           parkId: req.body.parkId,
           filePath: req.body.filePath,
-          description: req.body.description
+          description: req.body.description,
+          firstName: req.body.firstName
         }
       }).then(function () {
         res.end();
