@@ -49,7 +49,8 @@ sequelize
     },
     parkId: {
       type: Sequelize.INTEGER
-    }
+    },
+
   });
 
   var Parks = sequelize.define('park', {
@@ -124,6 +125,9 @@ sequelize
     },
     parkId: {
       type: Sequelize.INTEGER
+    },
+    description: {
+      type: Sequelize.STRING
     }
   });
 
