@@ -795,6 +795,11 @@ input[type="submit"]:hover {
   margin-top: 20px;
 }
 
+.postDescription {
+  font-size: 17px;
+  color: #006
+}
+
 .photo-input {
   border-bottom: 4px solid #4267b2;
   border-right: 4px solid #4267b2;
