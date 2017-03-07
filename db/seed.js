@@ -387,6 +387,7 @@ request(url, function (error, response, html) {
             text: 'Yosemite was amazing!',
             userEmail: 'kaychristensen@gmail.com',
             parkId: results.dataValues.id,
+            userId: 1,
           }
         });
         db.models.parkcomment.findOrCreate({
@@ -394,6 +395,7 @@ request(url, function (error, response, html) {
             text: 'Nature, eh? Incredible!',
             userEmail: 'kaychristensen@gmail.com',
             parkId: results.dataValues.id,
+            userId: 1,
           }
         });
         db.models.parkcomment.findOrCreate({
@@ -401,6 +403,7 @@ request(url, function (error, response, html) {
             text: '"The “firefall” on Horsetail Fall..event that can only be captured few days in February"',
             userEmail: 'jackieh.bee@gmail.com',
             parkId: results.dataValues.id,
+            userId: 3,
           }
         });
 
@@ -409,6 +412,7 @@ request(url, function (error, response, html) {
             text: 'Starting 10 million years ago, vertical movement along the Sierra fault started to uplift the Sierra Nevada.',
             userEmail: 'jackieh.bee@gmail.com',
             parkId: results.dataValues.id,
+            userId: 3,
           }
         });
 
@@ -417,6 +421,7 @@ request(url, function (error, response, html) {
             text: 'A series of glaciations further modified the region starting about 2 to 3 million years ago and ending sometime around 10,000 BP.',
             userEmail: 'tenso2006@gmail.com',
             parkId: results.dataValues.id,
+            userId: 2,
           }
         });
 
@@ -425,6 +430,7 @@ request(url, function (error, response, html) {
             text: 'Despite the richness of high-quality habitats in Yosemite, the brown bear, California condor, and least Bell\'s vireo have become extinct in the park within historical time',
             userEmail: 'tenso2006@gmail.com',
             parkId: results.dataValues.id,
+            userId: 2,
           }
         });
 
@@ -433,6 +439,7 @@ request(url, function (error, response, html) {
             text: 'The black bears of Yosemite were once famous for breaking into parked cars to steal food.',
             userEmail: 'brianjschultz508@gmail.com',
             parkId: results.dataValues.id,
+            userId: 4,
           }
         });
 
@@ -441,6 +448,7 @@ request(url, function (error, response, html) {
             text: 'Increasing ozone pollution is causing tissue damage to the massive giant sequoia trees in the park.',
             userEmail: 'brianjschultz508@gmail.com',
             parkId: results.dataValues.id,
+            userId: 4,
           }
         });
       });
