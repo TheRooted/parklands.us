@@ -37,7 +37,6 @@
     "bluebird": "latest",
     "body-parser": "latest",
     "cheerio": "latest",
-    "connect-flash": "^0.1.1",
     "express": "latest",
     "express-session": "^1.15.1",
     "immutable": "^3.8.1",
