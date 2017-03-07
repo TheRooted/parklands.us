@@ -4,7 +4,6 @@ var parser = require('body-parser');
 var passport = require('passport');
 var router = require('./routes');
 var path = require('path');
-var flash = require('connect-flash');
 
 var app = express();
 
