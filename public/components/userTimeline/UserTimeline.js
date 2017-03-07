@@ -150,8 +150,10 @@ export default class UserTimeline extends React.Component {
           onChange={this.selectParkChange.bind(this)}
         />
         <ImageUpload className="ImageUpload" addPhoto={this.addPhoto.bind(this)} displayUpload={this.state.displayUpload} parkId={this.state.parkId}/>
+        {console.log(this.state.displayedActivity)}
         <div className="timeline-post-container">
           {
+
             this.state.displayedActivity.map(post =>
               <Post
                 photoData={post.filePath}
@@ -159,6 +161,7 @@ export default class UserTimeline extends React.Component {
                 key={post.id}
                 postId={post.id}
                 allPost={this.state.displayedActivity}
+                description={post.description}
               />
             )
           }

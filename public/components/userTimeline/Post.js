@@ -13,7 +13,8 @@ export default class Post extends React.Component {
       like: 0,
       image: null,
       allComments: [],
-      parkId: 'notvalid'
+      parkId: 'notvalid',
+      user: ''
     };
   }
 
@@ -28,6 +29,18 @@ export default class Post extends React.Component {
       var sortedRes = sort(res.data, 'activity');
       context.setState({
         allComments: sortedRes
+      });
+    });
+
+
+    axios.get('/api/userNameFromPostId', {
+      params: {
+        postId: context.props.postId
+      }
+    })
+    .then(function (res) {
+      context.setState({
+        user: res.data
       });
     });
   }
@@ -65,11 +78,33 @@ export default class Post extends React.Component {
     });
   }
 
+
+  getUserName () {
+    var context = this;
+    axios.get('/api/userNameFromPostId', {
+      params: {
+        postId: context.props.postId
+      }
+    })
+    .then(function(res) {
+      var user = res.data;
+
+      context.setState({
+        userName: user.firstName + ' ' + user.lastName
+      });
+    });
+  }
+
+
   render () {
     return (
       <div className="post-container">
         <h5>{this.convertDate(this.props.datePosted)}</h5>
         <img className="timelinePhotoFeed" src={this.props.photoData} />
+        <div className='postDescription'>
+          <strong>{`${this.state.user.firstName} ${this.state.user.lastName}`}</strong>
+          {this.props.description}
+        </div>
         <div className="commentline">
           <Like className="likeTimeline" postId={this.props.postId} parkId={this.state.parkId}/>
           <textarea

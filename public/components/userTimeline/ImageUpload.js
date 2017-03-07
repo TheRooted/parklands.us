@@ -42,6 +42,7 @@ export default class ImageUpload extends Component {
   }
 
   _handleInputChange(e) {
+    e.preventDefault();
     this.setState({
       description: e.target.value
     });
@@ -96,15 +97,22 @@ export default class ImageUpload extends Component {
             filePath: resp.body.secure_url,
             parkId: context.props.parkId,
             userId: user.id,
-          }
+            description: context.state.description
+          };
           axios.post('/api/userTimeline', photo)
           .then(function (resp) {
-            console.log('sending back addPhoto');
+            console.log('sending back addPhoto', photo);
             context.props.addPhoto();
             var allPost = [resp.data].concat(context.state.allPost);
 
             context.setState({
-              allPost: allPost
+              allPost: allPost,
+              file: '',
+              imagePreviewUrl: '',
+              description: '',
+              images: [],
+              imagePreview: null,
+              fileName: ''
             });
           })
           .catch(function (error) {
@@ -112,16 +120,16 @@ export default class ImageUpload extends Component {
         }
       });
 
-      context.setState({
-        file: '',
-        imagePreviewUrl: '',
-        description: '',
-        images: [],
-        imagePreview: null,
-        fileName: ''
-      }, function () {
-        // context.props.addPhoto();
-      });
+      // context.setState({
+      //   file: '',
+      //   imagePreviewUrl: '',
+      //   description: '',
+      //   images: [],
+      //   imagePreview: null,
+      //   fileName: ''
+      // }, function () {
+      //   // context.props.addPhoto();
+      // });
     });
   }
 
@@ -177,6 +185,7 @@ export default class ImageUpload extends Component {
                 value={this.state.description}
                 onChange={this._handleInputChange}
               />
+              <span>{this.state.description}</span>
             </label>
             <button
               className="submitButton photoButton"
