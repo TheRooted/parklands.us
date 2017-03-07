@@ -207,7 +207,7 @@ request(url, function (error, response, html) {
         {url: 'https://twitter.com/CanyonlandsNPS', name: 'canyonlands'},
         {url: 'https://twitter.com/CapitolReefNPS', name: 'capitol reef'},
         {url: 'https://twitter.com/CavernsNPS', name: 'carlsbad caverns'},
-        {url: 'https://twitter.com/CHISNPS', name: 'channel islands'},
+        {url: 'https://twitter.com/CHISNPS', name: 'channel islands'}, //needs new twitter handle
         {url: 'https://twitter.com/CongareeNPS', name: 'congaree'},
         {url: 'https://twitter.com/CraterLakeNPS', name: 'crater lake'},
         {url: 'https://twitter.com/CVNPNPS', name: 'cuyahoga valley'},
@@ -249,7 +249,7 @@ request(url, function (error, response, html) {
         {url: 'https://twitter.com/ShenandoahNPS', name: 'shenandoah'},
         {url: 'https://twitter.com/TRooseveltNPS', name: 'theodore roosevelt'},
         {url: 'https://twitter.com/stjusvi', name: 'virgin islands'}, //tentative virgin islands
-        {url: 'https://twitter.com/VoyageursNPS', name: 'voyageurs'}, //quite inactive (1 photo)\
+        {url: 'https://twitter.com/VoyageursNPS', name: 'voyageurs'}, //quite inactive (1 photo), should get new twitter handle
         {url: 'https://twitter.com/WindCaveNPS', name: 'wind cave'},
         {url: 'https://twitter.com/WrangellStENPS', name: 'wrangell–st. elias'},
         {url: 'https://twitter.com/YellowstoneNPS', name: 'yellowstone'},

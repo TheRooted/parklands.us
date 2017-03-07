@@ -39,7 +39,7 @@ class ParkPhotoPost extends React.Component {
         }
       }).then(function (res) {
         context.setState({
-          userEmail: res.data.firstName
+          userEmail: res.data.firstName,
         })
       })
     })
@@ -67,7 +67,7 @@ class ParkPhotoPost extends React.Component {
           }
         }).then(function (res) {
           context.setState({
-            userEmail: res.data.firstName
+            userEmail: res.data.firstName,
           })
         })
       })
@@ -97,7 +97,7 @@ class ParkPhotoPost extends React.Component {
         <img className='parkphotopost' src={this.props.photo} onClick={this.openLightbox.bind(this)} />
         <div className='like-comment-snp-container'>
           <div className='snp-like-comment'>
-            <Like postId={this.state.postId} parkId={this.state.parkId}/>
+            <Like postId={this.state.postId} parkId={this.state.parkId} userId={this.props.userId}/>
             <span onClick={this.toggleCommentBox.bind(this)}>
               <Button
                 icon={'comment outline'}
@@ -108,9 +108,8 @@ class ParkPhotoPost extends React.Component {
           </div>
           <div>
             {this.state.isCommentBoxOpen &&
-              /*TODO FIX ME HARD CODED USERID*/
               <PhotoCommentBox
-                userId={'106'}
+                userId={this.props.userId}
                 postId={this.state.postId}
                 setNewComments={this.setNewComments.bind(this)}
               />

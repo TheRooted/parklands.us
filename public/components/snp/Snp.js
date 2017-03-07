@@ -34,13 +34,17 @@ export default class Snp extends React.Component {
       photosDisplay: [],
       commentsRemaining: [],
       commentsDisplay: [],
-      // alerts: [],
       officialPhotos: [],
       photoIndex: 0,
       averageRating: 0,
       photoCount: 10,
       didUserRate: false,
-      totalReviews: 0
+      totalReviews: 0,
+      user: {
+        id: 1,
+        firstName: 'null',
+        email: 'null@gmail.com'
+      }
     }
   }
 
@@ -82,10 +86,6 @@ export default class Snp extends React.Component {
     this.setState({view: 'Reviews'})
   }
 
-  // changeViewToAlerts() {
-  //   this.setState({view: 'Alerts'})
-  // }
-
   updateParkInfo(parkName) {
     var context = this;
     parkName = parkName.split(' ');
@@ -105,7 +105,11 @@ export default class Snp extends React.Component {
       } // then get parkPhotos, posts, and comments
     }).then(function(){
       if (context.state.park.id) {
-
+        axios.get('/api/session').then(function(user) {
+          context.setState({
+            user: user.data 
+          })
+        })
         axios.get('/api/parkPhoto/' + context.state.park.id).then(function(res) {
           if (res.data) {
             let photoUrls = [];
@@ -195,6 +199,7 @@ export default class Snp extends React.Component {
                 userPhotos={context.state.photosDisplay}
                 postId={photo.id}
                 parkId={photo.parkId}
+                userId={context.state.user.id}
               />
             )}
             <button onClick={context.loadMorePhotos.bind(context)}>Load More</button>
@@ -225,17 +230,17 @@ export default class Snp extends React.Component {
                     styleBox={'rating-container-review'}
                     didUserRate={context.didUserRate.bind(context)}
                     updateAverageRating={context.updateAverageRating.bind(context)}
+                    userId={context.state.user.id}
                     />
                   <h3>{context.state.didUserRate ? 'Thanks for rating ' + context.capFirstLetter(context.state.park.name) + ' National Park' : 'Rate your experience'}</h3>
                 </div>
                   <div className='reviewCommentBox'>
-                    {/*TODO change sessions for userID and get name*/}
                     <ReviewCommentBox
                       didUserRate={context.state.didUserRate}
                       parkId={context.state.park.id}
-                      userId={106}
-                      firstName={'jackie'}
-                      userEmail={'jackieh.bee@gmail.com'}
+                      userId={context.state.user.id}
+                      firstName={context.state.user.firstName}
+                      userEmail={context.state.user.email}
                       getCommentsAfterPost={context.getCommentsAfterPost.bind(context)}
                     />
                   </div>
@@ -277,6 +282,7 @@ export default class Snp extends React.Component {
                 size={'large'}
                 didUserRate={this.didUserRate.bind(this)}
                 updateAverageRating={this.updateAverageRating.bind(this)}
+                userId={this.state.user.id}
               />
             </div>
           </div>
@@ -300,7 +306,6 @@ export default class Snp extends React.Component {
           <button className="photo-link" onClick={this.changeViewToPhotos.bind(this)}>Photos</button>
           <span className="vertical-bar">|</span>
           <button className="review-link" onClick={this.changeViewToReviews.bind(this)}>Reviews</button>
-          {/*<button onClick={this.changeViewToAlerts.bind(this)}>Alerts</button>*/}
         </div>
         <div className="mediaview-container">
           {mediaView()}

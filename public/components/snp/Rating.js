@@ -15,8 +15,7 @@ class RatingPark extends React.Component {
     axios.get('/api/rating', {
       params: {
         parkId: this.props.parkId,
-        // **TODO: get userID from session **
-        userId: 106
+        userId: this.props.userId
       }
     })
     .then(function(res){
@@ -37,8 +36,7 @@ class RatingPark extends React.Component {
       axios.get('/api/rating', {
         params: {
           parkId: nextProps.parkId,
-          // **TODO: get userID from session **
-          userId: 106
+          userId: nextProps.userId
         }
       })
       .then(function(res){
@@ -60,9 +58,7 @@ class RatingPark extends React.Component {
     var userRating = {
       ratingVal: data.rating,
       parkId: context.props.parkId,
-      // *******FIXME: userId hardcoded******
-      userId: 106
-
+      userId: context.props.userId
     }
     axios.post('/api/rating', userRating).then(function(res) {
       context.props.updateAverageRating(res.data.averageRating);

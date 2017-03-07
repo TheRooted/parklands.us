@@ -20,8 +20,7 @@ class Like extends React.Component {
     axios.get('/api/photoLike', {
       params: {
         postId: context.props.postId,
-        // ** TODO: Get userID from session **
-        userId: 321
+        userId: context.props.userId
       }
     })
     .then(function(res) {
@@ -38,8 +37,7 @@ class Like extends React.Component {
       axios.get('/api/photoLike', {
         params: {
           postId: nextProps.postId,
-          // ** TODO: Get userID from session **
-          userId: 321
+          userId: nextProps.userId
         }
       })
       .then(function(res) {
@@ -55,8 +53,7 @@ class Like extends React.Component {
   onLike () {
     var context = this;
     var like = {
-      // ** TODO: Get userID from session **
-      userId: 321,
+      userId: context.props.userId,
       postId: context.props.postId
     };
     // send a post request with user/postID

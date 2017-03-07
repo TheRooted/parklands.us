@@ -15,12 +15,17 @@ export default class Post extends React.Component {
       image: null,
       allComments: [],
       parkId: 'notvalid',
-      user: ''
+      userId: 1
     };
   }
 
   componentWillMount() {
     const context = this;
+    axios.get('/api/session').then(function (res) {
+      context.setState({
+        userId: res.data.id
+      })
+    })
     axios.get('/api/postcomment', {
       params: {
         postId: context.props.postId
@@ -46,23 +51,19 @@ export default class Post extends React.Component {
 
   _addComment () {
     var context = this;
-    axios.get('/api/session')
-    .then(function(res) {
-      var user = res.data;
 
-      axios.post('/api/postcomment', {
-        userId: user.id,
-        postId: context.props.postId,
-        text: context.state.comment
-      })
-      .then(function (res) {
+    axios.post('/api/postcomment', {
+      userId: context.state.userId,
+      postId: context.props.postId,
+      text: context.state.comment
+    })
+    .then(function (res) {
 
-        var allComment = [res.data].concat(context.state.allComments);
+      var allComment = [res.data].concat(context.state.allComments);
 
-        context.setState({
-          allComments: allComment,
-          comment: ''
-        });
+      context.setState({
+        allComments: allComment,
+        comment: ''
       });
     });
   }
@@ -77,7 +78,7 @@ export default class Post extends React.Component {
         </div>
         <img className="timelinePhotoFeed" src={this.props.photoData} />
         <div className="commentline">
-          <Like className="likeTimeline" postId={this.props.postId} parkId={this.state.parkId}/>
+          <Like className="likeTimeline" postId={this.props.postId} parkId={this.state.parkId} userId={this.state.userId}/>
           <textarea
             className="commentTimeline"
             value={this.state.comment}
