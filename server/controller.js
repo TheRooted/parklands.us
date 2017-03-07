@@ -186,7 +186,8 @@ module.exports = {
           voteCount: 0,
           userId: req.body.userId,
           parkId: req.body.parkId,
-          filePath: req.body.filePath
+          filePath: req.body.filePath,
+          description: req.body.description
         }
       }).then(function () {
         res.end();
