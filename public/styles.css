@@ -159,6 +159,7 @@ body {
   height: 600px;
   border-radius: 4px;
   border-radius: 7px;
+  background-color: #f6f7f9;
 }
 
 .likeContainer {
@@ -803,6 +804,11 @@ input[type="submit"]:hover {
 .postDescription {
   font-size: 17px;
   color: #006
+}
+
+.postDate {
+  font-size: 14px;
+  color: brown;
 }
 
 .photo-input {
