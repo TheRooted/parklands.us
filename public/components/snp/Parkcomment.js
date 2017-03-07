@@ -7,7 +7,7 @@ class Parkcomment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userRating: 1
+      userRating: 0
     }
   }
 
@@ -32,9 +32,7 @@ class Parkcomment extends React.Component {
           userId: nextProps.userId
         }
       }).then(function(res) {
-        console.log('res.data', res.data.rating)
         context.setState({userRating: res.data.rating}, function() {
-          console.log(' ', this.state.userRating)
         })
       })
     }

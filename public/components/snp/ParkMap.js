@@ -14,7 +14,6 @@ export default class ParkMap extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('@@what is park.long', nextProps.park.long)
     if (nextProps.park.long) {
       var name = '';
       var splitName = nextProps.park.name.split(/[–\s]/);
