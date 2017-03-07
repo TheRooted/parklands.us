@@ -61,7 +61,6 @@ export default class UserFeed extends React.Component {
             username: 'jackieNPS',
             height: '880'
           }}
-          onLoad={() => console.log('Timeline is loaded!')}
           />
         </div>
 
@@ -73,6 +72,7 @@ export default class UserFeed extends React.Component {
                 photoData={feed.filePath}
                 datePosted={this.convertDate(feed.createdAt)}
                 postId={feed.id}
+                description={feed.description}
               />
             )
           }
