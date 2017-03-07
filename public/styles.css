@@ -735,6 +735,15 @@ input[type="submit"]:hover {
   font-size: 40px;
 }
 
+.parkLogisticsContainer {
+  width: 400px;
+  margin-top: 10px;
+}
+
+.singleInfoContainer {
+  margin-top: 15px;
+}
+
 .snp-navlinks,
 .snp-navlinks:focus {
   display: block;

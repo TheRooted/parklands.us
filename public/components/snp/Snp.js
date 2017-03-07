@@ -6,6 +6,7 @@ import Parkcomment from './Parkcomment.js'
 import ParkPhoto from './ParkPhoto.js'
 import ParkMap from './ParkMap.js'
 import RatingPark from './Rating.js'
+import Info from './info.js';
 import { Rating } from 'semantic-ui-react';
 import ReviewCommentBox from './ReviewCommentBox.js'
 import loadMore from './../loadMore.js';
@@ -22,7 +23,10 @@ export default class Snp extends React.Component {
         id: 1,
         name: 'null',
         info: 'null',
-        twitterHandle: 'undefined'
+        twitterHandle: 'undefined',
+        hours: 'null',
+        contact: 'null',
+        location: 'null',
       },
       view: 'Photos',
       photosRemaining: [],
@@ -209,9 +213,10 @@ export default class Snp extends React.Component {
                   size= {'huge'}
                   disabled={true}
                 />
-              <span>{context.state.totalReviews} reviews</span>
-              <div className='review-section-snp'>
-                <h1>Write a review</h1>
+                <span>{context.state.totalReviews} reviews</span>
+                <div className='review-section-snp'>
+                  <h1>Write a review</h1>
+                </div>
                 <div className='review-rating-box'>
                   <RatingPark parkId={context.state.park.id}
                     size={'huge'}
@@ -232,6 +237,19 @@ export default class Snp extends React.Component {
                       getCommentsAfterPost={context.getCommentsAfterPost.bind(context)}
                     />
                   </div>
+                <div className='parkLogisticsContainer'>
+                  <Info
+                    title={'Hours'}
+                    detail={context.state.park.hours}
+                  />
+                  <Info
+                    title={'Location'}
+                    detail={context.state.park.location}
+                  />
+                  <Info
+                    title={'Contact'}
+                    detail={context.state.park.contact}
+                  />
                 </div>
               </div>
             </div>
@@ -239,7 +257,7 @@ export default class Snp extends React.Component {
               {context.state.commentsDisplay.map((comment, i) =>
                 <Parkcomment parkId={comment.parkId} userId={comment.userId} firstName={comment.firstName} text={comment.text} datePosted={comment.createdAt} key={i}/>
               )}
-            <button onClick={context.loadMoreComments.bind(context)}>Load More</button>
+              <button onClick={context.loadMoreComments.bind(context)}>Load More</button>
             </div>
           </div>
         )

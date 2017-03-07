@@ -75,6 +75,15 @@ sequelize
     lat: {
       type: Sequelize.REAL
     },
+    hours: {
+      type: Sequelize.TEXT
+    },
+    location: {
+      type: Sequelize.TEXT
+    },
+    contact: {
+      type: Sequelize.TEXT
+    },
   });
 
   var PostComments = sequelize.define('postcomment', {

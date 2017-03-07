@@ -54,6 +54,13 @@ class ParkPhotoPost extends React.Component {
         postId: nextProps.postId,
         parkId: nextProps.parkId
       }, function () {
+        axios.get('/api/postcomment', {
+          params: {postId: context.state.postId}
+        }).then(function(res) {
+          // sort the res.data chronologically
+          var sortedComments = sort(res.data, 'created');
+          context.setState({postComments: sortedComments});
+        })
         axios.get('/api/userNameFromPostId', {
           params: {
             postId: context.state.postId
@@ -110,7 +117,7 @@ class ParkPhotoPost extends React.Component {
             }
           </div>
           <div className='post-comment-scroll'>
-            <PostComments postId={this.state.postId} allComments={this.state.postComments} commentStyle={'snp-comment-box'} />
+            <PostComments parkId={this.state.parkId} postId={this.state.postId} allComments={this.state.postComments} commentStyle={'snp-comment-box'} />
           </div>
       </div>
 

@@ -154,6 +154,9 @@ request(url, function (error, response, html) {
           long: park.long,
           lat: park.lat,
           info: park.info,
+          hours: 'Yosemite National Park is open 24 hours per day, 365 days per year, and no reservations are required to visit. However, the Hetch Hetchy Entrance Station is open only during daylight hours (approximately) and some roads are closed due to snow from around November through May or June. lb',
+          location: 'Yosemite lb PO Box 577 lb Yosemite National Park, CA 95389',
+          contact: '(209) 372-0200 lb The public information office is open from 9 am to 5 pm Pacific time (closed for lunch). Once connected, dial 3 then 5. If the ranger is already on the line, you will be returned to the main menu. If the ranger is not there, you can leave a message and they will return your call.'
         }
       }));
     })

@@ -20,7 +20,7 @@ export default class ParkMap extends React.Component {
     for (var i = 0; i < splitName.length; i++) {
       name += splitName[i][0].toUpperCase() + splitName[i].slice(1);
     }
-    this.setState({ 
+    this.setState({
       name: name,
       long: nextProps.park.long,
       lat: nextProps.park.lat
