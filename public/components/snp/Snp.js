@@ -19,7 +19,7 @@ export default class Snp extends React.Component {
     this.state = {
       url: this.props.params.parkName,
       park: {
-        id: 0,
+        id: 1,
         name: 'null',
         info: 'null',
         twitterHandle: 'undefined'

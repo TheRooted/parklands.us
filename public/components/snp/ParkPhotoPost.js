@@ -32,6 +32,16 @@ class ParkPhotoPost extends React.Component {
       // sort the res.data chronologically
       var sortedComments = sort(res.data, 'created');
       context.setState({postComments: sortedComments});
+
+      axios.get('/api/userNameFromPostId', {
+        params: {
+          postId: context.state.postId
+        }
+      }).then(function (res) {
+        context.setState({
+          userEmail: res.data.firstName
+        })
+      })
     })
   }
 

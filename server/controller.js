@@ -333,7 +333,6 @@ module.exports = {
       // for average rating of overall park
       var average;
       var starContainer = [];
-
       // if the rating is zero, find and delete the row
       if (req.body.ratingVal === 0) {
         db.models.rating.findOne({where: {
