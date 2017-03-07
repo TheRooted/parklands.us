@@ -14,18 +14,21 @@ export default class ParkMap extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    var name = '';
-    var splitName = nextProps.park.name.split(/[–\s]/);
+    console.log('@@what is park.long', nextProps.park.long)
+    if (nextProps.park.long) {
+      var name = '';
+      var splitName = nextProps.park.name.split(/[–\s]/);
 
-    for (var i = 0; i < splitName.length; i++) {
-      name += splitName[i][0].toUpperCase() + splitName[i].slice(1);
+      for (var i = 0; i < splitName.length; i++) {
+        name += splitName[i][0].toUpperCase() + splitName[i].slice(1);
+      }
+      this.setState({
+        name: name,
+        long: nextProps.park.long,
+        lat: nextProps.park.lat
+      })
+      this.createMap();
     }
-    this.setState({
-      name: name,
-      long: nextProps.park.long,
-      lat: nextProps.park.lat
-    })
-    this.createMap();
   }
 
   stringScript() {

@@ -27,7 +27,7 @@ export default class Snp extends React.Component {
         hours: 'null',
         contact: 'null',
         location: 'null',
-        rating: 'null'
+        rating: 'null',
       },
       view: 'Photos',
       photosRemaining: [],
