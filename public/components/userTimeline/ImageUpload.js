@@ -97,7 +97,8 @@ export default class ImageUpload extends Component {
             filePath: resp.body.secure_url,
             parkId: context.props.parkId,
             userId: user.id,
-            description: context.state.description
+            description: context.state.description,
+            firstName: user.firstName
           };
           axios.post('/api/userTimeline', photo)
           .then(function (resp) {

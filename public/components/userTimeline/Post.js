@@ -3,6 +3,7 @@ import Like from './Like.js';
 import PostComment from './../userFeed/PostComments.js';
 import axios from 'axios';
 import sort from './../sort.js';
+import moment from 'moment';
 
 export default class Post extends React.Component {
 
@@ -29,18 +30,6 @@ export default class Post extends React.Component {
       var sortedRes = sort(res.data, 'activity');
       context.setState({
         allComments: sortedRes
-      });
-    });
-
-
-    axios.get('/api/userNameFromPostId', {
-      params: {
-        postId: context.props.postId
-      }
-    })
-    .then(function (res) {
-      context.setState({
-        user: res.data
       });
     });
   }
@@ -78,33 +67,15 @@ export default class Post extends React.Component {
     });
   }
 
-
-  getUserName () {
-    var context = this;
-    axios.get('/api/userNameFromPostId', {
-      params: {
-        postId: context.props.postId
-      }
-    })
-    .then(function(res) {
-      var user = res.data;
-
-      context.setState({
-        userName: user.firstName + ' ' + user.lastName
-      });
-    });
-  }
-
-
   render () {
     return (
       <div className="post-container">
-        <h5>{this.convertDate(this.props.datePosted)}</h5>
-        <img className="timelinePhotoFeed" src={this.props.photoData} />
         <div className='postDescription'>
-          <strong>{`${this.state.user.firstName} ${this.state.user.lastName}`}</strong>
-          {this.props.description}
+          <strong>{`${this.props.firstName} `}</strong>
+          <p className="postDate">{moment(this.props.datePosted).format('MMMM Do YYYY')}</p>
+          <p className="postDescription"><i>{this.props.description}</i></p>
         </div>
+        <img className="timelinePhotoFeed" src={this.props.photoData} />
         <div className="commentline">
           <Like className="likeTimeline" postId={this.props.postId} parkId={this.state.parkId}/>
           <textarea

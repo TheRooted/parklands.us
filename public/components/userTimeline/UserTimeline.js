@@ -162,6 +162,7 @@ export default class UserTimeline extends React.Component {
                 postId={post.id}
                 allPost={this.state.displayedActivity}
                 description={post.description}
+                firstName={post.firstName}
               />
             )
           }
