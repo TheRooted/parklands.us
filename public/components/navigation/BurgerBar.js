@@ -9,6 +9,7 @@ class BurgerBar extends React.Component {
 
   //check if the sidebar is opened
   toggleSidebar() {
+    console.log('toggling')
     this.setState({sidebarOpen: !this.state.sidebarOpen})
   }
 
@@ -17,14 +18,15 @@ class BurgerBar extends React.Component {
     // when the menu becomes visible, setup some handlers so we can close the menu easily
     if (nextState.sidebarOpen == true) {
       document.addEventListener('keydown', this.handleKeyPress.bind(context));
-      document.body.addEventListener('click', this.handleClick.bind(context));
+      document.querySelector('.app-children').addEventListener('click', this.handleClick.bind(context));
     } else {
       document.removeEventListener('keydown', this.handleKeyPress.bind(context));
-      document.body.removeEventListener('click', this.handleClick.bind(context));
+      document.querySelector('.app-children').removeEventListener('click', this.handleClick.bind(context));
     }
   }
 
   handleClick() {
+    console.log('handle click')
     if (this.state.sidebarOpen) {
       // this.setState({ sidebarOpen: false });
       this.toggleSidebar();
@@ -32,6 +34,7 @@ class BurgerBar extends React.Component {
   }
 
   handleKeyPress(e) {
+    console.log('handle keypress')
     if(e.keyCode === 13 && this.state.sidebarOpen) {
       // this.setState({ sidebarOpen: false })
       this.toggleSidebar();
