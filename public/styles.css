@@ -77,6 +77,11 @@ body {
   cursor: pointer;
 }
 
+.tom-credit {
+  float: right;
+  font-size: 9px;
+}
+
 #container {
   height: 400px;
   width: 400px;
