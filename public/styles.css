@@ -77,6 +77,28 @@ body {
   cursor: pointer;
 }
 
+.splash-signin {
+  z-index: 100;
+  font-family: 'Dosis';
+  position: absolute;
+  color: white;
+  font-size: 40px;
+  left: 270px;
+  top: 600px;
+  cursor: pointer;
+}
+
+.splash-signup {
+  z-index: 100;
+  font-family: 'Dosis';
+  position: absolute;
+  color: white;
+  font-size: 40px;
+  left: 420px;
+  top: 600px;
+  cursor: pointer;
+}
+
 .tom-credit {
   float: right;
   font-size: 9px;

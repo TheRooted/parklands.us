@@ -174,6 +174,7 @@ request(url, function (error, response, html) {
           long: park.long,
           lat: park.lat,
           info: park.info,
+          hero: 'https://coolworks-bucket001.s3.amazonaws.com/production/pages/heros/209/content/HERO_Yosemite_Half_Dome.jpg?1480224700',
           hours: 'Yosemite National Park is open 24 hours per day, 365 days per year, and no reservations are required to visit. However, the Hetch Hetchy Entrance Station is open only during daylight hours (approximately) and some roads are closed due to snow from around November through May or June. lb',
           location: 'Yosemite lb PO Box 577 lb Yosemite National Park, CA 95389',
           contact: '(209) 372-0200 lb The public information office is open from 9 am to 5 pm Pacific time (closed for lunch). Once connected, dial 3 then 5. If the ranger is already on the line, you will be returned to the main menu. If the ranger is not there, you can leave a message and they will return your call.'
@@ -183,13 +184,35 @@ request(url, function (error, response, html) {
     Promise.all(parkModels).then(function(results) {
       //update yosemite with long info
       db.models.park.update({
-        info: 'Yosemite National Park (/joʊˈsɛmᵻti/ yoh-sem-it-ee) is a national park spanning portions of Tuolumne, Mariposa and Madera counties in Northern California. The park, which is managed by the National Park Service, covers an area of 747,956 acres (1,168.681 sq mi; 302,687 ha; 3,026.87 km2) and reaches across the western slopes of the Sierra Nevada mountain range. On average, about 4 million people visit Yosemite each year, and most spend the majority of their time in the seven square miles (18 km2) of Yosemite Valley. The park set a visitation record in 2016, surpassing 5 million visitors for the first time in its history. Designated a World Heritage Site in 1984, Yosemite is internationally recognized for its granite cliffs, waterfalls, clear streams, giant sequoia groves, lakes, mountains, glaciers, and biological diversity. Almost 95% of the park is designated wilderness. Yosemite was central to the development of the national park idea. First, Galen Clark and others lobbied to protect Yosemite Valley from development, ultimately leading to President Abraham Lincoln\'s signing the Yosemite Grant in 1864. Later, John Muir led a successful movement to establish a larger national park encompassing not just the valley, but surrounding mountains and forests as well—paving the way for the United States national park system. Yosemite is one of the largest and least fragmented habitat blocks in the Sierra Nevada, and the park supports a diversity of plants and animals. The park has an elevation range from 2,127 to 13,114 feet (648 to 3,997 m) and contains five major vegetation zones: chaparral/oak woodland, lower montane forest, upper montane forest, subalpine zone, and alpine. Of California\'s 7,000 plant species, about 50% occur in the Sierra Nevada and more than 20% within Yosemite. There is suitable habitat for more than 160 rare plants in the park, with rare local geologic formations and unique soils characterizing the restricted ranges many of these plants occupy. The geology of the Yosemite area is characterized by granitic rocks and remnants of older rock. About 10 million years ago, the Sierra Nevada was uplifted and then tilted to form its relatively gentle western slopes and the more dramatic eastern slopes. The uplift increased the steepness of stream and river beds, resulting in formation of deep, narrow canyons. About one million years ago, snow and ice accumulated, forming glaciers at the higher alpine meadows that moved down the river valleys. Ice thickness in Yosemite Valley may have reached 4,000 feet (1,200 m) during the early glacial episode. The downslope movement of the ice masses cut and sculpted the U-shaped valley that attracts so many visitors to its scenic vistas today. The name \"Yosemite\" (meaning \"killer\" in Miwok) originally referred to the name of a renegade tribe which was driven out of the area (and possibly annihilated) by the Mariposa Battalion. Before then the area was called \"Ahwahnee\" (\"big mouth\") by indigenous people.'
+        // info: 'Yosemite National Park (/joʊˈsɛmᵻti/ yoh-sem-it-ee) is a national park spanning portions of Tuolumne, Mariposa and Madera counties in Northern California. The park, which is managed by the National Park Service, covers an area of 747,956 acres (1,168.681 sq mi; 302,687 ha; 3,026.87 km2) and reaches across the western slopes of the Sierra Nevada mountain range. On average, about 4 million people visit Yosemite each year, and most spend the majority of their time in the seven square miles (18 km2) of Yosemite Valley. The park set a visitation record in 2016, surpassing 5 million visitors for the first time in its history. Designated a World Heritage Site in 1984, Yosemite is internationally recognized for its granite cliffs, waterfalls, clear streams, giant sequoia groves, lakes, mountains, glaciers, and biological diversity. Almost 95% of the park is designated wilderness. Yosemite was central to the development of the national park idea. First, Galen Clark and others lobbied to protect Yosemite Valley from development, ultimately leading to President Abraham Lincoln\'s signing the Yosemite Grant in 1864. Later, John Muir led a successful movement to establish a larger national park encompassing not just the valley, but surrounding mountains and forests as well—paving the way for the United States national park system. Yosemite is one of the largest and least fragmented habitat blocks in the Sierra Nevada, and the park supports a diversity of plants and animals. The park has an elevation range from 2,127 to 13,114 feet (648 to 3,997 m) and contains five major vegetation zones: chaparral/oak woodland, lower montane forest, upper montane forest, subalpine zone, and alpine. Of California\'s 7,000 plant species, about 50% occur in the Sierra Nevada and more than 20% within Yosemite. There is suitable habitat for more than 160 rare plants in the park, with rare local geologic formations and unique soils characterizing the restricted ranges many of these plants occupy. The geology of the Yosemite area is characterized by granitic rocks and remnants of older rock. About 10 million years ago, the Sierra Nevada was uplifted and then tilted to form its relatively gentle western slopes and the more dramatic eastern slopes. The uplift increased the steepness of stream and river beds, resulting in formation of deep, narrow canyons. About one million years ago, snow and ice accumulated, forming glaciers at the higher alpine meadows that moved down the river valleys. Ice thickness in Yosemite Valley may have reached 4,000 feet (1,200 m) during the early glacial episode. The downslope movement of the ice masses cut and sculpted the U-shaped valley that attracts so many visitors to its scenic vistas today. The name \"Yosemite\" (meaning \"killer\" in Miwok) originally referred to the name of a renegade tribe which was driven out of the area (and possibly annihilated) by the Mariposa Battalion. Before then the area was called \"Ahwahnee\" (\"big mouth\") by indigenous people.'
+        info: "Stand amongst the granite cathedrals and appreciate the true reach of what we can do to save our special places. When ordinary citizens mobilized to save this iconic landscape, the spirit of the National Park Foundation was born. Today, we carry forward their enthusiasm as we work to inspire the next generation of park lovers. As one of America’s most popular national parks, Yosemite boasts some of the best views, hiking trails, and family vacation opportunities in the country. Yosemite is a land where history was made—our nation's first land dedicated to recreation and enjoyment. As the precedent for all future American national parks, we truly know there would be no national parks without Yosemite. Located in central California, Yosemite National Park was established in 1890 and draws four million annual visitors. Almost 95 percent of the park’s 747,956 acres (roughly the size of Rhode Island) is classified as wilderness. Yosemite National Park offers an abundance of activities and sightseeing destinations. The Valley is a 7 mile wide canyon with incredible rock formations, including El Capitan, the world's tallest granite monolith and one of the world's top rock climbing destinations. Yosemite Falls is the largest waterfall in North America with breathtaking views. Peak visitation at the falls is in the spring as it is comprised entirely of melting snow. The park is also known for its Giant Sequoia trees, which are estimated to be over 3,000 years old.",
       }, {
         where: {
           name: 'yosemite'
         }
       })
-
+      db.models.park.update({
+        info: "North America’s highest point watches over its country, imposing, magnificent, infinite. Mountains tower over this remote wilderness, creating a cold stillness over the tundra. Mt. Denali, formerly Mt. McKinley, is North America's highest mountain, and is contained within Denali National Park in Alaska. The Alaska Range also includes countless other spectacular mountains and many large glaciers. Denali's more than 6 million acres also encompass a complete sub-arctic eco-system with large mammals such as grizzly bears, wolves, Dall sheep, and moose. The park was established as Mt. McKinley National Park on Feb. 26, 1917. The original park was designated a wilderness area, the first national park created specifically to protect wildlife, and incorporated into Denali National Park and Preserve in 1980. The park was designated an international biosphere reserve in 1976. In 2015, Mt. McKinley was renamed to Mt. Denali to pay homage to the Athabaskan people who called the area home—Denali means “the tall one” or “mountain-big” in their native Koyukon language. Today the park accommodates a wide variety of visitor use including wildlife viewing, mountaineering, cycling, and even dog sledding! (Denali National Park and Preserve is actually the only national park with a working dog sled kennel.) It continues to provide a laboratory for research in the natural sciences.",
+        hero: "https://www.doi.gov/sites/doi.gov/files/press-release/thumbnail-images/Denali%20-%20Landscape.jpg",
+        hours: "Denali is open 24-hours a day, 7 days a week, although services are limited after-hours (generally after 4 pm in winter or 6 pm in summer). There is no gate at the park entrance. Please note that camping is only possible either in designated campgrounds (with a valid reservation) or in the rest of the park with a free backpacking permit.",
+        location: "Denali National Park lb P.O. Box 9 lb Denali Park, AK 99755-0009",
+        contact: "907-683-9532 lb General park information. The phone is answered 9 am - 4 pm daily, except on Thanksgiving, Christmas Day and New Year's Day. If you reach the voicemail, please leave a message with your number and we'll call you back as soon as we finish helping the visitor on the line ahead of you.",
+      }, {
+        where: {
+          name: 'denali'
+        }
+      })
+      db.models.park.update({
+        info: "A truly living mountain range, the Great Smoky Mountains are constantly re-inventing themselves as wind, water, and erosion continuously shape these ageless mountains. Wander the tranquil woods and hills to appreciate what your support can do to protect our nation’s beauty. America’s most visited national park, Great Smoky Mountains, is an ideal getaway. Hike, camp, and experience one of America’s oldest mountain ranges. Established in 1934, Great Smoky Mountains National Park is comprised of ridge upon ridge of seemingly endless forest on the border between North Carolina and Tennessee. Called the Smokies due to the ever-present morning fog, this mountain range is world renowned for the diversity of its plant and animal life, the beauty of its ancient mountains, and its history of southern Appalachian mountain culture. With nearly 80 historic buildings, spectacular displays of wildflowers, and abundant wildlife, Great Smoky Mountains National Park offers myriad activities to enjoy. The Great Smoky Mountains National Park region is divided down its length by the Tennessee – North Carolina border. Visitor centers—Sugarlands and Oconaluftee—mirror each other across the state line separated by many miles of deciduous forest. There are waterfalls throughout the park, with larger falls like Grotto, Laurel, Abrams, Rainbow, and Mingo drawing over 200,000 visitors per year.",
+        hero: "https://www.goodfreephotos.com/albums/united-states/tennessee/great-smoky-mountains-national-park/dusk-skies-at-great-smoky-mountains-national-park-tennessee.jpg",
+        hours: "Primary roads are open 24 hours a day, seven days a week, year-round, weather permitting. This includes Newfound Gap Road (US-441), Little River Road, and Laurel Creek Road. Secondary roads are closed seasonally. Cades Cove Loop Road is open to motor vehicles from sunrise until sunset daily. Pedestrians and bicyclists may access the road 24 hours a day.",
+        location: 'Great Smoky Mountains lb 107 Park Headquarters Road lb Gatlinburg TN, 37738',
+        contact: "865-436-1200 lb Visitor Information Recorded Message",
+      }, {
+        where: {
+          name: 'great smoky mountains'
+        }
+      })
       // If NPS decides to fix their API...
       // var npsKey = 'hidden';
       // var parkCodes = 'dena,gaar,glba,katm,kefj,kova,lacl,wrst,grca,pefo,sagu,hosp,chis,deva,jotr,seki,lavo,pinn,redw,seki,blca,grsa,meve,romo,ever,bisc,drto,hale,havo,maca,acad,isro,voya,glac,grba,cave,grsm,thro,cuva,crla,cong,badl,wica,bibe,gumo,arch,brca,care,cany,shen,mora,noca,olym,yell,yose,zion,viis,grte,npsa';
@@ -383,27 +406,41 @@ request(url, function (error, response, html) {
         'http://www.valleyviews.biz/images/homeslideshow/home_yosemite_hd8.jpg',
         'http://blog.thomascook.in/wp-content/uploads/2016/06/Yose-1024x581.jpg'
       ];
-      var parkPhotosCreation = [];
-      for (var i = 1; i < 60; i++) {
-        for (var j = 0; j < yosemitePics.length; j++) {
-          parkPhotosCreation.push(db.models.parkphoto.create({
-            photoUrl: yosemitePics[j],
-            parkId: i
-          }));
-        }
-      }
-      Promise.all(parkPhotosCreation);
+      var denaliPics = [
+        'https://pbs.twimg.com/media/Ca5JYvOVIAIuB6i.jpg',
+        'https://www.washingtonian.com/wp-content/uploads/2016/8/2D2BA563-1DD8-B71C-07086498E0E8EB05.jpg.optimal.jpg',
+        'https://pixabay.com/static/uploads/photo/2015/11/04/15/22/sled-dog-team-1022688__180.jpg',
+        'https://www.goodfreephotos.com/albums/united-states/alaska/denali-national-park/aurora-borealis-denali-national-park-alaska.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/a/aa/Denali_National_Park_and_Preserve_AK2006-0346.jpg'
+      ];
+      var greatSmokyPics = [
+        'https://www.goodfreephotos.com/albums/united-states/tennessee/great-smoky-mountains-national-park/cascading-rapids-landscape-in-great-smoky-mountains-national-park-tennessee.jpg',
+        'https://www.goodfreephotos.com/albums/united-states/tennessee/great-smoky-mountains-national-park/trees-and-landscape-great-smoky-mountains-national-park-tennessee.jpg',
+        'https://icons.wxug.com/data/wximagenew/p/PSLTony/9-awesome.jpg',
+        'https://blueridgemountainlife.com/wp-content/uploads/2015/06/mountain-laurel1.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/b/b4/The_Smoky_Mountains,_in_Great_Smoky_Mountains_National_Park.jpg'
+      ];
+      // var parkPhotosCreation = [];
+      // for (var i = 1; i < 60; i++) {
+      //   for (var j = 0; j < yosemitePics.length; j++) {
+      //     parkPhotosCreation.push(db.models.parkphoto.create({
+      //       photoUrl: yosemitePics[j],
+      //       parkId: i
+      //     }));
+      //   }
+      // }
+      // Promise.all(parkPhotosCreation);
       db.models.park.find({
         where: {
           name: 'yosemite'
         }
       }).then(function(results) {
-      //   for (var i = 0; i < yosemitePics.length; i++) {
-      //     db.models.parkphoto.create({
-      //       photoUrl: yosemitePics[i],
-      //       parkId: results.dataValues.id
-      //     });
-      //   }
+        for (var i = 0; i < yosemitePics.length; i++) {
+          db.models.parkphoto.create({
+            photoUrl: yosemitePics[i],
+            parkId: results.dataValues.id
+          });
+        }
       /*---------------------------------------------
                     Seed Parkcomments
       ----------------------------------------------*/
@@ -471,6 +508,174 @@ request(url, function (error, response, html) {
         db.models.parkcomment.findOrCreate({
           where: {
             text: 'Increasing ozone pollution is causing tissue damage to the massive giant sequoia trees in the park.',
+            userEmail: 'brianjschultz508@gmail.com',
+            parkId: results.dataValues.id,
+            userId: 4,
+          }
+        });
+      });
+      db.models.find({
+        where: {
+          name: 'denali'
+        }
+      }).then(function(results) {
+        for (var i = 0; i < denaliPics.length; i++) {
+          db.models.parkphoto.create({
+            photoUrl: denaliPics[i],
+            parkId: results.dataValues.id
+          });
+        }
+      /*---------------------------------------------
+                    Seed Parkcomments
+      ----------------------------------------------*/
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: 'Denali was amazing!',
+            userEmail: 'kaychristensen@gmail.com',
+            parkId: results.dataValues.id,
+            userId: 1,
+          }
+        });
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: 'Nature, eh? Incredible!',
+            userEmail: 'kaychristensen@gmail.com',
+            parkId: results.dataValues.id,
+            userId: 1,
+          }
+        });
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: "The Denali Gray Jay field season is well underway! It may be -33F out, but that doesn't stop us - or the Gray Jays!",
+            userEmail: 'jackieh.bee@gmail.com',
+            parkId: results.dataValues.id,
+            userId: 3,
+          }
+        });
+
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: "Happy Marmot Day! The marmots didn't come out of hibernation to predict the weather. Guess this means we have a few more months of winter!",
+            userEmail: 'jackieh.bee@gmail.com',
+            parkId: results.dataValues.id,
+            userId: 3,
+          }
+        });
+
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: "There aren't enough words to describe the beauty",
+            userEmail: 'tenso2006@gmail.com',
+            parkId: results.dataValues.id,
+            userId: 2,
+          }
+        });
+
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: "It may be -40F out, but that doesn't keep the moose away. Each needs about 20 pounds of twigs a day.",
+            userEmail: 'tenso2006@gmail.com',
+            parkId: results.dataValues.id,
+            userId: 2,
+          }
+        });
+
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: 'enali National Park and Preserve includes the central, highest portion of the Alaska Range, together with many of the glaciers and glacial valleys running southwards out of the range.',
+            userEmail: 'brianjschultz508@gmail.com',
+            parkId: results.dataValues.id,
+            userId: 4,
+          }
+        });
+
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: 'The oldest rocks in the park are part of the Yukon-Tanana terrane. They originated from ocean sediments deposited between 400 million and 1 billion years ago.',
+            userEmail: 'brianjschultz508@gmail.com',
+            parkId: results.dataValues.id,
+            userId: 4,
+          }
+        });
+      })
+      db.models.park.find({
+        where: {
+          name: 'great smoky mountains'
+        }
+      }).then(function(results) {
+        for (var i = 0; i < greatSmokyPics.length; i++) {
+          db.models.parkphoto.create({
+            photoUrl: greatSmokyPics[i],
+            parkId: results.dataValues.id
+          });
+        }
+      /*---------------------------------------------
+                    Seed Parkcomments
+      ----------------------------------------------*/
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: 'The Great Smoky Mountains were amazing!',
+            userEmail: 'kaychristensen@gmail.com',
+            parkId: results.dataValues.id,
+            userId: 1,
+          }
+        });
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: 'Nature, eh? Incredible!',
+            userEmail: 'kaychristensen@gmail.com',
+            parkId: results.dataValues.id,
+            userId: 1,
+          }
+        });
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: "Three waterfalls, including Tom Branch Falls, can be found within the Deep Creek area of the park!",
+            userEmail: 'jackieh.bee@gmail.com',
+            parkId: results.dataValues.id,
+            userId: 3,
+          }
+        });
+
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: 'Middle Prong Trail offers many cascades! Water drops 65 ft over the multiple tiers of Indian Flats Falls!',
+            userEmail: 'jackieh.bee@gmail.com',
+            parkId: results.dataValues.id,
+            userId: 3,
+          }
+        });
+
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: 'Morton Overlook provides spectacular mountain vistas and stunning sunsets.',
+            userEmail: 'tenso2006@gmail.com',
+            parkId: results.dataValues.id,
+            userId: 2,
+          }
+        });
+
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: 'Unlike the bears, woodchucks enter into true hibernation. They may only breathe every 5 - 6 minutes!',
+            userEmail: 'tenso2006@gmail.com',
+            parkId: results.dataValues.id,
+            userId: 2,
+          }
+        });
+
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: 'Did you know that this national park has a species of fish named after it? The Smoky Madtom is a small freshwater catfish!',
+            userEmail: 'brianjschultz508@gmail.com',
+            parkId: results.dataValues.id,
+            userId: 4,
+          }
+        });
+
+        db.models.parkcomment.findOrCreate({
+          where: {
+            text: 'I go to nature to be soothed and healed, and to have my senses put in tune once more.',
             userEmail: 'brianjschultz508@gmail.com',
             parkId: results.dataValues.id,
             userId: 4,
