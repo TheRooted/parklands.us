@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-var GridElement = require('./GridElement');
+import GridElement from './GridElement';
 import { browserHistory } from 'react-router';
 import sort from './../sort.js';
 import { Rating } from 'semantic-ui-react';
@@ -41,8 +41,12 @@ export default class Grid extends React.Component {
   render () {
     return (
       <div className='grid'>
-        <button onClick={this.sortAlphabetical.bind(this)}>Alphabetical</button>
-        <button onClick={this.sortRated.bind(this)}>Highest Rated</button>
+        <div className='grid-underbar'>
+          <div className='grid-header'>Explore the Parks</div>
+          <button id="grid-alph" className="grid-btn" onClick={this.sortAlphabetical.bind(this)}>Alphabetical</button>
+          <span> | </span>
+          <button id="grid-pop" className="grid-btn" onClick={this.sortRated.bind(this)}>Highest Rated</button>
+        </div>
         {this.state.parks.map((park, i) =>
           <GridElement key={i} parkName={park.name} parkPhoto={park.photo} parkRating={park.rating} linkToPage={this.linkToPage} />
         )}
