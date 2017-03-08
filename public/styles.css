@@ -758,6 +758,20 @@ input[type="submit"]:hover {
   margin-bottom: 100px;
 }
 
+.photo-view-header {
+  margin-bottom: 15px;
+}
+
+.photo-view-title {
+  font-family: 'Istok Web';
+  font-size: 45px;
+}
+
+.photo-view-para {
+  font-family: 'Istok Web';
+  font-size: medium;
+}
+
 .review-comments {
   margin-bottom: 100px;
   height: auto;

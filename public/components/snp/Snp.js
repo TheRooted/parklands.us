@@ -194,7 +194,12 @@ export default class Snp extends React.Component {
     if (this.state.view === 'Photos') {
       var mediaView = function () {
         return (
-          <div className='photo-view-container'>
+          <div className='photo-view'>
+            <div className='photo-view-header'>
+              <h2 className='photo-view-title'>Community Photos</h2>
+              <p className='photo-view-para'>{'See what other community members are discovering at ' + context.capFirstLetter(context.state.park.name) + ' National Park.' }</p>
+            </div>
+            <div className='photo-view-container'>
             {context.state.photosDisplay.map((photo, i) =>
               <ParkPhotoPost photo={photo.filePath}
                 key={i}
@@ -209,6 +214,7 @@ export default class Snp extends React.Component {
             )}
             <button onClick={context.loadMorePhotos.bind(context)}>Load More</button>
           </div>
+        </div>
         )
       }
     } else if (this.state.view === 'Reviews') {
