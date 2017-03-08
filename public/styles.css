@@ -41,26 +41,32 @@ body {
 }
 
 .splash-landing {
-  width: 99.5%;
-  position: relative;
+  position: absolute;
+  display: block;
+  width: 100%;
+  top: 20px;
+  left: 0;
 }
 
 .splash-img {
   position: relative;
-  width: 100%;
-  left: 0;
-  top: 0;
+  display: block;
+  height: auto;
+  width: 94vw;
+  min-width: 92vw;
+  max-height: 94vh;
+  margin: auto;
 }
 
 .splash-title {
-  z-index: 100;
-  font-family: 'Dosis';
-  position: absolute;
-  color: white;
-  font-size: 100px;
+  position: relative;
+  top: -550px;
   left: 150px;
-  top: 350px;
+  font-family: 'Dosis';
+  font-size: 100px;
+  color: white;
   cursor: pointer;
+  z-index: 100;
 }
 
 .splash-signin {
@@ -86,7 +92,10 @@ body {
 }
 
 .tom-credit {
+  position: relative;
+  margin: 10px 0;
   float: right;
+  right: 2vw;
   font-size: 9px;
 }
 
@@ -95,11 +104,13 @@ body {
   width: 400px;
   position: relative;
 }
+
 #image {
   position: absolute;
   left: 0;
   top: 0;
 }
+
 #text {
   z-index: 100;
   position: relative;
@@ -465,7 +476,7 @@ input[type="submit"]:hover {
   right: 2vw;
   bottom: 2vh;
   background: transparent url('./images/Canyonlands-National-Park.jpg') center no-repeat;
-  background-size: 100% 100%;
+  background-size: 100% auto;
   z-index: 0;
 }
 
