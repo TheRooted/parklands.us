@@ -4,6 +4,8 @@ import PostComment from './../userFeed/PostComments.js';
 import axios from 'axios';
 import sort from './../sort.js';
 import moment from 'moment';
+import Lightbox from 'react-image-lightbox';
+
 
 export default class Post extends React.Component {
 
@@ -15,7 +17,13 @@ export default class Post extends React.Component {
       image: null,
       allComments: [],
       parkId: 'notvalid',
-      userId: 1
+      userId: 1,
+      description: this.props.description,
+      photoData: this.props.photoData,
+      allPosts: this.props.allPosts,
+      photoIndex: this.props.index,
+      originalIndex: this.props.index,
+      isOpen: false,
     };
   }
 
@@ -37,6 +45,11 @@ export default class Post extends React.Component {
         allComments: sortedRes
       });
     });
+  }
+
+  convertDate(date) {
+    var converted = new Date(date).toString();
+    return converted.slice(4, 10) + ', ' + converted.slice(11, 16);
   }
 
   _handleInputChange(event) {
@@ -63,15 +76,23 @@ export default class Post extends React.Component {
     });
   }
 
+  openLightbox () {
+    this.setState({isOpen: true})
+  }
+
+  closeLightbox () {
+    this.setState({isOpen: false, photoIndex: this.state.originalIndex})
+  }
+
   render () {
     return (
       <div className="post-container">
         <div className='postDescription'>
           <strong>{`${this.props.firstName} `}</strong>
           <p className="postDate">{moment(this.props.datePosted).format('MMMM Do YYYY')}</p>
-          <p className="postDescription"><i>{this.props.description}</i></p>
         </div>
-        <img className="timelinePhotoFeed" src={this.props.photoData} />
+          <img className="timelinePhotoFeed" src={this.props.photoData} onClick={this.openLightbox.bind(this)} />
+        <p className="postDescription"><i>{this.props.description}</i></p>
         <div className="commentline">
           <Like className="likeTimeline" postId={this.props.postId} parkId={this.state.parkId} userId={this.state.userId}/>
           <textarea
@@ -85,6 +106,25 @@ export default class Post extends React.Component {
             >Comment</button>
         </div>
         <PostComment allComments={this.state.allComments} postId={this.props.postId} />
+
+          {this.state.isOpen &&
+            <Lightbox
+              mainSrc={this.state.allPosts[this.state.photoIndex].filePath}
+              imageCaption={this.state.description}
+              onCloseRequest={this.closeLightbox.bind(this)}
+              nextSrc={this.state.allPosts[(this.state.photoIndex + 1) % this.state.allPosts.length].filePath}
+              prevSrc={this.state.allPosts[(this.state.photoIndex + this.state.allPosts.length - 1) % this.state.allPosts.length].filePath}
+              onMovePrevRequest={() => this.setState({
+                  photoIndex: (this.state.photoIndex + this.state.allPosts.length - 1) % this.state.allPosts.length,
+                  description: this.state.allPosts[(this.state.photoIndex + this.state.allPosts.length - 1) % this.state.allPosts.length].description
+              })}
+              onMoveNextRequest={() => this.setState({
+                  photoIndex: (this.state.photoIndex + 1) % this.state.allPosts.length,
+                  description: this.state.allPosts[(this.state.photoIndex + 1) % this.state.allPosts.length].description
+              })}
+            />
+          }
+
       </div>
     );
   }

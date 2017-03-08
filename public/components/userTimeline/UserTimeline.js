@@ -163,15 +163,16 @@ export default class UserTimeline extends React.Component {
         <div className="timeline-post-container">
           {
 
-            this.state.displayedActivity.map(post =>
+            this.state.displayedActivity.map((post,i) =>
               <Post
                 photoData={post.filePath}
                 datePosted={post.createdAt}
                 key={post.id}
                 postId={post.id}
-                allPost={this.state.displayedActivity}
+                allPosts={this.state.displayedActivity}
                 description={post.description}
                 firstName={post.firstName}
+                index={i}
               />
             )
           }
