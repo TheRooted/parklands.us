@@ -243,7 +243,7 @@ body {
   position: relative;
   display: inline-block;
   vertical-align: top;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .likeTimeline {
@@ -257,9 +257,11 @@ body {
 .commentTimeline {
   position: relative;
   display: inline-block;
-  border-color: #009;
-  border-radius: 6px;
-  width: 800px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 8px;
+  height: 35px;
+  width: 570px;
 }
 
 #userTimeLineContainer {
@@ -485,29 +487,24 @@ input[type="submit"]:hover {
   position: relative;
   margin-top: 10px;
   margin-bottom: 50px;
-
 }
 
 .submitButton {
   position: absolute;
-  display: block;
   height: 35px;
   padding: 5px 18px;
   font-size: 12px;
-  cursor: pointer;
-  text-align: center;
   text-decoration: none;
   outline: none;
-  background-color: #cecece;
+  color: #555;
+  background-color: rgba(212,212,212,0.85);
   border: none;
-  background: #3d698e;
-  color: white;
   border-radius: 6px;
   text-decoration: none;
 }
 
 .submitButton:hover {
-  background-color: #0cf;
+  background-color: #cecece;
 }
 
 .submitButton:active {
@@ -914,8 +911,8 @@ input[type="submit"]:hover {
 }
 
 .postDescription {
-  font-size: 17px;
-  color: #006
+  font-size: 16px;
+  color: #555
 }
 
 .postDate {

@@ -43,7 +43,7 @@ export default class ParkMap extends React.Component {
       center: [long, lat],
       zoom: 4,
       minZoom: 1,
-      maxZoom: 40
+      maxZoom: 60
     });
 
     map.on('load', function() {
