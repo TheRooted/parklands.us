@@ -47,6 +47,7 @@
     "path": "^0.12.7",
     "pg": "latest",
     "react": "latest",
+    "react-alert": "^1.0.14",
     "react-dom": "latest",
     "react-image-lightbox": "^3.4.2",
     "react-router": "^3.0.2",

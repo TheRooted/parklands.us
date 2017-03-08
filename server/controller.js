@@ -402,7 +402,7 @@ module.exports = {
       db.models.rating.findAll({
         where: {
           // TODO: replace with actual userId
-          userId: parseInt(req.query.userId)
+          userId: req.query.userId
           // userId: 106
         }
       })
