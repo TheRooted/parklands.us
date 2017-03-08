@@ -20,6 +20,8 @@ class ParkPhotoPost extends React.Component {
       postId: this.props.postId,
       userEmail: '',
       postComments: [],
+      originalIndex: this.props.index,
+      description: this.props.description,
     }
   }
 
@@ -52,7 +54,9 @@ class ParkPhotoPost extends React.Component {
         userPhotos: nextProps.userPhotos,
         photoIndex: nextProps.index,
         postId: nextProps.postId,
-        parkId: nextProps.parkId
+        parkId: nextProps.parkId,
+        originalIndex: nextProps.index,
+        description: nextProps.description,
       }, function () {
         axios.get('/api/postcomment', {
           params: {postId: context.state.postId}
@@ -87,7 +91,7 @@ class ParkPhotoPost extends React.Component {
   }
 
   closeLightbox () {
-    this.setState({isOpen: false})
+    this.setState({isOpen: false, photoIndex: this.state.originalIndex})
   }
 
   render () {
@@ -124,15 +128,17 @@ class ParkPhotoPost extends React.Component {
           {this.state.isOpen &&
             <Lightbox
               mainSrc={this.state.userPhotos[this.state.photoIndex].filePath}
-              imageCaption={'Fill caption here... '}
+              imageCaption={this.state.description}
               onCloseRequest={this.closeLightbox.bind(this)}
               nextSrc={this.state.userPhotos[(this.state.photoIndex + 1) % this.state.userPhotos.length].filePath}
               prevSrc={this.state.userPhotos[(this.state.photoIndex + this.state.userPhotos.length - 1) % this.state.userPhotos.length].filePath}
               onMovePrevRequest={() => this.setState({
-                  photoIndex: (this.state.photoIndex + this.state.userPhotos.length - 1) % this.state.userPhotos.length
+                  photoIndex: (this.state.photoIndex + this.state.userPhotos.length - 1) % this.state.userPhotos.length,
+                  description: this.state.userPhotos[(this.state.photoIndex + this.state.userPhotos.length - 1) % this.state.userPhotos.length].description
               })}
               onMoveNextRequest={() => this.setState({
-                  photoIndex: (this.state.photoIndex + 1) % this.state.userPhotos.length
+                  photoIndex: (this.state.photoIndex + 1) % this.state.userPhotos.length,
+                  description: this.state.userPhotos[(this.state.photoIndex + 1) % this.state.userPhotos.length].description
               })}
             />
           }

@@ -35,7 +35,6 @@ export default class Snp extends React.Component {
       commentsRemaining: [],
       commentsDisplay: [],
       officialPhotos: [],
-      photoIndex: 0,
       averageRating: 0,
       photoCount: 10,
       didUserRate: false,
@@ -194,8 +193,8 @@ export default class Snp extends React.Component {
               <ParkPhotoPost photo={photo.filePath}
                 key={i}
                 index={i}
+                description={photo.description}
                 parkName={context.capFirstLetter(context.state.park.name)}
-                photoIndex={context.state.photoIndex}
                 userPhotos={context.state.photosDisplay}
                 postId={photo.id}
                 parkId={photo.parkId}
@@ -297,7 +296,6 @@ export default class Snp extends React.Component {
               key={i}
               index={i}
               parkName={this.capFirstLetter(this.state.park.name)}
-              photoIndex={this.state.photoIndex}
               allPhotos={this.state.officialPhotos} />
           )}
         </div>

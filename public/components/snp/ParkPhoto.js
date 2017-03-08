@@ -8,6 +8,7 @@ class ParkPhoto extends React.Component {
     this.state = {
       isOpen: false,
       photoIndex: this.props.index,
+      originalIndex: this.props.index,
       allPhotos: []
     }
   }
@@ -18,7 +19,7 @@ class ParkPhoto extends React.Component {
   }
 
   openLightbox () {
-    this.setState({isOpen: true})
+    this.setState({isOpen: true, photoIndex: this.state.originalIndex})
   }
 
   closeLightbox () {
