@@ -54,6 +54,26 @@ for (var i = 0; i < users.length; i++) {
 }
 
 /*---------------------------------------------
+          Seed Post with Description
+----------------------------------------------*/
+
+
+
+var description = [
+  "Listen to the song birds sing, feel the wind dance, watch the mare’s tail clouds graze... What more wonders will spring bring?",
+  "Prairie Dogs are here! Remember, drive slowly in the park & observe these fed-protected little ones from a distance.",
+  "Take a few moments to experience night in Great Sand Dunes National Park & Preserve!",
+  "Happy #WorldWildlifeDay! Diverse marine & terrestrial #FireIsland habitats support a variety of #wildlife. Do you have a fav wild animal?",
+  "You'll find an eclectic collection in the @FredDouglassNPS library, including these appropriate for #WomensHistoryMonth! #ReadAcrossAmerica",
+  "Glacier NP is far more progressive than most parks. They have also used Karelian Bear dogs to harass bears so they don't get habituated to humans. I wish all parks had this progressive of thinking.",
+  "Gracie is also working on her dissertation on the effects of climate change on the glaciers in the park. Those border collie are really smart.",
+  "As beautiful as this picture is, it's awful that, in my mind due to the current administration, I can already see oil drilling rigs as part of the picture. Please help save our National Parks!",
+  "Happy AmeriCorps Week! Since 1998, 2,000+ AmeriCorps NCCC members have served more than 374,000 hours in more than 50 national park units. Here's just one example of how they help our parks!",
+  "Have you heard the news? We've got more than ONE MILLION likes on Facebook! Thank you to all of our fans for supporting us on social media. You can also find us on Parklands.us"
+];
+
+
+/*---------------------------------------------
                   Seed Parks
 ----------------------------------------------*/
 var url = 'https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States';
@@ -310,7 +330,8 @@ request(url, function (error, response, html) {
                       filePath: postUrl,
                       parkId: results.dataValues.id,
                       userId: userId,
-                      firstName: users[Math.floor(Math.random()*users.length)].firstName
+                      firstName: users[Math.floor(Math.random()*users.length)].firstName,
+                      description: description[Math.floor(Math.random()*description.length)]
                     });
                   }
                 }
@@ -596,6 +617,8 @@ db.models.postcomment.findOrCreate({
     userId: 3
   }
 });
+
+
 /*---------------------------------------------
           Seed Parks with Ratings
 ----------------------------------------------*/
@@ -613,3 +636,5 @@ for (var i = 1 ; i < users.length + 1; i++) {
 }
 Promise.all(ratings);
 // }
+
+
