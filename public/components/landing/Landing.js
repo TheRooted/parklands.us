@@ -25,8 +25,8 @@ export default class Landing extends React.Component {
         <div className='splash-landing'>
           <img className='splash-img' src='https://www.adventure-journal.com/wp-content/uploads/2015/07/15155461297_402eeb3fd7_h.jpg' />
           <div className='splash-title hvr-grow' onClick={this.linkToMapView.bind(this)}>START EXPLORING</div>
-          <div className='splash-signin hvr-grow' onClick={this.signIn.bind(this)}>Sign In</div>
-          <div className='splash-signup hvr-grow' onClick={this.signUp.bind(this)}>Sign Up</div>
+          <button className='splash-signin hvr-grow' onClick={this.signIn.bind(this)}>Sign In</button>
+          <button className='splash-signup hvr-grow' onClick={this.signUp.bind(this)}>Sign Up</button>
           <a className='tom-credit' href='http://www.travelcaffeine.com/' target='_blank'>Photo by Tom Bricker</a>
         </div>
       </div>

@@ -64,8 +64,8 @@ body {
 }
 
 .splash-title {
-  position: relative;
-  top: -550px;
+  position: absolute;
+  top: 280px;
   left: 150px;
   font-family: 'Dosis';
   font-size: 100px;
@@ -74,26 +74,25 @@ body {
   z-index: 100;
 }
 
-.splash-signin {
-  z-index: 100;
-  font-family: 'Dosis';
+.splash-signin,
+.splash-signup {
   position: absolute;
+  height: 40px;
+  width: 120px;
+  top: 380px;
+  left: 310px;
+  padding: 4px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Dosis';
+  font-size: 25px;
   color: white;
-  font-size: 40px;
-  left: 270px;
-  top: 600px;
-  cursor: pointer;
+  background-color: rgba(255,255,255,0.1);
+  z-index: 100;
 }
 
 .splash-signup {
-  z-index: 100;
-  font-family: 'Dosis';
-  position: absolute;
-  color: white;
-  font-size: 40px;
-  left: 420px;
-  top: 600px;
-  cursor: pointer;
+  left: 450px;
 }
 
 .tom-credit {
