@@ -407,18 +407,18 @@ request(url, function (error, response, html) {
         'http://blog.thomascook.in/wp-content/uploads/2016/06/Yose-1024x581.jpg'
       ];
       var denaliPics = [
-        'https://pbs.twimg.com/media/Ca5JYvOVIAIuB6i.jpg',
-        'https://www.washingtonian.com/wp-content/uploads/2016/8/2D2BA563-1DD8-B71C-07086498E0E8EB05.jpg.optimal.jpg',
-        'https://pixabay.com/static/uploads/photo/2015/11/04/15/22/sled-dog-team-1022688__180.jpg',
-        'https://www.goodfreephotos.com/albums/united-states/alaska/denali-national-park/aurora-borealis-denali-national-park-alaska.jpg',
-        'https://upload.wikimedia.org/wikipedia/commons/a/aa/Denali_National_Park_and_Preserve_AK2006-0346.jpg'
+        'https://www.nationalparks.org/sites/default/files/denali-grizzly-bears-nps_jacob_w_frank-v-horiz.jpg',
+        'https://w-dog.net/wallpapers/6/8/344636208569138/brothers-wolves-denali-national-park-central-alaska.jpg',
+        'https://www.walldevil.com/wallpapers/a23/alaska-details-christmas-wallpapers-park-national-caribou-mount-mckinley-denali-travel.jpg',
+        'https://w-dog.net/wallpapers/10/14/449266994444348/denali-national-park-alaska-denali-national-park-alaska-northern-lights-forest-winter-snow-tree-spruce.jpg',
+        'http://wpnature.com/wp-content/uploads/2016/09/mountain-september-storm-denali-burning-national-park-white-sky-trees-snowy-peaks-yellow-forest-beautiful-valley-orange-clouds-alaska-damra-wallpapers-full-hd.jpg'
       ];
       var greatSmokyPics = [
+        'http://www.smokymtndreams.com/blog/wp-content/uploads/2016/04/smokieslarge.jpg',
         'https://www.goodfreephotos.com/albums/united-states/tennessee/great-smoky-mountains-national-park/cascading-rapids-landscape-in-great-smoky-mountains-national-park-tennessee.jpg',
-        'https://www.goodfreephotos.com/albums/united-states/tennessee/great-smoky-mountains-national-park/trees-and-landscape-great-smoky-mountains-national-park-tennessee.jpg',
-        'https://icons.wxug.com/data/wximagenew/p/PSLTony/9-awesome.jpg',
-        'https://blueridgemountainlife.com/wp-content/uploads/2015/06/mountain-laurel1.jpg',
-        'https://upload.wikimedia.org/wikipedia/commons/b/b4/The_Smoky_Mountains,_in_Great_Smoky_Mountains_National_Park.jpg'
+        'https://free4kwallpapers.com/no-watermarks/originals/2015/09/29/bridge-in-the-great-smoky-mountains-national-park.jpg',
+        'https://free4kwallpapers.com/no-watermarks/originals/2015/04/25/mountains-next-to-lake-landscape.jpg',
+        'https://www.walldevil.com/wallpapers/a90/forest-creek-great-smoky-mountains-national-park-north-carolina-usa.jpg',
       ];
       // var parkPhotosCreation = [];
       // for (var i = 1; i < 60; i++) {

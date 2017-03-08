@@ -28,6 +28,7 @@ export default class Snp extends React.Component {
         contact: 'null',
         location: 'null',
         rating: 'null',
+        hero: 'https://www.doi.gov/sites/doi.gov/files/press-release/thumbnail-images/Denali%20-%20Landscape.jpg'
       },
       view: 'Photos',
       photosRemaining: [],
@@ -273,7 +274,7 @@ export default class Snp extends React.Component {
     return (
       <div className='snp'>
         <div className='hero'>
-          <img className='hero-photo' src='https://coolworks-bucket001.s3.amazonaws.com/production/pages/heros/209/content/HERO_Yosemite_Half_Dome.jpg?1480224700' />
+          <img className='hero-photo' src={this.state.park.hero} />
           <div className='park-title-box'>
             <h2 className="park-title">{this.capFirstLetter(this.state.park.name)} National Park</h2>
             <div className="park-rating">
