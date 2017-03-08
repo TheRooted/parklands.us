@@ -27,53 +27,6 @@ module.exports = {
     }
   },
 
-  gridParkRating: {
-    get: function(req, res) {
-      var pid;
-      var parkArray = [];
-      for (var j = 1; j < 60; j++) {
-        pid = j
-        // push each find all parkRating to array
-        parkArray.push(
-          db.models.rating.findAll({where: {
-            parkId: pid
-          }})
-        );
-      }
-      Promise.all(parkArray).then(function(parkRatings) {
-        var parkRatingsArray = [];
-        for (var i = 0; i < parkRatings.length; i++) {
-          var average;
-          var total = 0;
-          var parkId;
-          for (var b = 0; b < parkRatings[i].length; b++) {
-            parkId = parkRatings[i][b].dataValues.parkId;
-            total = total + parkRatings[i][b].dataValues.ratingVal;
-            // rounded to an integer
-          }
-          if (parkRatings[i].length === 0) {
-            average = 0;
-          } else {
-            average = total/parkRatings[i].length;
-          }
-          //update the park with the average rating
-          parkRatingsArray.push(
-            db.models.park.update({
-              rating: average
-            },
-            {
-              fields: ['rating'],
-              where: {id: parkId}
-            })
-          )
-        }
-        Promise.all(parkRatingsArray).then(function(response) {
-          res.end();
-        })
-      });
-    }
-  },
-
   park: {
     get: function(req, res) {
       var name = req.url.split('/');

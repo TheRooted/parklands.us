@@ -16,14 +16,12 @@ export default class Grid extends React.Component {
 
   componentWillMount() {
     var context = this;
-    axios.get('/api/gridParkRating').then(function(res) {
-      axios.get('/api/grid').then(function(res) {
-        if (res.data) {
-          res.data = sort(res.data, 'alphabetically');
-          context.setState({parks: res.data});
-        }
-      });
-    })
+    axios.get('/api/grid').then(function(res) {
+      if (res.data) {
+        res.data = sort(res.data, 'alphabetically');
+        context.setState({parks: res.data});
+      }
+    });
   }
 
   sortAlphabetical() {

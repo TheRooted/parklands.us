@@ -634,7 +634,36 @@ for (var i = 1 ; i < users.length + 1; i++) {
     }))
   }
 }
-Promise.all(ratings);
+Promise.all(ratings).then(function(parkRatings) {
+  var parkRatingsArray = [];
+  console.log('PARKRATINGS[0].dataValues', parkRatings[0][0].dataValues);
+  
+  for (var i = 0; i < parkRatings.length; i++) {
+    if (i === 0) {
+      var average;
+      var total = 0;
+      var parkId;
+    }
+    if ((i + 1) % users.length === 0) {
+      average = total/users.length;
+      var total = 0;
+      parkRatingsArray.push(
+        db.models.park.update({
+          rating: average
+        },
+        {
+          fields: ['rating'],
+          where: {id: parkId}
+        })
+      )
+      var parkId;
+    }
+    parkId = parkRatings[i][0].dataValues.parkId;
+    total += parkRatings[i][0].dataValues.ratingVal;
+  }
+    //update the park with the average rating
+  Promise.all(parkRatingsArray);
+});
 // }
 
 

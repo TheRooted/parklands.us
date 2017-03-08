@@ -25,7 +25,6 @@ router.get(path.resolve(__dirname, '/api/parkComment/:id'), controller.parkComme
 
 //Routes for rating average on SNP
 router.get(path.resolve(__dirname, '/api/parkAverageRating/:id'), controller.parkAverageRating.get);
-router.get(path.resolve(__dirname, '/api/gridParkRating'), controller.gridParkRating.get);
 
 //Routes for snp Page
 router.get(path.resolve(__dirname, '/api/rating'), controller.rating.get);
