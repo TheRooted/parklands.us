@@ -174,7 +174,6 @@ module.exports = {
 
   userTimeline: {
     get: function (req, res) {
-      console.log('userId:', req.query.userId);
       db.models.post.findAll({
         where: {
           userId: req.query.userId
