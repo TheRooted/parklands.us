@@ -27,7 +27,7 @@ export default class Landing extends React.Component {
           <div className='splash-title hvr-grow' onClick={this.linkToMapView.bind(this)}>START EXPLORING</div>
           <div className='splash-signin hvr-grow' onClick={this.signIn.bind(this)}>Sign In</div>
           <div className='splash-signup hvr-grow' onClick={this.signUp.bind(this)}>Sign Up</div>
-          <a className='tom-credit' href='http://www.travelcaffeine.com/'>Photo by Tom Bricker</a>
+          <a className='tom-credit' href='http://www.travelcaffeine.com/' target='_blank'>Photo by Tom Bricker</a>
         </div>
       </div>
     )
