@@ -39,11 +39,6 @@ export default class Post extends React.Component {
     });
   }
 
-  convertDate(date) {
-    var converted = new Date(date).toString();
-    return converted.slice(4, 10) + ', ' + converted.slice(11, 16);
-  }
-
   _handleInputChange(event) {
     this.setState({comment: event.target.value});
   }

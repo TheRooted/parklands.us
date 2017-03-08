@@ -309,7 +309,8 @@ request(url, function (error, response, html) {
                       type: type,
                       filePath: postUrl,
                       parkId: results.dataValues.id,
-                      userId: userId
+                      userId: userId,
+                      firstName: users[Math.floor(Math.random()*users.length)].firstName
                     });
                   }
                 }
