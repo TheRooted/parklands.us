@@ -37,8 +37,10 @@ class Nav extends React.Component {
         />
         <BurgerBar />
         <span className="title-container">
-          <img src='http://i.imgur.com/bLIxJyM.png' style={{height: '25px' }}/>
-          <Link to='/mapview' style={{textDecoration: 'none', color: 'black'}}>Parklands</Link>
+          <Link to='/mapview' style={{textDecoration: 'none', color: 'black'}}>
+            <img src='http://i.imgur.com/bLIxJyM.png' style={{height: '25px' }}/>
+            Parklands
+          </Link>
         </span>
      </div>
     )
