@@ -468,12 +468,12 @@ input[type="submit"]:hover {
   display: block;
   position: relative;
   margin: auto;
-  top: 65%;
+  top: 59%;
   width: 320px;
 }
 
 .auth-container.signup {
-  top: 40%;
+  top: 35%;
 }
 
 .auth-fields {
@@ -530,17 +530,19 @@ input[type="submit"]:hover {
 .alert {
   position: relative !important;
   display: inline-block !important;
-  height: 20px;
+  height: auto;
   width: 300px;
-  padding: 5px;
-  margin-left: 10px;
+  padding: 10px;
+  margin-left: 9px;
   font-size: 15px;
   font-weight: 600;
   color: transparent;
+  border-radius: 4px;
 }
 
 .alert.shown {
-  color: red;
+  background-color: #db2828;
+  color: #fff;
 }
 
 

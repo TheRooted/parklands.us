@@ -73,7 +73,6 @@ export default class Signup extends React.Component {
 
   signupRequest(user) {
     axios.post('/signup', user).then((res) => {
-      console.log('in signup res', res)
       if (res.request.responseURL === 'http://localhost:3000/signup' || res.request.responseURL === 'http://127.0.0.1:3000/signup') {
         this.showAlert();
       } else {
@@ -89,14 +88,17 @@ export default class Signup extends React.Component {
   }
 
   render() {
+
+    var alertMessage = 'Looks like you already have an account! Please sign in.';
+
     return (
       <div className='signupBg'>
         <div className="auth-container signup">
-          <AlertContainer isShown={this.state.alertShown} msg={'Looks like you already have an account! Please sign in.'} />
+          <AlertContainer isShown={this.state.alertShown} msg={ alertMessage } />
           <input id="first-input" className="auth-fields" type="text" name="firstName" placeholder="First" ref="firstNameSU" />
           <br />
           <input id="last-input" className="auth-fields" type="text" name="lastName" placeholder="Last" ref="lastNameSU" />
-          <input id="email-input" className="auth-fields" type="email" name="email" placeholder="Email Address" ref="emailSU" />
+          <input id="email-input" className="auth-fields" type="email" name="email" placeholder="Email" ref="emailSU" />
           <br />
           <input id="password-input" className="auth-fields" type="password" name="password" placeholder="Password" ref="passwordSU" onKeyDown={ this.keyPress.bind(this) } />
           <br />

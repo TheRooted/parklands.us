@@ -1,12 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import { browserHistory, Link } from 'react-router';
-
+import AlertContainer from './AlertContainer';
 
 export default class Signin extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      alertShown: false
+    };
   }
   
   validateForm(event) {
@@ -43,11 +45,14 @@ export default class Signin extends React.Component {
     }
   }
 
+  showAlert() {
+    this.setState({ alertShown: !this.state.alertShown})
+  }
+
   signinRequest(user) {
     axios.post('/signin', user).then((res) => {
       if (res.request.responseURL === 'http://localhost:3000/signin' || res.request.responseURL === 'http://127.0.0.1:3000/signin') {
-        console.log('Username or password is invalid.')
-        browserHistory.push('/signin');
+        this.showAlert();
       } else {
         browserHistory.push('/mapview');
       }
@@ -61,9 +66,13 @@ export default class Signin extends React.Component {
   }
 
   render() {
+
+    var alertMessage = 'Email or password went awry!  Try again.'
+
     return (
       <div className='signinBg'>
         <div className="auth-container signin">
+          <AlertContainer isShown={ this.state.alertShown } msg={ alertMessage } />
           <input id="email-input" className="auth-fields" type="email" name="email" placeholder="Email" ref="emailSI" />
           <br />
           <input id="password-input" className="auth-fields" type="password" name="password" placeholder="Password" ref="passwordSI" onKeyDown={ this.keyPress.bind(this) } />
