@@ -44,7 +44,7 @@ export default class Snp extends React.Component {
         id: 1,
         firstName: 'null',
         email: 'null@gmail.com'
-      }
+      },
     }
   }
 
@@ -107,7 +107,7 @@ export default class Snp extends React.Component {
       if (context.state.park.id) {
         axios.get('/api/session').then(function(user) {
           context.setState({
-            user: user.data 
+            user: user.data
           })
         })
         axios.get('/api/parkPhoto/' + context.state.park.id).then(function(res) {
@@ -186,6 +186,11 @@ export default class Snp extends React.Component {
 
   render() {
     var context = this;
+    var boldPhotos = {fontWeight: 'normal'};
+    var boldReviews = {fontWeight: 'normal'};
+    (this.state.view === 'Photos') ? boldPhotos = {fontWeight: 'bold'} : boldPhotos = {fontWeight: 'normal'};
+    (this.state.view === 'Reviews') ? boldReviews = {fontWeight: 'bold'} : boldReviews = {fontWeight: 'normal'};
+
     if (this.state.view === 'Photos') {
       var mediaView = function () {
         return (
@@ -271,6 +276,7 @@ export default class Snp extends React.Component {
       }
     }
 
+
     return (
       <div className='snp'>
         <div className='hero'>
@@ -302,9 +308,9 @@ export default class Snp extends React.Component {
         </div>
         <hr/>
         <div className="snp-navlinks">
-          <button className="photo-link" onClick={this.changeViewToPhotos.bind(this)}>Photos</button>
+          <button className="photo-link" style= {boldPhotos} onClick={this.changeViewToPhotos.bind(this)}>Community Photos</button>
           <span className="vertical-bar">|</span>
-          <button className="review-link" onClick={this.changeViewToReviews.bind(this)}>Reviews</button>
+          <button className="review-link" style= {boldReviews} onClick={this.changeViewToReviews.bind(this)}>Reviews & Info</button>
         </div>
         <div className="mediaview-container">
           {mediaView()}

@@ -1,6 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
 @import url('https://fonts.googleapis.com/css?family=Cuprum|Noticia+Text|Pathway+Gothic+One|Playfair+Display');
-@import url('https://fonts.googleapis.com/css?family=Anton|Dosis');
+@import url('https://fonts.googleapis.com/css?family=Anton|Dosis|Istok+Web');
 @import 'react-select/dist/react-select.css';
 
 html,
@@ -178,6 +178,25 @@ body {
   top: 70px;
 }
 
+.trending-header {
+  margin-top: 75px;
+  margin-bottom: -50px;
+}
+
+.trending-title,
+.trending-para {
+  font-family: 'Istok Web';
+}
+
+.trending-title {
+  font-size: 45px;
+}
+
+.trending-para {
+  font-size: medium;
+}
+
+
 .post-container {
   width: 800px;
 }
@@ -187,8 +206,8 @@ body {
   height: 600px;
   border-radius: 4px;
   border-radius: 7px;
-  background-color: #f6f7f9;
   object-fit: contain;
+  background-color: #d5dfef;
 }
 
 
@@ -700,8 +719,10 @@ input[type="submit"]:hover {
   height: 253px;
   width: 345px;
   position: relative;
-  border-radius: 3px;
+  border-radius: 4px;
   margin: 20px 0 20px 0;
+  object-fit: contain;
+  background-color: #d5dfef;
 }
 
 .parkphotopost:hover {
@@ -712,11 +733,15 @@ input[type="submit"]:hover {
 .review-link,
 .vertical-bar {
   height: 30px;
-  width: 100px;
+  width: 200px;
   background: none;
   border: none;
   color: #555;
   font-size: 20px;
+}
+
+.review-link {
+  margin-left: -15px;
 }
 
 .photo-link:focus,
