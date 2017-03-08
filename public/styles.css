@@ -709,6 +709,10 @@ input[type="submit"]:hover {
   margin-bottom: 20px
 }
 
+.glimpse {
+  font-family: 'Istok Web'
+}
+
 .parkPhotoContainer {
   margin: 10px;
   display: inline-block;

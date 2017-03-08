@@ -303,6 +303,7 @@ export default class Snp extends React.Component {
         <ParkMap park={this.state.park} />
         <section className="park-info">{this.state.park.info}</section>
         <hr/>
+        <h2 className='glimpse'>{'A glimpse into ' + this.capFirstLetter(this.state.park.name) + ' National Park...'}</h2>
         <div className="official-photo-container">
           {this.state.officialPhotos.map((photo, i) =>
             <ParkPhoto photo={photo}
