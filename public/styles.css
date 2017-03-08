@@ -297,7 +297,7 @@ body {
   left: 50px;
   height: 40px;
   padding-top: 12px;
-  margin-left: 35px;
+  margin-left: 25px;
 }
 
 .title-container img {
@@ -954,29 +954,28 @@ input[type="submit"]:hover {
 ***************************/
 
 #notapark {
-  position: relative;
+  position: absolute;
   display: block;
-  height: 90vh;
-  width: auto;
+  height: 93vh;
+  width: 95%;
   margin: 30px;
 }
 
 #notapark img {
-  width: 100%;
-  height: auto;
-  opacity: .6;
-  background-position: center center;
-  background-repeat: no-repeat;
-  overflow: hidden;
+  position: relative;
+  display: block;
+  margin: auto;
+  width: 96.5vw;
+  height: 92vh;
 }
 
 .invalid-message {
   position: relative;
-  display: flex;
-  top: 50%;
-  left: 25%;
-  color: #555;
+  display: block;
+  top: 30%;
+  left: 5%;
+  color: #fff;
   font-size: 50px;
-  font-weight: 700;
-  flex-wrap: wrap;
+  font-weight: 600;
+  z-index: 100;
 }
