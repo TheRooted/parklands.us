@@ -73,6 +73,7 @@ export default class UserFeed extends React.Component {
                 datePosted={this.convertDate(feed.createdAt)}
                 postId={feed.id}
                 description={feed.description}
+                firstName={feed.firstName}
               />
             )
           }
