@@ -15,6 +15,11 @@ body {
   overflow: hidden;
 }
 
+.app-children {
+  height: auto;
+  width: 99%;
+}
+
 /*---------------------------------------------
                 Landing Page
 ----------------------------------------------*/
@@ -639,7 +644,6 @@ input[type="submit"]:hover {
 
 .snp {
   position: relative;
-  top: 70px;
   margin: 30px;
 }
 
