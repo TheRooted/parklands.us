@@ -170,7 +170,6 @@ export default class UserTimeline extends React.Component {
         {console.log(this.state.displayedActivity)}
         <div className="timeline-post-container">
           {
-
             this.state.displayedActivity.map((post,i) =>
               <Post
                 photoData={post.filePath}
