@@ -35,6 +35,7 @@ passport.use('local-signup', new LocalStrategy({
 },
 (req, email, password, done) => {
   console.log('local-signup')
+  console.log('req body', req.body)
 
   process.nextTick(() => {
     // Check whether account already exists for submitted email
@@ -53,8 +54,8 @@ passport.use('local-signup', new LocalStrategy({
             return done(err);
           } else {
             db.models.user.create({
-              firstName: req.body.first,
-              lastName: req.body.last,
+              firstName: req.body.firstName,
+              lastName: req.body.lastName,
               email: email,
               password: hash
             })
