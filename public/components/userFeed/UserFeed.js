@@ -66,14 +66,16 @@ export default class UserFeed extends React.Component {
 
         <div id="all-feed">
           {
-            this.state.newFeed.map(feed =>
+            this.state.newFeed.map((feed,i) =>
               <Post
                 key={feed.id}
                 photoData={feed.filePath}
                 datePosted={this.convertDate(feed.createdAt)}
+                allPosts={this.state.newFeed}
                 postId={feed.id}
                 description={feed.description}
                 firstName={feed.firstName}
+                index={i}
               />
             )
           }
