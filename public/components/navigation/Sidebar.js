@@ -36,10 +36,10 @@ class Sidebar extends React.Component {
               <Link to="/mapview" className="maplink" onClick={this.props.toggleSidebar}>Mapview</Link>
             </div>
             <div className="sidebar-content">
-              <Link to="/userfeed" className="userfeedlink" onClick={this.props.toggleSidebar}>Trending</Link>
+              <Link to="/trending" className="userfeedlink" onClick={this.props.toggleSidebar}>Trending</Link>
             </div>
             <div className="sidebar-content">
-              <Link to="/usertimeline" className="profilelink" onClick={this.props.toggleSidebar}>Profile</Link>
+              <Link to="/profile" className="profilelink" onClick={this.props.toggleSidebar}>Profile</Link>
             </div>
             <div className="sidebar-content">
               <Link className="signoutlink" onClick={() =>{this.props.toggleSidebar(); this.handleSignout()}}>Sign Out</Link>

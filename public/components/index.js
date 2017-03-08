@@ -36,8 +36,8 @@ ReactDOM.render((
       <Route path='mapview' component={Mapview} />
       <Route path='signin' component={Signin} />
       <Route path='signup' component={Signup} />
-      <Route path='usertimeline' onEnter={isLoggedIn} component={UserTimeline} />
-      <Route path='userfeed' onEnter={isLoggedIn} component={UserFeed} />
+      <Route path='profile' onEnter={isLoggedIn} component={UserTimeline} />
+      <Route path='trending' onEnter={isLoggedIn} component={UserFeed} />
       <Route path='park/:parkName' onEnter={isLoggedIn} component={Snp} />
       <Route path='notavalidpark/:parkName' onEnter={isLoggedIn} component={NotAPark}/>
     </Route>

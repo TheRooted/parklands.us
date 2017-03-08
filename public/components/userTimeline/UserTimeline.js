@@ -87,7 +87,6 @@ export default class UserTimeline extends React.Component {
       context.setState({
         userId: res.data.id
       })
-      console.log('res.data.id usertimeline:', res.data.id);
       axios.get('/api/userTimeline', {
         params: {
           userId: res.data.id
