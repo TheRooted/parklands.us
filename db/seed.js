@@ -448,6 +448,7 @@ request(url, function (error, response, html) {
           where: {
             text: 'Yosemite was amazing!',
             userEmail: 'kaychristensen@gmail.com',
+            firstName: 'Kay',
             parkId: results.dataValues.id,
             userId: 1,
           }
@@ -456,6 +457,7 @@ request(url, function (error, response, html) {
           where: {
             text: 'Nature, eh? Incredible!',
             userEmail: 'kaychristensen@gmail.com',
+            firstName: 'Kay',
             parkId: results.dataValues.id,
             userId: 1,
           }
@@ -464,6 +466,7 @@ request(url, function (error, response, html) {
           where: {
             text: '"The “firefall” on Horsetail Fall..event that can only be captured few days in February"',
             userEmail: 'jackieh.bee@gmail.com',
+            firstName: 'Jackie',
             parkId: results.dataValues.id,
             userId: 3,
           }
@@ -473,6 +476,7 @@ request(url, function (error, response, html) {
           where: {
             text: 'Starting 10 million years ago, vertical movement along the Sierra fault started to uplift the Sierra Nevada.',
             userEmail: 'jackieh.bee@gmail.com',
+            firstName: 'Jackie',
             parkId: results.dataValues.id,
             userId: 3,
           }
@@ -482,6 +486,7 @@ request(url, function (error, response, html) {
           where: {
             text: 'A series of glaciations further modified the region starting about 2 to 3 million years ago and ending sometime around 10,000 BP.',
             userEmail: 'tenso2006@gmail.com',
+            firstName: 'Tenzin',
             parkId: results.dataValues.id,
             userId: 2,
           }
@@ -491,6 +496,7 @@ request(url, function (error, response, html) {
           where: {
             text: 'Despite the richness of high-quality habitats in Yosemite, the brown bear, California condor, and least Bell\'s vireo have become extinct in the park within historical time',
             userEmail: 'tenso2006@gmail.com',
+            firstName: 'Tenzin',
             parkId: results.dataValues.id,
             userId: 2,
           }
@@ -500,6 +506,7 @@ request(url, function (error, response, html) {
           where: {
             text: 'The black bears of Yosemite were once famous for breaking into parked cars to steal food.',
             userEmail: 'brianjschultz508@gmail.com',
+            firstName: 'Brian',
             parkId: results.dataValues.id,
             userId: 4,
           }
@@ -509,12 +516,13 @@ request(url, function (error, response, html) {
           where: {
             text: 'Increasing ozone pollution is causing tissue damage to the massive giant sequoia trees in the park.',
             userEmail: 'brianjschultz508@gmail.com',
+            firstName: 'Brian',
             parkId: results.dataValues.id,
             userId: 4,
           }
         });
       });
-      db.models.find({
+      db.models.park.find({
         where: {
           name: 'denali'
         }
@@ -532,6 +540,7 @@ request(url, function (error, response, html) {
           where: {
             text: 'Denali was amazing!',
             userEmail: 'kaychristensen@gmail.com',
+            firstName: 'Kay',
             parkId: results.dataValues.id,
             userId: 1,
           }
@@ -540,6 +549,7 @@ request(url, function (error, response, html) {
           where: {
             text: 'Nature, eh? Incredible!',
             userEmail: 'kaychristensen@gmail.com',
+            firstName: 'Kay',
             parkId: results.dataValues.id,
             userId: 1,
           }
@@ -548,6 +558,7 @@ request(url, function (error, response, html) {
           where: {
             text: "The Denali Gray Jay field season is well underway! It may be -33F out, but that doesn't stop us - or the Gray Jays!",
             userEmail: 'jackieh.bee@gmail.com',
+            firstName: 'Jackie',
             parkId: results.dataValues.id,
             userId: 3,
           }
@@ -557,6 +568,7 @@ request(url, function (error, response, html) {
           where: {
             text: "Happy Marmot Day! The marmots didn't come out of hibernation to predict the weather. Guess this means we have a few more months of winter!",
             userEmail: 'jackieh.bee@gmail.com',
+            firstName: 'Jackie',
             parkId: results.dataValues.id,
             userId: 3,
           }
@@ -566,6 +578,7 @@ request(url, function (error, response, html) {
           where: {
             text: "There aren't enough words to describe the beauty",
             userEmail: 'tenso2006@gmail.com',
+            firstName: 'Tenzin',
             parkId: results.dataValues.id,
             userId: 2,
           }
@@ -575,6 +588,7 @@ request(url, function (error, response, html) {
           where: {
             text: "It may be -40F out, but that doesn't keep the moose away. Each needs about 20 pounds of twigs a day.",
             userEmail: 'tenso2006@gmail.com',
+            firstName: 'Tenzin',
             parkId: results.dataValues.id,
             userId: 2,
           }
@@ -584,6 +598,7 @@ request(url, function (error, response, html) {
           where: {
             text: 'enali National Park and Preserve includes the central, highest portion of the Alaska Range, together with many of the glaciers and glacial valleys running southwards out of the range.',
             userEmail: 'brianjschultz508@gmail.com',
+            firstName: 'Brian',
             parkId: results.dataValues.id,
             userId: 4,
           }
@@ -593,6 +608,7 @@ request(url, function (error, response, html) {
           where: {
             text: 'The oldest rocks in the park are part of the Yukon-Tanana terrane. They originated from ocean sediments deposited between 400 million and 1 billion years ago.',
             userEmail: 'brianjschultz508@gmail.com',
+            firstName: 'Brian',
             parkId: results.dataValues.id,
             userId: 4,
           }
@@ -616,6 +632,7 @@ request(url, function (error, response, html) {
           where: {
             text: 'The Great Smoky Mountains were amazing!',
             userEmail: 'kaychristensen@gmail.com',
+            firstName: 'Kay',
             parkId: results.dataValues.id,
             userId: 1,
           }
@@ -624,6 +641,7 @@ request(url, function (error, response, html) {
           where: {
             text: 'Nature, eh? Incredible!',
             userEmail: 'kaychristensen@gmail.com',
+            firstName: 'Kay',
             parkId: results.dataValues.id,
             userId: 1,
           }
@@ -632,6 +650,7 @@ request(url, function (error, response, html) {
           where: {
             text: "Three waterfalls, including Tom Branch Falls, can be found within the Deep Creek area of the park!",
             userEmail: 'jackieh.bee@gmail.com',
+            firstName: 'Jackie',
             parkId: results.dataValues.id,
             userId: 3,
           }
@@ -641,6 +660,7 @@ request(url, function (error, response, html) {
           where: {
             text: 'Middle Prong Trail offers many cascades! Water drops 65 ft over the multiple tiers of Indian Flats Falls!',
             userEmail: 'jackieh.bee@gmail.com',
+            firstName: 'Jackie',
             parkId: results.dataValues.id,
             userId: 3,
           }
@@ -650,6 +670,7 @@ request(url, function (error, response, html) {
           where: {
             text: 'Morton Overlook provides spectacular mountain vistas and stunning sunsets.',
             userEmail: 'tenso2006@gmail.com',
+            firstName: 'Tenzin',
             parkId: results.dataValues.id,
             userId: 2,
           }
@@ -659,6 +680,7 @@ request(url, function (error, response, html) {
           where: {
             text: 'Unlike the bears, woodchucks enter into true hibernation. They may only breathe every 5 - 6 minutes!',
             userEmail: 'tenso2006@gmail.com',
+            firstName: 'Tenzin',
             parkId: results.dataValues.id,
             userId: 2,
           }
@@ -668,6 +690,7 @@ request(url, function (error, response, html) {
           where: {
             text: 'Did you know that this national park has a species of fish named after it? The Smoky Madtom is a small freshwater catfish!',
             userEmail: 'brianjschultz508@gmail.com',
+            firstName: 'Brian',
             parkId: results.dataValues.id,
             userId: 4,
           }
@@ -677,6 +700,7 @@ request(url, function (error, response, html) {
           where: {
             text: 'I go to nature to be soothed and healed, and to have my senses put in tune once more.',
             userEmail: 'brianjschultz508@gmail.com',
+            firstName: 'Brian',
             parkId: results.dataValues.id,
             userId: 4,
           }
