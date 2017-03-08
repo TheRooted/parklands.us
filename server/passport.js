@@ -35,7 +35,6 @@ passport.use('local-signup', new LocalStrategy({
 },
 (req, email, password, done) => {
   console.log('local-signup')
-  console.log('req body', req.body)
 
   process.nextTick(() => {
     // Check whether account already exists for submitted email
