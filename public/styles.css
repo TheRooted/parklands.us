@@ -473,7 +473,7 @@ input[type="submit"]:hover {
 }
 
 .auth-container.signup {
-  top: 52.5%;
+  top: 40%;
 }
 
 .auth-fields {
@@ -525,6 +525,22 @@ input[type="submit"]:hover {
 .signin-link:hover {
   color: #fff;
   opacity: 1;
+}
+
+.alert {
+  position: relative !important;
+  display: inline-block !important;
+  height: 20px;
+  width: 300px;
+  padding: 5px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: transparent;
+}
+
+.alert.shown {
+  color: red;
 }
 
 

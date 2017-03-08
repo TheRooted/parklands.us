@@ -1,11 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import { browserHistory, Link } from 'react-router';
+import AlertContainer from './AlertContainer';
 
 export default class Signup extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      alertShown: false
+    };
   }
   
   validateForm(event) {
@@ -64,12 +67,15 @@ export default class Signup extends React.Component {
     }
   }
 
+  showAlert() {
+    this.setState({ alertShown: !this.state.alertShown})
+  }
+
   signupRequest(user) {
     axios.post('/signup', user).then((res) => {
       console.log('in signup res', res)
       if (res.request.responseURL === 'http://localhost:3000/signup' || res.request.responseURL === 'http://127.0.0.1:3000/signup') {
-        console.log('Username or password is invalid.')
-        browserHistory.push('/signup');
+        this.showAlert();
       } else {
         browserHistory.push('/mapview');
       }
@@ -86,6 +92,7 @@ export default class Signup extends React.Component {
     return (
       <div className='signupBg'>
         <div className="auth-container signup">
+          <AlertContainer isShown={this.state.alertShown} msg={'Looks like you already have an account! Please sign in.'} />
           <input id="first-input" className="auth-fields" type="text" name="firstName" placeholder="First" ref="firstNameSU" />
           <br />
           <input id="last-input" className="auth-fields" type="text" name="lastName" placeholder="Last" ref="lastNameSU" />

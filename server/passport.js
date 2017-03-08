@@ -98,7 +98,6 @@ passport.use('local-signin', new LocalStrategy({
           return done(err); 
         // Email entered incorrectly or user is not registered
         } else if (user === null || !user.dataValues.email) {
-          console.log('user is null or no email');
           return done(null, false, { message: 'Incorrect email.' });
         } else {
           // Compare password supplied with db password for selected user
