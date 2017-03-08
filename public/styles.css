@@ -203,9 +203,31 @@ body {
                 User Timeline
 ----------------------------------------------*/
 
+.timelinePage {
+  display: inline-block;
+  width: 100%;
+}
+
 #userTimeLinePageContainer {
   position: relative;
   margin: 30px;
+  width: 60%;
+  float: left;
+}
+
+#listOfparks {
+  width: 20%;
+  float: right;
+  display: inline-block;
+}
+
+.selectParkImgUpload {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.photo-fields {
+  margin: 0 auto;
 }
 
 .profile-hero {
@@ -308,6 +330,7 @@ body {
 .previewComponent {
   text-align: center;
   display: inline-block;
+  width: 40%;
 }
 
 
@@ -539,6 +562,7 @@ input[type="submit"]:hover {
   border: none;
   border-radius: 6px;
   text-decoration: none;
+  margin: 0 auto;
 }
 
 .submitButton:hover {
