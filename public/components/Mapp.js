@@ -72,7 +72,6 @@ export default class Mapp extends React.Component {
       if (res.data) {
         context.setState({ userId: res.data.id });
       }
-
       axios.get('/api/simpleRating', {
         params: {
           userId: res.data.id

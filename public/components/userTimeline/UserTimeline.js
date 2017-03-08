@@ -83,18 +83,28 @@ export default class UserTimeline extends React.Component {
 
   componentWillMount() {
     const context = this;
-    axios.get('/api/userTimeline')
-    .then(function (res) {
-      var sortedRes = sort(res.data, 'created');
-      var newFeed = [];
-      for (var i = 0; i < context.state.photoCount; i++) {
-        newFeed.push(sortedRes.shift());
-      }
+    axios.get('/api/session').then(function (res) {
       context.setState({
-        remainingActivity: sortedRes,
-        displayedActivity: newFeed,
+        userId: res.data.id
+      })
+      console.log('res.data.id usertimeline:', res.data.id);
+      axios.get('/api/userTimeline', {
+        params: {
+          userId: res.data.id
+        }
+      })
+      .then(function (res) {
+        var sortedRes = sort(res.data, 'created');
+        var newFeed = [];
+        for (var i = 0; i < context.state.photoCount; i++) {
+          newFeed.push(sortedRes.shift());
+        }
+        context.setState({
+          remainingActivity: sortedRes,
+          displayedActivity: newFeed,
+        });
       });
-    });
+    })
   }
 
   loadMorePhotos() {

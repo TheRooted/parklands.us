@@ -174,7 +174,12 @@ module.exports = {
 
   userTimeline: {
     get: function (req, res) {
-      db.models.post.findAll({})
+      console.log('userId:', req.query.userId);
+      db.models.post.findAll({
+        where: {
+          userId: req.query.userId
+        }
+      })
       .then(function (post) {
         res.send(post);
       });
@@ -445,8 +450,8 @@ module.exports = {
       db.models.rating.findAll({
         where: {
           // TODO: replace with actual userId
-          // userId: parseInt(req.query.userId)
-          userId: 106
+          userId: parseInt(req.query.userId)
+          // userId: 106
         }
       })
       .then((results) => {
