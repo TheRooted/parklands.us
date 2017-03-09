@@ -6,7 +6,7 @@ import Parkcomment from './Parkcomment.js'
 import ParkPhoto from './ParkPhoto.js'
 import ParkMap from './ParkMap.js'
 import RatingPark from './Rating.js'
-import Info from './info.js';
+import Info from './Info.js';
 import { Rating } from 'semantic-ui-react';
 import ReviewCommentBox from './ReviewCommentBox.js'
 import loadMore from './../loadMore.js';

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import SocialMediaFeed from './socialMediaFeed.js';
+import SocialMediaFeed from './SocialMediaFeed.js';
 import { Timeline } from 'react-twitter-widgets';
 import Post from './../userTimeline/Post.js';
 import sort from './../sort.js';
