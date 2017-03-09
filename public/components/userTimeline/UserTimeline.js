@@ -159,7 +159,6 @@ export default class UserTimeline extends React.Component {
               <h2 className='profile-user-name'>{this.state.firstName + "'s Profile "}</h2>
             </div>
         </div>
-        <span>Select a park to upload a photo to:</span>
         <Select
           className='selectParkImgUpload'
           name="form-field-name"
@@ -192,7 +191,6 @@ export default class UserTimeline extends React.Component {
         <button onClick={this.loadMorePhotos.bind(this)}>Load More Photos</button>
           <div id="listOfParks">
             <h4>Thoughts on Parks visit</h4>
-            <VisitedParks />
         </div>
       </div>
     );

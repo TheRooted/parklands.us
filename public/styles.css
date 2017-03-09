@@ -211,9 +211,8 @@ body {
 #userTimeLinePageContainer {
   position: relative;
   top: 60px;
-  margin: 30px;
-  width: 60%;
-  float: left;
+  width: 99%;
+  margin: 0 auto;
 }
 
 #listOfParks {
@@ -300,6 +299,7 @@ body {
 
 .post-container {
   width: 800px;
+  margin: 0 auto;
 }
 
 .timelinePhotoFeed {
