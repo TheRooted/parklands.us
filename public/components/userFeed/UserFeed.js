@@ -50,10 +50,8 @@ export default class UserFeed extends React.Component {
   render () {
     return (
       <div className="user-feed-container">
-        <div className='trending-header'>
-          <h1 className='trending-title'><strong>What's trending?</strong></h1>
-          <p className='trending-para'>Home to a collection of the trending photos and tweets across all National Parks. </p>
-        </div>
+        <div className='trending-title'>Trending</div>
+        <span className='trending-para'>A collection of the community's photos and tweets across all National Parks.</span>
         <div id="social-media-feed">
           <Timeline
           dataSource={{

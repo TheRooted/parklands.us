@@ -272,24 +272,28 @@ body {
   background: rgba(0, 0, 0, 0.5);
 }
 
-#user-feed-container {
-  display: block;
+.user-feed-container {
   position: relative;
-  top: 70px;
+  display: block;
+  top: 85px;
 }
 
 .trending-header {
+  position: relative;
+  display: block;
   margin-top: 75px;
-  margin-bottom: -50px;
+  margin-left: 60px;
 }
 
 .trending-title,
 .trending-para {
-  font-family: 'Istok Web';
+  font-family: 'Lato';
+  margin: 10px 10px 10px 60px;
 }
 
 .trending-title {
-  font-size: 45px;
+  font-size: 25px;
+  margin-right: 20px;
 }
 
 .trending-para {
@@ -717,7 +721,7 @@ input[type="submit"]:hover {
 
 /** DO NOT TOUCH ALL-FEED **/
 #all-feed {
-  margin-top: 90px;
+  margin-top: 20px;
   margin-left: 60px;
 }
 
