@@ -190,6 +190,7 @@ body {
     white-space: nowrap;
     overflow: hidden;
 }
+
 .grid-rating {
   text-align: center;
 }
@@ -711,12 +712,6 @@ input[type="submit"]:hover {
 
 .mapboxgl-ctrl.mapboxgl-ctrl-group {
   margin: 20px 0 0 0 !important;
-}
-
-.mapboxgl-canvas {
-  position: absolute;
-  width: 1534px !important;
-  height: 688px !important;
 }
 
 
