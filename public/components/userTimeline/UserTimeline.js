@@ -18,6 +18,7 @@ export default class UserTimeline extends React.Component {
       displayUpload: 'none',
       selectValue: 'Select...',
       parkId: null,
+      firstName: null,
       parkList: [
         {value: 'acadia', label: 'Acadia'},
         {value: 'american samoa', label: 'American Samoa'},
@@ -85,7 +86,8 @@ export default class UserTimeline extends React.Component {
     const context = this;
     axios.get('/api/session').then(function (res) {
       context.setState({
-        userId: res.data.id
+        userId: res.data.id,
+        firstName: res.data.firstName
       })
       axios.get('/api/userTimeline', {
         params: {
@@ -150,6 +152,12 @@ export default class UserTimeline extends React.Component {
   render() {
     return (
       <div id="userTimeLinePageContainer">
+        <div className='profile-hero'>
+          <img className='profile-hero-photo' src='http://static.thousandwonders.net/Bryce.Canyon.National.Park.original.5703.jpg' />
+            <div className='profile-user-box'>
+              <h2 className='profile-user-name'>{this.state.firstName + "'s Profile "}</h2>
+            </div>
+        </div>
         <span>Select a park to upload a photo to:</span>
         <Select
           className='selectParkImgUpload'
