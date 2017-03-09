@@ -91,19 +91,20 @@ export default class Post extends React.Component {
           <strong>{`${this.props.firstName} `}</strong>
           <p className="postDate">{moment(this.props.datePosted).format('MMMM Do YYYY')}</p>
         </div>
+        <div className="photo-container">
           <img className="timelinePhotoFeed" src={this.props.photoData} onClick={this.openLightbox.bind(this)} />
-        <p className="postDescription"><i>{this.props.description}</i></p>
-        <div className="commentline">
-          <Like className="likeTimeline" postId={this.props.postId} parkId={this.state.parkId} userId={this.state.userId}/>
-          <textarea
-            className="commentTimeline"
-            value={this.state.comment}
-            onChange={this._handleInputChange.bind(this)}>
-          </textarea>
-          <button
-            className="submitButton"
-            onClick={this._addComment.bind(this)}
-            >Comment</button>
+          <div className="commentline">
+            <Like className="likeTimeline" postId={this.props.postId} parkId={this.state.parkId} userId={this.state.userId}/>
+            <textarea
+              className="commentTimeline"
+              value={this.state.comment}
+              onChange={this._handleInputChange.bind(this)}>
+            </textarea>
+            <button
+              className="submitButton"
+              onClick={this._addComment.bind(this)}
+              >Comment</button>
+          </div>
         </div>
         <PostComment allComments={this.state.allComments} postId={this.props.postId} />
 

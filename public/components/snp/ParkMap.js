@@ -89,7 +89,7 @@ export default class ParkMap extends React.Component {
 
   render() {
     return (
-      <div id="map" style={{width:'240px', height:'240px', float:'left', marginRight:'14px', marginBottom:'5px', borderRadius:'5px'}}></div>
+      <div id="map" style={{width:'220px', height:'220px', float:'left', marginTop:'10px',marginRight:'14px', marginBottom:'5px', borderRadius:'5px'}}></div>
     )
   }
 }
