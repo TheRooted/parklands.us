@@ -203,45 +203,43 @@ body {
                 User Timeline
 ----------------------------------------------*/
 
-.timelinePage {
+/*.timelinePage {
   display: inline-block;
   width: 100%;
-}
+}*/
 
 #userTimeLinePageContainer {
   position: relative;
-  top: 60px;
-  width: 99%;
-  margin: 0 auto;
+  margin: 30px;
 }
-
+/*
 #listOfParks {
   height: 100px;
   width: 20%;
   float: right;
-  /*margin: 200px 120px;*/
+  margin: 200px 120px;
   margin: 200px 220px 100px 10px
-}
+}*/
 
-#listOfParks ul {
+/*#listOfParks ul {
   list-style-type: none;
-}
+}*/
 
-.visitedPark {
+/*.visitedPark {
   margin: 20px auto;
   border-radius: 4px;
   background-color: #f6f7f9;
   font-size: 15px;
-}
+}*/
 
-.selectParkImgUpload {
+/*.selectParkImgUpload {
   width: 40%;
   margin: 0 auto;
-}
+}*/
 
-.photo-fields {
+/*.photo-fields {
   margin: 0 auto;
-}
+}*/
 
 .profile-hero {
   position: relative;
@@ -304,7 +302,6 @@ body {
 
 .post-container {
   width: 800px;
-  margin: 0 auto;
 }
 
 .timelinePhotoFeed {
@@ -736,13 +733,14 @@ input[type="submit"]:hover {
   border: 1px solid #fff;
   background-color: #f3f3f3;
   overflow: auto;
-  max-height: 180px;
-}
-
-
+  max-height: 65px;
 }
 
 .comment-container {
+  position: relative;
+}
+
+.comment {
   position: relative;
   padding: 10px;
   border: 2px solid #fff;
