@@ -694,22 +694,6 @@ select {
   opacity: 1;
 }
 
-.btn-review {
-  color: white;
-  background-color: #49769c;
-  border-radius: 5px;
-  width: 70px;
-}
-
-.btn-review:hover {
-  color: white;
-  background-color: #417aee;
-  font-size: 15px;
-  border-radius: 5px;
-  width: 70px;
-}
-
-
 .signup-link,
 .signin-link {
   position: inline-block;
@@ -1037,6 +1021,26 @@ select {
   width: 350px;
   margin-top: 5px;
 }
+
+.btn-review {
+  color: white;
+  background-color: #49769c;
+  border-radius: 5px;
+  width: 70px;
+}
+
+.btn-review:hover {
+  color: white;
+  background-color: #417aee;
+  font-size: 15px;
+  border-radius: 5px;
+  width: 70px;
+}
+
+.textarea-review {
+  border-radius: 6px;
+}
+
 
 /**************************
           PROFILE
