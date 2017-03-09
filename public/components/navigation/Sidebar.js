@@ -19,6 +19,11 @@ class Sidebar extends React.Component {
           user: res.data,
           signedIn: true
         })
+      } else {
+        context.setState({
+          user: {},
+          signedIn: false
+        })
       }
     })
   }
@@ -47,10 +52,8 @@ class Sidebar extends React.Component {
 
   handleSignout() {
     var context = this;
-    axios.post('/signout', context.state.user).then(function(res) {
-      if (res.request.responseURL === 'http://localhost:3000/signin' || res.request.responseURL === 'http://127.0.0.1:3000/signin') {
-        browserHistory.push('/signin');
-      }
+    axios.post('/signout', {}).then(function(res) {
+      browserHistory.push('/signin');
     });
   }
 
