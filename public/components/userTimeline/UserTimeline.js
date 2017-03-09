@@ -80,6 +80,7 @@ export default class UserTimeline extends React.Component {
         {value: 'yellowstone', label: 'Yellowstone'},
         {value: 'yosemite', label: 'Yosemite'},
         {value: 'zion', label: 'Zion'}],
+      loadMoreStyle: 'inline-block'
     };
   }
 
@@ -98,9 +99,26 @@ export default class UserTimeline extends React.Component {
       .then(function (res) {
         var sortedRes = sort(res.data, 'created');
         var newFeed = [];
-        for (var i = 0; i < context.state.photoCount; i++) {
-          newFeed.push(sortedRes.shift());
+        var morePhotos = true;
+        if (sortedRes.length > context.state.photoCount) {
+          for (var i = 0; i < context.state.photoCount; i++) {
+            newFeed.push(sortedRes.shift());
+          }
+        } else {
+          for (var i = 0; i < sortedRes.length; i++) {
+            newFeed.push(sortedRes.shift());
+          }
         }
+        //if no more photos to load get rid of load more button
+        if (sortedRes.length === 0) {
+          var morePhotos = false;
+        }
+        if (!morePhotos) {
+          context.setState({
+            loadMoreStyle: 'none'
+          })
+        }
+
         context.setState({
           remainingActivity: sortedRes,
           displayedActivity: newFeed,
@@ -111,6 +129,12 @@ export default class UserTimeline extends React.Component {
 
   loadMorePhotos() {
     var arrays = loadMore(this.state.photoCount, this.state.displayedActivity, this.state.remainingActivity);
+    //check if load more button should display
+    if (arrays[1].length === 0) {
+      this.setState({
+        loadMoreStyle: 'none'
+      })
+    }
     this.setState({
       displayedActivity: arrays[0],
       remainingActivity: arrays[1],
@@ -151,6 +175,7 @@ export default class UserTimeline extends React.Component {
   }
 
   render() {
+    console.log('displayedActivity', this.state.displayedActivity);
     return (
       <div id="userTimeLinePageContainer">
         <div className='profile-hero'>
@@ -174,7 +199,7 @@ export default class UserTimeline extends React.Component {
           parkId={this.state.parkId}
         />
         <div className="timeline-post-container">
-          {
+          { 
             this.state.displayedActivity.map((post,i) =>
               <Post
                 photoData={post.filePath}
@@ -192,7 +217,7 @@ export default class UserTimeline extends React.Component {
             )
           }
         </div>
-        <button onClick={this.loadMorePhotos.bind(this)}>Load More Photos</button>
+        <button onClick={this.loadMorePhotos.bind(this)} style={{display: this.state.loadMoreStyle}}>Load More Photos</button>
       </div>
     );
   }

@@ -14,6 +14,7 @@ export default class UserFeed extends React.Component {
       remainingFeed: [],
       photoCount: 10,
       newFeed: [],
+      loadMorePhotosStyle: 'inline-block'
     };
   }
 
@@ -27,6 +28,9 @@ export default class UserFeed extends React.Component {
       for (var i = 0; i < context.state.photoCount; i++) {
         newFeed.push(sortedRes.shift());
       }
+      if (sortedRes.length === 0) {
+        context.setState({loadMorePhotosStyle: 'none'})
+      }
       context.setState({
         remainingFeed: sortedRes,
         newFeed: newFeed
@@ -36,6 +40,9 @@ export default class UserFeed extends React.Component {
 
   loadMorePhotos() {
     var arrays = loadMore(this.state.photoCount, this.state.newFeed, this.state.remainingFeed);
+    if (arrays[1].length === 0) {
+      this.setState({loadMorePhotosStyle: 'none'})
+    }
     this.setState({
       newFeed: arrays[0],
       remainingFeed: arrays[1],
@@ -84,7 +91,7 @@ export default class UserFeed extends React.Component {
               />
             )
           }
-          <button className="btn-auth" onClick={this.loadMorePhotos.bind(this)}>Load More</button>
+          <button className="btn-auth" onClick={this.loadMorePhotos.bind(this)} style={{display: this.state.loadMorePhotosStyle}}>Load More</button>
         </div>
       </div>
     );

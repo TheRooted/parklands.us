@@ -13,18 +13,18 @@ export default class Signup extends React.Component {
   
   validateForm(event) {
     var user = {
-      first: this.refs.firstNameSU.value,
-      last: this.refs.lastNameSU.value,
+      firstName: this.refs.firstNameSU.value,
+      lastName: this.refs.lastNameSU.value,
       email: this.refs.emailSU.value,
       password: this.refs.passwordSU.value
     }
     // Once first name field is filled
-    if (user.first) {
+    if (user.firstName) {
       var el1 = document.getElementById('first-input');
       el1.className = 'auth-fields';
     }
     // Once last name field is filled
-    if (user.last) {
+    if (user.lastName) {
       var el2 = document.getElementById('last-input');
       el2.className = 'auth-fields';
     }
@@ -38,13 +38,13 @@ export default class Signup extends React.Component {
       var el4 = document.getElementById('password-input');
       el4.className = 'auth-fields';
     }
-    if (!user.first) {
+    if (!user.firstName) {
       var el1 = document.getElementById('first-input');
       el1.className += ' missing';
       el1.placeholder = 'Please supply a first name.'
       event.preventDefault();
     }
-    if (!user.last) {
+    if (!user.lastName) {
       var el2 = document.getElementById('last-input');
       el2.className += ' missing';
       el2.placeholder = 'Please supply a last name.'
@@ -62,7 +62,7 @@ export default class Signup extends React.Component {
       el4.placeholder = 'Please supply a valid password.'
       event.preventDefault();
     }
-    if (user.first && user.last && user.email && user.password) {
+    if (user.firstName && user.lastName && user.email && user.password) {
       this.signupRequest(user);
     }
   }

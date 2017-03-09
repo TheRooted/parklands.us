@@ -45,6 +45,8 @@ export default class Snp extends React.Component {
         firstName: 'null',
         email: 'null@gmail.com'
       },
+      loadMorePhotosStyle: 'inline-block',
+      loadMoreCommentsStyle: 'inline-block',
     }
   }
 
@@ -123,6 +125,11 @@ export default class Snp extends React.Component {
           if (res.data) {
             var sortedPhotos = sort(res.data, 'activity');
             var arrays = loadMore(context.state.photoCount, [], sortedPhotos);
+            if (arrays[1].length === 0) {
+              context.setState({loadMorePhotosStyle: 'none'})
+            } else {
+              context.setState({loadMorePhotosStyle: 'inline-block'})
+            }
             context.setState({
               photosDisplay: arrays[0],
               photosRemaining: arrays[1],
@@ -134,6 +141,11 @@ export default class Snp extends React.Component {
             var commentArr = res.data.reverse();
             var sortedComment = sort(res.data, 'activity');
             var arrays = loadMore(context.state.photoCount, [], sortedComment);
+            if (arrays[1].length === 0) {
+              context.setState({loadMoreCommentsStyle: 'none'})
+            } else {
+              context.setState({loadMoreCommentsStyle: 'inline-block'})
+            }
             context.setState({
               commentsDisplay: arrays[0],
               commentsRemaining: arrays[1],
@@ -170,6 +182,9 @@ export default class Snp extends React.Component {
 
   loadMorePhotos () {
     var arrays = loadMore(this.state.photoCount, this.state.photosDisplay, this.state.photosRemaining);
+    if (arrays[1].length === 0) {
+      this.setState({loadMorePhotosStyle: 'none'})
+    }
     this.setState({
       photosDisplay: arrays[0],
       photosRemaining: arrays[1],
@@ -178,6 +193,9 @@ export default class Snp extends React.Component {
 
   loadMoreComments () {
     var arrays = loadMore(this.state.photoCount, this.state.commentsDisplay, this.state.commentsRemaining);
+    if (arrays[1].length === 0) {
+      this.setState({loadMoreCommentsStyle: 'none'})
+    }
     this.setState({
       commentsDisplay: arrays[0],
       commentsRemaining: arrays[1],
@@ -213,7 +231,7 @@ export default class Snp extends React.Component {
                 length={context.state.photosDisplay.length}
               />
             )}
-            <button onClick={context.loadMorePhotos.bind(context)}>Load More</button>
+            <button onClick={context.loadMorePhotos.bind(context)} style={{display: context.state.loadMorePhotosStyle}}>Load More</button>
           </div>
         </div>
         )
@@ -276,7 +294,7 @@ export default class Snp extends React.Component {
               {context.state.commentsDisplay.map((comment, i) =>
                 <Parkcomment parkId={comment.parkId} userId={comment.userId} firstName={comment.firstName} text={comment.text} datePosted={comment.createdAt} key={i}/>
               )}
-              <button onClick={context.loadMoreComments.bind(context)}>Load More</button>
+              <button onClick={context.loadMoreComments.bind(context)} style={{display: context.state.loadMoreCommentsStyle}}>Load More</button>
             </div>
           </div>
         )

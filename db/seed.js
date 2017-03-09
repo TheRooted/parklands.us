@@ -411,7 +411,7 @@ request(url, function (error, response, html) {
         'https://w-dog.net/wallpapers/6/8/344636208569138/brothers-wolves-denali-national-park-central-alaska.jpg',
         'https://www.walldevil.com/wallpapers/a23/alaska-details-christmas-wallpapers-park-national-caribou-mount-mckinley-denali-travel.jpg',
         'https://w-dog.net/wallpapers/10/14/449266994444348/denali-national-park-alaska-denali-national-park-alaska-northern-lights-forest-winter-snow-tree-spruce.jpg',
-        'http://wpnature.com/wp-content/uploads/2016/09/mountain-september-storm-denali-burning-national-park-white-sky-trees-snowy-peaks-yellow-forest-beautiful-valley-orange-clouds-alaska-damra-wallpapers-full-hd.jpg'
+        'http://eskipaper.com/images/denali-national-park-wallpaper-2.jpg'
       ];
       var greatSmokyPics = [
         'http://www.smokymtndreams.com/blog/wp-content/uploads/2016/04/smokieslarge.jpg',
@@ -858,7 +858,7 @@ for (var i = 1 ; i < users.length + 1; i++) {
       where: {
         userId: i,
         parkId: j,
-        ratingVal: Math.ceil(Math.random() * 5)
+        ratingVal: Math.ceil(2 + (Math.random() * 3))
       }
     }))
   }
