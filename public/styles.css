@@ -713,6 +713,12 @@ input[type="submit"]:hover {
   margin: 20px 0 0 0 !important;
 }
 
+.mapboxgl-canvas {
+  position: absolute;
+  width: 1534px !important;
+  height: 688px !important;
+}
+
 
 /**************************
         PARK PAGE
