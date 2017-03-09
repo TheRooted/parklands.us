@@ -40,16 +40,18 @@ export default class Grid extends React.Component {
 
   render () {
     return (
-      <div className='grid'>
+      <div className='grid-container'>
         <div className='grid-underbar'>
-          <div className='grid-header'>Explore the Parks</div>
+        <div className='grid-header'>Explore the Parks</div>
           <button id="grid-alph" className="grid-btn" onClick={this.sortAlphabetical.bind(this)}>Alphabetical</button>
           <span> | </span>
           <button id="grid-pop" className="grid-btn" onClick={this.sortRated.bind(this)}>Highest Rated</button>
         </div>
-        {this.state.parks.map((park, i) =>
-          <GridElement key={i} parkName={park.name} parkPhoto={park.photo} parkRating={park.rating} linkToPage={this.linkToPage} />
-        )}
+        <div className='grid'>
+          {this.state.parks.map((park, i) =>
+            <GridElement key={i} parkName={park.name} parkPhoto={park.photo} parkRating={park.rating} linkToPage={this.linkToPage} />
+          )}
+        </div>
       </div>
     )
   }
