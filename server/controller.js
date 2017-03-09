@@ -195,6 +195,22 @@ module.exports = {
     }
   },
 
+  visitedpark: {
+    get: function (req, res) {
+      var userId = req.query.userId;
+      console.log("userId is ", userId);
+      db.models.post.findAll({
+        where: {
+          userId: userId
+        }
+      })
+      .then(function (visitedpark) {
+        console.log('visitedpark data is', visitedpark);
+        res.send(visitedpark);
+      });
+    }
+  },
+
   photoLike: {
     post: function (req, res) {
       db.models.vote.findOne({where: {

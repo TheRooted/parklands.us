@@ -5,6 +5,7 @@ import ImageUpload from './ImageUpload.js';
 import sort from './../sort.js';
 import loadMore from './../loadMore.js';
 import Select from 'react-select';
+import VisitedParks from './VisitedParks.js';
 
 export default class UserTimeline extends React.Component {
 
@@ -166,8 +167,12 @@ export default class UserTimeline extends React.Component {
           options={this.state.parkList}
           onChange={this.selectParkChange.bind(this)}
         />
-        <ImageUpload className="ImageUpload" addPhoto={this.addPhoto.bind(this)} displayUpload={this.state.displayUpload} parkId={this.state.parkId}/>
-        {console.log(this.state.displayedActivity)}
+        <ImageUpload
+          className="ImageUpload"
+          addPhoto={this.addPhoto.bind(this)}
+          displayUpload={this.state.displayUpload}
+          parkId={this.state.parkId}
+        />
         <div className="timeline-post-container">
           {
             this.state.displayedActivity.map((post,i) =>
@@ -183,7 +188,11 @@ export default class UserTimeline extends React.Component {
               />
             )
           }
-          <button onClick={this.loadMorePhotos.bind(this)}>Load More Photos</button>
+        </div>
+        <button onClick={this.loadMorePhotos.bind(this)}>Load More Photos</button>
+          <div id="listOfParks">
+            <h4>Thoughts on Parks visit</h4>
+            <VisitedParks />
         </div>
       </div>
     );

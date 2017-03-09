@@ -210,15 +210,29 @@ body {
 
 #userTimeLinePageContainer {
   position: relative;
+  top: 60px;
   margin: 30px;
   width: 60%;
   float: left;
 }
 
-#listOfparks {
+#listOfParks {
+  height: 100px;
   width: 20%;
   float: right;
-  display: inline-block;
+  /*margin: 200px 120px;*/
+  margin: 200px 220px 100px 10px
+}
+
+#listOfParks ul {
+  list-style-type: none;
+}
+
+.visitedPark {
+  margin: 20px auto;
+  border-radius: 4px;
+  background-color: #f6f7f9;
+  font-size: 15px;
 }
 
 .selectParkImgUpload {
