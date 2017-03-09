@@ -596,8 +596,8 @@ select {
   font-size: 12px;
   text-decoration: none;
   outline: none;
-  color: #555;
-  background-color: rgba(212,212,212,0.85);
+  color: white;
+  background-color: #49769c;
   border: none;
   border-radius: 6px;
   text-decoration: none;
@@ -606,7 +606,7 @@ select {
 
 .photo-fields .submitButton {
   margin-left: 25px;
-  background-color: #3d698e;
+  background-color: #49769c;
   color: white;
   font-size: 16px
 }
@@ -617,11 +617,11 @@ select {
 }
 
 .submitButton:hover {
-  background-color: #cecece;
+  background-color: #417aee;
 }
 
 .submitButton:active {
-  background-color: #3e8e41;
+  background-color: #417aee;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
@@ -693,6 +693,22 @@ select {
   color: #555;
   opacity: 1;
 }
+
+.btn-review {
+  color: white;
+  background-color: #49769c;
+  border-radius: 5px;
+  width: 70px;
+}
+
+.btn-review:hover {
+  color: white;
+  background-color: #417aee;
+  font-size: 15px;
+  border-radius: 5px;
+  width: 70px;
+}
+
 
 .signup-link,
 .signin-link {
