@@ -520,6 +520,12 @@ input[type="submit"]:hover {
   border-radius: 4px;
 }
 
+.imageUploadMessage {
+  margin: 0 auto;
+  width: 300px;
+  font-size: 20px;
+}
+
 .fileInput {
   border-bottom: 4px solid #4267b2;
   border-right: 4px solid #4267b2;

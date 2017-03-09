@@ -159,6 +159,7 @@ export default class UserTimeline extends React.Component {
               <h2 className='profile-user-name'>{this.state.firstName + "'s Profile "}</h2>
             </div>
         </div>
+        <div className="imageUploadMessage">Select park to upload a photo</div>
         <Select
           className='selectParkImgUpload'
           name="form-field-name"
