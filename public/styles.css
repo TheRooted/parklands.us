@@ -786,7 +786,6 @@ input[type="submit"]:hover {
 
 .hero-photo {
   position: relative;
-/*  max-height: 450px;*/
   height: auto;
   width: 100%;
 }
@@ -1069,9 +1068,5 @@ input[type="submit"]:hover {
   font-size: 50px;
   font-weight: 600;
   z-index: 100;
-}
-
-.ui.green.basic.circular.icon.button {
-
 }
 
