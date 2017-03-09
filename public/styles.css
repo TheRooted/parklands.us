@@ -786,8 +786,9 @@ input[type="submit"]:hover {
 
 .hero-photo {
   position: relative;
+/*  max-height: 450px;*/
+  height: auto;
   width: 100%;
-  max-height: 400px;
 }
 
 .park-title {
