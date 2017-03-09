@@ -73,7 +73,7 @@ export default class Signup extends React.Component {
 
   signupRequest(user) {
     axios.post('/signup', user).then((res) => {
-      if (res.request.responseURL === 'http://localhost:3000/signup' || res.request.responseURL === 'http://127.0.0.1:3000/signup') {
+      if (res.request.responseURL === 'http://localhost:3000/signup' || res.request.responseURL === 'http://127.0.0.1:3000/signup' || res.request.responseURL === 'http://parklands.us/signup') {
         this.showAlert();
       } else {
         browserHistory.push('/explore');
