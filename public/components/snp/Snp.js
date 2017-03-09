@@ -304,7 +304,6 @@ export default class Snp extends React.Component {
         <ParkMap park={this.state.park} />
         <section className="park-info">
           <h3>About the park</h3>
-          <br/>
           {this.state.park.info}
         </section>
         <hr/>
