@@ -761,12 +761,12 @@ select {
 
 .comment-container {
   position: relative;
-  padding: 7px;
 }
 
 .comment {
   position: relative;
-  /* no padding here please 8*/
+  padding: 10px;
+  border: 2px solid #fff;
 }
 
 .commentHR {
