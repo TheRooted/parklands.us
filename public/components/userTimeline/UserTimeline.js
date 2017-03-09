@@ -217,7 +217,7 @@ export default class UserTimeline extends React.Component {
             )
           }
         </div>
-        <button onClick={this.loadMorePhotos.bind(this)} style={{display: this.state.loadMoreStyle}}>Load More Photos</button>
+        <button className="btn-auth" onClick={this.loadMorePhotos.bind(this)} style={{display: this.state.loadMoreStyle}}>Load More</button>
       </div>
     );
   }

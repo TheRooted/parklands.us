@@ -582,7 +582,6 @@ select {
   position: relative;
   display: block;
   top: 14px;
-  padding-left: 10px;
 }
 
 .submitButton {
@@ -752,7 +751,7 @@ select {
 .comment-box {
   position: relative;
   display: block;
-  margin: 40px 0;
+  margin: 20px 0 40px 0;
   width: 800px;
   background-color: #f3f3f3;
   border: 1px solid #fff;
