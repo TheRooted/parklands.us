@@ -68,7 +68,8 @@ export default class UserFeed extends React.Component {
           }}
           options={{
             username: 'jackieNPS',
-            height: '880'
+            height: '880',
+            borderColor: '292b30'
           }}
           />
         </div>

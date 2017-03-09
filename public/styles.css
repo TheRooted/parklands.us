@@ -734,7 +734,8 @@ select {
   right: 30px;
   width: 25%;
   z-index: 9;
-}
+  border: .7px solid #eff3f9;
+  border-radius: 5px;
 
 
 /**************************
@@ -1092,4 +1093,3 @@ select {
   font-weight: 600;
   z-index: 100;
 }
-
