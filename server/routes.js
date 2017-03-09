@@ -5,8 +5,8 @@ var path = require('path');
 
 
 //seed online db
-var seed = require('./../db/seed.js');
-router.get(path.resolve(__dirname, '/api/seedDB'), seed);
+// var seed = require('./../db/seed.js');
+// router.get(path.resolve(__dirname, '/api/seedDB'), seed);
 // Routes for signup, signin, and signout
 
 router.post(path.resolve(__dirname, '/signup'), passport.authenticate('local-signup', { successRedirect: '/mapview', failureRedirect: '/signup' }));
