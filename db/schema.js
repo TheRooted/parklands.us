@@ -2,8 +2,9 @@ var Sequelize = require('sequelize');
 var cfg = require('./dbConfig.js');
 
 var sequelize = new Sequelize(cfg.myLocalDB, cfg.myLocalDBRole, cfg.myLocalDBPW, {
-  host: 'parklands-deploy.cb7jjlsrmerv.us-west-1.rds.amazonaws.com',
-  // host: 'localhost',
+  //LIVE FIXME: switch comment out on 6 and 7
+  // host: 'parklands-deploy.cb7jjlsrmerv.us-west-1.rds.amazonaws.com',
+  host: 'localhost',
   dialect: 'postgres',
 
   pool: {

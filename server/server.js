@@ -37,8 +37,8 @@ app.get('*', (req, res, next) => {
    res.sendFile(path.resolve(__dirname, '../public/index.html'));
 });
 
-
-var port = process.env.PORT || 80;
+//LIVE FIXME: change port to 80
+var port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log('Now listening on port: ', port);

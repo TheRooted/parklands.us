@@ -1,3 +1,4 @@
+//LIVE FIXME: uncomment out below line if need to seed db
 // module.exports = function () {
 var db = require('./schema');
 var cheerio = require('cheerio');
@@ -893,6 +894,7 @@ Promise.all(ratings).then(function(parkRatings) {
     //update the park with the average rating
   Promise.all(parkRatingsArray);
 });
+//LIVE FIXME: uncomment out below line if need to seed db
 // }
 
 

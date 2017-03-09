@@ -3,8 +3,8 @@ var passport = require('./passport');
 var router = require('express').Router();
 var path = require('path');
 
-
 //seed online db
+//LIVE FIXME: uncomment 2 lines below if need to seed
 // var seed = require('./../db/seed.js');
 // router.get(path.resolve(__dirname, '/api/seedDB'), seed);
 // Routes for signup, signin, and signout

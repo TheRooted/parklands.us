@@ -1,5 +1,6 @@
 module.exports = {
   myLocalDB: 'parklands',
-  myLocalDBRole: 'lilb',
-  myLocalDBPW: 'blackjack',
+  //LIVE FIXME: uncomment out 2 lines below
+  // myLocalDBRole: 'lilb',
+  // myLocalDBPW: 'blackjack',
 };

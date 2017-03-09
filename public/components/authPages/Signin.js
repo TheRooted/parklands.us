@@ -51,6 +51,7 @@ export default class Signin extends React.Component {
 
   signinRequest(user) {
     axios.post('/signin', user).then((res) => {
+      //LIVE FIXME: make sure 'http://parklands.us/signin' is an option below
       if (res.request.responseURL === 'http://localhost:3000/signin' || res.request.responseURL === 'http://127.0.0.1:3000/signin' || res.request.responseURL === 'http://parklands.us/signin') {
         this.showAlert();
       } else {
