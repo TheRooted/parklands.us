@@ -284,6 +284,18 @@ module.exports = {
     }
   },
 
+  parkNameFromParkId: {
+    get: function (req, res) {
+      db.models.park.findOne({
+        where: {
+          id: req.query.parkId
+        }
+      }).then(function(result){
+        res.send({parkName: result.dataValues.name})
+      })
+    }
+  },
+
   userNameFromPostId: {
     get: function (req, res) {
       // req.query === postId

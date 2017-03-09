@@ -185,6 +185,8 @@ export default class UserTimeline extends React.Component {
                 description={post.description}
                 firstName={post.firstName}
                 index={i}
+                view={'profile-view'}
+                parkId={post.parkId}
               />
             )
           }

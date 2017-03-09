@@ -729,6 +729,11 @@ input[type="submit"]:hover {
   width: 800px;
   border: 1px solid #fff;
   background-color: #f3f3f3;
+  overflow: auto;
+  max-height: 180px;
+}
+
+
 }
 
 .comment-container {

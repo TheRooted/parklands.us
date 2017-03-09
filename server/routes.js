@@ -22,6 +22,7 @@ router.get(path.resolve(__dirname, '/api/park/:parkName'), controller.park.get);
 router.get(path.resolve(__dirname, '/api/parkPhoto/:id'), controller.parkPhoto.get);
 router.get(path.resolve(__dirname, '/api/parkPhotoPost/:id'), controller.parkPhotoPost.get);
 router.get(path.resolve(__dirname, '/api/parkComment/:id'), controller.parkComment.get);
+router.get(path.resolve(__dirname, '/api/parkNameFromParkId'), controller.parkNameFromParkId.get);
 
 //Routes for rating average on SNP
 router.get(path.resolve(__dirname, '/api/parkAverageRating/:id'), controller.parkAverageRating.get);

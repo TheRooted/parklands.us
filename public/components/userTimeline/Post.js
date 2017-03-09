@@ -24,6 +24,8 @@ export default class Post extends React.Component {
       photoIndex: this.props.index,
       originalIndex: this.props.index,
       isOpen: false,
+      view: this.props.view,
+      parkName: null,
     };
   }
 
@@ -34,6 +36,7 @@ export default class Post extends React.Component {
         userId: res.data.id
       })
     })
+
     axios.get('/api/postcomment', {
       params: {
         postId: context.props.postId
@@ -45,6 +48,34 @@ export default class Post extends React.Component {
         allComments: sortedRes
       });
     });
+
+    axios.get('/api/parkNameFromParkId', {params:
+      {
+        parkId: context.props.parkId
+      }
+    }).then(function(res) {
+      var name = context.capFirstLetter(res.data.parkName) + ' National Park';
+      context.setState({parkName: name});
+    })
+  }
+
+  capFirstLetter(string) {
+    string = string.split(' ');
+    string.forEach(function(word, index, array) {
+      if (word !== 'of' && word !== 'the' && word !== 'and') {
+        array[index] = word.charAt(0).toUpperCase() + word.slice(1);
+      }
+    })
+    string = string.join(' ');
+    //Wrangell-St. Elias code:
+    string = string.split('–');
+    string.forEach(function(word, index, array) {
+      if (word !== 'of' && word !== 'the' && word !== 'and') {
+        array[index] = word.charAt(0).toUpperCase() + word.slice(1);
+      }
+    });
+    string = string.join('–');
+    return string;
   }
 
   convertDate(date) {
@@ -88,7 +119,7 @@ export default class Post extends React.Component {
     return (
       <div className="post-container">
         <div className='postDescription'>
-          <strong>{`${this.props.firstName} `}</strong>
+          <strong>{(this.state.view === 'profile-view') ? this.state.parkName  : this.props.firstName + ' shared:'}</strong>
           <p className="postDate">{moment(this.props.datePosted).format('MMMM Do YYYY')}</p>
         </div>
         <div className="photo-container">

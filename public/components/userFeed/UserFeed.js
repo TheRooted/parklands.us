@@ -80,6 +80,8 @@ export default class UserFeed extends React.Component {
                 description={feed.description}
                 firstName={feed.firstName}
                 index={i}
+                view={'trending-view'}
+                parkId={feed.parkId}
               />
             )
           }
