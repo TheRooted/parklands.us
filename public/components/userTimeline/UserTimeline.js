@@ -193,9 +193,6 @@ export default class UserTimeline extends React.Component {
           }
         </div>
         <button onClick={this.loadMorePhotos.bind(this)}>Load More Photos</button>
-          <div id="listOfParks">
-            <h4>Thoughts on Parks visit</h4>
-        </div>
       </div>
     );
   }

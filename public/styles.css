@@ -243,6 +243,7 @@ body {
 
 .profile-hero {
   position: relative;
+  display: block;
   width: 100%;
 }
 
@@ -250,7 +251,6 @@ body {
   border-radius: 5px;
   position: relative;
   width: 100%;
-  z-index: -1;
 }
 
 .profile-user-name {
@@ -538,7 +538,7 @@ input[type="submit"]:hover {
   cursor: pointer;
   border-radius: 5px;
   color: #4267b2;
-  width: 14%;
+  width: 240px;
   height: 44px;
 }
 
@@ -710,7 +710,7 @@ input[type="submit"]:hover {
   top: 80px;
   right: 30px;
   width: 25%;
-  z-index: 100;
+  z-index: 9;
 }
 
 
@@ -787,7 +787,7 @@ input[type="submit"]:hover {
 .hero-photo {
   position: relative;
   width: 100%;
-  z-index: -1;
+  max-height: 400px;
 }
 
 .park-title {
@@ -1026,7 +1026,7 @@ input[type="submit"]:hover {
   height: 44px;
   padding-left: 10px;
   border-radius: 6px;
-  width: 23%;
+  width: 400;
   border-color: #4267b2;
 }
 
@@ -1069,3 +1069,8 @@ input[type="submit"]:hover {
   font-weight: 600;
   z-index: 100;
 }
+
+.ui.green.basic.circular.icon.button {
+
+}
+
