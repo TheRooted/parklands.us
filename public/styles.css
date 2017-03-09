@@ -579,7 +579,7 @@ select {
 .commentline {
   position: relative;
   display: block;
-  top: -60px;
+  top: 14px;
   padding-left: 10px;
 }
 
