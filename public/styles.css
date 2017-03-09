@@ -739,11 +739,13 @@ select {
   right: 30px;
   width: 25%;
   z-index: 9;
+  border: 1px solid #dae0ed;
+  border-radius: 5px;
 }
 
 
 /**************************
-        TRENDING
+        PROFILE
 ***************************/
 
 /** DO NOT TOUCH ALL-FEED **/
@@ -760,13 +762,45 @@ select {
   background-color: #f3f3f3;
   border: 1px solid #fff;
   overflow: auto;
-  max-height: 130px;
+  max-height: 150px;
 }
 
 .comment-container {
   position: relative;
+  background-color: #d5dfef;
+  border: 1px solid white;
   padding: 10px;
 }
+
+/******/
+
+#all-feed-trending {
+  width: 65%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  display: inline-flex;
+  position: relative;
+}
+
+.post-container-trending {
+   width: 45%;
+   display: inline-block;
+   position: relative;
+}
+
+.photo-container-trending {
+   /* height: 600px; */
+}
+
+.commentlineTrending {
+   position: relative;
+   display: block;
+   top: 14px;
+   padding-left: 10px;
+   width: 100%; <--- this one i think
+}
+/*****/
 
 .comment {
   position: relative;
@@ -1016,7 +1050,7 @@ select {
 
 .post-comment-scroll {
   overflow: auto;
-  height: 150px;
+  height: 130px;
   width: 350px;
   margin-top: 5px;
 }
@@ -1115,4 +1149,3 @@ select {
   font-weight: 600;
   z-index: 100;
 }
-
