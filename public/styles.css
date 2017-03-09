@@ -530,7 +530,7 @@ input[type="submit"]:hover {
   cursor: pointer;
   border-radius: 5px;
   color: #4267b2;
-  width: 240px;
+  width: 14%;
   height: 44px;
 }
 
@@ -1011,7 +1011,7 @@ input[type="submit"]:hover {
   height: 44px;
   padding-left: 10px;
   border-radius: 6px;
-  width: 400px;
+  width: 23%;
   border-color: #4267b2;
 }
 

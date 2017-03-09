@@ -5,7 +5,7 @@ import ImageUpload from './ImageUpload.js';
 import sort from './../sort.js';
 import loadMore from './../loadMore.js';
 import Select from 'react-select';
-import VisitedParks from './VisitedParks.js';
+//import VisitedParks from './VisitedParks.js';
 
 export default class UserTimeline extends React.Component {
 
