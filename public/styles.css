@@ -304,6 +304,10 @@ body {
   width: 800px;
 }
 
+.timeline-post-container .post-container {
+  margin: 0 auto;
+}
+
 .timelinePhotoFeed {
   width: 800px;
   height: 600px;
