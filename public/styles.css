@@ -17,8 +17,8 @@ body {
 .app-children {
   height: auto;
   width: 99%;
-/*    background: #000;*/
-  background: rgba(148, 120, 101, 0.05) !important;
+  background: #fff;
+/*  background: rgba(148, 120, 101, 0.05) !important;*/
 }
 
 /*---------------------------------------------
@@ -276,6 +276,7 @@ body {
   position: relative;
   display: block;
   top: 85px;
+  margin-bottom: 120px;
 }
 
 .trending-header {
@@ -333,7 +334,7 @@ body {
 .commentTimeline {
   position: relative;
   display: inline-block;
-  border: none;
+  border: 1px solid #999;
   border-radius: 4px;
   margin-right: 8px;
   height: 35px;
@@ -712,6 +713,7 @@ input[type="submit"]:hover {
   top: 80px;
   right: 30px;
   width: 25%;
+  z-index: 100;
 }
 
 

@@ -32,7 +32,7 @@ export default class Comment extends Component {
     return (
       <div className="comment-container">
         <div className='comment'>
-          <strong>{`${this.state.user.firstName} - `}</strong>
+          <strong className='comment-name'>{`${this.state.user.firstName} - `}</strong>
           <small>{moment.utc(this.props.dateTime).fromNow()}</small>
           <p>{this.props.text}</p>
         </div>
