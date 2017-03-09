@@ -322,6 +322,7 @@ body {
   display: inline-block;
   vertical-align: top;
   margin-right: 5px;
+  width: 134px;
 }
 
 .likeTimeline {
@@ -335,11 +336,12 @@ body {
 .commentTimeline {
   position: relative;
   display: inline-block;
+  height: 35px;
+  width: 564px;
+  padding: 5px;
+  margin-right: 8px;
   border: 1px solid #999;
   border-radius: 4px;
-  margin-right: 8px;
-  height: 35px;
-  width: 550px;
 }
 
 #userTimeLineContainer {
@@ -748,15 +750,14 @@ select {
 }
 
 .comment-box {
-  margin-top: 15px;
   position: relative;
   display: block;
-  margin-bottom: 40px;
+  margin: 40px 0;
   width: 800px;
-  border: 1px solid #fff;
   background-color: #f3f3f3;
+  border: 1px solid #fff;
   overflow: auto;
-  max-height: 65px;
+  max-height: 130px;
 }
 
 .comment-container {
