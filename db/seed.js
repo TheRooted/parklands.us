@@ -1,4 +1,4 @@
-// module.exports = function () {
+module.exports = function () {
 var db = require('./schema');
 var cheerio = require('cheerio');
 var request = require('request');
@@ -893,6 +893,6 @@ Promise.all(ratings).then(function(parkRatings) {
     //update the park with the average rating
   Promise.all(parkRatingsArray);
 });
-// }
+}
 
 
