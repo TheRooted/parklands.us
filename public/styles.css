@@ -232,10 +232,10 @@ body {
   font-size: 15px;
 }*/
 
-/*.selectParkImgUpload {
-  width: 40%;
+.selectParkImgUpload {
+  width: 800px;
   margin: 0 auto;
-}*/
+}
 
 /*.photo-fields {
   margin: 0 auto;
@@ -351,6 +351,7 @@ body {
   text-align: center;
   display: inline-block;
   width: 100%;
+  padding: 20px;
 }
 
 
@@ -527,9 +528,15 @@ input[type="submit"]:hover {
 }
 
 .imageUploadMessage {
-  margin: 0 auto;
+  margin: 35px auto 10px auto;
   width: 300px;
   font-size: 20px;
+  color: #808080;
+}
+
+select {
+  width: 400px;
+  text-align-last:center;
 }
 
 .fileInput {
@@ -589,6 +596,18 @@ input[type="submit"]:hover {
   border-radius: 6px;
   text-decoration: none;
   margin: 0 auto;
+}
+
+.photo-fields .submitButton {
+  margin-left: 25px;
+  background-color: #3d698e;
+  color: white;
+  font-size: 16px
+}
+
+.photo-fields .submitButton:hover {
+  background-color: #417aee;
+  color: white;
 }
 
 .submitButton:hover {
