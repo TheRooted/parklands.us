@@ -128,7 +128,7 @@ export default class Mapp extends React.Component {
       container: 'map',
       style: 'mapbox://styles/speschellk/cizykjb9y00452rplpbxptucn',
       center: [-96, 39.5],
-      minZoom: 1,
+      minZoom: 1.5,
       zoom: 3.5,
       maxZoom: 20
     });
