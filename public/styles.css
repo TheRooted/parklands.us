@@ -270,6 +270,11 @@ body {
   background: rgba(0, 0, 0, 0.5);
 }
 
+.trending-load-button {
+  display: block;
+  margin: 0 auto;
+}
+
 .user-feed-container {
   position: relative;
   display: block;
@@ -1091,3 +1096,4 @@ select {
   font-weight: 600;
   z-index: 100;
 }
+

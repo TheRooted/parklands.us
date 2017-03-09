@@ -52,7 +52,7 @@ class Sidebar extends React.Component {
 
   handleSignout() {
     var context = this;
-    axios.post('/signout', {}).then(function(res) {
+    axios.post('/signout', context.state.user).then(function(res) {
       browserHistory.push('/signin');
     });
   }
