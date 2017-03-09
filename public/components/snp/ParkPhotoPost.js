@@ -75,6 +75,11 @@ class ParkPhotoPost extends React.Component {
           })
         })
       })
+    } else {
+      //loaded more photos
+      this.setState({
+        userPhotos: nextProps.userPhotos
+      })
     }
   }
 

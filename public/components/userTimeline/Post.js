@@ -78,6 +78,12 @@ export default class Post extends React.Component {
     return string;
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      allPosts: nextProps.allPosts
+    })
+  }
+
   convertDate(date) {
     var converted = new Date(date).toString();
     return converted.slice(4, 10) + ', ' + converted.slice(11, 16);

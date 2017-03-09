@@ -210,6 +210,7 @@ export default class Snp extends React.Component {
                 postId={photo.id}
                 parkId={photo.parkId}
                 userId={context.state.user.id}
+                length={context.state.photosDisplay.length}
               />
             )}
             <button onClick={context.loadMorePhotos.bind(context)}>Load More</button>
