@@ -18,8 +18,9 @@ class Nav extends React.Component {
     this.setState({query: event.target.value})
   }
 
-  handleSubmit(event) {
-    // based on input, redirect to specific page.
+  handleSubmit(event, reference) {
+    // based on input, redirect to specific page
+    console.log('referencer', reference).
     console.log('beans');
     var parkName = this.state.query.toLowerCase();
     browserHistory.push('/park/' + parkName);

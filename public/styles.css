@@ -358,10 +358,10 @@ input::-webkit-calendar-picker-indicator {
   outline: none;
   color: #555;
   padding: 3px;
-  padding-right: 60px;
+  padding-right: 50px;
   width: 0px;
   position: absolute;
-  top: 13px;
+  top: 16px;
   right: 100px;
   background: none;
   z-index: 3;
