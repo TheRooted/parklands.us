@@ -787,6 +787,7 @@ select {
 
 .comment-container {
   position: relative;
+  width: auto;
   background-color: rgba(238,238,238,0.7);
   border: 1px solid white;
   padding: 10px;
@@ -1025,9 +1026,13 @@ select {
 }
 
 .parkPhotoContainer {
-  width: 345px;
+  width: 330px;
   margin: 20px 10px 20px 0;
   display: inline-block;
+}
+
+.parkPhotoContainer .comment-container {
+  width: 330px;
 }
 
 .parkPhotoContainer h5 {
