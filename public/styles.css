@@ -1093,6 +1093,11 @@ select {
   margin-top: 10px;
 }
 
+.emptyComment {
+  margin-left: 140px;
+  color: red;
+}
+
 .btn-review {
   color: white;
   background-color: #49769c;

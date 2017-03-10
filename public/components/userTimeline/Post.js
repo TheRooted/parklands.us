@@ -26,7 +26,7 @@ export default class Post extends React.Component {
       isOpen: false,
       view: this.props.view,
       parkName: null,
-
+      emptyComment: ''
     };
   }
 
@@ -87,26 +87,44 @@ export default class Post extends React.Component {
 
   _handleInputChange(event) {
     this.setState({comment: event.target.value});
+    if(event.target.value) {
+      this.setState({
+        emptyComment: ''
+      });
+    }
   }
 
 
   _addComment () {
     var context = this;
 
-    axios.post('/api/postcomment', {
-      userId: context.state.userId,
-      postId: context.props.postId,
-      text: context.state.comment
-    })
-    .then(function (res) {
+    if(this.state.comment) {
+      axios.post('/api/postcomment', {
+        userId: context.state.userId,
+        postId: context.props.postId,
+        text: context.state.comment
+      })
+      .then(function (res) {
 
-      var allComment = [res.data].concat(context.state.allComments);
+        var allComment = [res.data].concat(context.state.allComments);
 
-      context.setState({
-        allComments: allComment,
-        comment: ''
+        context.setState({
+          allComments: allComment,
+          comment: '',
+          emptyComment: ''
+        });
       });
-    });
+    } else {
+      if(this.state.comment) {
+        this.setState({
+          emptyComment: ''
+        });
+      } else {
+        this.setState({
+          emptyComment: "Enter some comment"
+        });
+      }
+    }
   }
 
   openLightbox () {
@@ -134,6 +152,11 @@ export default class Post extends React.Component {
             value={this.state.comment}
             onChange={this._handleInputChange.bind(this)}>
           </textarea>
+          <button
+            className="submitButton"
+            onClick={this._addComment.bind(this)}
+            >Comment</button>
+          <div className="emptyComment">{this.state.emptyComment}</div>
         </div>
         <button
           className="submitButton"
