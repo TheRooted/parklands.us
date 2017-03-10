@@ -46,7 +46,7 @@ export default class Signin extends React.Component {
   }
 
   showAlert() {
-    this.setState({ alertShown: !this.state.alertShown})
+    this.setState({ alertShown: true })
   }
 
   signinRequest(user) {

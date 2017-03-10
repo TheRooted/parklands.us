@@ -68,7 +68,7 @@ export default class Signup extends React.Component {
   }
 
   showAlert() {
-    this.setState({ alertShown: !this.state.alertShown})
+    this.setState({ alertShown: true })
   }
 
   signupRequest(user) {
