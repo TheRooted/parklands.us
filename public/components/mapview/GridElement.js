@@ -26,7 +26,7 @@ var GridElement = (props) => {
   return (
     <div className='gridElement'>
       <h5>{name}</h5>
-      <img src={props.parkPhoto}
+      <img className='hvr-grow' src={props.parkPhoto}
         onClick={() => (props.linkToPage(props.parkName))}
       />
     <br />
