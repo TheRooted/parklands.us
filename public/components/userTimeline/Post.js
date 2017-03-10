@@ -121,7 +121,7 @@ export default class Post extends React.Component {
         });
       } else {
         this.setState({
-          emptyComment: "Please enter a comment!"
+          emptyComment: "Please enter a comment"
         });
       }
     }
