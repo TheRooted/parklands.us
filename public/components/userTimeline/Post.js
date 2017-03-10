@@ -28,7 +28,7 @@ export default class Post extends React.Component {
       isOpen: false,
       view: this.props.view,
       parkName: null,
-      emptyComment: ''
+      emptyComment: '',
       isCommentBoxOpen: false,
     };
   }
