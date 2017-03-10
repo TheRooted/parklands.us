@@ -985,6 +985,10 @@ select {
   outline: none;
 }
 
+.review-section-snp {
+  font-size: 20px;
+}
+
 .photo-container {
   height: 600px;
 }
@@ -1004,7 +1008,7 @@ select {
 
 .photo-view-title {
   font-family: 'Istok Web';
-  font-size: 45px;
+  font-size: 30px;
 }
 
 .photo-view-para {
@@ -1018,10 +1022,11 @@ select {
 }
 
 .review-rating-box {
+  width: 390px;
+  margin: 18px;
+  padding: 15px;
   background-color: #869aba;
   text-align: center;
-  padding: 15px;
-  margin: 18px;
   border-radius: 4px;
 }
 
@@ -1042,9 +1047,15 @@ select {
   opacity: 0.7;
 }
 
+.review-view-container {
+  position: relative;
+  display: flex;
+}
+
 .review-view-left {
+  top: 20px;
   float: left;
-  margin-left: 30px;
+  margin-left: 50px;
 }
 
 .review-header {
@@ -1054,12 +1065,14 @@ select {
 .review-comments {
   float: right;
   margin-right: 30px;
+  margin-left: 50px;
+  width: 70%;
 }
 
 .review-title {
   display: block;
   margin-bottom: 25px;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .parkLogisticsContainer {
@@ -1068,7 +1081,8 @@ select {
 }
 
 .singleInfoContainer {
-  margin-top: 15px;
+  margin: 20px 0;
+  width: 430px;
 }
 
 .snp-navlinks,
@@ -1083,10 +1097,10 @@ select {
 
 .parkcommentContainer {
   height: auto;
-  width: 600px;
   background-color: #eee;
   margin: 20px;
   padding: 20px;
+  border-radius: 3px;
 }
 
 .snp-like {
@@ -1135,7 +1149,8 @@ select {
 }
 
 .textarea-review {
-  border-radius: 6px;
+  border-radius: 4px;
+  padding: 10px;
 }
 
 
@@ -1213,4 +1228,18 @@ select {
   font-weight: 600;
   z-index: 100;
 }
+
+.review-center {
+  margin-top: 20px;
+  text-align: center;
+  padding: 30px 0 30px 0;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+.write-review {
+  margin: 10px;
+}
+
+
 

@@ -214,7 +214,7 @@ export default class Snp extends React.Component {
         return (
           <div className='photo-view'>
             <div className='photo-view-header'>
-              <h2 className='photo-view-title'>Community Photos</h2>
+              <h4 className='photo-view-title'>Community Photos</h4>
               <p className='photo-view-para'>{'See what other community members are discovering at ' + context.capFirstLetter(context.state.park.name) + ' National Park.' }</p>
             </div>
             <div className='photo-view-container'>
@@ -242,28 +242,29 @@ export default class Snp extends React.Component {
           <div className='review-view-container'>
             <div className='review-view-left' >
               <div className='review-header'>
-                <div className='review-title'>{context.capFirstLetter(context.state.park.name) + ' National Park'}</div>
-                <Rating
-                  icon={'star'}
-                  maxRating={5}
-                  rating={context.state.averageRating}
-                  size= {'huge'}
-                  disabled={true}
-                />
-                <span>{context.state.totalReviews} reviews</span>
-                <div className='review-section-snp'>
-                  <h1>Write a review</h1>
-                </div>
-                <div className='review-rating-box'>
-                  <RatingPark parkId={context.state.park.id}
-                    size={'huge'}
-                    styleBox={'rating-container-review'}
-                    didUserRate={context.didUserRate.bind(context)}
-                    updateAverageRating={context.updateAverageRating.bind(context)}
-                    userId={context.state.user.id}
-                    />
-                  <h3>{context.state.didUserRate ? 'Thanks for rating ' + context.capFirstLetter(context.state.park.name) + ' National Park' : 'Rate your experience'}</h3>
-                </div>
+                <div className='review-center'>
+                  <div className='review-title'>{context.capFirstLetter(context.state.park.name) + ' National Park'}</div>
+                  <Rating
+                    icon={'star'}
+                    maxRating={5}
+                    rating={context.state.averageRating}
+                    size= {'huge'}
+                    disabled={true}
+                  />
+                  <span>{context.state.totalReviews} reviews</span>
+                  <div className='review-section-snp'>
+                    <h3 className='write-review'>Write a review</h3>
+                  </div>
+                  <div className='review-rating-box'>
+                    <RatingPark parkId={context.state.park.id}
+                      size={'huge'}
+                      styleBox={'rating-container-review'}
+                      didUserRate={context.didUserRate.bind(context)}
+                      updateAverageRating={context.updateAverageRating.bind(context)}
+                      userId={context.state.user.id}
+                      />
+                    <h3>{context.state.didUserRate ? 'Thanks for rating ' + context.capFirstLetter(context.state.park.name) + ' National Park' : 'Rate your experience'}</h3>
+                  </div>
                   <div className='reviewCommentBox'>
                     <ReviewCommentBox
                       didUserRate={context.state.didUserRate}
@@ -274,6 +275,7 @@ export default class Snp extends React.Component {
                       getCommentsAfterPost={context.getCommentsAfterPost.bind(context)}
                     />
                   </div>
+                </div>
                 <div className='parkLogisticsContainer'>
                   <Info
                     title={'Hours'}
