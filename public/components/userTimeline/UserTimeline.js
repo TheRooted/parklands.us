@@ -19,6 +19,7 @@ export default class UserTimeline extends React.Component {
       displayUpload: 'none',
       selectValue: 'Select...',
       parkId: null,
+      userId: null,
       firstName: null,
       parkList: [
         {value: 'acadia', label: 'Acadia'},
@@ -199,7 +200,7 @@ export default class UserTimeline extends React.Component {
           parkId={this.state.parkId}
         />
         <div className="timeline-post-container">
-          { 
+          {
             this.state.displayedActivity.map((post,i) =>
               <Post
                 photoData={post.filePath}
@@ -212,6 +213,7 @@ export default class UserTimeline extends React.Component {
                 index={i}
                 view={'profile-view'}
                 parkId={post.parkId}
+                userId={this.state.userId}
                 length={this.state.displayedActivity.length}
               />
             )

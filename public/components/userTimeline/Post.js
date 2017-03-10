@@ -17,7 +17,7 @@ export default class Post extends React.Component {
       image: null,
       allComments: [],
       parkId: 'notvalid',
-      userId: 1,
+      userId: this.props.userId,
       description: this.props.description,
       photoData: this.props.photoData,
       allPosts: this.props.allPosts,
@@ -26,16 +26,12 @@ export default class Post extends React.Component {
       isOpen: false,
       view: this.props.view,
       parkName: null,
+
     };
   }
 
   componentWillMount() {
     const context = this;
-    axios.get('/api/session').then(function (res) {
-      context.setState({
-        userId: res.data.id
-      })
-    })
 
     axios.get('/api/postcomment', {
       params: {

@@ -14,13 +14,18 @@ export default class UserFeed extends React.Component {
       remainingFeed: [],
       photoCount: 10,
       newFeed: [],
-      loadMorePhotosStyle: 'inline-block'
+      loadMorePhotosStyle: 'inline-block',
+      userId: null
     };
   }
 
   componentWillMount() {
     var context = this;
-
+    axios.get('/api/session').then(function (res) {
+      context.setState({
+        userId: res.data.id
+      })
+    })
     axios.get('/api/userfeed')
     .then(function (res) {
       var sortedRes = sort(res.data, 'activity');
@@ -88,11 +93,12 @@ export default class UserFeed extends React.Component {
                 view={'trending-view'}
                 parkId={feed.parkId}
                 length={this.state.newFeed.length}
+                userId={this.state.userId}
               />
             )
           }
-          <button className="btn-auth" onClick={this.loadMorePhotos.bind(this)} style={{display: this.state.loadMorePhotosStyle}}>Load More</button>
         </div>
+        <button className="btn-auth" onClick={this.loadMorePhotos.bind(this)} >Load More</button>
       </div>
     );
   }
