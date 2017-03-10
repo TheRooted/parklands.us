@@ -73,7 +73,7 @@ export default class UserFeed extends React.Component {
           />
         </div>
 
-        <div id="all-feed">
+        <div id="all-feed-trending">
           {
             this.state.newFeed.map((feed,i) =>
               <Post

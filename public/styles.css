@@ -673,7 +673,7 @@ select {
 }
 
 .btn-auth {
-  display: inline-block;
+  display: block;
   margin: 10px;
   position: relative;
   height: 30px;
@@ -787,7 +787,9 @@ select {
    width: 45%;
    display: inline-block;
    position: relative;
+   max-width: 347px;
 }
+
 
 .photo-container-trending {
    /* height: 600px; */
@@ -798,9 +800,43 @@ select {
    display: block;
    top: 14px;
    padding-left: 10px;
-   width: 100%; <--- this one i think
+   /*TODO: fixme*/
+   width: 100%;
 }
+
+.timelinePhotoFeedTrending {
+    width: 100%;
+    max-height: 210px;
+    margin-top: 10px;
+    border-radius: 4px;
+    object-fit: contain;
+    background-color: #ffffff;
+}
+
+.comment-box-trending {
+    margin-top: 15px;
+    position: relative;
+    display: block;
+    margin-bottom: 20px;
+    width: 100%;
+    border: 1px solid #fff;
+    background-color: #f3f3f3;
+    overflow: auto;
+    max-height: 100px;
+}
+
+.commentTimelineTrending {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #999;
+    border-radius: 4px;
+    margin-right: 8px;
+    height: 35px;
+    width: 25%;
+  }
+
 /*****/
+
 
 .comment {
   position: relative;
@@ -899,7 +935,7 @@ select {
   width: 345px;
   position: relative;
   border-radius: 4px;
-  margin: 20px 0 20px 0;
+  margin: 20px 0 10px 0;
   object-fit: contain;
   background-color: #d5dfef;
 }
@@ -1050,9 +1086,9 @@ select {
 
 .post-comment-scroll {
   overflow: auto;
-  height: 130px;
+  max-height: 130px;
   width: 350px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .btn-review {

@@ -123,27 +123,27 @@ export default class Post extends React.Component {
 
   render () {
     return (
-      <div className="post-container">
+      <div className={(this.state.view === 'trending-view') ? 'post-container-trending' : 'post-container'}>
         <div className='postDescription'>
           <strong>{(this.state.view === 'profile-view') ? this.state.parkName  : this.props.firstName + ' shared:'}</strong>
           <p className="postDate">{moment(this.props.datePosted).format('MMMM Do YYYY')}</p>
         </div>
-        <div className="photo-container">
-          <img className="timelinePhotoFeed" src={this.props.photoData} onClick={this.openLightbox.bind(this)} />
+        <div className={(this.state.view === 'trending-view') ? 'photo-container-trending' : 'photo-container'}>
+          <img className={(this.state.view === 'trending-view') ? 'timelinePhotoFeedTrending' : 'timelinePhotoFeed'} src={this.props.photoData} onClick={this.openLightbox.bind(this)} />
         </div>
-        <div className="commentline">
+        <div className={(this.state.view === 'trending-view') ? 'commentlineTrending' : 'commentline'}>
           <Like className="likeTimeline" postId={this.props.postId} parkId={this.state.parkId} userId={this.state.userId}/>
           <textarea
-            className="commentTimeline"
+            className={(this.state.view === 'trending-view') ? 'commentTimelineTrending' : 'commentTimeline'}
             value={this.state.comment}
             onChange={this._handleInputChange.bind(this)}>
           </textarea>
-          <button
-            className="submitButton"
-            onClick={this._addComment.bind(this)}
-            >Comment</button>
         </div>
-        <PostComment allComments={this.state.allComments} postId={this.props.postId} />
+        <button
+          className="submitButton"
+          onClick={this._addComment.bind(this)}
+          >Comment</button>
+        <PostComment allComments={this.state.allComments} postId={this.props.postId} view={this.state.view} />
 
           {this.state.isOpen &&
             <Lightbox

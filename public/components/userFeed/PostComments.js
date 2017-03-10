@@ -19,7 +19,7 @@ class PostComment extends React.Component {
 
   render () {
     return (
-      <div className={this.props.commentStyle ? this.props.commentStyle : 'comment-box'}>
+      <div className={this.props.commentStyle ? this.props.commentStyle : (this.props.view === 'trending-view') ? 'comment-box-trending' : 'comment-box'}>
           {
             this.state.comments.map((comment) => {
               return (
