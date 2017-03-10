@@ -1,4 +1,4 @@
-# Project Name
+# Parklands ![park icon](https://github.com/tenso2006/parklands/blob/master/public/assets/favicon.png)
 
 > National Parks
 
