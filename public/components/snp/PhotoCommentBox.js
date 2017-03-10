@@ -50,7 +50,7 @@ class PhotoCommentBox extends React.Component {
             basic
             icon={'write'}
             onClick={this.postCommentOnPhoto.bind(this)}
-            />
+          />
         </div>
       </div>
     )

@@ -98,7 +98,7 @@ export default class UserFeed extends React.Component {
             )
           }
         </div>
-        <button className="btn-auth" onClick={this.loadMorePhotos.bind(this)} >Load More</button>
+        <button className="btn-auth-trending" onClick={this.loadMorePhotos.bind(this)} >Load More</button>
       </div>
     );
   }

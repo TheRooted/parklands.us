@@ -5,6 +5,8 @@ import axios from 'axios';
 import sort from './../sort.js';
 import moment from 'moment';
 import Lightbox from 'react-image-lightbox';
+import { Button } from 'semantic-ui-react';
+
 
 
 export default class Post extends React.Component {
@@ -27,6 +29,7 @@ export default class Post extends React.Component {
       view: this.props.view,
       parkName: null,
       emptyComment: ''
+      isCommentBoxOpen: false,
     };
   }
 
@@ -135,6 +138,10 @@ export default class Post extends React.Component {
     this.setState({isOpen: false, photoIndex: this.state.originalIndex})
   }
 
+  toggleCommentBox () {
+    this.setState({isCommentBoxOpen: !this.state.isCommentBoxOpen})
+  }
+
   render () {
     return (
       <div className={(this.state.view === 'trending-view') ? 'post-container-trending' : 'post-container'}>
@@ -147,17 +154,46 @@ export default class Post extends React.Component {
         </div>
         <div className={(this.state.view === 'trending-view') ? 'commentlineTrending' : 'commentline'}>
           <Like className="likeTimeline" postId={this.props.postId} parkId={this.state.parkId} userId={this.state.userId}/>
-          <textarea
-            className={(this.state.view === 'trending-view') ? 'commentTimelineTrending' : 'commentTimeline'}
-            value={this.state.comment}
-            onChange={this._handleInputChange.bind(this)}>
-          </textarea>
-          <button
-            className="submitButton"
-            onClick={this._addComment.bind(this)}
-            >Comment</button>
-          <div className="emptyComment">{this.state.emptyComment}</div>
+
+          { this.state.view === 'profile-view' &&
+            <div className='profile-text-box'>
+            <textarea
+              className={(this.state.view === 'trending-view') ? 'commentTimelineTrending' : 'commentTimeline'}
+              value={this.state.comment}
+              onChange={this._handleInputChange.bind(this)}>
+            </textarea>
+            <button
+              className="submitButton"
+              onClick={this._addComment.bind(this)}
+              >Comment</button>
+              <div className="emptyComment">{this.state.emptyComment}</div>
+            </div>
+          }
+          { this.state.view === 'trending-view' &&
+            <div className='trending-comment-button'>
+              <span onClick={this.toggleCommentBox.bind(this)}>
+                <Button
+                  icon={'comment outline'}
+                  basic color={'green'}
+                  circular={true}
+                />
+             </span>
+           </div>
+          }
         </div>
+        { this.state.isCommentBoxOpen &&
+          <div className='trending-comment-box-container'>
+            <textarea
+              className={(this.state.view === 'trending-view') ? 'commentTimelineTrending' : 'commentTimeline'}
+              value={this.state.comment}
+              onChange={this._handleInputChange.bind(this)}>
+            </textarea>
+            <button
+              className="trending-submit-button"
+              onClick={this._addComment.bind(this)}
+            >Post</button>
+        </div>
+        }
         <PostComment allComments={this.state.allComments} postId={this.props.postId} view={this.state.view} />
 
           {this.state.isOpen &&

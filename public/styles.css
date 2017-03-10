@@ -584,7 +584,7 @@ select {
 
 .commentline {
   position: relative;
-  display: block;
+  display: inline;
   top: 14px;
 }
 
@@ -613,6 +613,10 @@ select {
 .photo-fields .submitButton:hover {
   background-color: #417aee;
   color: white;
+}
+
+.photo-fields {
+  margin-left: -20px;
 }
 
 .submitButton:hover {
@@ -787,7 +791,38 @@ select {
   padding: 10px;
 }
 
-/******/
+.profile-text-box {
+  display: inline;
+}
+
+/******TRENDING********/
+
+.btn-auth-trending {
+  display: block;
+  margin: 10px;
+  position: relative;
+  height: 30px;
+  width: 80px;
+  padding: 5px;
+  font-size: 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  color: #555;
+  opacity: .8;
+  margin-left: 60px;
+}
+
+.ment-button {
+  display: inline;
+  margin-bottom: 10px;
+}
+
+.btn-auth-trending:hover {
+  background-color: #f1f1f1;
+  color: #555;
+  opacity: 1;
+}
 
 #all-feed-trending {
   width: 65%;
@@ -804,7 +839,7 @@ select {
    position: relative;
    max-width: 347px;
    margin-top: 15px;
-  margin-left: 35px;
+   margin-left: 60px;
 }
 
 
@@ -814,8 +849,8 @@ select {
 
 .commentlineTrending {
    position: relative;
-   display: block;
-   top: 14px;
+   display: inline;
+   top: 10px;
    padding-left: 10px;
    /*TODO: fixme*/
    width: 100%;
@@ -831,7 +866,7 @@ select {
 }
 
 .comment-box-trending {
-    margin-top: 15px;
+    margin-top: 20px;
     position: relative;
     display: block;
     margin-bottom: 20px;
@@ -849,8 +884,50 @@ select {
     border-radius: 4px;
     margin-right: 8px;
     height: 35px;
-    width: 25%;
+    width: 80%;
   }
+
+.trending-comment-button {
+  display: inline;
+}
+
+.trending-comment-box-container {
+  margin-top: 20px;
+  margin-bottom: -15px;
+}
+
+.trending-submit-button {
+  position: absolute;
+  height: 35px;
+  padding: 5px 13px;
+  font-size: 12px;
+  text-decoration: none;
+  outline: none;
+  color: white;
+  background-color: #49769c;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  margin: 0 auto;
+}
+
+.trending-submit-button {
+  margin-left: 3px;
+  background-color: #49769c;
+  color: white;
+  font-size: 14px
+}
+
+.trending-submit-button:hover {
+  background-color: #417aee;
+  color: white;
+}
+
+.trending-submit-button:active {
+  background-color: #417aee;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 
 /*****/
 
@@ -1194,7 +1271,7 @@ select {
   height: 44px;
   padding-left: 10px;
   border-radius: 6px;
-  width: 400px;
+  width: 28%;
   border-color: #4267b2;
 }
 
@@ -1249,6 +1326,3 @@ select {
 .write-review {
   margin: 10px;
 }
-
-
-
