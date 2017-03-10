@@ -551,11 +551,11 @@ select {
   border-top: 1px solid #4267b2;
   border-left: 1px solid #4267b2;
   padding: 6px;
-  margin: 15px;
+  margin: 10px 20px 0 0;
   cursor: pointer;
   border-radius: 5px;
   color: #4267b2;
-  width: 240px;
+  width: 220px;
   height: 44px;
 }
 
@@ -1145,11 +1145,11 @@ select {
   color: #4267b2;
 
   position: relative;
-  margin-left: 10px;
+  margin: 10px auto;
   height: 44px;
   padding-left: 10px;
   border-radius: 6px;
-  width: 400;
+  width: 400px;
   border-color: #4267b2;
 }
 
