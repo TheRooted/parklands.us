@@ -1094,7 +1094,7 @@ select {
 }
 
 .emptyComment {
-  margin-left: 140px;
+  text-align: center;
   color: red;
 }
 
