@@ -813,10 +813,6 @@ select {
   margin-left: 60px;
 }
 
-.ment-button {
-  display: inline;
-  margin-bottom: 10px;
-}
 
 .btn-auth-trending:hover {
   background-color: #f1f1f1;
