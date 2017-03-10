@@ -303,6 +303,12 @@ body {
 #trending-load-btn {
   display: block !important;
   margin: 0 auto !important;
+  background-color: #49769c;
+  color: #fff;
+}
+
+#trending-load-btn:hover {
+  background-color: #417aee;
 }
 
 .post-container {
@@ -823,12 +829,13 @@ select {
 }
 
 #all-feed-trending {
-  width: 65%;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  display: inline-flex;
   position: relative;
+  display: inline-block;
+  width: 74%;
+/*  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;*/
+/*  display: inline-flex;*/
 }
 
 .post-container-trending {
@@ -856,7 +863,7 @@ select {
 
 .timelinePhotoFeedTrending {
     width: 100%;
-    max-height: 210px;
+    height: 210px;
     margin-top: 10px;
     border-radius: 4px;
     object-fit: contain;
