@@ -103,7 +103,7 @@ class ParkPhotoPost extends React.Component {
     return (
       <div className='parkPhotoContainer'>
         <h5>{this.state.userEmail} shared: </h5>
-        <img className='parkphotopost' src={this.props.photo} onClick={this.openLightbox.bind(this)} />
+        <img className='parkphotopost hvr-grow' src={this.props.photo} onClick={this.openLightbox.bind(this)} />
         <div className='like-comment-snp-container'>
           <div className='snp-like-comment'>
             <Like postId={this.state.postId} parkId={this.state.parkId} userId={this.props.userId}/>

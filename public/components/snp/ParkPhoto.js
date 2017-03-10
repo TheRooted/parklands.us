@@ -31,7 +31,7 @@ class ParkPhoto extends React.Component {
 
     return (
       <div className='offical-park-modal' >
-        <img className='official-parkphoto' src={this.props.photo} onClick={this.openLightbox.bind(this)} />
+        <img className='official-parkphoto hvr-grow' src={this.props.photo} onClick={this.openLightbox.bind(this)} />
 
         {this.state.isOpen &&
           <Lightbox
