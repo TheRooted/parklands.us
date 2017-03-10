@@ -74,7 +74,7 @@ export default class Signup extends React.Component {
   signupRequest(user) {
     axios.post('/signup', user).then((res) => {
       //LIVE FIXME: make sure 'http://parklands.us/signup' is an option below
-      if (res.request.responseURL === 'http://localhost:3000/signup' || res.request.responseURL === 'http://127.0.0.1:3000/signup' || res.request.responseURL === 'http://parklands.us/signup') {
+      if (res.request.responseURL === 'http://localhost:3000/signup' || res.request.responseURL === 'http://127.0.0.1:3000/signup' || res.request.responseURL === 'http://parklands.us/signup' || res.request.responseURL === 'http://www.parklands.us/signup') {
         this.showAlert();
       } else {
         browserHistory.push('/explore');
