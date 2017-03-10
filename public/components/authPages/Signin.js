@@ -79,7 +79,7 @@ export default class Signin extends React.Component {
           <input id="password-input" className="auth-fields" type="password" name="password" placeholder="Password" ref="passwordSI" onKeyDown={ this.keyPress.bind(this) } />
           <br />
           <div className="buttons">
-            <button type="submit" id="signin-submit" className="btn-auth" onClick={ this.validateForm.bind(this) }>Sign In</button>
+            <button type="submit" id="signin-submit" onClick={ this.validateForm.bind(this) }>Sign In</button>
             <Link to="/signup" className="signup-link">Don't have an account? Sign up</Link>
           </div>
         </div>
