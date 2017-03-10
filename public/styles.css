@@ -1013,9 +1013,9 @@ select {
 }
 
 .parkPhotoContainer {
-  width: 330px;
-  margin: 20px 10px 20px 0;
   display: inline-block;
+  width: 330px;
+  margin: 20px 30px 20px 0;
 }
 
 .parkPhotoContainer .comment-container {
@@ -1079,6 +1079,14 @@ select {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-bottom: 100px;
+}
+
+.photo-view-container {
+  position: relative;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   margin-bottom: 100px;
 }
 
