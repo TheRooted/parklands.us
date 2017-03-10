@@ -76,7 +76,7 @@ export default class Signup extends React.Component {
       if (res.request.responseURL === 'http://localhost:3000/signup' || res.request.responseURL === 'http://127.0.0.1:3000/signup') {
         this.showAlert();
       } else {
-        browserHistory.push('/mapview');
+        browserHistory.push('/explore');
       }
     });
   }

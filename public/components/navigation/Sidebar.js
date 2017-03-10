@@ -87,7 +87,7 @@ class Sidebar extends React.Component {
         <div className={this.sidebarAddClass()}>
           <div className="sidebar-links">
             <div className="sidebar-content">
-              <Link to="/mapview" className="maplink" onClick={this.props.toggleSidebar}>Mapview</Link>
+              <Link to="/explore" className="maplink" onClick={this.props.toggleSidebar}>Explore</Link>
             </div>
             <div className="sidebar-content">
               <Link to="/trending" className="userfeedlink" onClick={this.props.toggleSidebar}>Trending</Link>

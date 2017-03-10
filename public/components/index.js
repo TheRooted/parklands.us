@@ -12,17 +12,13 @@ import Landing from './landing/Landing.js';
 import Snp from './snp/Snp.js';
 import NotAPark from './snp/NotAPark.js';
 import UserFeed from './userFeed/UserFeed.js';
-import Mapview from './mapview/Mapview.js';
+import Explore from './mapview/Explore.js';
 
 const app = document.getElementById('app');
 
 const isLoggedIn = (nextState, replace) => {
-  console.log('checking if user is logged in');
 
   axios.get('/api/session').then(function(res) {
-    console.log('React res.status', res.status);
-    console.log('React res', res);
-    //TODO: UNCOMMENT ME OUT
     if (res.status !== 200) {
       browserHistory.push('/signin')
     }
@@ -33,7 +29,7 @@ ReactDOM.render((
   <Router history={browserHistory}>
     <Route path='/' component={App} >
       <IndexRoute component={Landing} />
-      <Route path='mapview' component={Mapview} />
+      <Route path='explore' component={Explore} />
       <Route path='signin' component={Signin} />
       <Route path='signup' component={Signup} />
       <Route path='profile' onEnter={isLoggedIn} component={UserTimeline} />

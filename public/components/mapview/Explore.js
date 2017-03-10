@@ -11,8 +11,7 @@ export default class Landing extends React.Component {
 
   render() {
     return (
-      <div className="mapview-div">
-        <h1 className='mapview-title'>CLAIM YOUR PARK</h1>
+      <div className="explore-div">
         <Mapp />
         <Grid />
       </div>

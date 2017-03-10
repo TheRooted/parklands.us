@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {browserHistory, Link} from 'react-router';
 import SearchBar from './SearchBar.js';
@@ -37,7 +38,7 @@ class Nav extends React.Component {
         />
         <BurgerBar />
         <span className="title-container">
-          <Link to='/mapview' style={{textDecoration: 'none', color: 'black'}}>
+          <Link to='/explore' style={{textDecoration: 'none', color: 'black'}}>
             <img src='http://i.imgur.com/bLIxJyM.png' style={{height: '25px' }}/>
             Parklands
           </Link>
