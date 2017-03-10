@@ -158,10 +158,6 @@ export default class Post extends React.Component {
             >Comment</button>
           <div className="emptyComment">{this.state.emptyComment}</div>
         </div>
-        <button
-          className="submitButton"
-          onClick={this._addComment.bind(this)}
-          >Comment</button>
         <PostComment allComments={this.state.allComments} postId={this.props.postId} view={this.state.view} />
 
           {this.state.isOpen &&
