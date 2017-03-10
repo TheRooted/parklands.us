@@ -6,14 +6,12 @@ var bcrypt = require('bcrypt');
 
 // Serialize and deserialize user
 passport.serializeUser((user, done) => {
-  console.log('serializing')
   done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
   db.models.user.findOne({ where: { id: id } })
   .then((user, err) => {
-    console.log('deser user', user.dataValues)
     done(null, user.dataValues);
   })
   .catch((err) => {
@@ -34,7 +32,6 @@ passport.use('local-signup', new LocalStrategy({
   passReqToCallback : true
 },
 (req, email, password, done) => {
-  console.log('local-signup')
 
   process.nextTick(() => {
     // Check whether account already exists for submitted email
@@ -60,7 +57,6 @@ passport.use('local-signup', new LocalStrategy({
             })
             // Create session
             .then((user) => {
-              console.log('all good!', user);
               return done(null, user.dataValues, req);
             })
             .catch((err) => {
@@ -87,8 +83,6 @@ passport.use('local-signin', new LocalStrategy({
   passReqToCallback : true
   },
   (req, email, password, done) => {
-    console.log('local-signin')
-    // console.log('req', req)
     process.nextTick(() => {
 
       // Find user by email submitted
@@ -109,7 +103,6 @@ passport.use('local-signin', new LocalStrategy({
               return done(null, false, { message: 'Incorrect password.' });
             // Email registered and password matches
             } else {
-              console.log('Found you!')
               return done(null, user.dataValues, req);
             }
           });
@@ -132,7 +125,6 @@ passport.use('local-signout', new LocalStrategy({
   passReqToCallback : true
 },
   (req, email, password, done) => {
-    console.log('local-signout');
     req.session.destroy();
     req.logout();
     return done(null, false, { message: 'Successfully signed out.' }, req);

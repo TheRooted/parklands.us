@@ -122,11 +122,9 @@ request(url, function (error, response, html) {
           //in the name column
           title = tableRows[i].children[j].children[0].attribs.title;
           title = title.split(' National');
-          console.log('THE THE THE title: ', title);
           if (title.length === 1) {
             //in National Park of American Samoa, grab just the American Samoa part
             title = title[0].split(' of ')[1];
-            console.log('title after split in title.length =1: ', title);
           } else {
             title = title[0];
           }
@@ -163,7 +161,6 @@ request(url, function (error, response, html) {
       park.lat = lat;
       park.info = infoSnippet;
       //push park obj into array
-      console.log('park =', park)
       parks.push(park);
     }
     parks.forEach(function(park, index, array) {
@@ -323,7 +320,6 @@ request(url, function (error, response, html) {
                 var type;
                 var notPhotoCount = 0;
                 for (var i = 0; i < (numPicsToPull + notPhotoCount); i++){
-                  console.log('super long obvious string: ', individualPark.url);
                   type = 'notphoto';
                   if ($('#stream-items-id').children()[i] === undefined) {
                     //photo list has ended
@@ -364,9 +360,7 @@ request(url, function (error, response, html) {
           }));
         });
       })
-      Promise.all(requests).then(function() {
-        console.log('@@@@@@@@FINISHED SEEDING')
-      });
+      Promise.all(requests)
 
       /*---------------------------------------------
             Seed twitter snp photos with comments
@@ -866,7 +860,6 @@ for (var i = 1 ; i < users.length + 1; i++) {
 }
 Promise.all(ratings).then(function(parkRatings) {
   var parkRatingsArray = [];
-  console.log('PARKRATINGS[0].dataValues', parkRatings[0][0].dataValues);
   
   for (var i = 0; i < parkRatings.length; i++) {
     if (i === 0) {

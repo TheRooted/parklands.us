@@ -112,7 +112,7 @@ export default class UserTimeline extends React.Component {
         }
         //if no more photos to load get rid of load more button
         if (sortedRes.length === 0) {
-          var morePhotos = false;
+          morePhotos = false;
         }
         if (!morePhotos) {
           context.setState({
@@ -176,7 +176,6 @@ export default class UserTimeline extends React.Component {
   }
 
   render() {
-    console.log('displayedActivity', this.state.displayedActivity);
     return (
       <div id="userTimeLinePageContainer">
         <div className='profile-hero'>

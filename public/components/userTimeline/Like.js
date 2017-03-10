@@ -73,7 +73,6 @@ class Like extends React.Component {
   }
 
   render () {
-    // console.log('am i render or am i dancer', this.state.userLiked)
     var styles = {};
     if (this.state.userLiked) {
       styles = {

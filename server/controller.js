@@ -8,10 +8,8 @@ module.exports = {
       process.nextTick(function() {
         if (req.user) {
           // TODO: REMOVE THIS CONSOLE LOG
-          console.log('there is a user', req.user);
           res.status(200).send(req.user);
         } else {
-          console.log('there is not a user');
           res.sendStatus(201).end();
         }
       });
@@ -170,7 +168,6 @@ module.exports = {
         }
       }).
       then(function (user) {
-        //console.log('user isssss ', user);
         res.send(user);
       });
     }
@@ -198,14 +195,12 @@ module.exports = {
   visitedpark: {
     get: function (req, res) {
       var userId = req.query.userId;
-      console.log("userId is ", userId);
       db.models.post.findAll({
         where: {
           userId: userId
         }
       })
       .then(function (visitedpark) {
-        console.log('visitedpark data is', visitedpark);
         res.send(visitedpark);
       });
     }

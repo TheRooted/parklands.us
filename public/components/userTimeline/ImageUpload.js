@@ -25,7 +25,6 @@ export default class ImageUpload extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log('parkId: ',nextProps.parkId);
     if (nextProps.displayUpload !== 'none') {
       this.setState({
         styling: {
@@ -102,7 +101,6 @@ export default class ImageUpload extends Component {
           };
           axios.post('/api/userTimeline', photo)
           .then(function (resp) {
-            console.log('sending back addPhoto', photo);
             context.props.addPhoto();
             var allPost = [resp.data].concat(context.state.allPost);
 

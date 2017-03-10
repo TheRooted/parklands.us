@@ -13,7 +13,6 @@ export default class Mapp extends React.Component {
   }
 
   componentWillMount() {
-    console.log('componentWillMount')
     var context = this;
 
     // Retrieve all park information
@@ -61,14 +60,12 @@ export default class Mapp extends React.Component {
   // Fetch user and user's park ratings
   // info and construct layer to add
   getFeatures() {    
-    console.log('getFeatures')
     var context = this;
     var ratings = [];
     var features = [];
 
     axios.get('/api/session')
     .then((res) => {
-      console.log('calling session')
       if (res.data) {
         context.setState({ userId: res.data.id });
       }
@@ -120,7 +117,6 @@ export default class Mapp extends React.Component {
   // Specify map styles and script that adds 
   // park locations layer once map is loaded
   stringScript() {
-    console.log('stringScript')
     var context = this;
     var text = mapboxgl.accessToken = 'pk.eyJ1Ijoic3Blc2NoZWxsayIsImEiOiJjaXo4bXB2cG8wMHA2MnZxbzNneHlicnZyIn0.K9hcDggIDFrtjjVS8LOXdA';
 
@@ -134,8 +130,6 @@ export default class Mapp extends React.Component {
     });
 
     map.on('load', function() {
-      console.log('loaded')
-      console.log('context.state.locationData', context.state.locationData)
       // Add a map layer showing the parks
       map.addLayer({
         "id": "parks",
@@ -211,13 +205,10 @@ export default class Mapp extends React.Component {
   // Stringify and attach map script; insert script in DOM
   createMap() {
     var context = this;
-    console.log('createMap')
-    console.log('this is', this)
     var map = window.document.getElementById('map');
     var script = window.document.createElement('script');
     script.type = 'text/javascript';
     script.text = JSON.stringify(context.stringScript());
-    console.log('script text', script.text)
     map.parentNode.insertBefore(script, map.nextSibling);
   }
 

@@ -12,7 +12,6 @@ class PostComment extends React.Component {
   }
 
     // const comments = this._getComments();
-  // console.log('all comment iss ',props.allComments);
   componentWillReceiveProps(nextProps) {
     this.setState({comments: nextProps.allComments});
   }
