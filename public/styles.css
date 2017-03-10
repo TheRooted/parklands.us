@@ -270,11 +270,6 @@ body {
   background: rgba(0, 0, 0, 0.5);
 }
 
-.trending-load-button {
-  display: block;
-  margin: 0 auto;
-}
-
 .user-feed-container {
   position: relative;
   display: block;
@@ -304,6 +299,10 @@ body {
   font-size: medium;
 }
 
+#trending-load-btn {
+  display: block !important;
+  margin: 0 auto !important;
+}
 
 .post-container {
   width: 800px;
@@ -931,6 +930,10 @@ select {
   display: inline-block;
 }
 
+.parkPhotoContainer h5 {
+  margin-bottom: 0;
+}
+
 .parkphotopost,
 .official-parkphoto {
   height: 253px;
@@ -1003,7 +1006,7 @@ select {
   text-align: center;
   padding: 15px;
   margin: 18px;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 .rating-container-review {
@@ -1025,14 +1028,16 @@ select {
 
 .review-view-left {
   float: left;
+  margin-left: 30px;
 }
 
 .review-header {
-  text-align: center;
+  text-align: justify;
 }
 
 .review-comments {
   float: right;
+  margin-right: 30px;
 }
 
 .review-title {
@@ -1192,3 +1197,4 @@ select {
   font-weight: 600;
   z-index: 100;
 }
+
