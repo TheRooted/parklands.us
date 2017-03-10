@@ -316,6 +316,7 @@ body {
 .timelinePhotoFeed {
   width: 800px;
   height: 600px;
+  background-color: rgba(238,238,238,0.5);
   border-radius: 4px;
   object-fit: contain;
 }
@@ -778,7 +779,7 @@ select {
   display: block;
   margin: 20px 0 40px 0;
   width: 800px;
-  background-color: #f3f3f3;
+  background-color: rgba(238,238,238,0.7);
   border: 1px solid #fff;
   overflow: auto;
   max-height: 150px;
@@ -786,7 +787,7 @@ select {
 
 .comment-container {
   position: relative;
-  background-color: #d5dfef;
+  background-color: rgba(238,238,238,0.7);
   border: 1px solid white;
   padding: 10px;
 }
@@ -858,7 +859,7 @@ select {
     margin-top: 10px;
     border-radius: 4px;
     object-fit: contain;
-    background-color: #ffffff;
+    background-color: rgba(238,238,238,0.5);
 }
 
 .comment-box-trending {
@@ -1024,7 +1025,8 @@ select {
 }
 
 .parkPhotoContainer {
-  margin: 10px;
+  width: 345px;
+  margin: 20px 10px 20px 0;
   display: inline-block;
 }
 
@@ -1034,13 +1036,13 @@ select {
 
 .parkphotopost,
 .official-parkphoto {
-  height: 253px;
-  width: 345px;
+  height: 220px;
+  width: 330px;
   position: relative;
   border-radius: 4px;
-  margin: 20px 0 10px 0;
+  margin: 10px 0 10px 0;
   object-fit: contain;
-  background-color: #d5dfef;
+  background-color: rgba(238,238,238,0.5);
 }
 
 .parkphotopost:hover {
