@@ -1035,6 +1035,7 @@ select {
   margin: 10px 0 10px 0;
   object-fit: contain;
   background-color: rgba(238,238,238,0.5);
+  cursor: pointer;
 }
 
 .official-parkphoto {
