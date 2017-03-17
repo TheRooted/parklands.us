@@ -11,6 +11,7 @@ const Info = (props) => {
           <div>{line}</div>
       )}
 
+
     </div>
   )
 }
