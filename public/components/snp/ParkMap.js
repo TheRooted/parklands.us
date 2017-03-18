@@ -14,7 +14,7 @@ export default class ParkMap extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.park.long) {
+    if (nextProps.park.long && nextProps.park.long !== this.state.long) {
       var name = '';
       var splitName = nextProps.park.name.split(/[–\s]/);
 
@@ -25,8 +25,7 @@ export default class ParkMap extends React.Component {
         name: name,
         long: nextProps.park.long,
         lat: nextProps.park.lat
-      })
-      this.createMap();
+      }, this.createMap)
     }
   }
 
