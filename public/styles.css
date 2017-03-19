@@ -1210,7 +1210,6 @@ select {
 
 .photo-comment-box-child {
   margin-top: 15px;
-  text-align: center;
 }
 
 .write-button {
@@ -1219,6 +1218,7 @@ select {
 }
 
 .textarea-photo {
+  width: 80%;
   height: 33.5px;
 }
 
