@@ -95,7 +95,7 @@ class Sidebar extends React.Component {
     }
     return (
       <div className="sidebarContainer">
-        <img src='http://www.freeiconspng.com/uploads/menu-icon-13.png'
+        <img src='./assets/menu-icon-13.png'
           className="burger-button" onClick={this.props.toggleSidebar} />
         <div className={this.sidebarAddClass()}>
           <div className="sidebar-links">
