@@ -48,20 +48,12 @@ body {
 
 .splash-landing {
   position: absolute;
-  display: block;
-  width: 100%;
-  top: 20px;
-  left: 0;
-}
-
-.splash-img {
-  position: relative;
-  display: block;
-  height: auto;
-  max-width: 94vw;
-  min-width: 92vw;
-  max-height: 94vh;
-  margin: auto;
+  top: 30px;
+  left: 2vw;
+  right: 2vw;
+  bottom: 2vh;
+  background: url('https://www.adventure-journal.com/wp-content/uploads/2015/07/15155461297_402eeb3fd7_h.jpg') center center no-repeat; 
+  background-size: 100% auto; 
 }
 
 .splash-title {
