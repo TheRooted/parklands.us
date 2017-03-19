@@ -645,7 +645,7 @@ select {
   left: 2vw;
   right: 2vw;
   bottom: 2vh;
-  background: transparent url('./images/Canyonlands-National-Park.jpg') center no-repeat;
+  background: transparent url('./images/Canyonlands-National-Park.jpg') center center no-repeat;
   background-size: 100% auto;
   z-index: 0;
 }
