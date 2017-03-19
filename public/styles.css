@@ -1219,6 +1219,7 @@ select {
 }
 
 .textarea-photo {
+  width: 80%;
   height: 33.5px;
 }
 
