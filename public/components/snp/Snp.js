@@ -37,7 +37,7 @@ export default class Snp extends React.Component {
       commentsDisplay: [],
       officialPhotos: [],
       averageRating: 0,
-      photoCount: 10,
+      photoCount: 6,
       didUserRate: false,
       totalReviews: 0,
       user: {
