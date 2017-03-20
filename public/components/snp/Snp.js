@@ -202,108 +202,103 @@ export default class Snp extends React.Component {
     });
   }
 
+  mediaView (view) {
+    if (view === 'Photos') {
+      return (
+        <div className='photo-view'>
+          <div className='photo-view-header'>
+            <h4 className='photo-view-title'>Community Photos</h4>
+            <p className='photo-view-para'>{'See what other community members are discovering at ' + this.capFirstLetter(this.state.park.name) + ' National Park.' }</p>
+          </div>
+          <div className='photo-view-container'>
+          {this.state.photosDisplay.map((photo, i) =>
+            <ParkPhotoPost photo={photo.filePath}
+              key={i}
+              index={i}
+              description={photo.description}
+              parkName={this.capFirstLetter(this.state.park.name)}
+              userPhotos={this.state.photosDisplay}
+              postId={photo.id}
+              parkId={photo.parkId}
+              userId={this.state.user.id}
+              length={this.state.photosDisplay.length}
+            />
+          )}
+        </div>
+        <button className='snp-load-btn' onClick={this.loadMorePhotos.bind(this)} style={{display: this.state.loadMorePhotosStyle}}>Load More</button>
+      </div>
+      )
+    } else {
+      return (
+        <div className='review-view-container'>
+          <div className='review-view-left' >
+            <div className='review-header'>
+              <div className='review-center'>
+                <div className='review-title'>{this.capFirstLetter(this.state.park.name) + ' National Park'}</div>
+                <Rating
+                  icon={'star'}
+                  maxRating={5}
+                  rating={this.state.averageRating}
+                  size= {'huge'}
+                  disabled={true}
+                />
+                <span>{this.state.totalReviews} reviews</span>
+                <div className='review-section-snp'>
+                  <h3 className='write-review'>Write a review</h3>
+                </div>
+                <div className='review-rating-box'>
+                  <RatingPark parkId={this.state.park.id}
+                    size={'huge'}
+                    styleBox={'rating-container-review'}
+                    didUserRate={this.didUserRate.bind(this)}
+                    updateAverageRating={this.updateAverageRating.bind(this)}
+                    userId={this.state.user.id}
+                    />
+                  <h3>{this.state.didUserRate ? 'Thanks for rating ' + this.capFirstLetter(this.state.park.name) + ' National Park' : 'Rate your experience'}</h3>
+                </div>
+                <div className='reviewCommentBox'>
+                  <ReviewCommentBox
+                    didUserRate={this.state.didUserRate}
+                    parkId={this.state.park.id}
+                    userId={this.state.user.id}
+                    firstName={this.state.user.firstName}
+                    userEmail={this.state.user.email}
+                    getCommentsAfterPost={this.getCommentsAfterPost.bind(this)}
+                  />
+                </div>
+              </div>
+              <div className='parkLogisticsContainer'>
+                <Info
+                  title={'Hours'}
+                  detail={this.state.park.hours}
+                />
+                <Info
+                  title={'Location'}
+                  detail={this.state.park.location}
+                />
+                <Info
+                  title={'Contact'}
+                  detail={this.state.park.contact}
+                />
+              </div>
+            </div>
+          </div>
+          <div className='review-comments'>
+            {this.state.commentsDisplay.map((comment, i) =>
+              <Parkcomment parkId={comment.parkId} userId={comment.userId} firstName={comment.firstName} text={comment.text} datePosted={comment.createdAt} key={i}/>
+            )}
+          </div>
+          <button className='snp-load-btn' onClick={this.loadMoreComments.bind(this)} style={{display: this.state.loadMoreCommentsStyle}}>Load More</button>
+        </div>
+      )
+    }
+  }
+
   render() {
-    var context = this;
     var boldPhotos = {fontWeight: 'normal'};
     var boldReviews = {fontWeight: 'normal'};
     (this.state.view === 'Photos') ? boldPhotos = {fontWeight: 'bold'} : boldPhotos = {fontWeight: 'normal'};
     (this.state.view === 'Reviews') ? boldReviews = {fontWeight: 'bold'} : boldReviews = {fontWeight: 'normal'};
-
-    if (this.state.view === 'Photos') {
-      var mediaView = function () {
-        return (
-          <div className='photo-view'>
-            <div className='photo-view-header'>
-              <h4 className='photo-view-title'>Community Photos</h4>
-              <p className='photo-view-para'>{'See what other community members are discovering at ' + context.capFirstLetter(context.state.park.name) + ' National Park.' }</p>
-            </div>
-            <div className='photo-view-container'>
-            {context.state.photosDisplay.map((photo, i) =>
-              <ParkPhotoPost photo={photo.filePath}
-                key={i}
-                index={i}
-                description={photo.description}
-                parkName={context.capFirstLetter(context.state.park.name)}
-                userPhotos={context.state.photosDisplay}
-                postId={photo.id}
-                parkId={photo.parkId}
-                userId={context.state.user.id}
-                length={context.state.photosDisplay.length}
-              />
-            )}
-          </div>
-          <button className='snp-load-btn' onClick={context.loadMorePhotos.bind(context)} style={{display: context.state.loadMorePhotosStyle}}>Load More</button>
-        </div>
-        )
-      }
-    } else if (this.state.view === 'Reviews') {
-      var mediaView = function () {
-        return (
-          <div className='review-view-container'>
-            <div className='review-view-left' >
-              <div className='review-header'>
-                <div className='review-center'>
-                  <div className='review-title'>{context.capFirstLetter(context.state.park.name) + ' National Park'}</div>
-                  <Rating
-                    icon={'star'}
-                    maxRating={5}
-                    rating={context.state.averageRating}
-                    size= {'huge'}
-                    disabled={true}
-                  />
-                  <span>{context.state.totalReviews} reviews</span>
-                  <div className='review-section-snp'>
-                    <h3 className='write-review'>Write a review</h3>
-                  </div>
-                  <div className='review-rating-box'>
-                    <RatingPark parkId={context.state.park.id}
-                      size={'huge'}
-                      styleBox={'rating-container-review'}
-                      didUserRate={context.didUserRate.bind(context)}
-                      updateAverageRating={context.updateAverageRating.bind(context)}
-                      userId={context.state.user.id}
-                      />
-                    <h3>{context.state.didUserRate ? 'Thanks for rating ' + context.capFirstLetter(context.state.park.name) + ' National Park' : 'Rate your experience'}</h3>
-                  </div>
-                  <div className='reviewCommentBox'>
-                    <ReviewCommentBox
-                      didUserRate={context.state.didUserRate}
-                      parkId={context.state.park.id}
-                      userId={context.state.user.id}
-                      firstName={context.state.user.firstName}
-                      userEmail={context.state.user.email}
-                      getCommentsAfterPost={context.getCommentsAfterPost.bind(context)}
-                    />
-                  </div>
-                </div>
-                <div className='parkLogisticsContainer'>
-                  <Info
-                    title={'Hours'}
-                    detail={context.state.park.hours}
-                  />
-                  <Info
-                    title={'Location'}
-                    detail={context.state.park.location}
-                  />
-                  <Info
-                    title={'Contact'}
-                    detail={context.state.park.contact}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className='review-comments'>
-              {context.state.commentsDisplay.map((comment, i) =>
-                <Parkcomment parkId={comment.parkId} userId={comment.userId} firstName={comment.firstName} text={comment.text} datePosted={comment.createdAt} key={i}/>
-              )}
-            </div>
-            <button className='snp-load-btn' onClick={context.loadMoreComments.bind(context)} style={{display: context.state.loadMoreCommentsStyle}}>Load More</button>
-          </div>
-        )
-      }
-    }
-
-
     return (
       <div className='snp'>
         <div className='hero'>
@@ -344,7 +339,7 @@ export default class Snp extends React.Component {
           <button className="review-link" style= {boldReviews} onClick={this.changeViewToReviews.bind(this)}>Reviews & Info</button>
         </div>
         <div className="mediaview-container">
-          {mediaView()}
+          {this.mediaView.call(this, this.state.view)}
         </div>
       </div>
     )
