@@ -52,8 +52,8 @@ body {
   left: 2vw;
   right: 2vw;
   bottom: 2vh;
-  background: url('https://www.adventure-journal.com/wp-content/uploads/2015/07/15155461297_402eeb3fd7_h.jpg') center center no-repeat; 
-  background-size: 100% auto; 
+  background: url('https://www.adventure-journal.com/wp-content/uploads/2015/07/15155461297_402eeb3fd7_h.jpg') center center no-repeat;
+  background-size: 100% auto;
 }
 
 .splash-title {
@@ -352,7 +352,7 @@ body {
   position: relative;
   display: inline-block;
   height: 35px;
-  width: 564px;
+  width: 76.5%;
   padding: 5px;
   margin-right: 8px;
   border: 1px solid #999;
@@ -815,13 +815,13 @@ select {
   flex-direction: row;
   flex-wrap: wrap;
   width: 72%;
+  justify-content: center;
 }
 
 .post-container-trending {
-   width: 45%;
+   max-width: 40%;
    display: inline-block;
    position: relative;
-   max-width: 347px;
    margin-top: 15px;
    margin-left: 60px;
 }
@@ -842,7 +842,8 @@ select {
 
 .timelinePhotoFeedTrending {
     width: 100%;
-    height: 210px;
+    max-height: 245px;
+    min-height: 245px;
     margin-top: 10px;
     border-radius: 4px;
     object-fit: contain;
@@ -868,8 +869,13 @@ select {
     border-radius: 4px;
     margin-right: 8px;
     height: 35px;
-    width: 80%;
+    width: 87%;
   }
+
+.trending-write-button {
+  position: absolute;
+  display: inline-block;
+}
 
 .trending-comment-button {
   display: inline;
@@ -1014,7 +1020,7 @@ select {
 .parkPhotoContainer {
   display: inline-block;
   width: 330px;
-  margin: 20px 30px 20px 0;
+  margin: 3% 3% 0 5.5%;
 }
 
 .parkPhotoContainer .comment-container {
@@ -1351,6 +1357,3 @@ select {
 .write-review {
   margin: 10px;
 }
-
-
-

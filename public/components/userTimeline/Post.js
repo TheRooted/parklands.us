@@ -162,10 +162,13 @@ export default class Post extends React.Component {
               value={this.state.comment}
               onChange={this._handleInputChange.bind(this)}>
             </textarea>
-            <button
-              className="submitButton"
-              onClick={this._addComment.bind(this)}
-              >Comment</button>
+            <div className='trending-write-button'>
+              <Button
+                basic
+                icon={'write'}
+                onClick={this._addComment.bind(this)}
+              />
+          </div>
               <div className="emptyComment">{this.state.emptyComment}</div>
             </div>
           }
@@ -188,10 +191,13 @@ export default class Post extends React.Component {
               value={this.state.comment}
               onChange={this._handleInputChange.bind(this)}>
             </textarea>
-            <button
-              className="trending-submit-button"
-              onClick={this._addComment.bind(this)}
-            >Post</button>
+            <div className='trending-write-button'>
+              <Button
+                basic
+                icon={'write'}
+                onClick={this._addComment.bind(this)}
+              />
+          </div>
         </div>
         }
         <PostComment allComments={this.state.allComments} postId={this.props.postId} view={this.state.view} />
