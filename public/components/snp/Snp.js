@@ -37,7 +37,7 @@ export default class Snp extends React.Component {
       commentsDisplay: [],
       officialPhotos: [],
       averageRating: 0,
-      photoCount: 10,
+      photoCount: 6,
       didUserRate: false,
       totalReviews: 0,
       user: {
@@ -45,8 +45,8 @@ export default class Snp extends React.Component {
         firstName: 'null',
         email: 'null@gmail.com'
       },
-      loadMorePhotosStyle: 'inline-block',
-      loadMoreCommentsStyle: 'inline-block',
+      loadMorePhotosStyle: 'block',
+      loadMoreCommentsStyle: 'block',
     }
   }
 
@@ -128,7 +128,7 @@ export default class Snp extends React.Component {
             if (arrays[1].length === 0) {
               context.setState({loadMorePhotosStyle: 'none'})
             } else {
-              context.setState({loadMorePhotosStyle: 'inline-block'})
+              context.setState({loadMorePhotosStyle: 'block'})
             }
             context.setState({
               photosDisplay: arrays[0],
@@ -144,7 +144,7 @@ export default class Snp extends React.Component {
             if (arrays[1].length === 0) {
               context.setState({loadMoreCommentsStyle: 'none'})
             } else {
-              context.setState({loadMoreCommentsStyle: 'inline-block'})
+              context.setState({loadMoreCommentsStyle: 'block'})
             }
             context.setState({
               commentsDisplay: arrays[0],
@@ -231,8 +231,8 @@ export default class Snp extends React.Component {
                 length={context.state.photosDisplay.length}
               />
             )}
-            <button onClick={context.loadMorePhotos.bind(context)} style={{display: context.state.loadMorePhotosStyle}}>Load More</button>
           </div>
+          <button className='snp-load-btn' onClick={context.loadMorePhotos.bind(context)} style={{display: context.state.loadMorePhotosStyle}}>Load More</button>
         </div>
         )
       }
@@ -296,8 +296,8 @@ export default class Snp extends React.Component {
               {context.state.commentsDisplay.map((comment, i) =>
                 <Parkcomment parkId={comment.parkId} userId={comment.userId} firstName={comment.firstName} text={comment.text} datePosted={comment.createdAt} key={i}/>
               )}
-              <button onClick={context.loadMoreComments.bind(context)} style={{display: context.state.loadMoreCommentsStyle}}>Load More</button>
             </div>
+            <button className='snp-load-btn' onClick={context.loadMoreComments.bind(context)} style={{display: context.state.loadMoreCommentsStyle}}>Load More</button>
           </div>
         )
       }
