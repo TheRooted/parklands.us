@@ -1254,6 +1254,16 @@ select {
   padding: 10px;
 }
 
+.snp-load-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 5px;
+  background-color: #49769c;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
 
 /**************************
           PROFILE
