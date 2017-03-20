@@ -26,8 +26,8 @@ export default class Landing extends React.Component {
           <div className='splash-title hvr-grow' onClick={this.linkToExplore.bind(this)}>START EXPLORING</div>
           <button className='splash-signin hvr-grow' onClick={this.signIn.bind(this)}>Sign In</button>
           <button className='splash-signup hvr-grow' onClick={this.signUp.bind(this)}>Sign Up</button>
-          <a className='tom-credit' href='http://www.travelcaffeine.com/' target='_blank'>Photo by Tom Bricker</a>
         </div>
+        <a className='tom-credit' href='http://www.travelcaffeine.com/' target='_blank'>Photo by Tom Bricker</a>
       </div>
     )
   }

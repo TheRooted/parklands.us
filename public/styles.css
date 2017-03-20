@@ -57,43 +57,50 @@ body {
 }
 
 .splash-title {
-  position: absolute;
-  top: 280px;
-  left: 195px;
+  position: relative;
+  top: 27vh;
+  left: 19vw;
   font-family: 'Lato';
-  font-size: 80px;
+  font-size: 5vw;
   color: white;
+  line-height: initial;
   cursor: pointer;
+  white-space: nowrap;
   z-index: 100;
 }
 
 .splash-signin,
 .splash-signup {
-  position: absolute;
-  height: 40px;
-  width: 120px;
-  top: 380px;
-  left: 310px;
+  position: relative;
+  height: 3vw;
+  width: 8%;
+  top: 40%;
+  left: -24%;
   padding: 4px;
   border: none;
   border-radius: 5px;
   font-family: 'Lato';
-  font-size: 18px;
+  font-size: 1vw;
+  text-align: center;
+  vertical-align: middle;
+  line-height: initial;
   color: white;
   background-color: rgba(255,255,255,0.1);
   z-index: 100;
 }
 
 .splash-signup {
-  left: 450px;
+  left: -22%;
 }
 
 .tom-credit {
-  position: relative;
+  position: absolute;
   margin: 10px 0;
-  float: right;
-  right: 4%;
-  font-size: 9px;
+  right: 50px;
+  bottom: 2%;
+  font-size: 12px;
+  color: #98938e;
+  z-index: 100;
 }
 
 #container {
