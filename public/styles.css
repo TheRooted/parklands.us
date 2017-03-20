@@ -302,7 +302,7 @@ body {
 
 .btn-auth-trending,
 #trending-load-btn {
-  display: block !important;
+  display: block;
   margin: 0 auto !important;
   padding: 5px;
   background-color: #49769c;

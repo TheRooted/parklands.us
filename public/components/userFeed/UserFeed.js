@@ -14,7 +14,7 @@ export default class UserFeed extends React.Component {
       remainingFeed: [],
       photoCount: 10,
       newFeed: [],
-      loadMorePhotosStyle: 'inline-block',
+      loadMorePhotosStyle: 'block',
       userId: null
     };
   }

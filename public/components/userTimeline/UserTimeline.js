@@ -81,7 +81,7 @@ export default class UserTimeline extends React.Component {
         {value: 'yellowstone', label: 'Yellowstone'},
         {value: 'yosemite', label: 'Yosemite'},
         {value: 'zion', label: 'Zion'}],
-      loadMoreStyle: 'inline-block'
+      loadMoreStyle: 'block'
     };
   }
 
