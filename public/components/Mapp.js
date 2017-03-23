@@ -154,11 +154,6 @@ export default class Mapp extends React.Component {
     // Add user location control
     map.addControl(new mapboxgl.GeolocateControl());
 
-    // Add driving directions module
-    // map.addControl(new MapboxDirections({
-    //     accessToken: 'pk.eyJ1Ijoic3Blc2NoZWxsayIsImEiOiJjaXo4bXB2cG8wMHA2MnZxbzNneHlicnZyIn0.K9hcDggIDFrtjjVS8LOXdA'
-    // }), 'top-left');
-
     // Create a popup, but don't add it to the map yet
     var popup = new mapboxgl.Popup({
       closeButton: false,
@@ -185,6 +180,7 @@ export default class Mapp extends React.Component {
     });
 
     map.on('click', function(e) {
+      console.log('map.on click')
       // Use queryRenderedFeatures to get features at a click event's point
       // Use layer option to avoid getting results from other layers
       var features = map.queryRenderedFeatures(e.point, { layers: ['parks'] });
