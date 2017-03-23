@@ -118,17 +118,6 @@ export default class ImageUpload extends Component {
           });
         }
       });
-
-      // context.setState({
-      //   file: '',
-      //   imagePreviewUrl: '',
-      //   description: '',
-      //   images: [],
-      //   imagePreview: null,
-      //   fileName: ''
-      // }, function () {
-      //   // context.props.addPhoto();
-      // });
     });
   }
 
@@ -184,7 +173,6 @@ export default class ImageUpload extends Component {
                 value={this.state.description}
                 onChange={this._handleInputChange}
               />
-              <span>{this.state.description}</span>
             </label>
             <button
               className="submitButton photoButton"
